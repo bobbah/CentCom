@@ -1,0 +1,6816 @@
+[
+	{
+		"CKey": "purpose2",
+		"BannedOn": "2018-01-26T16:56:28+00:00",
+		"BannedBy": "purpose2",
+		"Reason": "ugly\n",
+		"Expires": "2018-01-26T16:56:28+00:00",
+		"UnbannedBy": "purpose2",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "appearance"
+			}
+		]
+	},
+	{
+		"CKey": "ezikbomber",
+		"BannedOn": "2018-01-27T00:08:20+00:00",
+		"BannedBy": "xantholne",
+		"Reason": "As a Security officer, kidnapped a random crewmember, force fed them Ether and Morphine then brigged them. When questioned they kept saying they had to show them who was stronger and the likes.",
+		"Expires": "2018-02-03T13:28:20+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "security officer"
+			}
+		]
+	},
+	{
+		"CKey": "ben11567",
+		"BannedOn": "2018-01-27T12:47:13+00:00",
+		"BannedBy": "purpose2",
+		"Reason": "(MANUAL BAN) Left midround without cryo or informing admins. Appeal on forums.",
+		"Expires": "2018-01-27T12:47:13+00:00",
+		"UnbannedBy": "purpose2",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			}
+		]
+	},
+	{
+		"CKey": "pokeone",
+		"BannedOn": "2018-01-27T14:12:51+00:00",
+		"BannedBy": "smokingkilz",
+		"Reason": "Logged off without letting an admin know, please re-read our rules. Appeal @ https://forums.oraclestation.com/",
+		"Expires": "2018-01-27T14:12:51+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of personnel"
+			}
+		]
+	},
+	{
+		"CKey": "kingrazzor",
+		"BannedOn": "2018-01-27T15:08:08+00:00",
+		"BannedBy": "smokingkilz",
+		"Reason": "(MANUAL BAN) Logging off as a Command role without letting an administrator know. Please re-read the rules and appeal this jobban @ https://forums.oraclestation.com/",
+		"Expires": "2018-01-27T15:08:08+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of personnel"
+			}
+		]
+	},
+	{
+		"CKey": "miniusareas",
+		"BannedOn": "2018-01-28T13:14:28+00:00",
+		"BannedBy": "smokingkilz",
+		"Reason": "Logging off as a round crucial role without notifying an administrator, appeal @ https://forums.oraclestation.com/",
+		"Expires": "2018-01-28T13:14:28+00:00",
+		"UnbannedBy": "smokingkilz",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "blueshield"
+			}
+		]
+	},
+	{
+		"CKey": "blackshadowdragon",
+		"BannedOn": "2018-01-28T21:08:48+00:00",
+		"BannedBy": "ralta",
+		"Reason": "(MANUAL BAN) As the AI, repeatedly messed with the SM engine claiming they believed they were rogue. Please take some time to play as a borg and read up on the wiki before trying AI again.",
+		"Expires": "2018-02-04T21:08:48+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ai"
+			}
+		]
+	},
+	{
+		"CKey": "g3nuke",
+		"BannedOn": "2018-01-28T23:48:51+00:00",
+		"BannedBy": "xantholne",
+		"Reason": "As a medical chemist, broke in and threw a fire foam bomb into botany destroying the entre area. When questoned said they called for Security becuase botany was trying to steal a chem dispenser )which cannot be moved) and didnt do anything about it. Restuled to them throwing a fire foam bomb into botany as they \u0022where 90% sure the botanists where bad guys\u0022 and \u0022wanted a 100% casualty rate\u0022 You shouldn\u0027t even be making lethal devices as a chemist. ",
+		"Expires": "2018-02-05T13:08:51+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "chemist"
+			}
+		]
+	},
+	{
+		"CKey": "nernums",
+		"BannedOn": "2018-01-29T00:35:01+00:00",
+		"BannedBy": "avagrant",
+		"Reason": "Attacked a cuffed prisoner as Brig Phys then killed them. ",
+		"Expires": "2018-02-12T00:35:01+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "warden"
+			},
+			{
+				"Job": "detective"
+			},
+			{
+				"Job": "security officer"
+			},
+			{
+				"Job": "brig physician"
+			}
+		]
+	},
+	{
+		"CKey": "phycaris",
+		"BannedOn": "2018-01-29T00:54:48+00:00",
+		"BannedBy": "smokingkilz",
+		"Reason": "As an antagonist decided to kill his fellow geneticist literally round start. The geneticist was not his target nor was there any actual reason to murder him. He claims to have read the rules, if that\u0027s true, I expect better. Appeal @ https://forums.oraclestation.com/",
+		"Expires": "2018-02-05T00:54:48+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "syndicate"
+			}
+		]
+	},
+	{
+		"CKey": "chingo",
+		"BannedOn": "2018-01-29T08:29:58+00:00",
+		"BannedBy": "xantholne",
+		"Reason": "Disconnecting as round start as Blueshield without ahelping",
+		"Expires": "2018-02-05T21:49:58+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "blueshield"
+			}
+		]
+	},
+	{
+		"CKey": "thethingthing3846",
+		"BannedOn": "2018-01-30T18:40:29+00:00",
+		"BannedBy": "smokingkilz",
+		"Reason": "(MANUAL BAN) Put the freezers in Engineering to 200k, pumped the Engine full of O2 then Plasma, causing a melt down. Every time this player goes Engineering, this time I caught him in the act. Appeal @ https://forums.oraclestation.com/",
+		"Expires": "2018-01-30T18:40:29+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "chief engineer"
+			}
+		]
+	},
+	{
+		"CKey": "thethingthing3846",
+		"BannedOn": "2018-01-30T18:40:34+00:00",
+		"BannedBy": "smokingkilz",
+		"Reason": "(MANUAL BAN) Put the freezers in Engineering to 200k, pumped the Engine full of O2 then Plasma, causing a melt down. Every time this player goes Engineering, this time I caught him in the act. Appeal @ https://forums.oraclestation.com/",
+		"Expires": "2018-01-30T18:40:34+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "station engineer"
+			}
+		]
+	},
+	{
+		"CKey": "thethingthing3846",
+		"BannedOn": "2018-01-30T18:40:45+00:00",
+		"BannedBy": "smokingkilz",
+		"Reason": "(MANUAL BAN) Put the freezers in Engineering to 200k, pumped the Engine full of O2 then Plasma, causing a melt down. Every time this player goes Engineering, this time I caught him in the act. Appeal @ https://forums.oraclestation.com/ ",
+		"Expires": "2018-01-30T18:40:45+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "atmospheric technician"
+			}
+		]
+	},
+	{
+		"CKey": "arkadiusz123",
+		"BannedOn": "2018-01-30T20:46:32+00:00",
+		"BannedBy": "stephanov",
+		"Reason": "Disobeying commands after emagging",
+		"Expires": "2018-02-11T20:46:32+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "cyborg"
+			}
+		]
+	},
+	{
+		"CKey": "arkadiusz123",
+		"BannedOn": "2018-01-30T20:46:49+00:00",
+		"BannedBy": "stephanov",
+		"Reason": "Disobeying commands after emagging",
+		"Expires": "2018-02-11T20:46:49+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ai"
+			}
+		]
+	},
+	{
+		"CKey": "dennek1",
+		"BannedOn": "2018-01-31T03:36:11+00:00",
+		"BannedBy": "xantholne",
+		"Reason": "As blueshield, attacked the chaplain and RD. Pretended to be Security. Put the RD in crit. When asked said \u0022They where bad guys\u0022 Yo uaren ot security. You are also supposed to protect them. Not try to kill them.",
+		"Expires": "2018-01-31T03:36:11+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "blueshield"
+			}
+		]
+	},
+	{
+		"CKey": "blackshadowdragon",
+		"BannedOn": "2018-02-04T21:28:24+00:00",
+		"BannedBy": "ralta",
+		"Reason": "As a drone, opened a canister of plasma. When queried about it, claimed to think he was a swarmer (wouldn\u0027t be acceptable then either). Previously warned for similar behaviour as an AI.",
+		"Expires": "2018-02-04T21:28:24+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "drone"
+			}
+		]
+	},
+	{
+		"CKey": "jkter294",
+		"BannedOn": "2018-02-04T22:45:47+00:00",
+		"BannedBy": "captaincardgage",
+		"Reason": "Went SSD as Round critical role. Feel free to appeal this on our forums.              - Captain Cardgage",
+		"Expires": "2018-04-06T18:45:47+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "blueshield"
+			}
+		]
+	},
+	{
+		"CKey": "str0m",
+		"BannedOn": "2018-02-06T03:16:11+00:00",
+		"BannedBy": "xantholne",
+		"Reason": "As Captain went SSD for over an hour without informing admins VIA pms. Did not even go to cryo storage either.",
+		"Expires": "2018-02-06T03:16:11+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			}
+		]
+	},
+	{
+		"CKey": "joshwong",
+		"BannedOn": "2018-02-06T22:20:18+00:00",
+		"BannedBy": "smokingkilz",
+		"Reason": "As an antag, decided to kill random people including another antag because \u0022they were coming towards me, they were a threat.\u0022 This is not acceptable, re-read our rules. ",
+		"Expires": "2018-03-09T08:20:18+00:00",
+		"UnbannedBy": "smokingkilz",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "syndicate"
+			}
+		]
+	},
+	{
+		"CKey": "thegiantwaffle",
+		"BannedOn": "2018-02-08T05:28:14+00:00",
+		"BannedBy": "xantholne",
+		"Reason": "As a guardian kept going against user wishes and leaving, attacking anything, etc. Was told to listen but refused to.",
+		"Expires": "2018-03-01T01:28:14+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "syndicate"
+			}
+		]
+	},
+	{
+		"CKey": "juicyreduxsday",
+		"BannedOn": "2018-02-12T16:49:14+00:00",
+		"BannedBy": "andrewmontagne",
+		"Reason": "IC in OOC",
+		"Expires": "2018-02-15T04:49:14+00:00",
+		"UnbannedBy": "andrewmontagne",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ooc"
+			}
+		]
+	},
+	{
+		"CKey": "kirbythewizard101",
+		"BannedOn": "2018-02-14T05:07:27+00:00",
+		"BannedBy": "xantholne",
+		"Reason": "As Captain, ordered an unlawful execution, continously went into the gateway, completely disregarded all Command SOP, gave several people all access, then went SSD inside of the hotel teleporter without even alerting admin staff.",
+		"Expires": "2018-02-14T05:07:27+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			},
+			{
+				"Job": "head of personnel"
+			},
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "research director"
+			},
+			{
+				"Job": "chief medical officer"
+			},
+			{
+				"Job": "quartermaster"
+			}
+		]
+	},
+	{
+		"CKey": "overlygeneric",
+		"BannedOn": "2018-02-14T06:36:34+00:00",
+		"BannedBy": "xantholne",
+		"Reason": "Constantly ignores drone laws, constantly interacts with crew, finally went and killed a SSD borg as a drone \u0022so I could build a new AI\u0022 Like holy shit how many times do you have to be warned. This is needless to say about you killing an SSD no less",
+		"Expires": "2018-02-14T06:36:34+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "drone"
+			}
+		]
+	},
+	{
+		"CKey": "calb",
+		"BannedOn": "2018-02-14T10:24:18+00:00",
+		"BannedBy": "xantholne",
+		"Reason": "Has constantly been doing stupid shit as Captain, naming the station low RP memes, doing incredibly stupid stuff, leaving the disk behind, going into teleporter off station, killing the AI. Take a week off from being Captain until you want to follow Captain SOP.",
+		"Expires": "2018-02-21T23:44:18+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			}
+		]
+	},
+	{
+		"CKey": "miniusareas",
+		"BannedOn": "2018-02-14T11:41:49+00:00",
+		"BannedBy": "xantholne",
+		"Reason": "Wiped core and disconnected without ahelping nor alerting crew as AI",
+		"Expires": "2018-02-22T01:01:49+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ai"
+			}
+		]
+	},
+	{
+		"CKey": "calb",
+		"BannedOn": "2018-02-16T07:27:52+00:00",
+		"BannedBy": "xantholne",
+		"Reason": "Constantly does stupid shit as command, neglecting their duty, not following SOP as non antags, going ssd or leaving without even telling admins or the rest of the crew. Completely neglects their duties as a head of staff and as such will no longer be permitted to play as a head of staff until they wish to change the way they play. We take command roles very seriously. Trying to being a shittlery clown as acting Captain QM no less is a serious no.",
+		"Expires": "2018-02-16T07:27:52+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of personnel"
+			},
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "research director"
+			},
+			{
+				"Job": "chief medical officer"
+			},
+			{
+				"Job": "quartermaster"
+			}
+		]
+	},
+	{
+		"CKey": "blackshadowdragon",
+		"BannedOn": "2018-02-17T01:01:19+00:00",
+		"BannedBy": "captaincardgage",
+		"Reason": "As sec officer, decided to beat someone to death with a bat after hitting themselves and claiming someone else had beaten them.",
+		"Expires": "2018-02-19T23:21:19+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "warden"
+			},
+			{
+				"Job": "detective"
+			},
+			{
+				"Job": "security officer"
+			},
+			{
+				"Job": "brig physician"
+			}
+		]
+	},
+	{
+		"CKey": "ceanox",
+		"BannedOn": "2018-02-17T03:17:26+00:00",
+		"BannedBy": "smokingkilz",
+		"Reason": "As the Captain, has authorized the killing of someone that was not related to the original crime. Then when they were cloned, he ganked them in the middle of the halls. SoP and Space Law breaches, we expect a high level of attention in this role. Play other command roles, re-read rules and SoP in the meanwhile. Appeal on the forums.",
+		"Expires": "2018-03-03T03:17:26+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			}
+		]
+	},
+	{
+		"CKey": "polymoose",
+		"BannedOn": "2018-02-18T00:59:27+00:00",
+		"BannedBy": "xantholne",
+		"Reason": "As a \u0022traitor scientist\u0022 subverted the AI, attempted to bomb RANDOM areas of the station, told the AI to go and kill people which then in turn decided to flood the station with plasma, all to \u0022get a sliver of the supermatter engine\u0022 ",
+		"Expires": "2018-03-24T18:19:27+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "syndicate"
+			}
+		]
+	},
+	{
+		"CKey": "huskyhusk",
+		"BannedOn": "2018-02-18T22:16:54+00:00",
+		"BannedBy": "scrubmcnoob",
+		"Reason": "As the warden, found the Captain dead but the proceeded to dismember the Corpse as well as remove his head and during the round, was inompetent in exeution of Space Law.",
+		"Expires": "2018-02-23T22:16:54+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "warden"
+			},
+			{
+				"Job": "detective"
+			},
+			{
+				"Job": "security officer"
+			},
+			{
+				"Job": "brig physician"
+			}
+		]
+	},
+	{
+		"CKey": "mrfancypants92",
+		"BannedOn": "2018-02-19T01:56:39+00:00",
+		"BannedBy": "captaincardgage",
+		"Reason": "as IA, decided to take syndicate contraband and to use it to harm/ kill a already disabled agent. Took more contraband for the reason \u0027because i killed him\u0027.",
+		"Expires": "2018-03-21T11:56:39+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "internal affairs agent"
+			}
+		]
+	},
+	{
+		"CKey": "calibraptor",
+		"BannedOn": "2018-02-19T11:04:51+00:00",
+		"BannedBy": "xantholne",
+		"Reason": "Joined at round start as HOP, immediately went SSD in office without alerting anyone",
+		"Expires": "2018-02-19T11:04:51+00:00",
+		"UnbannedBy": "xantholne",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			},
+			{
+				"Job": "head of personnel"
+			},
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "research director"
+			},
+			{
+				"Job": "chief medical officer"
+			},
+			{
+				"Job": "quartermaster"
+			}
+		]
+	},
+	{
+		"CKey": "jkeller098",
+		"BannedOn": "2018-02-19T17:35:05+00:00",
+		"BannedBy": "ralta",
+		"Reason": "Twice in two days put freon into the distribution line, causing multiple deaths and a lot of cleanup for a lowpop round. Read the rules and take some time off from the engineering department, period.",
+		"Expires": "2018-03-22T03:35:05+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "station engineer"
+			},
+			{
+				"Job": "atmospheric technician"
+			}
+		]
+	},
+	{
+		"CKey": "biluzao123",
+		"BannedOn": "2018-02-20T11:05:06+00:00",
+		"BannedBy": "xantholne",
+		"Reason": "On the basis of \u0022they had a cap id as a cargo tech\u0022 executed someone for simply that in a gibber no less with no evidence what so ever only to find out AFTER killing them that they where even a Syndicate agent. When questioned said they did not even know space law but still decided to act it out without even looking it up.",
+		"Expires": "2018-03-20T05:45:06+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "warden"
+			},
+			{
+				"Job": "detective"
+			},
+			{
+				"Job": "security officer"
+			},
+			{
+				"Job": "brig physician"
+			}
+		]
+	},
+	{
+		"CKey": "evilguynameted",
+		"BannedOn": "2018-02-21T03:35:58+00:00",
+		"BannedBy": "captaincardgage",
+		"Reason": "As captain, decided to go ssd mid round without cryoing and forming command or staff.",
+		"Expires": "2018-03-23T13:35:58+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			}
+		]
+	},
+	{
+		"CKey": "moneystackssalvia",
+		"BannedOn": "2018-02-21T12:12:15+00:00",
+		"BannedBy": "xantholne",
+		"Reason": "As a non hijacker killed the entire shuttle with an ebow esword because \u0022im traitor\u0022 and \u0022my obj was assassinate\u0022 both objectives where steal objectives and not assassinates. When they looked in their notes after said \u0022i had to steal the hos gun\u0022 when there wasnt even a HOS, and quite literally everyone killed wasnt even apart of Security.",
+		"Expires": "2018-02-21T12:12:15+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "syndicate"
+			}
+		]
+	},
+	{
+		"CKey": "jumes123",
+		"BannedOn": "2018-02-21T17:45:44+00:00",
+		"BannedBy": "ralta",
+		"Reason": "(MANUAL BAN) As non-antag AI, used air alarms to siphon air out of inhabited areas. Left before this could be discussed; appeal at: forums.oraclestation.com",
+		"Expires": "2018-03-07T17:45:44+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ai"
+			}
+		]
+	},
+	{
+		"CKey": "zmennington",
+		"BannedOn": "2018-02-23T12:09:11+00:00",
+		"BannedBy": "xantholne",
+		"Reason": "As Captain gave 4 other people all access with Captain level ids, then had one of them executed with them doing it personally for firing disabler beams at another person stating  \u0022its almost attempting to kill someone, why else would she shoot at us.\u0022 followed by \u0022i didnt even mean to be a captain and i dont exactly know how to be one because im not good at it and not interested so for all my jobs have been taken so all i got was captain, so yeah go ahead and give me a ban i wont be too mad about that\u0022",
+		"Expires": "2018-02-23T12:09:11+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			},
+			{
+				"Job": "head of personnel"
+			},
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "research director"
+			},
+			{
+				"Job": "chief medical officer"
+			},
+			{
+				"Job": "quartermaster"
+			}
+		]
+	},
+	{
+		"CKey": "evilguynameted",
+		"BannedOn": "2018-02-24T00:37:38+00:00",
+		"BannedBy": "ziiro",
+		"Reason": "Ran around with the armory on him as warden. After being warned about this behavior, still carried around the temp gun, shooting civilians and also arrested them during nuclear operatives.",
+		"Expires": "2018-02-24T00:37:38+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "warden"
+			},
+			{
+				"Job": "detective"
+			},
+			{
+				"Job": "security officer"
+			},
+			{
+				"Job": "brig physician"
+			}
+		]
+	},
+	{
+		"CKey": "overlygeneric",
+		"BannedOn": "2018-02-24T11:19:43+00:00",
+		"BannedBy": "xantholne",
+		"Reason": "As a hotel securiy guard, teleported to the station, got muzzled to immitate a mime, then proceded to steal a hand tele and teleport around the station before being arrested and then killing a fellow genpop. You\u0027ve had numerous notes about this behavior as ghost roles over the past few weeks, this is the last straw. Any further action will result in permanent ghost role bans.",
+		"Expires": "2018-03-20T18:39:43+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "pai"
+			},
+			{
+				"Job": "posibrain"
+			},
+			{
+				"Job": "deathsquad"
+			},
+			{
+				"Job": "lavaland"
+			}
+		]
+	},
+	{
+		"CKey": "calibraptor",
+		"BannedOn": "2018-02-24T11:35:44+00:00",
+		"BannedBy": "xantholne",
+		"Reason": "After being warned countless times in OOC that OOC bans will be handed out if they continue with bad behavior in OOC proceeded to say \u0022Watch your fucking language you hilter jewstein kike\u0022 followed by \u0022I\u0027m gay\u0022 after OOC was unmuted then followed by \u0022Anybody wanna read penis books in the shower.\u0022 You\u0027ve been warned over and over about this, your OOC privledges are gone now.",
+		"Expires": "2018-03-24T20:55:44+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ooc"
+			}
+		]
+	},
+	{
+		"CKey": "ceanox",
+		"BannedOn": "2018-02-25T11:06:53+00:00",
+		"BannedBy": "stephanov",
+		"Reason": "(MANUAL BAN) Leaving an engraving saying \u0022You are a jew CE\u0022",
+		"Expires": "2018-02-25T11:06:53+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "curator"
+			}
+		]
+	},
+	{
+		"CKey": "meattubehaha",
+		"BannedOn": "2018-02-25T11:42:20+00:00",
+		"BannedBy": "stephanov",
+		"Reason": "(MANUAL BAN) Putting a link to a website in an engraving.",
+		"Expires": "2018-02-27T11:42:20+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "curator"
+			}
+		]
+	},
+	{
+		"CKey": "boxtastic",
+		"BannedOn": "2018-02-26T21:49:47+00:00",
+		"BannedBy": "ralta",
+		"Reason": "As Captain, got drunk and cut the legs off two non-antag crewmembers for more or less no reason.",
+		"Expires": "2018-03-08T21:49:47+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			}
+		]
+	},
+	{
+		"CKey": "solisdude",
+		"BannedOn": "2018-02-27T17:07:27+00:00",
+		"BannedBy": "captaincardgage",
+		"Reason": "Disconnected as A.I. without informing staff nor wiped core. if you feel this was unjust you can appeal on our forums.",
+		"Expires": "2018-03-30T03:07:27+00:00",
+		"UnbannedBy": "captaincardgage",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ai"
+			}
+		]
+	},
+	{
+		"CKey": "eicehasnoiq2",
+		"BannedOn": "2018-02-27T17:09:36+00:00",
+		"BannedBy": "captaincardgage",
+		"Reason": "disconnected mid-round as A.I. without informing staff nor wiped core. if you feel this was unjust you can make a appeal on the forums.",
+		"Expires": "2018-03-30T03:09:36+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ai"
+			}
+		]
+	},
+	{
+		"CKey": "nickmun",
+		"BannedOn": "2018-02-28T20:43:34+00:00",
+		"BannedBy": "ralta",
+		"Reason": "Repeatedly insuilting others in OOC. You\\\\\\\u0027ve been warned enough times. Appeal at: forums.oraclestation.com",
+		"Expires": "2018-02-28T20:43:34+00:00",
+		"UnbannedBy": "ralta",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ooc"
+			}
+		]
+	},
+	{
+		"CKey": "nickmun",
+		"BannedOn": "2018-02-28T22:21:22+00:00",
+		"BannedBy": "ralta",
+		"Reason": "Repeatedly insuilting others in OOC. You\u0027ve been warned enough times. Appeal at: forums.oraclestation.com",
+		"Expires": "2018-03-03T22:01:22+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ooc"
+			}
+		]
+	},
+	{
+		"CKey": "creeperparty568",
+		"BannedOn": "2018-02-28T22:48:07+00:00",
+		"BannedBy": "ziiro",
+		"Reason": "As a non-antagonist HoP, caused general mayhem with giving himself (and others) all access, shouting into a megaphone, and requesting nuke codes because \\\u0022im pretending to have autism. its fun\\\u0022. When arrested (and after being engaged in conversation in the ahelp), disconnected. If you wish to appeal this ban, please post on the unban appeals forum at https://forums.oraclestation.com/ ",
+		"Expires": "2018-02-28T22:48:07+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			},
+			{
+				"Job": "head of personnel"
+			},
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "research director"
+			},
+			{
+				"Job": "chief medical officer"
+			},
+			{
+				"Job": "quartermaster"
+			}
+		]
+	},
+	{
+		"CKey": "blackplaps",
+		"BannedOn": "2018-03-02T12:31:42+00:00",
+		"BannedBy": "stephanov",
+		"Reason": "Harmbatoning as non-antag, multiple reports of griefing.",
+		"Expires": "2018-03-02T12:31:42+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			}
+		]
+	},
+	{
+		"CKey": "blackplaps",
+		"BannedOn": "2018-03-02T12:31:46+00:00",
+		"BannedBy": "stephanov",
+		"Reason": "Harmbatoning as non-antag, multiple reports of griefing.",
+		"Expires": "2018-03-02T12:31:46+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of personnel"
+			}
+		]
+	},
+	{
+		"CKey": "blackplaps",
+		"BannedOn": "2018-03-02T12:31:49+00:00",
+		"BannedBy": "stephanov",
+		"Reason": "Harmbatoning as non-antag, multiple reports of griefing.",
+		"Expires": "2018-03-02T12:31:49+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			}
+		]
+	},
+	{
+		"CKey": "blackplaps",
+		"BannedOn": "2018-03-02T12:31:56+00:00",
+		"BannedBy": "stephanov",
+		"Reason": "Harmbatoning as non-antag, multiple reports of griefing.",
+		"Expires": "2018-03-02T12:31:56+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "warden"
+			}
+		]
+	},
+	{
+		"CKey": "blackplaps",
+		"BannedOn": "2018-03-02T12:32:00+00:00",
+		"BannedBy": "stephanov",
+		"Reason": "Harmbatoning as non-antag, multiple reports of griefing.",
+		"Expires": "2018-03-02T12:32:00+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "detective"
+			}
+		]
+	},
+	{
+		"CKey": "blackplaps",
+		"BannedOn": "2018-03-02T12:32:03+00:00",
+		"BannedBy": "stephanov",
+		"Reason": "Harmbatoning as non-antag, multiple reports of griefing.",
+		"Expires": "2018-03-02T12:32:03+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "security officer"
+			}
+		]
+	},
+	{
+		"CKey": "commanderkeef",
+		"BannedOn": "2018-03-02T20:29:28+00:00",
+		"BannedBy": "andrewmontagne",
+		"Reason": "Play nice.",
+		"Expires": "2018-03-02T21:29:28+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ooc"
+			}
+		]
+	},
+	{
+		"CKey": "adameltablawy",
+		"BannedOn": "2018-03-02T20:29:39+00:00",
+		"BannedBy": "andrewmontagne",
+		"Reason": "Play nice.",
+		"Expires": "2018-03-02T21:29:39+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ooc"
+			}
+		]
+	},
+	{
+		"CKey": "jkeller098",
+		"BannedOn": "2018-03-03T01:15:42+00:00",
+		"BannedBy": "ziiro",
+		"Reason": "As a drone, used the captain\u0027s coms console to make announcements about a previous\u0027 drone death\u0027s actions and kept respawning in an attempt to keep doing so. Warned about no communication/interference.",
+		"Expires": "2018-03-03T01:15:42+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "drone"
+			}
+		]
+	},
+	{
+		"CKey": "monster1904",
+		"BannedOn": "2018-03-03T16:45:56+00:00",
+		"BannedBy": "scrubmcnoob",
+		"Reason": "Logged off as soon as the round started as Chief Engineer. Did not ahelp nor cryo.",
+		"Expires": "2018-03-10T16:45:56+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			},
+			{
+				"Job": "head of personnel"
+			},
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "research director"
+			},
+			{
+				"Job": "chief medical officer"
+			},
+			{
+				"Job": "quartermaster"
+			}
+		]
+	},
+	{
+		"CKey": "xandertifft",
+		"BannedOn": "2018-03-03T16:58:36+00:00",
+		"BannedBy": "smokingkilz",
+		"Reason": "(MANUAL BAN) As the AI, acted outside of its lawset. On Paladin, electrecuted crew for insulting it, fiercly resisted a carding. When contacted by an administrator, disconnected mid conversation. Please take some time to play other roles and learn from other AI players. Once you feel you\u0027re ready to try it again, appeal this on our forums.",
+		"Expires": "2018-03-03T16:58:36+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ai"
+			}
+		]
+	},
+	{
+		"CKey": "smarrazzo",
+		"BannedOn": "2018-03-05T18:23:11+00:00",
+		"BannedBy": "ralta",
+		"Reason": "As head of security, speaking in all caps, using netspeak (\u0027lol\u0027, \u0027ofc\u0027 etc) and emojis after being warned to stop. Eventually demoted, then started talking OOC about it. We\u0027re a medium RP server. Learn to do some RP before playing any more command roles.",
+		"Expires": "2018-03-12T18:23:11+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			},
+			{
+				"Job": "head of personnel"
+			},
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "research director"
+			},
+			{
+				"Job": "chief medical officer"
+			},
+			{
+				"Job": "quartermaster"
+			}
+		]
+	},
+	{
+		"CKey": "jwomble98",
+		"BannedOn": "2018-03-05T20:17:38+00:00",
+		"BannedBy": "vverti",
+		"Reason": "sanctioning Admin: Vverti\nreason:griefing\nSpawned in as a non-antag atmos tech and immediately got a N2O canister and opened it in engineering foyer, was warned doing it again will bring much harsher punishments.\nCheck our rules at https://wiki.oraclestation.com/wiki/Rules\nIf you wish to appeal your ban, head to https://forums.oraclestation.com",
+		"Expires": "2018-03-08T20:17:38+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "station engineer"
+			},
+			{
+				"Job": "atmospheric technician"
+			}
+		]
+	},
+	{
+		"CKey": "kirbythewizard101",
+		"BannedOn": "2018-03-06T00:04:10+00:00",
+		"BannedBy": "ziiro",
+		"Reason": "As an AI, disconnected without explaination. If you wish to appeal this ban, please post on our forums: https://forums.oraclestation.com/",
+		"Expires": "2018-03-06T00:04:10+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ai"
+			}
+		]
+	},
+	{
+		"CKey": "barbadosez",
+		"BannedOn": "2018-03-06T16:30:13+00:00",
+		"BannedBy": "ziiro",
+		"Reason": "Self-antagged as captain by butchering an assistant\u0027s body in the hallways and attempted to borg the brain. When confronted, state: \u0022 fuck this im bored with ss13 so i fucking grief and shitler just ban me man \u0022 and disconnected. If you wish to appeal this command ban, please post on our forums:  https://forums.oraclestation.com/",
+		"Expires": "2018-03-06T16:30:13+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			},
+			{
+				"Job": "head of personnel"
+			},
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "research director"
+			},
+			{
+				"Job": "chief medical officer"
+			},
+			{
+				"Job": "quartermaster"
+			}
+		]
+	},
+	{
+		"CKey": "phycaris",
+		"BannedOn": "2018-03-09T20:17:38+00:00",
+		"BannedBy": "ziiro",
+		"Reason": "Disconnected/Went AFK without informing anyone as Captain. Please explain what happened when you appeal this ban: https://forums.oraclestation.com/",
+		"Expires": "2018-03-09T20:17:38+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			},
+			{
+				"Job": "head of personnel"
+			},
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "research director"
+			},
+			{
+				"Job": "chief medical officer"
+			},
+			{
+				"Job": "quartermaster"
+			}
+		]
+	},
+	{
+		"CKey": "jvmurarimartins",
+		"BannedOn": "2018-03-10T11:02:08+00:00",
+		"BannedBy": "smokingkilz",
+		"Reason": "As a security officer, gunned down a prisoner, when asked why he did so, answered with \u0022everyone does this in other games, they don\u0027t get banned.\u0022 Just because someone else breaks the rules doesn\u0027t give you the leeway to do so yourself, next time simply ahelp it.\n",
+		"Expires": "2018-04-09T21:02:08+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "warden"
+			},
+			{
+				"Job": "detective"
+			},
+			{
+				"Job": "security officer"
+			},
+			{
+				"Job": "brig physician"
+			}
+		]
+	},
+	{
+		"CKey": "silentnoob57",
+		"BannedOn": "2018-03-10T19:22:20+00:00",
+		"BannedBy": "vverti",
+		"Reason": "Sanctioning admin: Vverti\nReason: After dying in crew, respawned as a golem and attempted to kill the person who killed them originally without any prior interaction \nThis is in violation of our rules regarding ghost spawns https://wiki.oraclestation.com/wiki/Rules#Ghost_Spawns\nIf you want to appeal this ban head to https://forums.oraclestation.com",
+		"Expires": "2018-04-10T05:51:20+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "pai"
+			},
+			{
+				"Job": "posibrain"
+			},
+			{
+				"Job": "drone"
+			},
+			{
+				"Job": "deathsquad"
+			},
+			{
+				"Job": "lavaland"
+			}
+		]
+	},
+	{
+		"CKey": "jdogdavis",
+		"BannedOn": "2018-03-11T16:10:10+00:00",
+		"BannedBy": "vverti",
+		"Reason": "As non-hijack antag set off the SM because they messed up their  buy, its a clear violation of our rules.",
+		"Expires": "2018-03-12T16:10:10+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "syndicate"
+			}
+		]
+	},
+	{
+		"CKey": "dangerz0ne",
+		"BannedOn": "2018-03-14T13:55:33+00:00",
+		"BannedBy": "vverti",
+		"Reason": "Sanctioning admin:Vverti\nReason: At round start spaced themselves and disconnected as an antag, never made any attempt to ask an admin to un-traitor them or if it was okay for them to kill themself.\nfeel free to appeal your ban at https://forums.oraclestation.com",
+		"Expires": "2018-03-21T13:55:33+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "syndicate"
+			}
+		]
+	},
+	{
+		"CKey": "honp",
+		"BannedOn": "2018-03-15T20:24:43+00:00",
+		"BannedBy": "ziiro",
+		"Reason": "As the Captain, ghosted out and went AFK without informing the admins. Did not respond to Ahelps. This is against our rules, if you\u0027d like to appeal this job ban, please appeal at https://forums.oraclestation.com/",
+		"Expires": "2018-03-15T20:24:43+00:00",
+		"UnbannedBy": "ziiro",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			},
+			{
+				"Job": "head of personnel"
+			},
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "research director"
+			},
+			{
+				"Job": "chief medical officer"
+			},
+			{
+				"Job": "quartermaster"
+			}
+		]
+	},
+	{
+		"CKey": "dustyboi",
+		"BannedOn": "2018-03-15T20:42:35+00:00",
+		"BannedBy": "vverti",
+		"Reason": "Sanctioning admin:Vverti\nReason: Abusing being a drone, made a death trap in corporate showroom\nRead our rules at https://wiki.oraclestation.com/wiki/Rules\nappeal at https://forums.oraclestation.com/index.php",
+		"Expires": "2018-03-15T20:42:35+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "drone"
+			}
+		]
+	},
+	{
+		"CKey": "blackplaps",
+		"BannedOn": "2018-03-15T20:58:48+00:00",
+		"BannedBy": "vverti",
+		"Reason": "Sanctioning admin: Vverti\nReason: Multiple infractions of space law and our rules regarding sec, please take this time to look over them \nFeel free to appeal the ban at https://forums.oraclestation.com/index.php",
+		"Expires": "2018-03-20T20:58:48+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "brig physician"
+			}
+		]
+	},
+	{
+		"CKey": "grapeskoda",
+		"BannedOn": "2018-03-15T22:26:22+00:00",
+		"BannedBy": "ziiro",
+		"Reason": "As a cultist, tried to kill his fellow cultists. When told to stop, asked \u0022Can\u0027t I just do it anyway? I never asked for this.\u0022 If you\u0027d like to appeal this role ban, please do so on our forums. https://forums.oraclestation.com/",
+		"Expires": "2018-03-15T22:26:22+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "cultist"
+			}
+		]
+	},
+	{
+		"CKey": "wondertaiment",
+		"BannedOn": "2018-03-15T22:30:25+00:00",
+		"BannedBy": "ziiro",
+		"Reason": "As captain, refused to communicate with crew or respond to ahelps while clearly not AFK. IF you wish to appeal this job ban and explain yourself, please do so on the forums: https://forums.oraclestation.com/",
+		"Expires": "2018-03-15T22:30:25+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			},
+			{
+				"Job": "head of personnel"
+			},
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "research director"
+			},
+			{
+				"Job": "chief medical officer"
+			},
+			{
+				"Job": "quartermaster"
+			}
+		]
+	},
+	{
+		"CKey": "blackplaps",
+		"BannedOn": "2018-03-16T03:04:46+00:00",
+		"BannedBy": "vverti",
+		"Reason": "Sanctioning admin:Vverti\\nReason:Continually releasing bad viruses even after being told by admins not to, learn to do virology properly and not self-antag.https://wiki.oraclestation.com/wiki/Rules  our rules\nhttps://forums.oraclestation.com/index.php  our forums",
+		"Expires": "2018-03-19T14:24:46+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "virologist"
+			}
+		]
+	},
+	{
+		"CKey": "focarion2",
+		"BannedOn": "2018-03-16T09:01:30+00:00",
+		"BannedBy": "littleriolu",
+		"Reason": "Keeps infecting everyone with bad diseases even though they are not an antag. Also asked to be banned from it and confessed he is bad at it.",
+		"Expires": "2018-03-16T09:01:30+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "virologist"
+			}
+		]
+	},
+	{
+		"CKey": "wrenn",
+		"BannedOn": "2018-03-16T15:15:20+00:00",
+		"BannedBy": "vverti",
+		"Reason": "Sanctioning admin:Vverti\nReason: As captain hired a new blueshield, and tried to demote the HoS for demoting the new blueshield. when investigated refused to listen to the fact that  what the HoS was doing was fine and then left mid pm\u0027s\nplease read our rules at https://wiki.oraclestation.com/wiki/Rules\nfeel free to appeal your ban at https://forums.oraclestation.com/index.php",
+		"Expires": "2018-03-16T15:15:20+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			},
+			{
+				"Job": "head of personnel"
+			},
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "research director"
+			},
+			{
+				"Job": "chief medical officer"
+			},
+			{
+				"Job": "quartermaster"
+			}
+		]
+	},
+	{
+		"CKey": "professorsinged",
+		"BannedOn": "2018-03-16T23:25:58+00:00",
+		"BannedBy": "vverti",
+		"Reason": "Sanctioning admin: Vverti\nReason: Lethaling civilians on a wizard round, when asked why, they never responded despite clearly being active, and being given multiple chances to respond.\nRead our rules at https://wiki.oraclestation.com/wiki/Rules\nFeel free to appeal at https://forums.oraclestation.com/index.php",
+		"Expires": "2018-03-23T23:25:58+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "warden"
+			},
+			{
+				"Job": "detective"
+			},
+			{
+				"Job": "security officer"
+			},
+			{
+				"Job": "brig physician"
+			}
+		]
+	},
+	{
+		"CKey": "sirmeatspin",
+		"BannedOn": "2018-03-16T23:50:31+00:00",
+		"BannedBy": "vverti",
+		"Reason": "Sanctioning admin:Vverti\nreason: Firballed HoS during wiz round for no reason, when asked by admins never responded, learn our rules please.\nRules at https://wiki.oraclestation.com/wiki/Rules\nAppeal at https://forums.oraclestation.com/index.php",
+		"Expires": "2018-03-23T23:50:31+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "warden"
+			},
+			{
+				"Job": "detective"
+			},
+			{
+				"Job": "security officer"
+			},
+			{
+				"Job": "brig physician"
+			}
+		]
+	},
+	{
+		"CKey": "riskysikh",
+		"BannedOn": "2018-03-17T00:58:21+00:00",
+		"BannedBy": "vverti",
+		"Reason": "Sanctioning admin:Vverti\nReason: As warden, drank themself to death multiple times, and never responded to admin questions",
+		"Expires": "2018-03-20T12:18:21+00:00",
+		"UnbannedBy": "vverti",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "warden"
+			},
+			{
+				"Job": "detective"
+			},
+			{
+				"Job": "security officer"
+			},
+			{
+				"Job": "brig physician"
+			}
+		]
+	},
+	{
+		"CKey": "shrekkyboi",
+		"BannedOn": "2018-03-17T12:23:36+00:00",
+		"BannedBy": "onutsio",
+		"Reason": "Killed the Clown for insulting him.",
+		"Expires": "2018-03-17T12:23:36+00:00",
+		"UnbannedBy": "onutsio",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			}
+		]
+	},
+	{
+		"CKey": "shrekkyboi",
+		"BannedOn": "2018-03-17T12:23:44+00:00",
+		"BannedBy": "onutsio",
+		"Reason": "Killed the Clown for insulting him.",
+		"Expires": "2018-03-17T12:23:44+00:00",
+		"UnbannedBy": "onutsio",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of personnel"
+			}
+		]
+	},
+	{
+		"CKey": "shrekkyboi",
+		"BannedOn": "2018-03-17T12:23:48+00:00",
+		"BannedBy": "onutsio",
+		"Reason": "Killed the Clown for insulting him.",
+		"Expires": "2018-03-17T12:23:48+00:00",
+		"UnbannedBy": "onutsio",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "research director"
+			},
+			{
+				"Job": "chief medical officer"
+			},
+			{
+				"Job": "quartermaster"
+			}
+		]
+	},
+	{
+		"CKey": "trashfumes",
+		"BannedOn": "2018-03-17T16:27:38+00:00",
+		"BannedBy": "smokingkilz",
+		"Reason": "Killed two people, when asked why, his defense was \u0022I am a loose cannon.\u0022",
+		"Expires": "2018-03-17T16:27:38+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "warden"
+			},
+			{
+				"Job": "detective"
+			},
+			{
+				"Job": "security officer"
+			},
+			{
+				"Job": "brig physician"
+			}
+		]
+	},
+	{
+		"CKey": "riskysikh",
+		"BannedOn": "2018-03-17T16:29:40+00:00",
+		"BannedBy": "vverti",
+		"Reason": "Banned from Head of Security, Warden, Detective, Security Officer, Brig Physician - Sanctioning admin:Vverti Reason: As warden, drank themself to death multiple times, and never responded to admin questions",
+		"Expires": "2018-03-24T16:29:40+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "warden"
+			},
+			{
+				"Job": "detective"
+			},
+			{
+				"Job": "security officer"
+			},
+			{
+				"Job": "brig physician"
+			}
+		]
+	},
+	{
+		"CKey": "galaxor",
+		"BannedOn": "2018-03-17T22:00:51+00:00",
+		"BannedBy": "smokingkilz",
+		"Reason": "As a double agent blew a huge hole into medbay to take out a target that wasn\u0027t even in there. You have similar notes, you\u0027re going to have to learn your limits in the future because that\u0027s not acceptable.",
+		"Expires": "2018-04-17T08:00:51+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "syndicate"
+			}
+		]
+	},
+	{
+		"CKey": "raze500",
+		"BannedOn": "2018-03-17T22:43:45+00:00",
+		"BannedBy": "ziiro",
+		"Reason": "As an antagonist without hijack, fought with multiple non-targets and attempted to kill security at escape for \u0022Die a glorious death\u0022. Informed that this is excessive for this objective. Please make sure to stick to your objectives in the future.",
+		"Expires": "2018-03-24T22:43:45+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "syndicate"
+			}
+		]
+	},
+	{
+		"CKey": "josefff",
+		"BannedOn": "2018-03-18T00:38:33+00:00",
+		"BannedBy": "vverti",
+		"Reason": "Sanctioning admin:Vverti\nreason: Taking out multiple lights out as a drone, had previous drone notes. Take this time to learn that drones are a privilege, not a right.\nRead our rules at https://wiki.oraclestation.com/wiki/Rules\nAppeal your ban at https://forums.oraclestation.com/index.php",
+		"Expires": "2018-04-01T00:38:33+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "drone"
+			}
+		]
+	},
+	{
+		"CKey": "focarion2",
+		"BannedOn": "2018-03-18T13:21:38+00:00",
+		"BannedBy": "vverti",
+		"Reason": "Sanctioning admin:Vverti\nReason: Acting as sec stole someones spear, and took the SSD RD\u0027s ID and when quesitoed about it, they logged out, this is not acceptable behaviour as a blueshield.\n",
+		"Expires": "2018-03-25T13:21:38+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "blueshield"
+			}
+		]
+	},
+	{
+		"CKey": "johnmcjohnjohn",
+		"BannedOn": "2018-03-19T05:30:59+00:00",
+		"BannedBy": "xantholne",
+		"Reason": "As drone kept using the comms console captain announcement to talk about jesus during the round. This is 100% against your drone laws.",
+		"Expires": "2018-03-26T18:50:59+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "drone"
+			}
+		]
+	},
+	{
+		"CKey": "pie903",
+		"BannedOn": "2018-03-19T12:06:12+00:00",
+		"BannedBy": "vverti",
+		"Reason": "Sanctioning admin: Vverti\nReason: took mime and clown into execution room during a wizard round, left them in there to die in a radiation storm, and continuosly threw teargas and flashbangs in the execution room, never answered why they did it\nRead our rules and space law at our wiki https://wiki.oraclestation.com/wiki/Rules \nAppeal at https://forums.oraclestation.com/index.php ",
+		"Expires": "2018-04-02T12:06:12+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "warden"
+			},
+			{
+				"Job": "detective"
+			},
+			{
+				"Job": "security officer"
+			},
+			{
+				"Job": "brig physician"
+			}
+		]
+	},
+	{
+		"CKey": "pantasthedark",
+		"BannedOn": "2018-03-19T16:28:08+00:00",
+		"BannedBy": "ralta",
+		"Reason": "Holding a metagrudge as the RD against another player (even when the other player uses another character) to stop them from playing scientist. Your attitude is absolutely terrible; take some time off from science, play some other departments and perhaps learn some patience. Appeal at forums.oraclestation.com",
+		"Expires": "2018-03-26T16:28:08+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "research director"
+			},
+			{
+				"Job": "scientist"
+			},
+			{
+				"Job": "roboticist"
+			}
+		]
+	},
+	{
+		"CKey": "dementedzombie78",
+		"BannedOn": "2018-03-19T19:30:43+00:00",
+		"BannedBy": "vverti",
+		"Reason": "Sanctioning admin:Vverti\nReason: As drone bolted doors to trap someone in somewhere, when asked, they refused to respond\nAppeal at https://forums.oraclestation.com/index.php",
+		"Expires": "2018-03-19T19:30:43+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "drone"
+			}
+		]
+	},
+	{
+		"CKey": "myzraev",
+		"BannedOn": "2018-03-21T21:09:04+00:00",
+		"BannedBy": "vverti",
+		"Reason": "Sanctioning admin:Vverti\nReason:Validhunting, as non-antag roboticist built a mech and killed an antag who had been ousted because sec wouldn\u0027t. Was told this is valid hunting.\nRead our rules at https://wiki.oraclestation.com/wiki/Rules",
+		"Expires": "2018-03-24T21:09:04+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "research director"
+			},
+			{
+				"Job": "scientist"
+			},
+			{
+				"Job": "roboticist"
+			}
+		]
+	},
+	{
+		"CKey": "calb",
+		"BannedOn": "2018-03-23T02:36:17+00:00",
+		"BannedBy": "driker",
+		"Reason": "As Captain: Decided it was a good idea to crusade against non-human crew members. This included putting one on a spike, sending one to the gulag and stripping/demoting the blueshield for telling him to stop. ",
+		"Expires": "2018-03-23T02:36:17+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			}
+		]
+	},
+	{
+		"CKey": "adameltablawy",
+		"BannedOn": "2018-03-24T03:03:29+00:00",
+		"BannedBy": "vverti",
+		"Reason": "Sanctioning admin:Vverti\nReason: After literally copy pasting our rules, started saying faggot in ooc\nRead our rules if me spamming them was not enough https://wiki.oraclestation.com/wiki/Rules",
+		"Expires": "2018-03-25T03:03:29+00:00",
+		"UnbannedBy": "vverti",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ooc"
+			}
+		]
+	},
+	{
+		"CKey": "rearking",
+		"BannedOn": "2018-03-24T03:05:33+00:00",
+		"BannedBy": "vverti",
+		"Reason": "Sanctioning admin:Vverti\nReason:After literally copy pasting our rules in OOC, said \u0022how come I can\u0027t call people faggots when one of the ending midis is a quote from a guy who literally calls everyone on the station a faggot \u0022\nDon\u0027t try to be cute about this, read our rules and respect them.\nhttps://wiki.oraclestation.com/wiki/Rules",
+		"Expires": "2018-03-31T03:05:33+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ooc"
+			}
+		]
+	},
+	{
+		"CKey": "takerpb",
+		"BannedOn": "2018-03-24T14:00:56+00:00",
+		"BannedBy": "captaincardgage",
+		"Reason": "When playing as ashwalkers/golems seen to heavily attack his teammates/kin when spawned. ",
+		"Expires": "2018-04-24T00:00:56+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "lavaland"
+			}
+		]
+	},
+	{
+		"CKey": "xandertifft",
+		"BannedOn": "2018-03-27T03:58:00+00:00",
+		"BannedBy": "vverti",
+		"Reason": "Sanctioning admin:Vverti\nReason: welding a prisoner in a locker labeled ass, and then coming in later with the same prisoner in the cremator, and cremated them without any authorization stating \u0022he was already in the cremator, and he had borken out of sec and was wanted. he was already there and I was told to cremate him with the ling, no one said anythign about it after\u0022 This is not acceptable security behaviour.\nPlease go over space law at https://wiki.oraclestation.com/wiki/Space_Law\n",
+		"Expires": "2018-04-03T03:58:00+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "warden"
+			},
+			{
+				"Job": "detective"
+			},
+			{
+				"Job": "security officer"
+			},
+			{
+				"Job": "brig physician"
+			}
+		]
+	},
+	{
+		"CKey": "kazztawdal",
+		"BannedOn": "2018-03-27T22:34:38+00:00",
+		"BannedBy": "vverti",
+		"Reason": "Sanctioning admin:Vverti\nReason: Suiciding as a nuke op",
+		"Expires": "2018-04-03T22:34:38+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "operative"
+			}
+		]
+	},
+	{
+		"CKey": "armrha",
+		"BannedOn": "2018-03-28T23:48:10+00:00",
+		"BannedBy": "ziiro",
+		"Reason": "As a servant of Ratvar, went SSD seconds after roundstart. If you wish to explain yourself and appeal this ban, please appeal on https://forums.oraclestation.com/",
+		"Expires": "2018-03-28T23:48:10+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "servant of ratvar"
+			}
+		]
+	},
+	{
+		"CKey": "lcass123",
+		"BannedOn": "2018-03-29T13:43:36+00:00",
+		"BannedBy": "captaincardgage",
+		"Reason": "Made a emitter deathtrap in the middle of central primary hallway. reasoning was \u0027for fun\u0027. Resulted in the death of several crew.",
+		"Expires": "2018-03-29T13:43:36+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "station engineer"
+			},
+			{
+				"Job": "atmospheric technician"
+			}
+		]
+	},
+	{
+		"CKey": "ben11567",
+		"BannedOn": "2018-03-29T14:46:40+00:00",
+		"BannedBy": "vverti",
+		"Reason": "Sanctioning admin:Vverti\nReason: During a wizard round prevented warden from handing out guns, then when the captain told them to let it happen, ended up arresting and trying to demote the warden for handing guns to the crew, all of this ended up in at least 5 members of the crew dying due to nobody in security looking for the wizard and instead worrying about the warden.",
+		"Expires": "2018-04-05T14:46:40+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			}
+		]
+	},
+	{
+		"CKey": "ben11567",
+		"BannedOn": "2018-03-29T14:46:47+00:00",
+		"BannedBy": "vverti",
+		"Reason": "Sanctioning admin:Vverti\nReason: During a wizard round prevented warden from handing out guns, then when the captain told them to let it happen, ended up arresting and trying to demote the warden for handing guns to the crew, all of this ended up in at least 5 members of the crew dying due to nobody in security looking for the wizard and instead worrying about the warden.",
+		"Expires": "2018-04-05T14:46:47+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "warden"
+			}
+		]
+	},
+	{
+		"CKey": "ratking34",
+		"BannedOn": "2018-03-29T18:01:56+00:00",
+		"BannedBy": "vverti",
+		"Reason": "Sanctionign admin:Vverti\nReason:Logged in, went straight to engine, then ran into it, when asked why by an admin they disconnected",
+		"Expires": "2018-03-29T18:01:56+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "station engineer"
+			},
+			{
+				"Job": "atmospheric technician"
+			}
+		]
+	},
+	{
+		"CKey": "keluandrie",
+		"BannedOn": "2018-03-30T00:11:38+00:00",
+		"BannedBy": "scrubmcnoob",
+		"Reason": "As a pod person, attacked the station. Talked to in discord regarding the incident, was originally confused thinking lavaland roles were free. Apologized for the incident. ",
+		"Expires": "2018-04-29T00:11:38+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "pai"
+			},
+			{
+				"Job": "posibrain"
+			},
+			{
+				"Job": "drone"
+			},
+			{
+				"Job": "deathsquad"
+			},
+			{
+				"Job": "lavaland"
+			}
+		]
+	},
+	{
+		"CKey": "overlygeneric",
+		"BannedOn": "2018-03-30T00:14:42+00:00",
+		"BannedBy": "scrubmcnoob",
+		"Reason": "As a pod person attacked the station. Apologized for the incident over discord.",
+		"Expires": "2018-04-05T23:34:42+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "pai"
+			},
+			{
+				"Job": "posibrain"
+			},
+			{
+				"Job": "deathsquad"
+			},
+			{
+				"Job": "lavaland"
+			}
+		]
+	},
+	{
+		"CKey": "meatusbeatus",
+		"BannedOn": "2018-03-30T04:16:57+00:00",
+		"BannedBy": "quantumm",
+		"Reason": "Toxicity on OOC, warning was given before unmuting it, shortly said \u0022 throw the jew down the well\u0022.",
+		"Expires": "2018-04-02T04:16:57+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ooc"
+			}
+		]
+	},
+	{
+		"CKey": "blurbo",
+		"BannedOn": "2018-03-30T18:46:32+00:00",
+		"BannedBy": "littleriolu",
+		"Reason": "As captain, did not tell admins that they had to leave. Feel free to appeal on our forums.",
+		"Expires": "2018-03-30T18:46:32+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			}
+		]
+	},
+	{
+		"CKey": "blurbo",
+		"BannedOn": "2018-03-30T21:12:12+00:00",
+		"BannedBy": "littleriolu",
+		"Reason": "As a HoS, went SSD without letting the admins know. Feel free to appeal on our forums.",
+		"Expires": "2018-03-30T21:12:12+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			}
+		]
+	},
+	{
+		"CKey": "msherman94",
+		"BannedOn": "2018-03-30T23:27:16+00:00",
+		"BannedBy": "driker",
+		"Reason": "As a lavaland syndicate scientist: Murdered an allied syndicate scientist and then immediately went SSD. ",
+		"Expires": "2018-03-30T23:27:16+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "lavaland"
+			}
+		]
+	},
+	{
+		"CKey": "ben11567",
+		"BannedOn": "2018-03-31T09:27:08+00:00",
+		"BannedBy": "littleriolu",
+		"Reason": "As CMO, went SSD without letting admins know. Looking at your previous notes, it doesn\u0027t seem like you are fit to play a head-role. Feel free to appeal at the forums.",
+		"Expires": "2018-03-31T09:27:08+00:00",
+		"UnbannedBy": "littleriolu",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of personnel"
+			},
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "research director"
+			},
+			{
+				"Job": "chief medical officer"
+			},
+			{
+				"Job": "quartermaster"
+			}
+		]
+	},
+	{
+		"CKey": "maju2018",
+		"BannedOn": "2018-03-31T10:19:13+00:00",
+		"BannedBy": "stephanov",
+		"Reason": "(MANUAL BAN) Making anengraved message saying \u0022u mom gay\u0022",
+		"Expires": "2018-04-07T10:19:13+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "curator"
+			}
+		]
+	},
+	{
+		"CKey": "drakesealis",
+		"BannedOn": "2018-03-31T14:54:49+00:00",
+		"BannedBy": "scrubmcnoob",
+		"Reason": "As a drone, attacked a ling and then proceeded to disconnect after he was killed. Appeal on the forums.",
+		"Expires": "2018-03-31T14:54:49+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "drone"
+			}
+		]
+	},
+	{
+		"CKey": "windy35",
+		"BannedOn": "2018-03-31T15:22:53+00:00",
+		"BannedBy": "scrubmcnoob",
+		"Reason": "As a changeling, proceeded to murderbone the crew and try to hijack the shuttle for a \u0027ling\u0027 only shuttle. Claimed someone said it and thought it was okay to do such an action. Previous warning for murderbone as antag, should know better by now. Read the rules.",
+		"Expires": "2018-04-30T15:22:53+00:00",
+		"UnbannedBy": "scrubmcnoob",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "syndicate"
+			}
+		]
+	},
+	{
+		"CKey": "windy35",
+		"BannedOn": "2018-03-31T15:29:17+00:00",
+		"BannedBy": "scrubmcnoob",
+		"Reason": "As CE, disconnected without informing commmand or admins.",
+		"Expires": "2018-03-31T15:29:17+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			},
+			{
+				"Job": "head of personnel"
+			},
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "research director"
+			},
+			{
+				"Job": "chief medical officer"
+			},
+			{
+				"Job": "quartermaster"
+			}
+		]
+	},
+	{
+		"CKey": "windy35",
+		"BannedOn": "2018-03-31T15:30:05+00:00",
+		"BannedBy": "scrubmcnoob",
+		"Reason": "As a changeling, proceeded to murderbone the crew and try to hijack the shuttle for a \u0027ling\u0027 only shuttle. Claimed someone said it and thought it was okay to do such an action. Previous warning for murderbone as antag, should know better by now. Read the rules.",
+		"Expires": "2018-03-31T15:30:05+00:00",
+		"UnbannedBy": "scrubmcnoob",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "syndicate"
+			}
+		]
+	},
+	{
+		"CKey": "kimochiiiiiiiiiiiiii",
+		"BannedOn": "2018-03-31T16:05:06+00:00",
+		"BannedBy": "scrubmcnoob",
+		"Reason": "As a blueshield, attacked and mutinied against the Captain when the captain was trying to cordinate and repair the station. Already has warning for SOP and Space law infractures.",
+		"Expires": "2018-03-31T16:05:06+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "blueshield"
+			}
+		]
+	},
+	{
+		"CKey": "kimochiiiiiiiiiiiiii",
+		"BannedOn": "2018-03-31T16:05:13+00:00",
+		"BannedBy": "scrubmcnoob",
+		"Reason": "As a blueshield, attacked and mutinied against the Captain when the captain was trying to cordinate and repair the station. Already has warning for SOP and Space law infractures.",
+		"Expires": "2018-04-07T16:05:13+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "warden"
+			},
+			{
+				"Job": "detective"
+			},
+			{
+				"Job": "security officer"
+			},
+			{
+				"Job": "brig physician"
+			}
+		]
+	},
+	{
+		"CKey": "kimochiiiiiiiiiiiiii",
+		"BannedOn": "2018-03-31T18:15:44+00:00",
+		"BannedBy": "littleriolu",
+		"Reason": "As a pod-person, killed a miner because they attacked one of their bees.",
+		"Expires": "2018-04-03T18:15:44+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "pai"
+			},
+			{
+				"Job": "posibrain"
+			},
+			{
+				"Job": "drone"
+			},
+			{
+				"Job": "deathsquad"
+			},
+			{
+				"Job": "lavaland"
+			}
+		]
+	},
+	{
+		"CKey": "devitron",
+		"BannedOn": "2018-03-31T18:21:07+00:00",
+		"BannedBy": "littleriolu",
+		"Reason": "As an AI, went SSD without letting the admins know. Feel free to appeal on our forums.",
+		"Expires": "2018-03-31T18:21:07+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ai"
+			}
+		]
+	},
+	{
+		"CKey": "raze500",
+		"BannedOn": "2018-04-01T02:12:45+00:00",
+		"BannedBy": "quantumm",
+		"Reason": "As a HoP (non-antag) gaved out all access to the Mime and Clown without a good reason, said Mime ended causing issues, three day ban given (Round ID: 1558).",
+		"Expires": "2018-04-04T02:12:45+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of personnel"
+			}
+		]
+	},
+	{
+		"CKey": "kazztawdal",
+		"BannedOn": "2018-04-02T04:45:37+00:00",
+		"BannedBy": "stephanov",
+		"Reason": "(MANUAL BAN) As captain - while going after nuke ops is okay, decided it was a good idea to bring the actual nuke disk with them while attacking them.",
+		"Expires": "2018-04-09T04:45:37+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			}
+		]
+	},
+	{
+		"CKey": "crackparrot",
+		"BannedOn": "2018-04-03T10:25:06+00:00",
+		"BannedBy": "purpose2",
+		"Reason": "As a traitor who had to kill a bartender.... plasma flooded the entire station. Went entirely out of bounds of his objective.... and shows zero remorse or understanding of why this is a problem at all. One month of no antags. Re-read our rules, you\u0027re on notice.",
+		"Expires": "2018-05-03T20:25:06+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "syndicate"
+			}
+		]
+	},
+	{
+		"CKey": "disrespectisrespect",
+		"BannedOn": "2018-04-03T16:43:06+00:00",
+		"BannedBy": "flattestguitar9",
+		"Reason": "Gunned down a guy for throwing a packet of chips at him (at least it seems like it). Still a new player, a week of a Sec timeout.",
+		"Expires": "2018-04-10T16:43:06+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "blueshield"
+			}
+		]
+	},
+	{
+		"CKey": "disrespectisrespect",
+		"BannedOn": "2018-04-03T16:43:13+00:00",
+		"BannedBy": "flattestguitar9",
+		"Reason": "Gunned down a guy for throwing a packet of chips at him (at least it seems like it). Still a new player, a week of a Sec timeout.",
+		"Expires": "2018-04-10T16:43:13+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "warden"
+			},
+			{
+				"Job": "detective"
+			},
+			{
+				"Job": "security officer"
+			},
+			{
+				"Job": "brig physician"
+			}
+		]
+	},
+	{
+		"CKey": "elizamotta37",
+		"BannedOn": "2018-04-04T06:48:25+00:00",
+		"BannedBy": "dapnee",
+		"Reason": "Has walked into the SM crystal and has tried breaking pipes in Atmos while being nonantag. Left when being questioned, possibly doesn\u0027t speak English as a first language as well.",
+		"Expires": "2018-04-04T06:48:25+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "station engineer"
+			},
+			{
+				"Job": "atmospheric technician"
+			}
+		]
+	},
+	{
+		"CKey": "fopat",
+		"BannedOn": "2018-04-04T17:51:34+00:00",
+		"BannedBy": "littleriolu",
+		"Reason": "As an AI, killed a HoS and a QM during a nuke-ops round because they thought they were the nukies and couldn\u0027t tell the difference between uniforms. As AI, it\u0027s very important to know what the difference between the good and bad guys are. I suggest playing some other roles until you familiarize yourself with it.",
+		"Expires": "2018-04-09T18:11:34+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ai"
+			}
+		]
+	},
+	{
+		"CKey": "dispenserfromsteam",
+		"BannedOn": "2018-04-05T17:31:20+00:00",
+		"BannedBy": "scrubmcnoob",
+		"Reason": "As captain, lasered an assistant because said assistant ran from him after a beepsky arrested him for having a shield. The assistant than died. Gross violation of Space Law and SOP.",
+		"Expires": "2018-04-05T17:31:20+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			},
+			{
+				"Job": "head of personnel"
+			},
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "research director"
+			},
+			{
+				"Job": "chief medical officer"
+			},
+			{
+				"Job": "quartermaster"
+			}
+		]
+	},
+	{
+		"CKey": "bigprincebob15",
+		"BannedOn": "2018-04-06T18:55:32+00:00",
+		"BannedBy": "littleriolu",
+		"Reason": "As captain, went SSD during a cultist round. Please explain yourself in the forums if you want to appeal.",
+		"Expires": "2018-04-06T18:55:32+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			}
+		]
+	},
+	{
+		"CKey": "vladoricious",
+		"BannedOn": "2018-04-07T17:27:12+00:00",
+		"BannedBy": "littleriolu",
+		"Reason": "Went SSD as Captain without telling admins. Please explain yourself in the forums what happened.",
+		"Expires": "2018-04-07T17:27:12+00:00",
+		"UnbannedBy": "littleriolu",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			}
+		]
+	},
+	{
+		"CKey": "dabaddict6969",
+		"BannedOn": "2018-04-07T21:31:41+00:00",
+		"BannedBy": "captaincardgage",
+		"Reason": "Died on lavaland. returned consistently as maintenance drones to lavaland but dying repeatedly and usually upon the same location.",
+		"Expires": "2018-04-07T21:31:41+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "drone"
+			}
+		]
+	},
+	{
+		"CKey": "walkitlikeitalkit",
+		"BannedOn": "2018-04-08T06:02:28+00:00",
+		"BannedBy": "quantumm",
+		"Reason": "Spamming on OOC chat, placing IC information on OOC chat, please appeal to the Oracle forums when you feel mature enough. This is is a permament ban (Round ID: 1701).",
+		"Expires": "2018-04-08T06:02:28+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ooc"
+			}
+		]
+	},
+	{
+		"CKey": "theaco",
+		"BannedOn": "2018-04-08T14:59:03+00:00",
+		"BannedBy": "ziiro",
+		"Reason": "As CMO, decapitated corpses and did not revive them. When asked why, stated they were \u0022AFKs and Muteds\u0022 and did not elaborate further. If you\u0027d like to appeal this ban, please do so on forums.oraclestation.com",
+		"Expires": "2018-04-08T14:59:03+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			},
+			{
+				"Job": "head of personnel"
+			},
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "research director"
+			},
+			{
+				"Job": "chief medical officer"
+			}
+		]
+	},
+	{
+		"CKey": "runrunaway",
+		"BannedOn": "2018-04-08T16:43:42+00:00",
+		"BannedBy": "wrathofme9",
+		"Reason": "As a cyborg under minimize expenses lawset, allowed himself to be emagged to become an antagonist.",
+		"Expires": "2018-04-11T16:43:42+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "syndicate"
+			}
+		]
+	},
+	{
+		"CKey": "mourais",
+		"BannedOn": "2018-04-08T17:06:44+00:00",
+		"BannedBy": "scrubmcnoob",
+		"Reason": "As a ghostrole, attacked another ghostrole member originally stating he didn\u0027t start the fight but when confronted that he did, then proceded to blame it on space carp and not himself.",
+		"Expires": "2018-04-08T17:06:44+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "pai"
+			},
+			{
+				"Job": "posibrain"
+			},
+			{
+				"Job": "drone"
+			},
+			{
+				"Job": "deathsquad"
+			},
+			{
+				"Job": "lavaland"
+			}
+		]
+	},
+	{
+		"CKey": "silversea",
+		"BannedOn": "2018-04-08T22:45:32+00:00",
+		"BannedBy": "littleriolu",
+		"Reason": "As AI on ASIMOV, killed a bunch of people inside their satelite because they thought they had their turrets on taze.",
+		"Expires": "2018-04-11T22:45:32+00:00",
+		"UnbannedBy": "littleriolu",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ai"
+			}
+		]
+	},
+	{
+		"CKey": "ben11567",
+		"BannedOn": "2018-04-10T15:25:59+00:00",
+		"BannedBy": "wrathofme9",
+		"Reason": "(MANUAL BAN) On suspension until he proves he is competent in the aformentioned areas.",
+		"Expires": "2018-04-10T15:25:59+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			}
+		]
+	},
+	{
+		"CKey": "ben11567",
+		"BannedOn": "2018-04-10T15:26:03+00:00",
+		"BannedBy": "wrathofme9",
+		"Reason": "(MANUAL BAN) On suspension until he proves he is competent in the aformentioned areas.",
+		"Expires": "2018-04-10T15:26:03+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of personnel"
+			}
+		]
+	},
+	{
+		"CKey": "ben11567",
+		"BannedOn": "2018-04-10T15:26:09+00:00",
+		"BannedBy": "wrathofme9",
+		"Reason": "(MANUAL BAN) On suspension until he proves he is competent in the aformentioned areas.",
+		"Expires": "2018-04-10T15:26:09+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "chief engineer"
+			}
+		]
+	},
+	{
+		"CKey": "ben11567",
+		"BannedOn": "2018-04-10T15:26:12+00:00",
+		"BannedBy": "wrathofme9",
+		"Reason": "(MANUAL BAN) On suspension until he proves he is competent in the aformentioned areas.",
+		"Expires": "2018-04-10T15:26:12+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "chief medical officer"
+			}
+		]
+	},
+	{
+		"CKey": "ben11567",
+		"BannedOn": "2018-04-10T15:26:15+00:00",
+		"BannedBy": "wrathofme9",
+		"Reason": "(MANUAL BAN) On suspension until he proves he is competent in the aformentioned areas.",
+		"Expires": "2018-04-10T15:26:15+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			}
+		]
+	},
+	{
+		"CKey": "ben11567",
+		"BannedOn": "2018-04-10T15:26:17+00:00",
+		"BannedBy": "wrathofme9",
+		"Reason": "(MANUAL BAN) On suspension until he proves he is competent in the aformentioned areas.",
+		"Expires": "2018-04-10T15:26:17+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "security officer"
+			}
+		]
+	},
+	{
+		"CKey": "ben11567",
+		"BannedOn": "2018-04-10T15:26:20+00:00",
+		"BannedBy": "wrathofme9",
+		"Reason": "(MANUAL BAN) On suspension until he proves he is competent in the aformentioned areas.",
+		"Expires": "2018-04-10T15:26:20+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "warden"
+			}
+		]
+	},
+	{
+		"CKey": "ben11567",
+		"BannedOn": "2018-04-10T15:26:22+00:00",
+		"BannedBy": "wrathofme9",
+		"Reason": "(MANUAL BAN) On suspension until he proves he is competent in the aformentioned areas.",
+		"Expires": "2018-04-10T15:26:22+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "detective"
+			}
+		]
+	},
+	{
+		"CKey": "ben11567",
+		"BannedOn": "2018-04-10T15:26:26+00:00",
+		"BannedBy": "wrathofme9",
+		"Reason": "(MANUAL BAN) On suspension until he proves he is competent in the aformentioned areas.",
+		"Expires": "2018-04-10T15:26:26+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "blueshield"
+			}
+		]
+	},
+	{
+		"CKey": "ben11567",
+		"BannedOn": "2018-04-12T14:28:58+00:00",
+		"BannedBy": "wrathofme9",
+		"Reason": "On ghost role suspension until he behaves. \n-As a xenobio spawned blobbernaut, proceeded to kill a lad because he accidentally attacked him.",
+		"Expires": "2018-04-12T14:28:58+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "pai"
+			},
+			{
+				"Job": "posibrain"
+			},
+			{
+				"Job": "drone"
+			},
+			{
+				"Job": "deathsquad"
+			},
+			{
+				"Job": "lavaland"
+			}
+		]
+	},
+	{
+		"CKey": "annapox",
+		"BannedOn": "2018-04-13T18:47:26+00:00",
+		"BannedBy": "littleriolu",
+		"Reason": "As Blueshield, cremated a prisoner who fled genpop because \u0022they\u0027ve been escaping multiple times, his crimes are so numourous it\u0027s hard to even state\u0022 even though they did not have the Captain\u0027s permission to do so. If you see someone being a shitter, ahelp about it, don\u0027t go through your way to self-antag just because.",
+		"Expires": "2018-04-20T18:47:26+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "blueshield"
+			}
+		]
+	},
+	{
+		"CKey": "shadowblade291",
+		"BannedOn": "2018-04-14T14:14:01+00:00",
+		"BannedBy": "driker",
+		"Reason": "Refused to obey the orders of an antag that emagged them. Ended up inside a separate posibrain later and used information from previous life to claim they were the same cyborg in order to incriminate the antagonist. Logged off before an admin could speak to them. ",
+		"Expires": "2018-04-14T14:14:01+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "cyborg"
+			}
+		]
+	},
+	{
+		"CKey": "dungeonbones",
+		"BannedOn": "2018-04-14T19:40:37+00:00",
+		"BannedBy": "ralta",
+		"Reason": "Arresting people for slipping. Argued in ahelps it\u0027s \u0022assault\u0022. Fed prisoners alcohol repeatedly. Not following space law at all. Re-read Space Law and our rules. Appeal at: forums.oraclestation.com",
+		"Expires": "2018-04-28T19:40:37+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "warden"
+			},
+			{
+				"Job": "detective"
+			},
+			{
+				"Job": "security officer"
+			},
+			{
+				"Job": "brig physician"
+			}
+		]
+	},
+	{
+		"CKey": "xeapor",
+		"BannedOn": "2018-04-15T08:55:50+00:00",
+		"BannedBy": "littleriolu",
+		"Reason": "(MANUAL BAN) As Captain, tried to rename the station 6-7 times and was rejected all of it. After the last time, they instantly went SSD without ahelping it. Feel free to appeal at the forums.",
+		"Expires": "2018-04-15T08:55:50+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			}
+		]
+	},
+	{
+		"CKey": "pullen68",
+		"BannedOn": "2018-04-16T19:13:47+00:00",
+		"BannedBy": "captaincardgage",
+		"Reason": "As chemist released life chemicals and caused mass death",
+		"Expires": "2018-05-17T05:13:47+00:00",
+		"UnbannedBy": "captaincardgage",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "chemist"
+			}
+		]
+	},
+	{
+		"CKey": "tichothewolf",
+		"BannedOn": "2018-04-18T18:16:53+00:00",
+		"BannedBy": "dapnee",
+		"Reason": "(MANUAL BAN) Didn\u0027t inform command staff or admins they were heading to cryo, allowing nukies to take the disk off of them in easily. Please get back to us on why you needed to leave like this on the forums if you want to play captain again.",
+		"Expires": "2018-04-18T18:16:53+00:00",
+		"UnbannedBy": "dapnee",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			}
+		]
+	},
+	{
+		"CKey": "pussyeater444",
+		"BannedOn": "2018-04-20T04:06:22+00:00",
+		"BannedBy": "quantumm",
+		"Reason": "Was turned into a artificer, who then went to make a mess at the cult base and ignored the cultists. Made several walls on top of runes before disconnecting.",
+		"Expires": "2018-04-20T04:06:22+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "cultist"
+			}
+		]
+	},
+	{
+		"CKey": "roderickgrey",
+		"BannedOn": "2018-04-20T06:12:28+00:00",
+		"BannedBy": "purpose2",
+		"Reason": "mutined the captain because he didn\u0027t like that the captain was making people do paperwork to change jobs. Entirely un-cognizant of how low RP and shitty his behaviour is.",
+		"Expires": "2018-05-20T16:12:28+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "warden"
+			},
+			{
+				"Job": "detective"
+			},
+			{
+				"Job": "security officer"
+			},
+			{
+				"Job": "brig physician"
+			}
+		]
+	},
+	{
+		"CKey": "whomstintheheck",
+		"BannedOn": "2018-04-21T05:52:48+00:00",
+		"BannedBy": "littleriolu",
+		"Reason": "As AI, went SSD without notifying admins. Please feel free to appeal on the forums.",
+		"Expires": "2018-04-21T05:52:48+00:00",
+		"UnbannedBy": "littleriolu",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ai"
+			}
+		]
+	},
+	{
+		"CKey": "valoryx",
+		"BannedOn": "2018-04-23T01:36:47+00:00",
+		"BannedBy": "littleriolu",
+		"Reason": "As a cultist, when the Master tried to draw a Summon Nar\u0027Sie rune, he flashbanged the room everyone was in three times to \u0022calm the clusterfuck\u0022.",
+		"Expires": "2018-04-23T01:36:47+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "cultist"
+			}
+		]
+	},
+	{
+		"CKey": "moontruther",
+		"BannedOn": "2018-04-23T13:30:16+00:00",
+		"BannedBy": "dapnee",
+		"Reason": "As AI, disobeyed laws so much it drove the captain crazy and changed them repeatedly. Continued to not follow those laws either, and then called the shuttle over \u0022meta grudging\u0022. When asked by admin to follow it\u0027s laws said no in pms. Only way you\u0027re getting AI back is if you go to the forums and promise you\u0027ll follow your laws.",
+		"Expires": "2018-04-23T13:30:16+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ai"
+			}
+		]
+	},
+	{
+		"CKey": "supergoodname",
+		"BannedOn": "2018-04-24T10:59:43+00:00",
+		"BannedBy": "dapnee",
+		"Reason": "As syndicate lavaland agent, got on station and murdered everyone in the evac shuttle. Then had a fight in ahelps over what an ashwalker can and can\u0027t do. Appeal on the forums if you want to play a ghost role again.",
+		"Expires": "2018-04-24T10:59:43+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "pai"
+			},
+			{
+				"Job": "posibrain"
+			},
+			{
+				"Job": "drone"
+			},
+			{
+				"Job": "deathsquad"
+			},
+			{
+				"Job": "lavaland"
+			}
+		]
+	},
+	{
+		"CKey": "johnmcjohnjohn",
+		"BannedOn": "2018-04-25T04:36:57+00:00",
+		"BannedBy": "littleriolu",
+		"Reason": "As AI, went SSD without letting admins know. Feel free to appeal at the forums.",
+		"Expires": "2018-04-25T04:36:57+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ai"
+			}
+		]
+	},
+	{
+		"CKey": "rodey125",
+		"BannedOn": "2018-04-26T09:30:57+00:00",
+		"BannedBy": "littleriolu",
+		"Reason": "As Captain, went SSD without letting admins know. Feel free to appeal in the forums. Was given over 30 minutes to come back.",
+		"Expires": "2018-04-26T09:30:57+00:00",
+		"UnbannedBy": "littleriolu",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			}
+		]
+	},
+	{
+		"CKey": "wesley2304",
+		"BannedOn": "2018-04-26T22:22:02+00:00",
+		"BannedBy": "scrubmcnoob",
+		"Reason": "Playing security, not speaking, and wrongly arresting people. Failed to respond to admin pms. Suspected non english speaker.",
+		"Expires": "2018-04-26T22:22:02+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "warden"
+			},
+			{
+				"Job": "detective"
+			},
+			{
+				"Job": "security officer"
+			},
+			{
+				"Job": "brig physician"
+			}
+		]
+	},
+	{
+		"CKey": "geniusllama",
+		"BannedOn": "2018-04-27T16:12:48+00:00",
+		"BannedBy": "ralta",
+		"Reason": "Once again, constantly being rude and abrasive to players in OOC. You\u0027ve been warned about this NUMEROUS times, and have failed to show any improvement whatsoever. Take some time away from OOC - if you do the same in LOOC, it\u0027s gonna turn into a server ban. Appeal at: forums.oraclestation.com",
+		"Expires": "2018-05-25T10:52:48+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ooc"
+			}
+		]
+	},
+	{
+		"CKey": "affurit",
+		"BannedOn": "2018-04-27T16:58:15+00:00",
+		"BannedBy": "ralta",
+		"Reason": "As Blueshield, went around chasing crew and criminals, attempting to apprehend/arrest them. Whilst we were discussing via ahelp, decided to take to LOOC to antagonise the clown thinking the clown had ahelped (they hadn\u0027t). When asked to stop in LOOC, kept going anyway. Learn the Blueshield role before playing it again, please. Appeal at: forums.oraclestation.com",
+		"Expires": "2018-05-04T16:58:15+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "blueshield"
+			}
+		]
+	},
+	{
+		"CKey": "atomicrhino7",
+		"BannedOn": "2018-04-27T19:26:19+00:00",
+		"BannedBy": "quantumm",
+		"Reason": "Added plasma to the station\u0027s air loop,as a non-antag, flooding the station with plasma, did not ahelp it before hand, given a three day job ban due to this being their first note (Round ID: 2038).",
+		"Expires": "2018-04-30T19:26:19+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "atmospheric technician"
+			}
+		]
+	},
+	{
+		"CKey": "emmaj",
+		"BannedOn": "2018-04-29T03:05:18+00:00",
+		"BannedBy": "quantumm",
+		"Reason": "Excessive murderboning, killed and threw non-targets into lava as a changeling, was spoken about it, later almost fully exposed the shuttle to space. Appeal to the forums if you feel this is unfair (Round ID: 2061)",
+		"Expires": "2018-05-06T03:05:18+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "changeling"
+			}
+		]
+	},
+	{
+		"CKey": "theflyingbananagaming",
+		"BannedOn": "2018-04-30T13:49:09+00:00",
+		"BannedBy": "flattestguitar9",
+		"Reason": "Despite plentiful warnings decided to weld the shuttle doors shut as a drone. Player likely just can\u0027t read. Take it easy on them.",
+		"Expires": "2018-05-07T13:49:09+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "drone"
+			}
+		]
+	},
+	{
+		"CKey": "feldnost",
+		"BannedOn": "2018-05-01T02:40:02+00:00",
+		"BannedBy": "quantumm",
+		"Reason": "Went SSD, as a Chief Medical Officer, from the beginning of the shift without ahelping the Admins about it, apply at https://forums.oraclestation.com/ if you wish to have to appealed to (Round ID: 2104).",
+		"Expires": "2018-05-01T02:40:02+00:00",
+		"UnbannedBy": "quantumm",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "chief medical officer"
+			}
+		]
+	},
+	{
+		"CKey": "autistictoaster",
+		"BannedOn": "2018-05-03T14:24:05+00:00",
+		"BannedBy": "littleriolu",
+		"Reason": "As Chief Engineer, went SSD without telling admins. Feel free to appeal on the forums.",
+		"Expires": "2018-05-03T14:24:05+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "chief engineer"
+			}
+		]
+	},
+	{
+		"CKey": "themrfox",
+		"BannedOn": "2018-05-03T18:31:00+00:00",
+		"BannedBy": "ralta",
+		"Reason": "As a changeling with two assassinate objectives, murdered the entirety of Security, as well as a drone and a couple of borgs. This is well beyond what is acceptable here; take some time off from antagging and come back when you can scale back your murdering. Appeal at: forums.oraclestation.com",
+		"Expires": "2018-05-10T18:31:00+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "syndicate"
+			}
+		]
+	},
+	{
+		"CKey": "agentsnuggles",
+		"BannedOn": "2018-05-03T19:34:58+00:00",
+		"BannedBy": "littleriolu",
+		"Reason": "As a drone, tazed several people. When questioned, didn\u0027t reply at all even though they were obviously moving around as a ghost.",
+		"Expires": "2018-05-03T19:34:58+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "pai"
+			},
+			{
+				"Job": "posibrain"
+			},
+			{
+				"Job": "drone"
+			},
+			{
+				"Job": "deathsquad"
+			},
+			{
+				"Job": "lavaland"
+			}
+		]
+	},
+	{
+		"CKey": "oldschoolfunk",
+		"BannedOn": "2018-05-06T09:17:27+00:00",
+		"BannedBy": "littleriolu",
+		"Reason": "As detective, arrested someone for standing in Brig. Then they held the prisoner inside interrigation for over 10 minutes, just to leave them buckled on a bed. This is not acceptable. Read over SOP and Space Law before you play security again.",
+		"Expires": "2018-05-13T09:17:27+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "warden"
+			},
+			{
+				"Job": "detective"
+			},
+			{
+				"Job": "security officer"
+			},
+			{
+				"Job": "brig physician"
+			}
+		]
+	},
+	{
+		"CKey": "weaselburg",
+		"BannedOn": "2018-05-07T20:59:03+00:00",
+		"BannedBy": "littleriolu",
+		"Reason": "Started as a member of Clockcult, but got caught and deconverted and then implanted with mindshield. After this happened, they personally requested to get rid of the mindshield just so they could be easily converted again.",
+		"Expires": "2018-05-21T20:59:03+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "cultist"
+			}
+		]
+	},
+	{
+		"CKey": "snapnix",
+		"BannedOn": "2018-05-09T11:01:45+00:00",
+		"BannedBy": "r3valkyrie",
+		"Reason": "Killed someone because \u0022he got on his nerves\u0022. Has done this prior.",
+		"Expires": "2018-05-16T11:01:45+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			}
+		]
+	},
+	{
+		"CKey": "snapnix",
+		"BannedOn": "2018-05-09T11:01:52+00:00",
+		"BannedBy": "r3valkyrie",
+		"Reason": "Killed someone because \u0022he got on his nerves\u0022. Has done this prior.",
+		"Expires": "2018-05-16T11:01:52+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "warden"
+			}
+		]
+	},
+	{
+		"CKey": "snapnix",
+		"BannedOn": "2018-05-09T11:01:58+00:00",
+		"BannedBy": "r3valkyrie",
+		"Reason": "Killed someone because \u0022he got on his nerves\u0022. Has done this prior.",
+		"Expires": "2018-05-16T11:01:58+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "detective"
+			}
+		]
+	},
+	{
+		"CKey": "snapnix",
+		"BannedOn": "2018-05-09T11:02:06+00:00",
+		"BannedBy": "r3valkyrie",
+		"Reason": "Killed someone because \u0022he got on his nerves\u0022. Has done this prior.",
+		"Expires": "2018-05-16T11:02:06+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "security officer"
+			}
+		]
+	},
+	{
+		"CKey": "snapnix",
+		"BannedOn": "2018-05-09T11:02:13+00:00",
+		"BannedBy": "r3valkyrie",
+		"Reason": "Killed someone because \u0022he got on his nerves\u0022. Has done this prior.",
+		"Expires": "2018-05-16T11:02:13+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "brig physician"
+			}
+		]
+	},
+	{
+		"CKey": "sirtoast",
+		"BannedOn": "2018-05-09T13:01:33+00:00",
+		"BannedBy": "littleriolu",
+		"Reason": "As HoS, went SSD without letting admins know. Appeal on the forums.",
+		"Expires": "2018-05-09T13:01:33+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			}
+		]
+	},
+	{
+		"CKey": "burnedsweetpotato",
+		"BannedOn": "2018-05-10T22:32:31+00:00",
+		"BannedBy": "quantumm",
+		"Reason": "Ghosted as a Blueshield at round start, did not ahelp it. Was spoken to via pms and seemed sincere about not knowing they were supposed to ahelp, one day ban given (Round ID: 2277).",
+		"Expires": "2018-05-11T22:32:31+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "blueshield"
+			}
+		]
+	},
+	{
+		"CKey": "slygorthethird",
+		"BannedOn": "2018-05-12T18:17:38+00:00",
+		"BannedBy": "littleriolu",
+		"Reason": "As the Warden, did multiple Space Law and SOP infractions. When they were gonna get questioned by an admin, they instantly went SSD. Feel free to appeal on the forums.",
+		"Expires": "2018-05-12T18:17:38+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "warden"
+			}
+		]
+	},
+	{
+		"CKey": "masterfear",
+		"BannedOn": "2018-05-13T04:31:33+00:00",
+		"BannedBy": "r3valkyrie",
+		"Reason": "As a sentient xenobio creature, broke several windows to space against the orders of their creator.",
+		"Expires": "2018-05-20T04:01:33+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "pai"
+			},
+			{
+				"Job": "posibrain"
+			},
+			{
+				"Job": "drone"
+			},
+			{
+				"Job": "deathsquad"
+			},
+			{
+				"Job": "lavaland"
+			}
+		]
+	},
+	{
+		"CKey": "damadnightgobbo",
+		"BannedOn": "2018-05-13T15:59:34+00:00",
+		"BannedBy": "r3valkyrie",
+		"Reason": "Greytidey behavior and constantly breaking vow of silence to yell at other people. Other players are able to play mime just fine. Appeal this jobban when you think you\u0027re ready to play mime again.\n\nhttps://forums.oraclestation.com/viewforum.php?f=13",
+		"Expires": "2018-05-13T15:59:34+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "mime"
+			}
+		]
+	},
+	{
+		"CKey": "bilary",
+		"BannedOn": "2018-05-13T17:24:43+00:00",
+		"BannedBy": "littleriolu",
+		"Reason": "After being converted into a cultist, killed other people for \u0022standing in their way\u0022.",
+		"Expires": "2018-05-13T17:24:43+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "cultist"
+			}
+		]
+	},
+	{
+		"CKey": "kris9992223",
+		"BannedOn": "2018-05-13T20:11:06+00:00",
+		"BannedBy": "littleriolu",
+		"Reason": "As a Drone, uncuffed and attacked people with a crowbar. When questioned, they did it \u0022just because\u0022 and \u0022I didn\u0027t kill anyone\u0022.",
+		"Expires": "2018-05-13T20:11:06+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "drone"
+			}
+		]
+	},
+	{
+		"CKey": "alextheprettygood",
+		"BannedOn": "2018-05-13T20:20:31+00:00",
+		"BannedBy": "littleriolu",
+		"Reason": "As a Drone, uncuffed a prisoner because \u0022he was bored\u0022 which led to the person who detained said prisoner to be killed.",
+		"Expires": "2018-05-13T20:20:31+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "drone"
+			}
+		]
+	},
+	{
+		"CKey": "windy35",
+		"BannedOn": "2018-05-16T01:34:43+00:00",
+		"BannedBy": "quantumm",
+		"Reason": "Validhunting and taking Command gear as a Blueshield, had been warned previously and has continued, three day ban from the role of Blueshield (Round ID: 2365).",
+		"Expires": "2018-05-19T01:34:43+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "blueshield"
+			}
+		]
+	},
+	{
+		"CKey": "comradewatermelon",
+		"BannedOn": "2018-05-16T16:04:28+00:00",
+		"BannedBy": "ralta",
+		"Reason": "As non-rogue AI, keeps looking for any excuse to be rogue when given non-standard laws (e.g. \u0022Ian is your lord and saviour\u0022, but still electrocuting doors for some reason). You were warned twice about this previously. Play AI again when you\u0027re ready to not try and murder people at every chance you get.",
+		"Expires": "2018-05-23T16:04:28+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ai"
+			}
+		]
+	},
+	{
+		"CKey": "leruffleface",
+		"BannedOn": "2018-05-16T22:38:56+00:00",
+		"BannedBy": "littleriolu",
+		"Reason": "As CMO, went SSD without letting admins know. Appeal on the forums.",
+		"Expires": "2018-05-16T22:38:56+00:00",
+		"UnbannedBy": "littleriolu",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "chief medical officer"
+			}
+		]
+	},
+	{
+		"CKey": "letsgoplaces",
+		"BannedOn": "2018-05-17T12:48:00+00:00",
+		"BannedBy": "littleriolu",
+		"Reason": "As a non-antag, keeps releasing bad viruses on several rounds just so \u0022he can cure them\u0022 and \u0022it\u0027s fun\u0022. He even admitted he tried to make the virus have a mute-effect so people couldn\u0027t talk. This is not acceptable behaviour.",
+		"Expires": "2018-05-24T12:48:00+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "virologist"
+			}
+		]
+	},
+	{
+		"CKey": "zenek123",
+		"BannedOn": "2018-05-17T18:52:16+00:00",
+		"BannedBy": "littleriolu",
+		"Reason": "As HoP, SSD\u0027d without letting admins know. Appeal on the forums.",
+		"Expires": "2018-05-17T18:52:16+00:00",
+		"UnbannedBy": "littleriolu",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of personnel"
+			}
+		]
+	},
+	{
+		"CKey": "adameltablawy",
+		"BannedOn": "2018-05-17T21:09:30+00:00",
+		"BannedBy": "ralta",
+		"Reason": "Toxicity in OOC. Despite being told to stop, kept on going. You\u0027ve been warned and banned for this before. ",
+		"Expires": "2018-05-24T21:09:30+00:00",
+		"UnbannedBy": "ralta",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ooc"
+			}
+		]
+	},
+	{
+		"CKey": "fluffysensation",
+		"BannedOn": "2018-05-18T09:18:42+00:00",
+		"BannedBy": "littleriolu",
+		"Reason": "As CE, ghosted and logged out without letting admins know.",
+		"Expires": "2018-05-18T09:18:42+00:00",
+		"UnbannedBy": "littleriolu",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "chief engineer"
+			}
+		]
+	},
+	{
+		"CKey": "fluffysensation",
+		"BannedOn": "2018-05-18T09:30:25+00:00",
+		"BannedBy": "littleriolu",
+		"Reason": "As a non-antag Chief Engineer, went into the breached armory. Then they stormed into it, they grabbed a laser gun and started shooting the HoP. The HoP yelled at them to stop with no reply, grabbed a tazer and successfully detained them. Then the HoP dragged them out because of space pressure and low temperature and was gonna be questioned, but instantly ghosted out of their character. This is not acceptable behaviour, especially as a non-antag head.",
+		"Expires": "2018-05-18T09:30:25+00:00",
+		"UnbannedBy": "littleriolu",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "chief engineer"
+			}
+		]
+	},
+	{
+		"CKey": "feldnost",
+		"BannedOn": "2018-05-18T20:42:15+00:00",
+		"BannedBy": "littleriolu",
+		"Reason": "As a cyborg, killed the mime because they had the Captain\u0027s items on a nukeops round.",
+		"Expires": "2018-05-25T20:42:15+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "cyborg"
+			}
+		]
+	},
+	{
+		"CKey": "windward",
+		"BannedOn": "2018-05-19T01:03:28+00:00",
+		"BannedBy": "xantholne",
+		"Reason": "As Captain, decaptiated a engineer that was arrested earlier for being alone in the bathroom, for bursting into the bridge and tossing a metal foam grenade. This is 100% NOT acceptable as Captain",
+		"Expires": "2018-05-26T14:23:28+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			}
+		]
+	},
+	{
+		"CKey": "arice4u",
+		"BannedOn": "2018-05-19T03:29:55+00:00",
+		"BannedBy": "xantholne",
+		"Reason": "As CMO went SSD 40m prior to round end without alerting admin staff nor the rest of command.",
+		"Expires": "2018-05-19T03:29:55+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			},
+			{
+				"Job": "head of personnel"
+			},
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "research director"
+			},
+			{
+				"Job": "chief medical officer"
+			}
+		]
+	},
+	{
+		"CKey": "affurit",
+		"BannedOn": "2018-05-19T20:22:21+00:00",
+		"BannedBy": "littleriolu",
+		"Reason": "As AI, went SSD without letting admins know. Feel free to appeal on the forums.",
+		"Expires": "2018-05-19T20:22:21+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ai"
+			}
+		]
+	},
+	{
+		"CKey": "jonybatata",
+		"BannedOn": "2018-05-20T13:20:01+00:00",
+		"BannedBy": "davetheheadcrab",
+		"Reason": "As CE, royally fucked up setting the SM up and then hid in maint and SSD\u0027d without telling anyone.",
+		"Expires": "2018-05-20T13:20:01+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			},
+			{
+				"Job": "head of personnel"
+			},
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "research director"
+			},
+			{
+				"Job": "chief medical officer"
+			}
+		]
+	},
+	{
+		"CKey": "maskedvi29",
+		"BannedOn": "2018-05-20T21:33:10+00:00",
+		"BannedBy": "quantumm",
+		"Reason": "Went SSD as a Blueshield 15 minutes into the round without ahelping about it, waited until half through the round, but did not return (Round ID: 2444).",
+		"Expires": "2018-05-20T21:33:10+00:00",
+		"UnbannedBy": "quantumm",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "blueshield"
+			}
+		]
+	},
+	{
+		"CKey": "swagbringer",
+		"BannedOn": "2018-05-21T09:03:56+00:00",
+		"BannedBy": "xantholne",
+		"Reason": "As Captain repeatedly joins and kills themselves within the first few minutes of signing up as Captain anyway they can. This is entirely unacceptable behavior to join as a very important role and purposefully get yourself killed repeatedly.",
+		"Expires": "2018-05-21T09:03:56+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			},
+			{
+				"Job": "head of personnel"
+			},
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "research director"
+			},
+			{
+				"Job": "chief medical officer"
+			}
+		]
+	},
+	{
+		"CKey": "dionant",
+		"BannedOn": "2018-05-21T17:02:31+00:00",
+		"BannedBy": "purpose2",
+		"Reason": "(MANUAL BAN) Self-antagging as a Warden.",
+		"Expires": "2018-05-21T17:02:31+00:00",
+		"UnbannedBy": "purpose2",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			}
+		]
+	},
+	{
+		"CKey": "dionant",
+		"BannedOn": "2018-05-21T17:02:35+00:00",
+		"BannedBy": "purpose2",
+		"Reason": "(MANUAL BAN) Self-antagging as a Warden.",
+		"Expires": "2018-05-21T17:02:35+00:00",
+		"UnbannedBy": "purpose2",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "warden"
+			}
+		]
+	},
+	{
+		"CKey": "dionant",
+		"BannedOn": "2018-05-21T17:02:37+00:00",
+		"BannedBy": "purpose2",
+		"Reason": "(MANUAL BAN) Self-antagging as a Warden.",
+		"Expires": "2018-05-21T17:02:37+00:00",
+		"UnbannedBy": "purpose2",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "detective"
+			}
+		]
+	},
+	{
+		"CKey": "dionant",
+		"BannedOn": "2018-05-21T17:02:40+00:00",
+		"BannedBy": "purpose2",
+		"Reason": "(MANUAL BAN) Self-antagging as a Warden.",
+		"Expires": "2018-05-21T17:02:40+00:00",
+		"UnbannedBy": "purpose2",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "security officer"
+			}
+		]
+	},
+	{
+		"CKey": "dionant",
+		"BannedOn": "2018-05-21T17:02:42+00:00",
+		"BannedBy": "purpose2",
+		"Reason": "(MANUAL BAN) Self-antagging as a Warden.",
+		"Expires": "2018-05-21T17:02:42+00:00",
+		"UnbannedBy": "purpose2",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "brig physician"
+			}
+		]
+	},
+	{
+		"CKey": "dionant",
+		"BannedOn": "2018-05-21T17:02:44+00:00",
+		"BannedBy": "purpose2",
+		"Reason": "(MANUAL BAN) Self-antagging as a Warden.",
+		"Expires": "2018-05-21T17:02:44+00:00",
+		"UnbannedBy": "purpose2",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "blueshield"
+			}
+		]
+	},
+	{
+		"CKey": "dionant",
+		"BannedOn": "2018-05-21T17:02:46+00:00",
+		"BannedBy": "purpose2",
+		"Reason": "(MANUAL BAN) Self-antagging as a Warden.",
+		"Expires": "2018-05-21T17:02:46+00:00",
+		"UnbannedBy": "purpose2",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "internal affairs agent"
+			}
+		]
+	},
+	{
+		"CKey": "cookin",
+		"BannedOn": "2018-05-21T20:40:33+00:00",
+		"BannedBy": "r3valkyrie",
+		"Reason": "Shot several lethal \u0022warning shots\u0022 at perma prisoners who were in cuffs, ended up killing two of them. Appeal this ban when you learn how to use non-lethal force against non-lethal threats.",
+		"Expires": "2018-05-21T20:40:33+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "warden"
+			},
+			{
+				"Job": "detective"
+			},
+			{
+				"Job": "security officer"
+			},
+			{
+				"Job": "brig physician"
+			}
+		]
+	},
+	{
+		"CKey": "glognortz",
+		"BannedOn": "2018-05-22T18:26:09+00:00",
+		"BannedBy": "dapnee",
+		"Reason": "As a Juggernaut, did literally nothing and wouldn\u0027t answer to PMs.",
+		"Expires": "2018-05-22T18:26:09+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "cultist"
+			}
+		]
+	},
+	{
+		"CKey": "autistictoaster",
+		"BannedOn": "2018-05-22T20:23:53+00:00",
+		"BannedBy": "r3valkyrie",
+		"Reason": "Went SSD as HoS without alerting admins",
+		"Expires": "2018-05-22T20:23:53+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			}
+		]
+	},
+	{
+		"CKey": "cookin",
+		"BannedOn": "2018-05-23T03:27:17+00:00",
+		"BannedBy": "quantumm",
+		"Reason": "Went SSD as a Chief Engineer about 25 minutes into the round, did not ahelp it. If you had to disconnect due to a life emergency or due to computer issues, please appeal at the forums, this is a permaban (Round ID: 2481).",
+		"Expires": "2018-05-23T03:27:17+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "chief engineer"
+			}
+		]
+	},
+	{
+		"CKey": "phycaris",
+		"BannedOn": "2018-05-23T22:41:47+00:00",
+		"BannedBy": "r3valkyrie",
+		"Reason": "As blueshield, ignored their duty and cuffed, muzzled, and placed someone in a straightjacket and left them in maintenance.",
+		"Expires": "2018-05-30T22:11:47+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "blueshield"
+			}
+		]
+	},
+	{
+		"CKey": "dreadlord56",
+		"BannedOn": "2018-05-24T11:24:56+00:00",
+		"BannedBy": "littleriolu",
+		"Reason": "As CMO, went SSD without letting admins know. Feel free to appeal at the forums.",
+		"Expires": "2018-05-24T11:24:56+00:00",
+		"UnbannedBy": "littleriolu",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "chief medical officer"
+			}
+		]
+	},
+	{
+		"CKey": "shiftyprick",
+		"BannedOn": "2018-05-24T13:18:09+00:00",
+		"BannedBy": "littleriolu",
+		"Reason": "As CMO, went SSD without notifying admins. Appeal on the forums.",
+		"Expires": "2018-05-24T13:18:09+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "chief medical officer"
+			}
+		]
+	},
+	{
+		"CKey": "dreamians",
+		"BannedOn": "2018-05-25T00:06:49+00:00",
+		"BannedBy": "r3valkyrie",
+		"Reason": "As ashwalker, killed fellow ashwalkers without IC reason, disconnected before I could talk to them. Explain your side on the forums.\n\nhttps://forums.oraclestation.com\n\nRound ID: 2510",
+		"Expires": "2018-05-25T00:06:49+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "lavaland"
+			}
+		]
+	},
+	{
+		"CKey": "betegel",
+		"BannedOn": "2018-05-26T12:34:24+00:00",
+		"BannedBy": "dapnee",
+		"Reason": "Began spamming OOC repeatedly. Have fun not using it for a while.",
+		"Expires": "2018-06-02T13:54:24+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ooc"
+			}
+		]
+	},
+	{
+		"CKey": "domku",
+		"BannedOn": "2018-05-26T17:56:42+00:00",
+		"BannedBy": "r3valkyrie",
+		"Reason": "As HoS, went SSD without notifying admins.\n\nAppeal at https://forums.oraclestation.com",
+		"Expires": "2018-05-26T17:56:42+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			},
+			{
+				"Job": "head of personnel"
+			},
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "research director"
+			},
+			{
+				"Job": "chief medical officer"
+			}
+		]
+	},
+	{
+		"CKey": "letsgoplaces",
+		"BannedOn": "2018-05-30T00:57:07+00:00",
+		"BannedBy": "r3valkyrie",
+		"Reason": "As a sec officer, murdered and mutiny\u0027d against the HoS for trying to demote him. Appeal when you\u0027ve re-evaluated your decision, and are ready to play security again.\n\nRound ID: 2593\n\nAppeal at https://forums.oraclestation.com",
+		"Expires": "2018-05-30T00:57:07+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "warden"
+			},
+			{
+				"Job": "detective"
+			},
+			{
+				"Job": "security officer"
+			},
+			{
+				"Job": "brig physician"
+			}
+		]
+	},
+	{
+		"CKey": "arbiter47",
+		"BannedOn": "2018-06-02T11:47:44+00:00",
+		"BannedBy": "dapnee",
+		"Reason": "Round 2648 Was SSD the entire round, didn\u0027t ahelp. Please go to our forum and tell us why you were unavailable.",
+		"Expires": "2018-06-02T11:47:44+00:00",
+		"UnbannedBy": "dapnee",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ai"
+			}
+		]
+	},
+	{
+		"CKey": "rodey125",
+		"BannedOn": "2018-06-06T02:36:10+00:00",
+		"BannedBy": "r3valkyrie",
+		"Reason": "As captain, gave himself the title of \u0022Fuhrer\u0022, ran around with an automatic pie cannon wearing a reflector vest.",
+		"Expires": "2018-06-06T02:36:10+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			}
+		]
+	},
+	{
+		"CKey": "vejotedormindo",
+		"BannedOn": "2018-06-06T16:23:38+00:00",
+		"BannedBy": "dakittax",
+		"Reason": "As security, arrested and attempted to brig someone for \u0022Suspicious communications\u0022, considering other security infractions, you need some time off. Appeal this ban when you actually intend to follow space law.",
+		"Expires": "2018-06-06T16:23:38+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "warden"
+			},
+			{
+				"Job": "detective"
+			},
+			{
+				"Job": "security officer"
+			},
+			{
+				"Job": "brig physician"
+			}
+		]
+	},
+	{
+		"CKey": "yungbruh",
+		"BannedOn": "2018-06-06T18:00:32+00:00",
+		"BannedBy": "dapnee",
+		"Reason": "Definitley not ready to be a captain. Murdered the HoS during a cult round because the HoS wouldn\u0027t allow them to recall the shuttle.",
+		"Expires": "2018-06-06T18:00:32+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			}
+		]
+	},
+	{
+		"CKey": "nickthehumanboy",
+		"BannedOn": "2018-06-07T01:04:42+00:00",
+		"BannedBy": "quantumm",
+		"Reason": "Banned from Nuclear Operative, went SSD ten minutes into the round without ahelping, logs indicated no interaction at all with the other team members, this is a permament ban from Nuclear Operative.",
+		"Expires": "2018-06-07T01:04:42+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "operative"
+			}
+		]
+	},
+	{
+		"CKey": "nickcooper",
+		"BannedOn": "2018-06-07T01:14:51+00:00",
+		"BannedBy": "quantumm",
+		"Reason": "Went SSD as a HoS 18 minutes into the shift, it turned out it was a Nuclear Operative round, and did not ahelp previously before going SSD, please note that Command roles shouldn\u0027t be going SSD for extensive times. Three day ban.",
+		"Expires": "2018-06-10T01:14:51+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			}
+		]
+	},
+	{
+		"CKey": "kazztawdal",
+		"BannedOn": "2018-06-07T03:06:34+00:00",
+		"BannedBy": "quantumm",
+		"Reason": "As a traitor, non-hijack, gave the AI a \u0027kill all humans\u0027 law out of spur of the moment, still did not have a legitimate reason to add it, given a week long ban of all antag roles, please be CAREFUL of your actions next time (Round ID: 2728). ",
+		"Expires": "2018-06-14T03:06:34+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "syndicate"
+			}
+		]
+	},
+	{
+		"CKey": "actuallyapie",
+		"BannedOn": "2018-06-08T15:11:23+00:00",
+		"BannedBy": "dakittax",
+		"Reason": "Murdered a syndie borg that was before a crewmember while that same borg was explaining to them that they were converted by a magicarp. Enough sec violations. Appeal this after a month or two.",
+		"Expires": "2018-06-08T15:11:23+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "warden"
+			},
+			{
+				"Job": "detective"
+			},
+			{
+				"Job": "security officer"
+			},
+			{
+				"Job": "brig physician"
+			}
+		]
+	},
+	{
+		"CKey": "torquey",
+		"BannedOn": "2018-06-09T21:55:22+00:00",
+		"BannedBy": "xantholne",
+		"Reason": "Went SSD in their disposal as Head of Security without even ahelping",
+		"Expires": "2018-06-09T21:55:22+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			},
+			{
+				"Job": "head of personnel"
+			},
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "research director"
+			},
+			{
+				"Job": "chief medical officer"
+			}
+		]
+	},
+	{
+		"CKey": "skarrj",
+		"BannedOn": "2018-06-11T00:54:35+00:00",
+		"BannedBy": "quantumm",
+		"Reason": "Automatically went to take the Captain\u0027s stuff without asking the other command staff about it and went SSD as a Blueshield without ahelping, three day ban (Round ID: 2797).",
+		"Expires": "2018-06-14T00:54:35+00:00",
+		"UnbannedBy": "quantumm",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "blueshield"
+			}
+		]
+	},
+	{
+		"CKey": "dlw4456",
+		"BannedOn": "2018-06-12T16:21:22+00:00",
+		"BannedBy": "captaincardgage",
+		"Reason": "As a security role. Up and murdered the HoS after the HoS had been attacked by antags. Reportedly very new. Time set for them to aquire actual playtime onto the server and lay of the land.",
+		"Expires": "2018-07-13T02:21:22+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "warden"
+			},
+			{
+				"Job": "detective"
+			},
+			{
+				"Job": "security officer"
+			},
+			{
+				"Job": "brig physician"
+			}
+		]
+	},
+	{
+		"CKey": "cooperxd",
+		"BannedOn": "2018-06-12T16:56:32+00:00",
+		"BannedBy": "r3valkyrie",
+		"Reason": "Spamming OOC.",
+		"Expires": "2018-06-12T18:56:32+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ooc"
+			}
+		]
+	},
+	{
+		"CKey": "udontknowmeoo",
+		"BannedOn": "2018-06-12T17:04:33+00:00",
+		"BannedBy": "purpose2",
+		"Reason": "Antag fishing, and admitted to it. You\u0027re going to need to play non-antags for a while now to recuperate for your selfish behaviour.",
+		"Expires": "2018-06-19T17:04:33+00:00",
+		"UnbannedBy": "purpose2",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "syndicate"
+			}
+		]
+	},
+	{
+		"CKey": "zenek123",
+		"BannedOn": "2018-06-12T20:07:44+00:00",
+		"BannedBy": "captaincardgage",
+		"Reason": "Went SSD as captain during round. banned from HoP for previous reason. Appeal this on our forums if you believe this is unjust.",
+		"Expires": "2018-06-12T20:07:44+00:00",
+		"UnbannedBy": "captaincardgage",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			},
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "research director"
+			},
+			{
+				"Job": "chief medical officer"
+			}
+		]
+	},
+	{
+		"CKey": "cooperxd",
+		"BannedOn": "2018-06-12T21:48:19+00:00",
+		"BannedBy": "dapnee",
+		"Reason": "Went SSD round start and did not inform admins. Appeal on the forums with why you couldn\u0027t be here this round.",
+		"Expires": "2018-06-12T21:48:19+00:00",
+		"UnbannedBy": "dapnee",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ai"
+			}
+		]
+	},
+	{
+		"CKey": "cooperxd",
+		"BannedOn": "2018-06-13T12:14:05+00:00",
+		"BannedBy": "r3valkyrie",
+		"Reason": "All caps spamming OOC after warnings. Appeal when you think you can use OOC again.",
+		"Expires": "2018-06-13T12:14:05+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ooc"
+			}
+		]
+	},
+	{
+		"CKey": "rodey125",
+		"BannedOn": "2018-06-13T13:06:19+00:00",
+		"BannedBy": "r3valkyrie",
+		"Reason": "Made drugs as a HoS, began cutting cameras so the AI wouldn\u0027t shock him, even though the AI was not on asimov at the time.",
+		"Expires": "2018-06-20T12:36:19+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			}
+		]
+	},
+	{
+		"CKey": "comradewatermelon",
+		"BannedOn": "2018-06-13T20:05:24+00:00",
+		"BannedBy": "bksparkie1",
+		"Reason": "Killed the hos and a security officer, after they strip searched him to confirm he was not a traitor. Round 2855. This will be a temporary job ban.",
+		"Expires": "2018-06-14T20:05:24+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of personnel"
+			}
+		]
+	},
+	{
+		"CKey": "dino2020",
+		"BannedOn": "2018-06-14T00:44:24+00:00",
+		"BannedBy": "quantumm",
+		"Reason": "Attacked a clown and a botanist with a shotgun in shuttle brig. Botanist was cuffed during the whole time. They then stun and attack the clown with the Captain\u0027s sword, disconnected during the PMs, full Security ban for a while week (Round ID: 2859).",
+		"Expires": "2018-06-21T00:44:24+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "warden"
+			},
+			{
+				"Job": "detective"
+			},
+			{
+				"Job": "security officer"
+			},
+			{
+				"Job": "brig physician"
+			}
+		]
+	},
+	{
+		"CKey": "fat7lok",
+		"BannedOn": "2018-06-14T06:10:57+00:00",
+		"BannedBy": "dapnee",
+		"Reason": "\u0022OOC: Fat7lok:(?|F) fuck off faggot :^)\u0022 Have fun without OOC.",
+		"Expires": "2018-06-28T03:40:57+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ooc"
+			}
+		]
+	},
+	{
+		"CKey": "grenztruppen",
+		"BannedOn": "2018-06-14T17:08:01+00:00",
+		"BannedBy": "dakittax",
+		"Reason": "Went SSD as the head of personnel without ahelping, appeal this in the forums.",
+		"Expires": "2018-06-14T17:08:01+00:00",
+		"UnbannedBy": "dakittax",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			},
+			{
+				"Job": "head of personnel"
+			},
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "research director"
+			},
+			{
+				"Job": "chief medical officer"
+			}
+		]
+	},
+	{
+		"CKey": "larryjoak",
+		"BannedOn": "2018-06-14T19:59:00+00:00",
+		"BannedBy": "xyamahawkx",
+		"Reason": "Welded doors shut to seal revs in maintenance during a rev round.  Logged out when asked why he did that.",
+		"Expires": "2018-06-24T19:59:00+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "drone"
+			}
+		]
+	},
+	{
+		"CKey": "shadowstrider42",
+		"BannedOn": "2018-06-17T22:23:19+00:00",
+		"BannedBy": "captaincardgage",
+		"Reason": "As research Director. disconnected without informing staff or command. Left in the middle of a public area.",
+		"Expires": "2018-06-24T22:23:19+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "research director"
+			}
+		]
+	},
+	{
+		"CKey": "army231",
+		"BannedOn": "2018-06-18T05:57:49+00:00",
+		"BannedBy": "xantholne",
+		"Reason": "Ghosted out of body as Blueshield at round start without even notifying admins.",
+		"Expires": "2018-06-18T05:57:49+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "blueshield"
+			}
+		]
+	},
+	{
+		"CKey": "starttermial",
+		"BannedOn": "2018-06-18T15:50:36+00:00",
+		"BannedBy": "r3valkyrie",
+		"Reason": "(MANUAL BAN) As a construct, began killing his own cult in their own base, did not know how cult functioned. Please appeal when you\u0027ve read up on how the cult gamemode works, and are ready to play cult.",
+		"Expires": "2018-06-18T15:50:36+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "cultist"
+			}
+		]
+	},
+	{
+		"CKey": "verysuspicious",
+		"BannedOn": "2018-06-18T19:28:40+00:00",
+		"BannedBy": "bksparkie1",
+		"Reason": "Went ssd as a traitor hop several minutes into the round, without messaging any admins to make us aware. Round 2950",
+		"Expires": "2018-06-25T19:28:40+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of personnel"
+			}
+		]
+	},
+	{
+		"CKey": "amcreva",
+		"BannedOn": "2018-06-19T05:22:05+00:00",
+		"BannedBy": "dapnee",
+		"Reason": "Went SSD as HoP round start with the spare and nuke disk. Please appeal on the forum on why you couldn\u0027t be here.",
+		"Expires": "2018-06-19T05:22:05+00:00",
+		"UnbannedBy": "dapnee",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of personnel"
+			}
+		]
+	},
+	{
+		"CKey": "starttermial",
+		"BannedOn": "2018-06-20T00:42:07+00:00",
+		"BannedBy": "xyamahawkx",
+		"Reason": "As a Paladin borg, killed and spaced someone at round start for trespassing and climbing on him, saying this was evil.  Blames it on vague laws and doesn\u0027t understand why that was wrong to do.",
+		"Expires": "2018-06-27T00:42:07+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ai"
+			},
+			{
+				"Job": "cyborg"
+			},
+			{
+				"Job": "pai"
+			}
+		]
+	},
+	{
+		"CKey": "alexhobbes",
+		"BannedOn": "2018-06-20T19:53:08+00:00",
+		"BannedBy": "bksparkie1",
+		"Reason": "Killed another syndicate agent on lavaland, when asked about it, responded with \u0022i may need mental help\u0022, this is a one week ghost role ban. Round 2988",
+		"Expires": "2018-06-27T19:53:08+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "lavaland"
+			}
+		]
+	},
+	{
+		"CKey": "starttermial",
+		"BannedOn": "2018-06-22T03:46:11+00:00",
+		"BannedBy": "quantumm",
+		"Reason": "Clearly does not know how to be a command staff, memey and abusive of the equipment, tried to commit suicide without ahelping as a HoP/Acting Captain. (Round ID: 3012).",
+		"Expires": "2018-06-22T03:46:11+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			}
+		]
+	},
+	{
+		"CKey": "starttermial",
+		"BannedOn": "2018-06-22T03:46:17+00:00",
+		"BannedBy": "quantumm",
+		"Reason": "Clearly does not know how to be a command staff, memey and abusive of the equipment, tried to commit suicide without ahelping as a HoP/Acting Captain. (Round ID: 3012).",
+		"Expires": "2018-06-22T03:46:17+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of personnel"
+			}
+		]
+	},
+	{
+		"CKey": "clement1129",
+		"BannedOn": "2018-06-24T12:55:39+00:00",
+		"BannedBy": "dapnee",
+		"Reason": "Continued poor judgement calls on murdering non valid players. Please show you can follow SOP and then I will consider lifting this.",
+		"Expires": "2018-06-24T12:55:39+00:00",
+		"UnbannedBy": "dapnee",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			},
+			{
+				"Job": "head of personnel"
+			},
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "research director"
+			},
+			{
+				"Job": "chief medical officer"
+			}
+		]
+	},
+	{
+		"CKey": "reydane",
+		"BannedOn": "2018-06-25T04:51:15+00:00",
+		"BannedBy": "bksparkie1",
+		"Reason": "Warned about ic ooc multiple times during the shuttle ride to centcom, would not stop, round id 3069",
+		"Expires": "2018-07-02T04:51:15+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ooc"
+			}
+		]
+	},
+	{
+		"CKey": "shotonash",
+		"BannedOn": "2018-06-25T17:06:36+00:00",
+		"BannedBy": "r3valkyrie",
+		"Reason": "Harming their own cult after being warned.",
+		"Expires": "2018-06-25T17:06:36+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "servant of ratvar"
+			}
+		]
+	},
+	{
+		"CKey": "aaronjhughes",
+		"BannedOn": "2018-06-26T14:18:09+00:00",
+		"BannedBy": "bksparkie1",
+		"Reason": "Killed the mime who never physically hurt them because they \u0022thought\u0022 the mime was attacking them. Then without alerting security, procceeded to disposal the mime. Round ID 3088",
+		"Expires": "2018-06-26T14:18:09+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "chief engineer"
+			}
+		]
+	},
+	{
+		"CKey": "boomheadshot247",
+		"BannedOn": "2018-06-27T00:36:26+00:00",
+		"BannedBy": "quantumm",
+		"Reason": "Suicided round start, wasting the job slot. If you get a role you don\u0027t like, please cryo instead of taking up a job slot, as cryoing frees it up, three day ban from QM (Round ID: 3096).",
+		"Expires": "2018-06-30T00:36:26+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "quartermaster"
+			}
+		]
+	},
+	{
+		"CKey": "georgeisneat",
+		"BannedOn": "2018-06-29T01:14:06+00:00",
+		"BannedBy": "bksparkie1",
+		"Reason": "MetaGrudge killed it\u0027s master as a holopara Round ID 3132",
+		"Expires": "2018-06-29T01:14:06+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "pai"
+			},
+			{
+				"Job": "posibrain"
+			},
+			{
+				"Job": "drone"
+			},
+			{
+				"Job": "deathsquad"
+			},
+			{
+				"Job": "lavaland"
+			}
+		]
+	},
+	{
+		"CKey": "fluffysensation",
+		"BannedOn": "2018-06-29T03:56:27+00:00",
+		"BannedBy": "xyamahawkx",
+		"Reason": "Immediately disconnected after being converted to cult.",
+		"Expires": "2018-06-29T03:56:27+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "cultist"
+			}
+		]
+	},
+	{
+		"CKey": "quartich",
+		"BannedOn": "2018-06-29T20:37:11+00:00",
+		"BannedBy": "bksparkie1",
+		"Reason": "Set off a welder bomb igniting plasma and killing half the crew, Round ID 3110",
+		"Expires": "2018-07-06T20:37:11+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "drone"
+			}
+		]
+	},
+	{
+		"CKey": "bran232",
+		"BannedOn": "2018-07-01T01:26:46+00:00",
+		"BannedBy": "captaincardgage",
+		"Reason": "Disconnected/ghosted from A.I. without informing admins/command.",
+		"Expires": "2018-07-04T01:26:46+00:00",
+		"UnbannedBy": "captaincardgage",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ai"
+			}
+		]
+	},
+	{
+		"CKey": "pentovex",
+		"BannedOn": "2018-07-01T15:26:13+00:00",
+		"BannedBy": "dapnee",
+		"Reason": "angry",
+		"Expires": "2018-07-01T15:26:13+00:00",
+		"UnbannedBy": "dapnee",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ooc"
+			}
+		]
+	},
+	{
+		"CKey": "xynorph",
+		"BannedOn": "2018-07-01T23:26:43+00:00",
+		"BannedBy": "bksparkie1",
+		"Reason": "Released a lethal virus on the station to which there was no cure as a non antag. Round ID 3188",
+		"Expires": "2018-07-08T23:26:43+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "virologist"
+			}
+		]
+	},
+	{
+		"CKey": "untoldtactics",
+		"BannedOn": "2018-07-02T07:18:01+00:00",
+		"BannedBy": "dakittax",
+		"Reason": "Went SSD as the Research Director without ahelping first",
+		"Expires": "2018-07-02T07:18:01+00:00",
+		"UnbannedBy": "dakittax",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			},
+			{
+				"Job": "head of personnel"
+			},
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "research director"
+			},
+			{
+				"Job": "chief medical officer"
+			}
+		]
+	},
+	{
+		"CKey": "adameltablawy",
+		"BannedOn": "2018-07-02T22:47:43+00:00",
+		"BannedBy": "r3valkyrie",
+		"Reason": "Trees are blue",
+		"Expires": "2018-07-02T22:48:43+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ooc"
+			}
+		]
+	},
+	{
+		"CKey": "nickscv",
+		"BannedOn": "2018-07-04T05:30:03+00:00",
+		"BannedBy": "cactus2388",
+		"Reason": "Logged off without telling admins while playing blueshield. Appeal on the forums.",
+		"Expires": "2018-07-04T05:30:03+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "blueshield"
+			}
+		]
+	},
+	{
+		"CKey": "mackamuir",
+		"BannedOn": "2018-07-04T08:54:39+00:00",
+		"BannedBy": "dapnee",
+		"Reason": "DCd without telling command or admins as Blueshield. Please make an appeal on the forums over why this occured.",
+		"Expires": "2018-07-11T08:54:39+00:00",
+		"UnbannedBy": "dapnee",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "blueshield"
+			}
+		]
+	},
+	{
+		"CKey": "jonybatata",
+		"BannedOn": "2018-07-04T20:51:09+00:00",
+		"BannedBy": "bksparkie1",
+		"Reason": "Used lethals on a cuffed inmate for no apparent reason, went ssd before i could pm, This is a one week ban, appeal on the forums with your reasoning if you want it lifted. Round ID 3241",
+		"Expires": "2018-07-11T20:51:09+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "warden"
+			}
+		]
+	},
+	{
+		"CKey": "zeop",
+		"BannedOn": "2018-07-05T09:17:10+00:00",
+		"BannedBy": "cactus2388",
+		"Reason": "As a syndicate comms agent came onto the station and broke people out of the perma brig. Appeal on the forums.",
+		"Expires": "2018-07-05T09:17:10+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "pai"
+			},
+			{
+				"Job": "posibrain"
+			},
+			{
+				"Job": "drone"
+			},
+			{
+				"Job": "deathsquad"
+			},
+			{
+				"Job": "lavaland"
+			}
+		]
+	},
+	{
+		"CKey": "kayxbae",
+		"BannedOn": "2018-07-05T20:22:43+00:00",
+		"BannedBy": "captaincardgage",
+		"Reason": "As captain, suicided and ghosted shortly after before staff could question.",
+		"Expires": "2018-07-12T20:22:43+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			}
+		]
+	},
+	{
+		"CKey": "clement1129",
+		"BannedOn": "2018-07-06T19:50:09+00:00",
+		"BannedBy": "captaincardgage",
+		"Reason": "Disconnected as blueshield without first informing staff nor command",
+		"Expires": "2018-07-13T19:50:09+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "blueshield"
+			}
+		]
+	},
+	{
+		"CKey": "person12345",
+		"BannedOn": "2018-07-06T19:56:17+00:00",
+		"BannedBy": "captaincardgage",
+		"Reason": "As CMO. Tried to arrest the captain and take over the position of captainship. Albeit through non-lethal means. Warned and told not to perform this action again and to take this time to consider actions in a better form for the future.",
+		"Expires": "2018-07-13T19:56:17+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			},
+			{
+				"Job": "head of personnel"
+			},
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "research director"
+			},
+			{
+				"Job": "chief medical officer"
+			}
+		]
+	},
+	{
+		"CKey": "thrush",
+		"BannedOn": "2018-07-08T14:34:28+00:00",
+		"BannedBy": "cactus2388",
+		"Reason": "Went SSD as the Chief Engineer without telling the admins. Please appeal this on the forums and explain why this occured.",
+		"Expires": "2018-07-08T14:34:28+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "chief engineer"
+			}
+		]
+	},
+	{
+		"CKey": "randomgamer11",
+		"BannedOn": "2018-07-08T14:40:07+00:00",
+		"BannedBy": "cactus2388",
+		"Reason": "Went SSD as the Head of Personnel without informing the admins. Please appeal this ban on the forums to explain why this occured.",
+		"Expires": "2018-07-08T14:40:07+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of personnel"
+			}
+		]
+	},
+	{
+		"CKey": "whomstintarnation",
+		"BannedOn": "2018-07-11T15:41:47+00:00",
+		"BannedBy": "captaincardgage",
+		"Reason": "As HoS disconnected without informing staff or command. SSD at armory.",
+		"Expires": "2018-07-15T15:41:47+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			}
+		]
+	},
+	{
+		"CKey": "rarebirbwithtumors",
+		"BannedOn": "2018-07-13T08:38:05+00:00",
+		"BannedBy": "purpose2",
+		"Reason": "Intentionally left the hotel at a hotel guard. The round descended into utter madness as a result of his actions. Seems repentant though.",
+		"Expires": "2018-07-14T08:38:05+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "pai"
+			},
+			{
+				"Job": "posibrain"
+			},
+			{
+				"Job": "drone"
+			},
+			{
+				"Job": "deathsquad"
+			},
+			{
+				"Job": "lavaland"
+			}
+		]
+	},
+	{
+		"CKey": "frontline03",
+		"BannedOn": "2018-07-13T18:37:10+00:00",
+		"BannedBy": "captaincardgage",
+		"Reason": "Constantly rule breaks with science via force mutation toxins on players as non-antags. Without any valid reasoning to do so",
+		"Expires": "2018-07-13T18:37:10+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "research director"
+			},
+			{
+				"Job": "scientist"
+			},
+			{
+				"Job": "roboticist"
+			}
+		]
+	},
+	{
+		"CKey": "frontline03",
+		"BannedOn": "2018-07-13T18:37:39+00:00",
+		"BannedBy": "captaincardgage",
+		"Reason": "Constantly rule breaks via force mutation toxins/chemistry in general on players as non-antags. Without any valid reasoning to do so",
+		"Expires": "2018-07-13T18:37:39+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "chemist"
+			}
+		]
+	},
+	{
+		"CKey": "trebleclef",
+		"BannedOn": "2018-07-15T01:39:03+00:00",
+		"BannedBy": "quantumm",
+		"Reason": "As a Chief Medical Officer, logged off for one whole hour during a round, till round end, did not return. Logged back in once but fell back SSD, if you logged out due to technical difficulties, please bring it up in the forums.",
+		"Expires": "2018-07-15T01:39:03+00:00",
+		"UnbannedBy": "quantumm",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "chief medical officer"
+			}
+		]
+	},
+	{
+		"CKey": "slumppgodd",
+		"BannedOn": "2018-07-20T00:02:27+00:00",
+		"BannedBy": "quantumm",
+		"Reason": "Attacked some ashwalkers, while being a ashwalker, without a good reason. Before some admin investigation could be done on them, they logged out, three day ban from lavaland roles.",
+		"Expires": "2018-07-23T00:02:27+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "lavaland"
+			}
+		]
+	},
+	{
+		"CKey": "beanbags",
+		"BannedOn": "2018-07-20T17:24:31+00:00",
+		"BannedBy": "flattestguitar9",
+		"Reason": "Another failure to adhere to our rules of being an antagonist. You were already warned for maxcapping before and here you are doing this again. Take some time off if you can\u0027t heed the warnings.",
+		"Expires": "2018-08-03T17:24:31+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "syndicate"
+			}
+		]
+	},
+	{
+		"CKey": "pentovex",
+		"BannedOn": "2018-07-21T14:29:33+00:00",
+		"BannedBy": "bksparkie1",
+		"Reason": "Warned against interferring with the round multiple times.. got argumentative in ahelps. Round ID 3517",
+		"Expires": "2018-07-21T14:29:33+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "drone"
+			}
+		]
+	},
+	{
+		"CKey": "vertskates",
+		"BannedOn": "2018-07-21T18:30:59+00:00",
+		"BannedBy": "bksparkie1",
+		"Reason": "Disconnected on round start as a head of staff. Appeal on forums. Round ID 3522",
+		"Expires": "2018-07-21T18:30:59+00:00",
+		"UnbannedBy": "bksparkie1",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			}
+		]
+	},
+	{
+		"CKey": "vertskates",
+		"BannedOn": "2018-07-21T18:31:06+00:00",
+		"BannedBy": "bksparkie1",
+		"Reason": "Disconnected on round start as a head of staff. Appeal on forums. Round ID 3522",
+		"Expires": "2018-07-21T18:31:06+00:00",
+		"UnbannedBy": "bksparkie1",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			}
+		]
+	},
+	{
+		"CKey": "vertskates",
+		"BannedOn": "2018-07-21T18:31:09+00:00",
+		"BannedBy": "bksparkie1",
+		"Reason": "Disconnected on round start as a head of staff. Appeal on forums. Round ID 3522",
+		"Expires": "2018-07-21T18:31:09+00:00",
+		"UnbannedBy": "bksparkie1",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of personnel"
+			}
+		]
+	},
+	{
+		"CKey": "vertskates",
+		"BannedOn": "2018-07-21T18:31:12+00:00",
+		"BannedBy": "bksparkie1",
+		"Reason": "Disconnected on round start as a head of staff. Appeal on forums. Round ID 3522",
+		"Expires": "2018-07-21T18:31:12+00:00",
+		"UnbannedBy": "bksparkie1",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "chief engineer"
+			}
+		]
+	},
+	{
+		"CKey": "vertskates",
+		"BannedOn": "2018-07-21T18:31:15+00:00",
+		"BannedBy": "bksparkie1",
+		"Reason": "Disconnected on round start as a head of staff. Appeal on forums. Round ID 3522",
+		"Expires": "2018-07-21T18:31:15+00:00",
+		"UnbannedBy": "bksparkie1",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "research director"
+			}
+		]
+	},
+	{
+		"CKey": "vertskates",
+		"BannedOn": "2018-07-21T18:31:19+00:00",
+		"BannedBy": "bksparkie1",
+		"Reason": "Disconnected on round start as a head of staff. Appeal on forums. Round ID 3522",
+		"Expires": "2018-07-21T18:31:19+00:00",
+		"UnbannedBy": "bksparkie1",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "chief medical officer"
+			}
+		]
+	},
+	{
+		"CKey": "skarrj",
+		"BannedOn": "2018-07-22T22:58:25+00:00",
+		"BannedBy": "bksparkie1",
+		"Reason": "Self antaged as a hotel member. took captains id, killed someone, left the hotel.. argued other person was going to kill them when they should not have even been on the station. Round ID 3537",
+		"Expires": "2018-07-22T22:58:25+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "pai"
+			},
+			{
+				"Job": "posibrain"
+			},
+			{
+				"Job": "drone"
+			},
+			{
+				"Job": "deathsquad"
+			},
+			{
+				"Job": "lavaland"
+			}
+		]
+	},
+	{
+		"CKey": "juicyreduxsday",
+		"BannedOn": "2018-07-24T02:12:24+00:00",
+		"BannedBy": "cactus2388",
+		"Reason": "(Logged off before PM\u0027d) Seemingly shot the mime into crit for slipping them as the warden. Feel free to appeal this on the forums.",
+		"Expires": "2018-07-24T02:12:24+00:00",
+		"UnbannedBy": "cactus2388",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "warden"
+			},
+			{
+				"Job": "detective"
+			},
+			{
+				"Job": "security officer"
+			},
+			{
+				"Job": "brig physician"
+			}
+		]
+	},
+	{
+		"CKey": "heavenshield",
+		"BannedOn": "2018-07-25T16:55:17+00:00",
+		"BannedBy": "bksparkie1",
+		"Reason": "(MANUAL BAN) Disconnected as operative leader on round start",
+		"Expires": "2018-07-25T16:55:17+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "operative"
+			}
+		]
+	},
+	{
+		"CKey": "whomstintarnation",
+		"BannedOn": "2018-07-26T09:31:01+00:00",
+		"BannedBy": "dapnee",
+		"Reason": "Murdered himself round start as blueshield either because he didn\u0027t like the map or just cause.",
+		"Expires": "2018-07-26T09:31:01+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "blueshield"
+			}
+		]
+	},
+	{
+		"CKey": "emperorryuga",
+		"BannedOn": "2018-07-31T19:51:46+00:00",
+		"BannedBy": "bksparkie1",
+		"Reason": "talking ic in ooc.. warned about this before, this is an ooc perma ban appeal on forums Round ID 3693",
+		"Expires": "2018-07-31T19:51:46+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ooc"
+			}
+		]
+	},
+	{
+		"CKey": "leruffleface",
+		"BannedOn": "2018-08-01T15:42:19+00:00",
+		"BannedBy": "bksparkie1",
+		"Reason": "Interferring with the round by taking an axe and disposaling it. Appeal on forums. Round ID 3704",
+		"Expires": "2018-08-01T15:42:19+00:00",
+		"UnbannedBy": "bksparkie1",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "drone"
+			}
+		]
+	},
+	{
+		"CKey": "clement1129",
+		"BannedOn": "2018-08-01T19:39:22+00:00",
+		"BannedBy": "bksparkie1",
+		"Reason": "Went ssd as captain appeal on forums",
+		"Expires": "2018-08-01T19:39:22+00:00",
+		"UnbannedBy": "bksparkie1",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			},
+			{
+				"Job": "head of personnel"
+			},
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "research director"
+			},
+			{
+				"Job": "chief medical officer"
+			}
+		]
+	},
+	{
+		"CKey": "jglitch",
+		"BannedOn": "2018-08-01T20:59:11+00:00",
+		"BannedBy": "bksparkie1",
+		"Reason": "asked for this. wants to be more polite of a player.",
+		"Expires": "2018-08-01T20:59:11+00:00",
+		"UnbannedBy": "bksparkie1",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ooc"
+			}
+		]
+	},
+	{
+		"CKey": "truemeaningofdenial",
+		"BannedOn": "2018-08-01T21:10:12+00:00",
+		"BannedBy": "bksparkie1",
+		"Reason": "Warned against copying what i said and pasting it in chat, immediately did it after getting warned.",
+		"Expires": "2018-08-01T21:10:12+00:00",
+		"UnbannedBy": "bksparkie1",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ooc"
+			}
+		]
+	},
+	{
+		"CKey": "jacekjab",
+		"BannedOn": "2018-08-02T05:59:58+00:00",
+		"BannedBy": "cactus2388",
+		"Reason": "Went SSD as the blueshield and didn\u0027t alert administration. Please appeal this on the forums and explain why it occured.",
+		"Expires": "2018-08-02T05:59:58+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "blueshield"
+			}
+		]
+	},
+	{
+		"CKey": "pullen68",
+		"BannedOn": "2018-08-03T16:13:24+00:00",
+		"BannedBy": "dapnee",
+		"Reason": "As HoS, killed an EoC (not deadly) with unstable mutagen in a spray bottle (this won\u0027t show up in the logs). Not only was this not legal under space law, but it was totally avoidable. Appeal on the forums when you can take this role more seriously.",
+		"Expires": "2018-08-03T16:13:24+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			}
+		]
+	},
+	{
+		"CKey": "hyperndr",
+		"BannedOn": "2018-08-04T21:38:10+00:00",
+		"BannedBy": "andrewmontagne",
+		"Reason": "Joined as ERT and then instantly killed themselves, as they \u0022didn\u0027t know what they were signing up for\u0022. Appeal on the forums.",
+		"Expires": "2018-09-04T07:38:10+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "deathsquad"
+			}
+		]
+	},
+	{
+		"CKey": "jacekjab",
+		"BannedOn": "2018-08-05T12:22:22+00:00",
+		"BannedBy": "dapnee",
+		"Reason": "Was SSD the entire shift. Go to our forums to appeal this if you\u0027d like to play AI again.",
+		"Expires": "2018-08-05T12:22:22+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ai"
+			}
+		]
+	},
+	{
+		"CKey": "reboundboy",
+		"BannedOn": "2018-08-07T00:07:17+00:00",
+		"BannedBy": "keluandrie",
+		"Reason": "As abandoned station ghostrole, shot a fellow member to death, killed self, and logged off.",
+		"Expires": "2018-08-07T00:07:17+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "lavaland"
+			}
+		]
+	},
+	{
+		"CKey": "rarebirbwithtumors",
+		"BannedOn": "2018-08-07T21:53:20+00:00",
+		"BannedBy": "keluandrie",
+		"Reason": "As ashwalker, went to the station to murderbone, then boarded the shuttle and spaced security out of \u0022revenge\u0022.",
+		"Expires": "2018-08-07T21:53:20+00:00",
+		"UnbannedBy": "keluandrie",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "lavaland"
+			}
+		]
+	},
+	{
+		"CKey": "mynameajeff",
+		"BannedOn": "2018-08-12T16:53:44+00:00",
+		"BannedBy": "cactus2388",
+		"Reason": "Continually ghosts when they aren\u0027t an antagonist and also wastes job slots. Antag fishing is against our rules feel free to appeal this on the forums.",
+		"Expires": "2018-08-12T16:53:44+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "syndicate"
+			}
+		]
+	},
+	{
+		"CKey": "kayxbae",
+		"BannedOn": "2018-08-14T03:06:26+00:00",
+		"BannedBy": "bksparkie1",
+		"Reason": "Removed the ai\u0027s laws, and handed out all access as the blueshield. Assisting the traitors in accessing the station. Did not know self antaging rules. Round ID 3909 ",
+		"Expires": "2018-08-14T03:06:26+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			},
+			{
+				"Job": "head of personnel"
+			},
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "research director"
+			},
+			{
+				"Job": "chief medical officer"
+			}
+		]
+	},
+	{
+		"CKey": "kayxbae",
+		"BannedOn": "2018-08-14T03:06:39+00:00",
+		"BannedBy": "bksparkie1",
+		"Reason": "Removed the ai\u0027s laws, and handed out all access as the blueshield. Assisting the traitors in accessing the station. Did not know self antaging rules. Round ID 3909 ",
+		"Expires": "2018-08-14T03:06:39+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "blueshield"
+			}
+		]
+	},
+	{
+		"CKey": "peachy11",
+		"BannedOn": "2018-08-15T17:19:35+00:00",
+		"BannedBy": "dapnee",
+		"Reason": "Attacking constructs as a cultist. Appeal when you can actually play nice.",
+		"Expires": "2018-08-15T17:19:35+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "cultist"
+			}
+		]
+	},
+	{
+		"CKey": "superslapnuts",
+		"BannedOn": "2018-08-15T17:55:14+00:00",
+		"BannedBy": "dapnee",
+		"Reason": "Not a name someone would have.",
+		"Expires": "2018-08-15T17:55:14+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "appearance"
+			}
+		]
+	},
+	{
+		"CKey": "slygorthethird",
+		"BannedOn": "2018-08-16T15:46:38+00:00",
+		"BannedBy": "r3valkyrie",
+		"Reason": "OOC ban on behalf of BKsparkie1, multiple breaches of IC in OOC rule over several rounds.",
+		"Expires": "2018-08-16T15:46:38+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ooc"
+			}
+		]
+	},
+	{
+		"CKey": "vertskates",
+		"BannedOn": "2018-08-16T22:13:27+00:00",
+		"BannedBy": "xyamahawkx",
+		"Reason": "As sec, beat the mime with a harmbaton until his skull was fractured, then hit several others in the hallway with the harmbaton until he was stopped.  Read up on SoP before trying sec again.",
+		"Expires": "2018-08-19T22:13:27+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "warden"
+			},
+			{
+				"Job": "detective"
+			},
+			{
+				"Job": "security officer"
+			},
+			{
+				"Job": "brig physician"
+			}
+		]
+	},
+	{
+		"CKey": "mayfox",
+		"BannedOn": "2018-08-17T14:55:39+00:00",
+		"BannedBy": "mayfox",
+		"Reason": "(MANUAL BAN) ding dong test bannu",
+		"Expires": "2018-08-17T14:56:39+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of personnel"
+			}
+		]
+	},
+	{
+		"CKey": "weras57",
+		"BannedOn": "2018-08-18T08:24:26+00:00",
+		"BannedBy": "mayfox",
+		"Reason": "use note of 18.8.18 round ID 3977 by Mayfox for reference",
+		"Expires": "2018-08-23T21:44:26+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			},
+			{
+				"Job": "head of personnel"
+			},
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "research director"
+			},
+			{
+				"Job": "chief medical officer"
+			}
+		]
+	},
+	{
+		"CKey": "weras57",
+		"BannedOn": "2018-08-18T08:24:36+00:00",
+		"BannedBy": "mayfox",
+		"Reason": "use note of 18.8.18 round ID 3977 by Mayfox for reference",
+		"Expires": "2018-08-23T21:44:36+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "warden"
+			},
+			{
+				"Job": "detective"
+			},
+			{
+				"Job": "security officer"
+			},
+			{
+				"Job": "brig physician"
+			}
+		]
+	},
+	{
+		"CKey": "sebbydebeste",
+		"BannedOn": "2018-08-18T09:07:12+00:00",
+		"BannedBy": "mayfox",
+		"Reason": "As a hotel employee, got onto the station and tried to arrest a crewmember. Logged out immediatelly after beepsky stunned them. Because of the recorded notes this is a permanent ban, to prevent potential abuse of ghost roles for self-antag. For any further action, it may be discussed over at the forums https://forums.oraclestation.com/",
+		"Expires": "2018-08-18T09:07:12+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "lavaland"
+			}
+		]
+	},
+	{
+		"CKey": "dominatium",
+		"BannedOn": "2018-08-18T16:28:24+00:00",
+		"BannedBy": "mayfox",
+		"Reason": "referr to note by mayfox round ID 3983 on 18.8.18",
+		"Expires": "2018-08-24T05:48:24+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			},
+			{
+				"Job": "head of personnel"
+			},
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "research director"
+			},
+			{
+				"Job": "chief medical officer"
+			}
+		]
+	},
+	{
+		"CKey": "dominatium",
+		"BannedOn": "2018-08-18T16:28:34+00:00",
+		"BannedBy": "mayfox",
+		"Reason": "referr to note by mayfox round ID 3983 on 18.8.18",
+		"Expires": "2018-08-24T05:48:34+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "warden"
+			},
+			{
+				"Job": "detective"
+			},
+			{
+				"Job": "security officer"
+			},
+			{
+				"Job": "brig physician"
+			}
+		]
+	},
+	{
+		"CKey": "aaronjhughes",
+		"BannedOn": "2018-08-18T18:52:07+00:00",
+		"BannedBy": "cactus2388",
+		"Reason": "SSD as the captain without telling an admin prior.",
+		"Expires": "2018-08-18T18:52:07+00:00",
+		"UnbannedBy": "cactus2388",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			}
+		]
+	},
+	{
+		"CKey": "karhast",
+		"BannedOn": "2018-08-19T15:37:30+00:00",
+		"BannedBy": "comradecheekibreeki",
+		"Reason": "Reasons stated in notes. Please appeal this on the fourms if you have an issue with it.",
+		"Expires": "2018-08-19T15:37:30+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			}
+		]
+	},
+	{
+		"CKey": "karhast",
+		"BannedOn": "2018-08-19T15:38:03+00:00",
+		"BannedBy": "comradecheekibreeki",
+		"Reason": "Reasons stated in notes. Please appeal this on the forums if you have an issue with it.",
+		"Expires": "2018-08-19T15:38:03+00:00",
+		"UnbannedBy": "comradecheekibreeki",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "warden"
+			}
+		]
+	},
+	{
+		"CKey": "morty999",
+		"BannedOn": "2018-08-19T17:48:15+00:00",
+		"BannedBy": "cactus2388",
+		"Reason": "Went SSD round start as the Head of Personnel and didn\u0027t alert the admins. Feel free to appeal this on the forums and describe why is occured.",
+		"Expires": "2018-08-19T17:48:15+00:00",
+		"UnbannedBy": "cactus2388",
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of personnel"
+			}
+		]
+	},
+	{
+		"CKey": "fluffysensation",
+		"BannedOn": "2018-08-22T10:02:42+00:00",
+		"BannedBy": "dapnee",
+		"Reason": "Killed the AI, despite having carded it earlier and seeing it didn\u0027t have a law 0. Literally had no reason to break into AI upload twice before that either. You obviously need to learn how to properly play command by watching someone else do it.",
+		"Expires": "2018-08-22T10:02:42+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			},
+			{
+				"Job": "head of personnel"
+			},
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "research director"
+			},
+			{
+				"Job": "chief medical officer"
+			}
+		]
+	},
+	{
+		"CKey": "rarebirbwithtumors",
+		"BannedOn": "2018-08-22T12:56:18+00:00",
+		"BannedBy": "dapnee",
+		"Reason": "Went on a major greytide spree for \u0022rp\u0022 reasons, and then when caught and brought to security, decided to murder the miner who brought them in. Welcome to no longer honking.",
+		"Expires": "2018-08-29T12:56:18+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "clown"
+			}
+		]
+	},
+	{
+		"CKey": "boperator",
+		"BannedOn": "2018-08-24T10:33:34+00:00",
+		"BannedBy": "dapnee",
+		"Reason": "As hotel security, came to the station and abducted people, such as the mime. When caught by the HoS, went SSD. You will need to appeal this on the forum if you wish to play any form of ghost role in the future.",
+		"Expires": "2018-08-24T10:33:34+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "pai"
+			},
+			{
+				"Job": "posibrain"
+			},
+			{
+				"Job": "drone"
+			},
+			{
+				"Job": "deathsquad"
+			},
+			{
+				"Job": "lavaland"
+			}
+		]
+	},
+	{
+		"CKey": "godofdestructionscoobydoo",
+		"BannedOn": "2018-08-25T19:14:06+00:00",
+		"BannedBy": "comradecheekibreeki",
+		"Reason": "(MANUAL BAN) As cyborg, killed the HoS and attacked another borg while slaved to the AI to get meta revenge, then disconnected. This ban is permanent, appeal it on the fourms.",
+		"Expires": "2018-08-25T19:14:06+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "ai"
+			}
+		]
+	},
+	{
+		"CKey": "godofdestructionscoobydoo",
+		"BannedOn": "2018-08-25T19:14:15+00:00",
+		"BannedBy": "comradecheekibreeki",
+		"Reason": "(MANUAL BAN) As cyborg, killed the HoS and attacked another borg while slaved to the AI to get meta revenge, then disconnected. This ban is permanent, appeal it on the fourms.",
+		"Expires": "2018-08-25T19:14:15+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "cyborg"
+			}
+		]
+	},
+	{
+		"CKey": "ansarass",
+		"BannedOn": "2018-08-25T19:59:05+00:00",
+		"BannedBy": "cactus2388",
+		"Reason": "Went SSD as the Head of Security without telling admins. Please appeal this on the forums and tell us why it occured.",
+		"Expires": "2018-08-25T19:59:05+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			}
+		]
+	},
+	{
+		"CKey": "slavbatata",
+		"BannedOn": "2018-08-26T22:48:47+00:00",
+		"BannedBy": "bksparkie1",
+		"Reason": "2018-05-20 13:20:12 | junglevulphellhole | davetheheadcrab | Round: [Delete] [Not secret] [Edit]\nBanned from Captain, Head of Personnel, Head of Security, Chief Engineer, Research Director, Chief Medical Officer - As CE, royally fucked up setting the SM up and then hid in maint and SSD\u0027d without telling anyone.",
+		"Expires": "2018-08-26T22:48:47+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "captain"
+			},
+			{
+				"Job": "head of personnel"
+			},
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "chief engineer"
+			},
+			{
+				"Job": "research director"
+			},
+			{
+				"Job": "chief medical officer"
+			}
+		]
+	},
+	{
+		"CKey": "slavbatata",
+		"BannedOn": "2018-08-26T22:49:01+00:00",
+		"BannedBy": "bksparkie1",
+		"Reason": "2018-07-04 20:51:12 | junglevulphellhole | bksparkie1 | Round: 3241 [Delete] [Not secret] [Edit]\nBanned from Warden - Used lethals on a cuffed inmate for no apparent reason, went ssd before i could pm, This is a one week ban, appeal on the forums with your reasoning if you want it lifted. Round ID 3241",
+		"Expires": "2018-08-26T22:49:01+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "warden"
+			}
+		]
+	},
+	{
+		"CKey": "slyphurskyes",
+		"BannedOn": "2018-08-26T22:56:27+00:00",
+		"BannedBy": "bksparkie1",
+		"Reason": "Banned  from Head of Security - Went SSD as the Head of Security without telling admins. Please appeal this on the forums and tell us why it occured.\nadded at 2018-08-25 19:59:08 by cactus2388",
+		"Expires": "2018-08-26T22:56:27+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			}
+		]
+	},
+	{
+		"CKey": "vertskates",
+		"BannedOn": "2018-08-28T20:32:27+00:00",
+		"BannedBy": "bksparkie1",
+		"Reason": "spent an entire round harrassing the mime and clown until they finally murdered vertskates. Permanent job ban given your history and the fact you disconnected after. Appeal on the forums. Round 4128",
+		"Expires": "2018-08-28T20:32:27+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "head of security"
+			},
+			{
+				"Job": "warden"
+			},
+			{
+				"Job": "detective"
+			},
+			{
+				"Job": "security officer"
+			},
+			{
+				"Job": "brig physician"
+			}
+		]
+	},
+	{
+		"CKey": "miniusareas",
+		"BannedOn": "2018-09-02T01:08:01+00:00",
+		"BannedBy": "cactus2388",
+		"Reason": "Went SSD as the blueshield without informing administration. Please appeal this on the forums and tell us why is occured.",
+		"Expires": "2018-09-02T01:08:01+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "blueshield"
+			}
+		]
+	},
+	{
+		"CKey": "boperator",
+		"BannedOn": "2018-09-04T00:42:14+00:00",
+		"BannedBy": "keluandrie",
+		"Reason": "(MANUAL BAN) As engineer on roundstart, half-finished the engine, threw something in to trigger a delamination, and then went to cryosleep.",
+		"Expires": "2018-09-04T00:42:14+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "station engineer"
+			}
+		]
+	},
+	{
+		"CKey": "boperator",
+		"BannedOn": "2018-09-04T00:42:18+00:00",
+		"BannedBy": "keluandrie",
+		"Reason": "(MANUAL BAN) As engineer on roundstart, half-finished the engine, threw something in to trigger a delamination, and then went to cryosleep.",
+		"Expires": "2018-09-04T00:42:18+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "atmospheric technician"
+			}
+		]
+	},
+	{
+		"CKey": "boperator",
+		"BannedOn": "2018-09-04T00:42:35+00:00",
+		"BannedBy": "keluandrie",
+		"Reason": "(MANUAL BAN) As engineer on roundstart, half-finished the engine, threw something in to trigger a delamination, and then went to cryosleep.",
+		"Expires": "2018-09-04T00:42:35+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "chief engineer"
+			}
+		]
+	},
+	{
+		"CKey": "redaxolotl",
+		"BannedOn": "2018-09-07T15:43:59+00:00",
+		"BannedBy": "xyamahawkx",
+		"Reason": "Stripping people and attacking people as a drone.  Previously warned about doing bad things as ghost roles.",
+		"Expires": "2018-09-07T15:43:59+00:00",
+		"UnbannedBy": null,
+		"IP": null,
+		"CID": null,
+		"BanType": 1,
+		"BanID": null,
+		"JobBans": [
+			{
+				"Job": "pai"
+			},
+			{
+				"Job": "posibrain"
+			},
+			{
+				"Job": "drone"
+			},
+			{
+				"Job": "deathsquad"
+			},
+			{
+				"Job": "lavaland"
+			}
+		]
+	}
+]

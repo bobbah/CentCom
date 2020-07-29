@@ -1,0 +1,4682 @@
+[
+    {
+        "CKey": "xperia15",
+        "BannedOn": "2019-05-11T13:25:00+00:00",
+        "BannedBy": "koekiegast",
+        "Reason": "Spawned in, set three steps, hid in his locker and disconnected as ce. Apply on the forums if you want to get unbanned.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "dc0",
+        "BannedOn": "2019-05-04T21:02:00+00:00",
+        "BannedBy": "altangy",
+        "Reason": "Failed to set up the engine. When they were being demoted attacked the captain and XO. When brigged went SSD.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "chief engineer"
+            }
+        ]
+    },
+    {
+        "CKey": "jasoncool09",
+        "BannedOn": "2019-04-22T23:48:00+00:00",
+        "BannedBy": "indusrobot",
+        "Reason": "Joined as a Research Director then spaced themselves, committing suicide. Do not join as a head of staff if you don't intend to play. You may appeal on the FTL13 forum. ",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "patriotwasp",
+        "BannedOn": "2019-03-23T17:53:00+00:00",
+        "BannedBy": "nikocate",
+        "Reason": "Rarely listens to their SoP or ship law as the HoS - Has repeatedly joined as the HoS just to harass crewmembers and then cryo shortly after. - Please read our rules and appeal on the forums or learn how to play security as a sec officer before diving in as HoS.",
+        "Expires": "2019-04-22T17:53:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "head of security"
+            }
+        ]
+    },
+    {
+        "CKey": "enukar",
+        "BannedOn": "2019-02-23T16:09:00+00:00",
+        "BannedBy": "nikocate",
+        "Reason": "Went SSD in the middle of the round as Captain \"as a joke\" - Has a record for killing themselves and SSDing as Captain.",
+        "Expires": "2019-03-09T16:09:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "captain"
+            }
+        ]
+    },
+    {
+        "CKey": "onefreeman",
+        "BannedOn": "2019-02-08T17:42:00+00:00",
+        "BannedBy": "lordwalnut",
+        "Reason": "Incompetent captain, decided to abandon ship instead of attempt to fix ship power, and then decided to space himself, when pinged he responded with 'exploring space'",
+        "Expires": "2019-02-15T17:42:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "captain"
+            }
+        ]
+    },
+    {
+        "CKey": "mizolo",
+        "BannedOn": "2019-02-02T14:42:00+00:00",
+        "BannedBy": "altangy",
+        "Reason": "We've told you an uncountable number of times to stop interacting with life forms as a drone.",
+        "Expires": "2019-03-05T00:42:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "drone"
+            }
+        ]
+    },
+    {
+        "CKey": "monkeyman901",
+        "BannedOn": "2019-01-25T18:45:00+00:00",
+        "BannedBy": "altangy",
+        "Reason": "Broke drone law by accessing the Communication console's announcment function and creating an announcment then argued with me about said drone laws.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "drone"
+            }
+        ]
+    },
+    {
+        "CKey": "j515",
+        "BannedOn": "2019-01-25T15:02:00+00:00",
+        "BannedBy": "altangy",
+        "Reason": "Failed to follow basic MAA SoP and went at the clown with a combat shotgun and killed themselves when they were demoted to assistant. I have reports stating this isn't the first time something simular has happend.",
+        "Expires": "2019-02-15T15:02:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "master-at-arms"
+            }
+        ]
+    },
+    {
+        "CKey": "j515",
+        "BannedOn": "2019-01-18T11:45:00+00:00",
+        "BannedBy": "altangy",
+        "Reason": "Ioned the A.I. to death because they thought it was helping a clown against his wishes and bolted the armory when they went to get guns to attack the clown as Xo.",
+        "Expires": "2019-07-19T23:45:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "drunkenpeasant",
+        "BannedOn": "2019-01-12T19:52:00+00:00",
+        "BannedBy": "altangy",
+        "Reason": "Energized an unpreped SM core, did manage to eject it before delam. Locked down the bridge. Left the round without telling anyone.",
+        "Expires": "2019-01-19T19:52:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "ai"
+            }
+        ]
+    },
+    {
+        "CKey": "juicychicken",
+        "BannedOn": "2018-12-30T15:45:00+00:00",
+        "BannedBy": "crossedfall",
+        "Reason": "Went to cryo as captain without ahelping first.",
+        "Expires": "2018-12-30T17:45:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "cryleve",
+        "BannedOn": "2018-12-26T10:26:00+00:00",
+        "BannedBy": "masmc",
+        "Reason": "Accidentally clicked no on the temp screen\nSuicided as captain, without ahelp. Go to cryo, next time.",
+        "Expires": "2019-01-02T10:26:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "cryleve",
+        "BannedOn": "2018-12-26T10:19:00+00:00",
+        "BannedBy": "masmc",
+        "Reason": "Don't suicide in command positions. Go to cryo.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "moontruther",
+        "BannedOn": "2018-12-24T16:56:00+00:00",
+        "BannedBy": "masmc",
+        "Reason": "Shows general incompetence as command. Appeal on the forums. http://ftl13.com/phpBB3",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "davida160",
+        "BannedOn": "2018-12-22T21:41:00+00:00",
+        "BannedBy": "masmc",
+        "Reason": "User went into cryo as CMO without notification to admins or medical staff, then disconnected. Appeal this ban on the forums. http://ftl13.com/phpBB3",
+        "Expires": "2019-01-19T21:41:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "mizolo",
+        "BannedOn": "2018-12-14T13:14:00+00:00",
+        "BannedBy": "altangy",
+        "Reason": "We've told you a number of times now to respect your drone laws. Since you can't appear to follow that, have a time out. Remember your laws next time.",
+        "Expires": "2018-12-21T13:14:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "drone"
+            }
+        ]
+    },
+    {
+        "CKey": "j515",
+        "BannedOn": "2018-12-09T06:48:00+00:00",
+        "BannedBy": "nickthemoonwolf",
+        "Reason": "As a borg, broke their laws by detonating themselves via the science console, and in doing so harmed a crew member. Appeal this ban if you wish on our forums, but it is about as long you'd have to wait to play silicons regardless. ",
+        "Expires": "2019-01-08T06:48:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "ai"
+            },
+            {
+                "Job": "cyborg"
+            },
+            {
+                "Job": "pai"
+            }
+        ]
+    },
+    {
+        "CKey": "mayhem88",
+        "BannedOn": "2018-12-01T17:07:00+00:00",
+        "BannedBy": "altangy",
+        "Reason": "Suicide as captain and poor captainship.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "carlozhpm",
+        "BannedOn": "2018-11-25T18:13:00+00:00",
+        "BannedBy": "altangy",
+        "Reason": "This should have been included with the command ban.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "ai"
+            },
+            {
+                "Job": "cyborg"
+            },
+            {
+                "Job": "pai"
+            }
+        ]
+    },
+    {
+        "CKey": "cooperxd",
+        "BannedOn": "2018-11-11T13:33:00+00:00",
+        "BannedBy": "lordwalnut",
+        "Reason": "Opened an armed mac breech\n\nGave the excuse of 'It was a dare'\n\n\nAppeal on fourms \n\n-W",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "munitions officer"
+            }
+        ]
+    },
+    {
+        "CKey": "oryxandcrake",
+        "BannedOn": "2018-11-10T12:35:00+00:00",
+        "BannedBy": "crossedfall",
+        "Reason": "Connected as XO and then went to cryo without informing the crew while acting  captain shortly after. All command staff must ahelp before leaving so that we can handle the situation if needed.",
+        "Expires": "2018-11-15T12:35:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "moontruther",
+        "BannedOn": "2018-11-10T02:15:00+00:00",
+        "BannedBy": "crossedfall",
+        "Reason": "D/C'ed as captain after blowing up the mac cannon twice. This isn't the kind of behavior we look for in a captain. Consider this a final warning",
+        "Expires": "2018-11-15T02:15:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "detective"
+            },
+            {
+                "Job": "master-at-arms"
+            },
+            {
+                "Job": "security officer"
+            }
+        ]
+    },
+    {
+        "CKey": "moontruther",
+        "BannedOn": "2018-11-10T02:15:00+00:00",
+        "BannedBy": "crossedfall",
+        "Reason": "D/C'ed as captain after blowing up the mac cannon twice. This isn't the kind of behavior we look for in a captain. Consider this a final warning.",
+        "Expires": "2018-11-15T02:15:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "kimo3213",
+        "BannedOn": "2018-11-04T00:40:00+00:00",
+        "BannedBy": "crossedfall",
+        "Reason": "If you're going to play as security, learn the applicable ship laws. ",
+        "Expires": "2018-11-09T00:40:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "detective"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "master-at-arms"
+            },
+            {
+                "Job": "security officer"
+            }
+        ]
+    },
+    {
+        "CKey": "yyrcbry",
+        "BannedOn": "2018-11-02T20:32:00+00:00",
+        "BannedBy": "altangy",
+        "Reason": "Went down to lava land as Captain and only head and got gibbed. When given a second chance at life, left without saying a word. I was able to confirm you had entered the body and knew it was there.",
+        "Expires": "2018-12-03T06:32:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "captain"
+            }
+        ]
+    },
+    {
+        "CKey": "majorhalowars",
+        "BannedOn": "2018-10-07T18:29:00+00:00",
+        "BannedBy": "altangy",
+        "Reason": "Disarmed a scientist who was being eaten by a slime causing them to be stunned and then munched to death. To be fair, the scientist had caused trouble for them prior.",
+        "Expires": "2018-10-14T18:29:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "nernums",
+        "BannedOn": "2018-10-06T19:08:00+00:00",
+        "BannedBy": "altangy",
+        "Reason": "Blew up the mac and had enough players angry with them over getting angry about trivial stuff.",
+        "Expires": "2018-10-13T19:08:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "dominatium",
+        "BannedOn": "2018-10-06T14:42:00+00:00",
+        "BannedBy": "altangy",
+        "Reason": "Not command material. Admins see notes.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "xblasterr",
+        "BannedOn": "2018-09-29T13:34:00+00:00",
+        "BannedBy": "nikocate",
+        "Reason": "Inciting an unauthorized mutiny as HoS.",
+        "Expires": "2018-10-30T00:03:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "head of security"
+            }
+        ]
+    },
+    {
+        "CKey": "maciekbaki",
+        "BannedOn": "2018-09-29T13:30:00+00:00",
+        "BannedBy": "altangy",
+        "Reason": "Caused an event that lead to a mutiny, attempted to abandon their post multiple times, was not captainly.",
+        "Expires": "2018-12-29T19:30:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "captain"
+            }
+        ]
+    },
+    {
+        "CKey": "carlozhpm",
+        "BannedOn": "2018-09-23T21:05:00+00:00",
+        "BannedBy": "altangy",
+        "Reason": "Incompetence, greytidery after demotion, attemted murder as a result of demotion. While the demotion was not admin approved it was a unanimous crew vote.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "kieal",
+        "BannedOn": "2018-09-21T20:02:00+00:00",
+        "BannedBy": "altangy",
+        "Reason": "Went CE, ejected SM, left server. If you ever want to appeal this you can go to our forums and tell us what you were doing.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "re1taz",
+        "BannedOn": "2018-09-16T09:04:00+00:00",
+        "BannedBy": "tmtime",
+        "Reason": "Mutinied without ahelping. Would have been a allowed, hence the lighter ban",
+        "Expires": "2018-09-17T09:04:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "babahuhu",
+        "BannedOn": "2018-09-14T23:27:00+00:00",
+        "BannedBy": "crossedfall",
+        "Reason": "Signed up as CE without knowing how to setup the engine resulting in an early round end. Don't sign up for head-roles unless you know what you're doing. Read up on the wiki and get more familiar with the role before trying again.",
+        "Expires": "2018-09-15T23:27:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "chief engineer"
+            }
+        ]
+    },
+    {
+        "CKey": "cooperxd",
+        "BannedOn": "2018-09-09T15:56:00+00:00",
+        "BannedBy": "tmtime",
+        "Reason": "Shot NT because \"FTL wasn't working\" and no admins replied to the question asking if he could shoot NT",
+        "Expires": "2018-09-16T15:56:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "enukar",
+        "BannedOn": "2018-09-08T19:30:00+00:00",
+        "BannedBy": "crossedfall",
+        "Reason": "Went SSD as the captain and never returned. Did not notify the crew and did not notify the admins. If you cannot stay the full round as a head, ensure that at the very least you notify the admins.",
+        "Expires": "2018-09-11T14:10:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "braincrab",
+        "BannedOn": "2018-09-08T14:06:00+00:00",
+        "BannedBy": "crossedfall",
+        "Reason": "(MANUAL BAN) Left the game midround as captain without telling the crew/admins or entering cryo. If you can't finish the round as a headrole, don't take a headrole. ",
+        "Expires": "2018-09-10T14:06:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "executive officer"
+            }
+        ]
+    },
+    {
+        "CKey": "braincrab",
+        "BannedOn": "2018-09-08T14:06:00+00:00",
+        "BannedBy": "crossedfall",
+        "Reason": "Left the game midround as captain without telling the crew/admins or entering cryo. If you can't finish the round as a headrole, don't take a headrole. ",
+        "Expires": "2018-09-10T14:06:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "captain"
+            }
+        ]
+    },
+    {
+        "CKey": "peppyc",
+        "BannedOn": "2018-09-07T19:10:00+00:00",
+        "BannedBy": "crossedfall",
+        "Reason": "(MANUAL BAN) Disconnected midround without telling anyone. Almost destroyed the shard. Read up on the rules and more on the actual job role before taking a head position.",
+        "Expires": "2018-09-10T19:10:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "atmospheric technician"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "ship engineer"
+            }
+        ]
+    },
+    {
+        "CKey": "doopsboops",
+        "BannedOn": "2018-08-04T06:36:00+00:00",
+        "BannedBy": "nickthemoonwolf",
+        "Reason": "Went SSD as HOS with seemingly no warning at all. Seemed to have been the only person on crew, but let it be known that you should at least go to cryo with a command position, and you should let someone know if you're going to. Appeal if you want, but it's a short ban.",
+        "Expires": "2018-08-11T06:36:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "pillowco",
+        "BannedOn": "2018-07-28T23:24:00+00:00",
+        "BannedBy": "nickthemoonwolf",
+        "Reason": "While it's appreciated that you Cryo'd as captain, we do require you to notify SOMEONE in the crew, or admins, before you do so as a command role. Feel free to appeal, though it's not a long ban.",
+        "Expires": "2018-08-04T23:24:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "guntuxer",
+        "BannedOn": "2018-07-27T20:38:00+00:00",
+        "BannedBy": "nikocate",
+        "Reason": "Joined as an engineer and near instantly welderbombed medbay because chemistry didn't give them chemicals.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "atmospheric technician"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "ship engineer"
+            }
+        ]
+    },
+    {
+        "CKey": "el3ctr1c",
+        "BannedOn": "2018-07-08T20:30:00+00:00",
+        "BannedBy": "rubles",
+        "Reason": "Repeatedly sprayed people with death-chem mixes. Was asked to stop multiple times but continued. Got cluwned for continuing. Permaban from Chemist on next offense.",
+        "Expires": "2018-07-15T20:30:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "chemist"
+            }
+        ]
+    },
+    {
+        "CKey": "carlozhpm",
+        "BannedOn": "2018-07-08T18:56:00+00:00",
+        "BannedBy": "nickthemoonwolf",
+        "Reason": "Disconnected almost immediately as AI without saying a word to the crew or admins. Please read the rules and appeal on the forums.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "ai"
+            },
+            {
+                "Job": "cyborg"
+            },
+            {
+                "Job": "pai"
+            }
+        ]
+    },
+    {
+        "CKey": "icedragonz",
+        "BannedOn": "2018-07-07T11:48:00+00:00",
+        "BannedBy": "altangy",
+        "Reason": "Sent the ship into combat with shield down and then left the round some time after.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "2222g",
+        "BannedOn": "2018-07-07T00:30:00+00:00",
+        "BannedBy": "nickthemoonwolf",
+        "Reason": "Left the server as weapons officer without notifying admins or the crew. This is against the rules. Please read the rules and appeal this job ban on the forums.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "xblasterr",
+        "BannedOn": "2018-07-06T17:09:00+00:00",
+        "BannedBy": "rubles",
+        "Reason": "Fired on NT after being complained about numerous times by the crew for being, quote, \"a condom.\" Please try to be less dickish next time you are captain, and follow the rules.",
+        "Expires": "2018-07-27T17:09:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "pitr",
+        "BannedOn": "2018-07-01T20:39:00+00:00",
+        "BannedBy": "altangy",
+        "Reason": "Suicided as captain when cryo was an option. Was warned before. Appeal on the forums when you feel ready to be an adult.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "noby",
+        "BannedOn": "2018-06-30T16:00:00+00:00",
+        "BannedBy": "nickthemoonwolf",
+        "Reason": "ODed someonhe on bicardine, left before they could be questioned about it.\nAssume it was an accident.\nPlease read the wiki on chemistry and medical before playing it again, it's very important to know what you're doing for this job.",
+        "Expires": "2018-07-28T16:00:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "chemist"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "geneticist"
+            },
+            {
+                "Job": "medical doctor"
+            },
+            {
+                "Job": "virologist"
+            }
+        ]
+    },
+    {
+        "CKey": "tristan63",
+        "BannedOn": "2018-06-29T19:51:00+00:00",
+        "BannedBy": "nickthemoonwolf",
+        "Reason": "Fired on NT, causing the round to end. Claimed it was an accident, and that the captain ordered it. Captain proven to be innocent upon inspection of logs.\nHas a previous NT firing on notes.\n\nAppeal on the forums.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "spiderling",
+        "BannedOn": "2018-06-24T14:24:00+00:00",
+        "BannedBy": "nikocate",
+        "Reason": "Arrested a miner with fuzzy handcuffs, then proceeded to cut off their arm after they broke out (it's like a second wait time). Has shown misbehaviour as captain in the past but genuienly seems like they understand what they did was wrong and seems like they're willing to learn. I reccomend playing as XO instead and learn from the others how to play as a member of command. https://ftl13.com/wiki/index.php?title=Executive_Officer",
+        "Expires": "2018-07-08T14:24:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "captain"
+            }
+        ]
+    },
+    {
+        "CKey": "theoverlord708",
+        "BannedOn": "2018-06-09T00:57:00+00:00",
+        "BannedBy": "altangy",
+        "Reason": "See prior ban reason on failed force borging.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "detective"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "master-at-arms"
+            },
+            {
+                "Job": "research director"
+            },
+            {
+                "Job": "security officer"
+            }
+        ]
+    },
+    {
+        "CKey": "zray3003",
+        "BannedOn": "2018-05-19T19:44:00+00:00",
+        "BannedBy": "altangy",
+        "Reason": "Unfit for command roles. Try again in three months.",
+        "Expires": "2018-08-19T01:44:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "moontruther",
+        "BannedOn": "2018-05-19T16:55:00+00:00",
+        "BannedBy": "lordwalnut",
+        "Reason": "Shot at NT, Resulting in round end, as they were at the captial \n\nAppeal on fourms\n\n-W",
+        "Expires": "2018-06-09T16:55:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            }
+        ]
+    },
+    {
+        "CKey": "firemario64",
+        "BannedOn": "2018-05-12T18:49:00+00:00",
+        "BannedBy": "lordwalnut",
+        "Reason": "Left the game as captain,\n\nAppeal on forums",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "captain"
+            }
+        ]
+    },
+    {
+        "CKey": "babahuhu",
+        "BannedOn": "2018-05-12T11:00:00+00:00",
+        "BannedBy": "koekiegast",
+        "Reason": "Was a lone captain on the Ineese and decided to shoot at NT to end the round, but that didn't end the round ofcourse. He later left so the ship could end like an insanely laggy collection of broken apcs. He also said he didn't know you can call the shuttle while not in combat.",
+        "Expires": "2018-05-21T11:00:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "sebbydebeste",
+        "BannedOn": "2018-04-27T18:06:00+00:00",
+        "BannedBy": "nikocate",
+        "Reason": "Ejected the supermatter at roundstart and tried to lie to admins about it not being them. Appeal on the forums.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "atmospheric technician"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "ship engineer"
+            }
+        ]
+    },
+    {
+        "CKey": "bryceda",
+        "BannedOn": "2018-04-21T17:11:00+00:00",
+        "BannedBy": "koekiegast",
+        "Reason": "Third offence, went ssd as captain at roundstart without telling anyone, not even the captain. Apeal on the forums if you think you have learned from your mistakes.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "bryceda",
+        "BannedOn": "2018-04-20T18:45:00+00:00",
+        "BannedBy": "altangy",
+        "Reason": "Went SSD upon capture by the captain for trying to launch the escape shuttle multiple times. If you are gonna whimp out there are going to be meta punishments.",
+        "Expires": "2018-05-21T04:45:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            }
+        ]
+    },
+    {
+        "CKey": "tristan63",
+        "BannedOn": "2018-04-20T18:30:00+00:00",
+        "BannedBy": "altangy",
+        "Reason": "Committed suicide as a demoted XO after being assigned 15 minutes of brig time for crimes commited by a CentCom official combined with a minor violation of Rule 2, don't spoil the fun for others. For the record it wasn't Central's fun.",
+        "Expires": "2018-04-27T18:30:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "greataims",
+        "BannedOn": "2018-04-20T15:49:00+00:00",
+        "BannedBy": "nikocate",
+        "Reason": "Joined as Captain and disconnected, didn't even unbuckle himself after joining. Please read our rules for command positions.",
+        "Expires": "2018-05-04T15:49:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "lorenzothemarauder",
+        "BannedOn": "2018-04-14T10:37:00+00:00",
+        "BannedBy": "lordwalnut",
+        "Reason": "Left game as XO, without telling Admins or Crew.\n\n Appeal on forums\n\n-W",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "executive officer"
+            }
+        ]
+    },
+    {
+        "CKey": "davidblanc2",
+        "BannedOn": "2018-04-08T17:46:00+00:00",
+        "BannedBy": "lordwalnut",
+        "Reason": "Left the game as captain, has been banned for leaving before\n\nHe was also specifically told by an admin to cryo before he left, and didn't.\n\nAppeal on fourms",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            }
+        ]
+    },
+    {
+        "CKey": "finisterre",
+        "BannedOn": "2018-04-07T13:44:00+00:00",
+        "BannedBy": "nikocate",
+        "Reason": "Ghosted as HoS, while being the only member of command. Read our rules for head roles and appeal if you wish.",
+        "Expires": "2018-05-05T13:44:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "kael224",
+        "BannedOn": "2018-04-01T19:48:00+00:00",
+        "BannedBy": "lordwalnut",
+        "Reason": "Left the round without notifying admins or crew.\n\nAppeal on fourms",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "chemist"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "geneticist"
+            },
+            {
+                "Job": "medical doctor"
+            },
+            {
+                "Job": "virologist"
+            }
+        ]
+    },
+    {
+        "CKey": "wicker0",
+        "BannedOn": "2018-03-31T15:45:00+00:00",
+        "BannedBy": "altangy",
+        "Reason": "Accidentally caused a plasma fire on the FOB",
+        "Expires": "2018-04-14T15:45:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "shaft miner"
+            }
+        ]
+    },
+    {
+        "CKey": "vonremer",
+        "BannedOn": "2018-03-24T15:32:00+00:00",
+        "BannedBy": "altangy",
+        "Reason": "Joined round and instantly suicided as captain. You clearly never wanted to be captain in the first place.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "xxblueberryxx",
+        "BannedOn": "2018-03-24T15:18:00+00:00",
+        "BannedBy": "altangy",
+        "Reason": "Left game as XO without telling anyone, again.",
+        "Expires": "2018-03-31T15:18:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "0omega",
+        "BannedOn": "2018-03-18T18:59:00+00:00",
+        "BannedBy": "nikocate",
+        "Reason": "Power hungry. Abuses said power. Arguing that firing with lethals on green is justified. Got 2-3 people killed. Appeal on the forums once you understand this is a CO-OP server and not a TDM server.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "detective"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "master-at-arms"
+            },
+            {
+                "Job": "security officer"
+            }
+        ]
+    },
+    {
+        "CKey": "davidblanc2",
+        "BannedOn": "2018-03-18T09:15:00+00:00",
+        "BannedBy": "lordwalnut",
+        "Reason": "Left the game as a scientist without notifying admins.\n\nThis was during lowpop when all crew would be needed for efficient running of the ship.\n\nAppeal on forums",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "research director"
+            },
+            {
+                "Job": "roboticist"
+            },
+            {
+                "Job": "scientist"
+            }
+        ]
+    },
+    {
+        "CKey": "titanfield",
+        "BannedOn": "2018-03-03T11:10:00+00:00",
+        "BannedBy": "koekiegast",
+        "Reason": "SSD as RD, did not tell anyone and has been ssd for about 30 minutes now",
+        "Expires": "2018-04-03T11:10:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "thegentgamer",
+        "BannedOn": "2018-03-03T11:01:00+00:00",
+        "BannedBy": "koekiegast",
+        "Reason": "Went SSD mid-round and did not tell admins or anyone really",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "kael224",
+        "BannedOn": "2018-02-25T10:10:00+00:00",
+        "BannedBy": "lordwalnut",
+        "Reason": "Left the game as CE During a time of crisis without notifying admins\n\nAppeal on fourms",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "atmospheric technician"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "ship engineer"
+            }
+        ]
+    },
+    {
+        "CKey": "xblasterr",
+        "BannedOn": "2018-02-18T17:11:00+00:00",
+        "BannedBy": "lordwalnut",
+        "Reason": "We do not think you are ready for Head-Roles on FTL13.\n\n1) You killed the AI instead of reseting it's laws\n\n2) General Incompetence\n\n3) Choosing not to do the mission, and heading back to the capital to nuke the ship\n\nAppeal on fourms when you think you are ready.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "sirwingman3",
+        "BannedOn": "2018-02-10T23:28:00+00:00",
+        "BannedBy": "masmc",
+        "Reason": "Went afk and logged out without notifying admins, notifying crew, or going to cryo as Captain.",
+        "Expires": "2018-02-20T23:28:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "pokeone",
+        "BannedOn": "2018-02-10T15:16:00+00:00",
+        "BannedBy": "nikocate",
+        "Reason": "Disconnected as Captain without alerting crew or admins. Please read our rules on playing as head/command staff as a refresher.",
+        "Expires": "2018-02-17T15:16:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "monkeyman901",
+        "BannedOn": "2018-02-09T20:56:00+00:00",
+        "BannedBy": "masmc",
+        "Reason": "Stop spamming scream.",
+        "Expires": "2018-02-10T20:56:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "emote"
+            }
+        ]
+    },
+    {
+        "CKey": "kirbythewizard101",
+        "BannedOn": "2018-02-04T21:06:00+00:00",
+        "BannedBy": "nikocate",
+        "Reason": "Spaced himself and the clown, only excuse being \"Clown is a nerd.\" Please read our rules for playing command roles and appeal on the forums when you understand what you did wrong.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "triacontakai",
+        "BannedOn": "2018-01-20T16:18:00+00:00",
+        "BannedBy": "lordwalnut",
+        "Reason": "Left as CE Without telling admin/crew\n\nAppeal on forums",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "atmospheric technician"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "ship engineer"
+            }
+        ]
+    },
+    {
+        "CKey": "youdontknow1",
+        "BannedOn": "2018-01-07T20:27:00+00:00",
+        "BannedBy": "nikocate",
+        "Reason": "Suicided as CE on the bridge. Please read our rules for command staff and appeal on the forums.",
+        "Expires": "2018-01-28T20:27:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "skygrow",
+        "BannedOn": "2018-01-01T11:00:00+00:00",
+        "BannedBy": "masmc",
+        "Reason": "Disconnected as XO, who was acting captain at the time, shortly after the round started, without notifying admins. This is not allowed.",
+        "Expires": "2018-01-08T11:00:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "themrfox",
+        "BannedOn": "2017-12-31T11:02:00+00:00",
+        "BannedBy": "lordwalnut",
+        "Reason": "Shot up the bridge entrance because the captain didn't keep to his promise.\n",
+        "Expires": "2018-01-14T11:02:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "detective"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "master-at-arms"
+            },
+            {
+                "Job": "security officer"
+            }
+        ]
+    },
+    {
+        "CKey": "slowenbrau",
+        "BannedOn": "2017-12-30T19:43:00+00:00",
+        "BannedBy": "rubles",
+        "Reason": "(MANUAL BAN) Threatened to fire on NT, but didn't. Showed general incompetence as Captain. This is a temporary ban from Captain. Please do not fire upon NT, or this will become a permanent game ban.",
+        "Expires": "2018-01-13T19:43:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "captain"
+            }
+        ]
+    },
+    {
+        "CKey": "tristain01",
+        "BannedOn": "2017-12-25T00:21:00+00:00",
+        "BannedBy": "rubles",
+        "Reason": "Excessive use of force, unintentionally killed a plasmaman trying to detain them.",
+        "Expires": "2018-01-08T00:21:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "tristain01",
+        "BannedOn": "2017-12-25T00:20:00+00:00",
+        "BannedBy": "rubles",
+        "Reason": "Excessive use of force, unintentionally killed a plasmaman trying to detain them.",
+        "Expires": "2018-01-08T00:20:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "detective"
+            },
+            {
+                "Job": "master-at-arms"
+            },
+            {
+                "Job": "security officer"
+            }
+        ]
+    },
+    {
+        "CKey": "tristain01",
+        "BannedOn": "2017-12-25T00:19:00+00:00",
+        "BannedBy": "rubles",
+        "Reason": "Excessive use of force, unintentionally killed a plasmaman trying to detain them.",
+        "Expires": "2018-01-08T00:19:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "head of security"
+            }
+        ]
+    },
+    {
+        "CKey": "trexsuper1",
+        "BannedOn": "2017-12-23T12:43:00+00:00",
+        "BannedBy": "masmc",
+        "Reason": "Deserting the ship as captain, tried to argue he did nothing wrong in ticket. Read the rules, and come back to head roles in two weeks.",
+        "Expires": "2018-01-06T12:43:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "gonzoman217",
+        "BannedOn": "2017-08-20T06:42:00+00:00",
+        "BannedBy": "nickthemoonwolf",
+        "Reason": "Went braindead as Helms Officer at the very start of the round with no notification. Please read the rules for command roles. Appeal on the forums.",
+        "Expires": "2017-09-17T06:42:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "ncaaseawolf",
+        "BannedOn": "2017-08-19T09:43:00+00:00",
+        "BannedBy": "devio",
+        "Reason": "Ban from all weapon access roles",
+        "Expires": "2017-12-17T09:43:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "munitions officer"
+            }
+        ]
+    },
+    {
+        "CKey": "ncaaseawolf",
+        "BannedOn": "2017-08-19T09:43:00+00:00",
+        "BannedBy": "devio",
+        "Reason": "Ban from all weapon access roles.\n",
+        "Expires": "2017-12-17T09:43:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "ncaaseawolf",
+        "BannedOn": "2017-08-19T09:43:00+00:00",
+        "BannedBy": "devio",
+        "Reason": "Attacked clown for no reason, banning of all roles that have access to weapons for the weekend.",
+        "Expires": "2017-12-17T09:43:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "detective"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "master-at-arms"
+            },
+            {
+                "Job": "security officer"
+            }
+        ]
+    },
+    {
+        "CKey": "clammywinter76",
+        "BannedOn": "2017-08-18T20:38:00+00:00",
+        "BannedBy": "stobarico",
+        "Reason": "Too much icky oocky",
+        "Expires": "2017-08-18T20:48:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "ooc"
+            }
+        ]
+    },
+    {
+        "CKey": "wolfskin55",
+        "BannedOn": "2017-08-13T16:05:00+00:00",
+        "BannedBy": "stobarico",
+        "Reason": "Arrested the botanist and proceeded to take his clothes, leaving him naked and bucklecuffed in a cell, without his headset. Then, after attempting to suicide several times, ran around like a child screaming obscene things. If you wish to appeal for the removal of your ban: https://ftl13.com/phpBB3/viewforum.php?f=18",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "detective"
+            },
+            {
+                "Job": "master-at-arms"
+            },
+            {
+                "Job": "security officer"
+            }
+        ]
+    },
+    {
+        "CKey": "wolfskin55",
+        "BannedOn": "2017-08-12T22:21:00+00:00",
+        "BannedBy": "altangy",
+        "Reason": "Threatend to welder bomb robotics, released water vapor into the halls, broke an escape pod window opening it to space. I'm letting him off easy this time with a head ban.",
+        "Expires": "2017-09-12T08:21:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "wolfskin55",
+        "BannedOn": "2017-08-12T18:21:00+00:00",
+        "BannedBy": "devio",
+        "Reason": "Suicided as MO, Told him off and JB for the rest of the weekend.\n",
+        "Expires": "2017-08-14T18:21:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "munitions officer"
+            }
+        ]
+    },
+    {
+        "CKey": "butttoxins",
+        "BannedOn": "2017-07-30T20:13:00+00:00",
+        "BannedBy": "altangy",
+        "Reason": "Didn't know how to HoS. Executed prisoners for felony crimes. And for anyoen that cares, violated DoP.",
+        "Expires": "2017-08-30T06:13:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "conquerer181",
+        "BannedOn": "2017-07-30T17:20:00+00:00",
+        "BannedBy": "lordwalnut",
+        "Reason": "Leaving in the middle of the round, not ahelping or heading into cryo",
+        "Expires": "2017-08-13T17:20:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "detective"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "master-at-arms"
+            },
+            {
+                "Job": "security officer"
+            }
+        ]
+    },
+    {
+        "CKey": "dogetaco",
+        "BannedOn": "2017-07-30T14:57:00+00:00",
+        "BannedBy": "masmc",
+        "Reason": "Emote spam scream as mime, for no reason, continued after told to stop. Multiple times.",
+        "Expires": "2017-07-31T14:57:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "emote"
+            }
+        ]
+    },
+    {
+        "CKey": "batatinhalegal",
+        "BannedOn": "2017-07-29T14:12:00+00:00",
+        "BannedBy": "altangy",
+        "Reason": "Suicided as a BO instead of heading to cryo. It's in the rules for any command role to go to cryo when you need to leave. Please follow this rule in the future.",
+        "Expires": "2017-08-29T00:12:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "sirgoose",
+        "BannedOn": "2017-07-09T23:59:00+00:00",
+        "BannedBy": "funce",
+        "Reason": "Suicided as the Head of Security. If you do not wish to read the rules pertaining to these jobs, then you don't have to play them.",
+        "Expires": "2017-07-11T23:59:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "bramblebears",
+        "BannedOn": "2017-07-09T23:51:00+00:00",
+        "BannedBy": "funce",
+        "Reason": "Suicided as the captain. You may appeal on the forums to tell us why this has happened.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "wilchen",
+        "BannedOn": "2017-07-01T10:46:00+00:00",
+        "BannedBy": "masmc",
+        "Reason": "Bitching over OOC about admins constantly asking people to stop shooting invincible ships, saying we can fixx the lobby sounds, it should be fixed, etc. Has done this same sort of thing in an ahelp. Appeal this at https://ftl13.com/phpBB3/viewforum.php?f=17&sid=b30215e613f089bfe738139837465f13",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "ooc"
+            }
+        ]
+    },
+    {
+        "CKey": "xxmunxx",
+        "BannedOn": "2017-07-01T05:43:00+00:00",
+        "BannedBy": "masmc",
+        "Reason": "(MANUAL BAN) Suicided, not going to cryo, after notifying admins that he was going to fall asleep soon. Left with the message \"Oh well, someone who has access can get me\"",
+        "Expires": "2017-07-04T05:23:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "weras57",
+        "BannedOn": "2017-06-25T11:29:00+00:00",
+        "BannedBy": "masmc",
+        "Reason": "General incompetence. The engine had nothing in the core, decided to start it as CE. Claims he had no knowledge it wasn\\'t set up. His final words in an ahelp were \\\"yeah i ran shuttle i didn\\'t setup the darn shard this session so i didn\\'t know shit about engine and other engineer could have just mass drive it \\\" due to him just running to the shuttle the second the core caught on fire. Learn to check your engines before touching the emitter",
+        "Expires": "2017-06-28T11:29:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "chief engineer"
+            }
+        ]
+    },
+    {
+        "CKey": "bobban",
+        "BannedOn": "2017-06-25T11:26:00+00:00",
+        "BannedBy": "masmc",
+        "Reason": "General incompetence. The engine had nothing in the core, decided to start it as CE. Claims he had no knowledge it wasn't set up. His final words in an ahelp were \"yeah i ran shuttle i didn't setup the darn shard this session so i didn't know shit about engine and other engineer could have just mass drive it \" due to him just running to the shuttle the second the core caught on fire. Learn to check your engines before touching the emitter.",
+        "Expires": "2017-06-26T11:26:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "chief engineer"
+            }
+        ]
+    },
+    {
+        "CKey": "cornelis",
+        "BannedOn": "2017-06-24T21:20:00+00:00",
+        "BannedBy": "masmc",
+        "Reason": "He suicided in his office, with no message to admins, saying he was \"Just bored, nothing to do\" as CMO. Come back to heads in three days.",
+        "Expires": "2017-06-27T21:20:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "wilchen",
+        "BannedOn": "2017-06-23T21:56:00+00:00",
+        "BannedBy": "masmc",
+        "Reason": "Proceeded to strangle the WO, was disarmed, then beheaded another member of command. Held trial by SolGov magistrate, proceeded to resist arrest. This is not good conduct. Come back in a month to Cap. Love, MASMC",
+        "Expires": "2017-07-21T21:56:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "captain"
+            }
+        ]
+    },
+    {
+        "CKey": "spacejohn",
+        "BannedOn": "2017-06-18T23:22:00+00:00",
+        "BannedBy": "stealthkibbler",
+        "Reason": "(MANUAL BAN) Grace period for job unban, get use to the game again in the coming 1-2 weeks.",
+        "Expires": "2017-07-02T23:22:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "executive officer"
+            }
+        ]
+    },
+    {
+        "CKey": "lmaomemesarebad",
+        "BannedOn": "2017-06-04T11:55:00+00:00",
+        "BannedBy": "stobarico",
+        "Reason": ".",
+        "Expires": "2017-06-05T11:55:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "ooc"
+            }
+        ]
+    },
+    {
+        "CKey": "jaime333",
+        "BannedOn": "2017-06-04T10:19:00+00:00",
+        "BannedBy": "stobarico",
+        "Reason": "Fired at Nanotrasen as AI, claims to be \"Accidental\", if you wish to explain yourself. appeal at the forum.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "ai"
+            },
+            {
+                "Job": "cyborg"
+            }
+        ]
+    },
+    {
+        "CKey": "kekmaster911",
+        "BannedOn": "2017-06-04T00:09:00+00:00",
+        "BannedBy": "talboturbo",
+        "Reason": "Suicided near start of round inside the armory. You may explain yourself on the forums.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "coolgod1198",
+        "BannedOn": "2017-06-03T11:05:00+00:00",
+        "BannedBy": "lordwalnut",
+        "Reason": "Decided to spray someone with fire, as he was following them, told to call security next time, or open a ticket, it was over the top, and was unneeded. \n\nAppeal on the forums\n\n-Walnut",
+        "Expires": "2017-06-17T11:05:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "chemist"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "geneticist"
+            },
+            {
+                "Job": "medical doctor"
+            },
+            {
+                "Job": "virologist"
+            }
+        ]
+    },
+    {
+        "CKey": "jaime333",
+        "BannedOn": "2017-05-27T03:12:00+00:00",
+        "BannedBy": "ninjanomnom",
+        "Reason": "Tased, stunned and brigged a clown who had only slipped and hit people with a foam armblade on help intent. Later when trying to drag the clown, the clown moved away and was shot to death by Wutnold124. Seems like he used any and all excuses to bring the full power of the law down on the clown even when it was only vaguely legitimate. Take some time to re read our rules and ship law before you rejoin as a member of security.",
+        "Expires": "2017-06-10T03:12:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "head of security"
+            }
+        ]
+    },
+    {
+        "CKey": "pindos228",
+        "BannedOn": "2017-05-21T01:18:00+00:00",
+        "BannedBy": "stealthkibbler",
+        "Reason": "(MANUAL BAN) brutalized the detective into borderline crit supposedly for no reason, when arrested and brigged for it he went braindead before he could be questioned. say logs implied only came on to grief.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "detective"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "master-at-arms"
+            },
+            {
+                "Job": "security officer"
+            }
+        ]
+    },
+    {
+        "CKey": "jewishcupboard",
+        "BannedOn": "2017-05-20T16:54:00+00:00",
+        "BannedBy": "qustinnus",
+        "Reason": "asshole behavior in OOC because he thinks ss13 is 4chan",
+        "Expires": "2017-05-21T16:54:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "ooc"
+            }
+        ]
+    },
+    {
+        "CKey": "wicker0",
+        "BannedOn": "2017-05-20T15:39:00+00:00",
+        "BannedBy": "stobarico",
+        "Reason": "Shot the ED-209 untill it's destruction, said the borg was rogue and started throwing the armory weapons into disposals, if it happens again, this will be changed into a perma sec ban.",
+        "Expires": "2017-05-21T15:39:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "detective"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "master-at-arms"
+            },
+            {
+                "Job": "security officer"
+            }
+        ]
+    },
+    {
+        "CKey": "coolgod1198",
+        "BannedOn": "2017-05-20T09:53:00+00:00",
+        "BannedBy": "stobarico",
+        "Reason": "Fired at the Research Director and at the SM window with a security SMG. Consider this as a hefty warning, do NOT do this again, it's a 1 day security jobban, but if you wish to appeal, head over to the forums.",
+        "Expires": "2017-05-21T09:53:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "detective"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "master-at-arms"
+            },
+            {
+                "Job": "security officer"
+            }
+        ]
+    },
+    {
+        "CKey": "glebguy",
+        "BannedOn": "2017-05-19T22:15:00+00:00",
+        "BannedBy": "funce",
+        "Reason": "Suicided right next to Cryodorms. Breach of Role Specific Rules - Heads of Staff Rule 2. DO NOT SUICIDE. Appeal when you've read the rules.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "lipplop",
+        "BannedOn": "2017-05-15T00:59:00+00:00",
+        "BannedBy": "burritojustice",
+        "Reason": "Broke windows in bridge to space and dismantled cannons as CE because they thought the Captain was some Engineer who stole his hardsuit. This is a two week job ban because they actually reached out over BYOND PM to clear things up.",
+        "Expires": "2017-05-29T00:59:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "chief engineer"
+            }
+        ]
+    },
+    {
+        "CKey": "rainbowparty",
+        "BannedOn": "2017-05-14T17:43:00+00:00",
+        "BannedBy": "stobarico",
+        "Reason": "Combining the situation with your notes, i've reached the conclusion that this warrants a ban, not a heavy one, mind you, may this serve as a warning, assaulted his co-worker and held the captain hostage as a security member.",
+        "Expires": "2017-05-14T22:43:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "detective"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "master-at-arms"
+            },
+            {
+                "Job": "security officer"
+            }
+        ]
+    },
+    {
+        "CKey": "wilchen",
+        "BannedOn": "2017-05-14T16:43:00+00:00",
+        "BannedBy": "qustinnus",
+        "Reason": "You were warned to not hand out all access to the clown, you literaly attempted to do it again the next round. ",
+        "Expires": "2017-05-21T16:43:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            }
+        ]
+    },
+    {
+        "CKey": "jewishcupboard",
+        "BannedOn": "2017-05-13T15:52:00+00:00",
+        "BannedBy": "burritojustice",
+        "Reason": "Broke into munitions and started assaulting people with engineer tools and equipment. Logged out upon arrest.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "atmospheric technician"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "ship engineer"
+            }
+        ]
+    },
+    {
+        "CKey": "wilchen",
+        "BannedOn": "2017-05-12T17:43:00+00:00",
+        "BannedBy": "stobarico",
+        "Reason": "Repeated the action of stealing botany's things after being warned several times Qustinuus in previous rounds, if you wish to get this ban lifted, apply at the forum. Proceeded to also knock down and lock permanently the chef inside the battle bridge because he was \"being annoying\"",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "research director"
+            },
+            {
+                "Job": "roboticist"
+            },
+            {
+                "Job": "scientist"
+            }
+        ]
+    },
+    {
+        "CKey": "sebastian2203",
+        "BannedOn": "2017-05-05T18:07:00+00:00",
+        "BannedBy": "talboturbo",
+        "Reason": "Asked for this jobban. Ahelp or post on the forums to get yourself unbanned at your leisure.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "head of security"
+            }
+        ]
+    },
+    {
+        "CKey": "wilchen",
+        "BannedOn": "2017-04-30T12:22:00+00:00",
+        "BannedBy": "lordwalnut",
+        "Reason": "Murdered someone because they kept stealing from RND, But they did not contact security as they assumed security was nowhere to be seen, nor did they contact an admin about the theift \n\nAppeal on forums\n\n-Walnut",
+        "Expires": "2017-05-14T12:22:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "detective"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "security officer"
+            },
+            {
+                "Job": "warden"
+            }
+        ]
+    },
+    {
+        "CKey": "pitr",
+        "BannedOn": "2017-04-29T16:05:00+00:00",
+        "BannedBy": "stealthkibbler",
+        "Reason": "(MANUAL BAN) When told to use the afk verb and head into cryosleep, instead decided to be a cheeky cunt, suicide on the spot as CMO and instantly disconnect. has been noted before for not following proper command rules.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "detective"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            },
+            {
+                "Job": "security officer"
+            },
+            {
+                "Job": "warden"
+            }
+        ]
+    },
+    {
+        "CKey": "dojodetroit",
+        "BannedOn": "2017-04-23T18:35:00+00:00",
+        "BannedBy": "burritojustice",
+        "Reason": "Injected people with syringes full of morphine and mutagen, killing at least one.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "medical doctor"
+            }
+        ]
+    },
+    {
+        "CKey": "dojodetroit",
+        "BannedOn": "2017-04-23T18:34:00+00:00",
+        "BannedBy": "burritojustice",
+        "Reason": "Killed at least one person with syringes with morphine and mutagen while injecting others. Jobbanning from CMO because this behavior is unacceptable and they're getting jobbanned from medical doctor as well.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "chief medical officer"
+            }
+        ]
+    },
+    {
+        "CKey": "wilchen",
+        "BannedOn": "2017-04-23T17:42:00+00:00",
+        "BannedBy": "qustinnus",
+        "Reason": "Powergamed as RD in multiple rounds, stole machinery from the botany and broke into a vault over the course of multiple rounds. both powergaming and breaking into places without an emergency.",
+        "Expires": "2017-04-24T17:42:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "wassupninja",
+        "BannedOn": "2017-04-23T13:11:00+00:00",
+        "BannedBy": "altangy",
+        "Reason": "Splashed a MD with Chlorine Trifluoride. Claimed it was a mixture of something else from an old wiki. Actually sent me a link. I'm thinking there is merit to that story even if the chemicals were a bit off. Hence why it's only a day ban.",
+        "Expires": "2017-04-24T13:11:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "chemist"
+            }
+        ]
+    },
+    {
+        "CKey": "adolfhonk",
+        "BannedOn": "2017-04-23T13:02:00+00:00",
+        "BannedBy": "stealthkibbler",
+        "Reason": "Killed himself as XO because \"I was bored\" then decided to complain about being dead in admin tickets expecting staff to remedy his boredom. You've done this before as Captain.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "adolfhonk",
+        "BannedOn": "2017-04-23T13:01:00+00:00",
+        "BannedBy": "stealthkibbler",
+        "Reason": "Killed himself as XO because \"I was bored\" then decided to complain about being dead in admin tickets expecting staff to remedy his boredom. You've done this before as Captain.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "executive officer"
+            }
+        ]
+    },
+    {
+        "CKey": "boyzxxx56",
+        "BannedOn": "2017-04-22T19:20:00+00:00",
+        "BannedBy": "burritojustice",
+        "Reason": "Shot random people with syringe gun full of various reagents, admitted to self-antaging.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "chief medical officer"
+            }
+        ]
+    },
+    {
+        "CKey": "spacejohn",
+        "BannedOn": "2017-04-22T12:50:00+00:00",
+        "BannedBy": "stealthkibbler",
+        "Reason": "(MANUAL BAN) Murdered the Clown for Major Trespass, Refused to Explain themselves, then told the XO to finish off the clown and suicided in the open hallway. Then disconnected right after suiciding to avoid the ban.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "detective"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            },
+            {
+                "Job": "security officer"
+            },
+            {
+                "Job": "warden"
+            }
+        ]
+    },
+    {
+        "CKey": "tanktra",
+        "BannedOn": "2017-04-21T22:05:00+00:00",
+        "BannedBy": "burritojustice",
+        "Reason": "Opened a can of N2O roundstart at max pressure. Damage was limited to gas storage in atmospherics. This is meant to be a four day jobban.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "atmospheric technician"
+            }
+        ]
+    },
+    {
+        "CKey": "shoestealer",
+        "BannedOn": "2017-04-16T21:55:00+00:00",
+        "BannedBy": "funce",
+        "Reason": "Murdered the warden after being brigged. Ignored admin warning him not to. I think you need a break from your excuse to tide.",
+        "Expires": "2017-04-17T01:55:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "clown"
+            }
+        ]
+    },
+    {
+        "CKey": "ceanox",
+        "BannedOn": "2017-04-16T17:17:00+00:00",
+        "BannedBy": "vivalas",
+        "Reason": "(MANUAL BAN) Removed it by accident.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "executive officer"
+            }
+        ]
+    },
+    {
+        "CKey": "xxrobokillerxx",
+        "BannedOn": "2017-04-15T12:33:00+00:00",
+        "BannedBy": "stobarico",
+        "Reason": "It was supposed to be full head bans, the update glitched it",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "executive officer"
+            }
+        ]
+    },
+    {
+        "CKey": "potatohboi",
+        "BannedOn": "2017-04-14T22:24:00+00:00",
+        "BannedBy": "stobarico",
+        "Reason": "Like i said before, you do not resort to lethals as the first thing, you use tasers and energy guns, also, you use your handcuffs and ask for authorization before you execute someone",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "detective"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "security officer"
+            },
+            {
+                "Job": "warden"
+            }
+        ]
+    },
+    {
+        "CKey": "ss4gogeta0",
+        "BannedOn": "2017-04-10T00:22:00+00:00",
+        "BannedBy": "talboturbo",
+        "Reason": "Needs to know to set the standard at all times, even on low pop. Cannot just vigilante all his needs. Assaulting service staff because of small things is not how to make the standard.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "executive officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "tzenda",
+        "BannedOn": "2017-04-09T22:11:00+00:00",
+        "BannedBy": "ninjanomnom",
+        "Reason": "Tokyo SexWhale is not an acceptable name.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "appearance"
+            }
+        ]
+    },
+    {
+        "CKey": "fatherofintervention",
+        "BannedOn": "2017-04-09T20:23:00+00:00",
+        "BannedBy": "burritojustice",
+        "Reason": "Is consistently terrible and abuses his authority as any security role. This job ban was after he tased and arrested bridge officers for \"criminal incompetence\" (because they told the engineeres to ignore the delaminating shard) as detective.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "detective"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "security officer"
+            },
+            {
+                "Job": "warden"
+            }
+        ]
+    },
+    {
+        "CKey": "neutral001",
+        "BannedOn": "2017-04-02T15:00:00+00:00",
+        "BannedBy": "altangy",
+        "Reason": "Bombed science for not giving them what they wanted and had a severe talking to. I'm giving them a second chance but the next \"bwoink\" should take this note with heafty consideration. User showed no remorse. The damage to science was managable.",
+        "Expires": "2017-05-03T01:00:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "atmospheric technician"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "station engineer"
+            }
+        ]
+    },
+    {
+        "CKey": "adolfhonk",
+        "BannedOn": "2017-04-02T13:15:00+00:00",
+        "BannedBy": "ninjanomnom",
+        "Reason": "(MANUAL BAN) Killed self as captain minutes into the round.",
+        "Expires": "2017-05-02T23:15:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "captain"
+            }
+        ]
+    },
+    {
+        "CKey": "ecop7",
+        "BannedOn": "2017-03-18T00:49:00+00:00",
+        "BannedBy": "ninjanomnom",
+        "Reason": "Was a general shitcurity hos and toed the line repeatedly on space law in order to do things out of character for what would be acceptable for a head of staff. Just a temporary jobban since technicaly it was within the rules but if it happens again they should punished more harshly. ",
+        "Expires": "2017-03-22T00:49:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "ecop7",
+        "BannedOn": "2017-03-18T00:48:00+00:00",
+        "BannedBy": "ninjanomnom",
+        "Reason": "Was a general shitcurity hos and toed the line repeatedly on space law in order to do things out of character for what would be acceptable for a head of staff. Just a temporary jobban since technicaly it was within the rules but if it happens again they should punished more harshly. ",
+        "Expires": "2017-03-22T00:48:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "head of personnel"
+            }
+        ]
+    },
+    {
+        "CKey": "ecop7",
+        "BannedOn": "2017-03-18T00:48:00+00:00",
+        "BannedBy": "ninjanomnom",
+        "Reason": "Was a general shitcurity hos and toed the line repeatedly on space law in order to do things out of character for what would be acceptable for a head of staff. Just a temporary jobban since technicaly it was within the rules but if it happens again they should punished more harshly. \n",
+        "Expires": "2017-03-22T00:48:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "head of security"
+            }
+        ]
+    },
+    {
+        "CKey": "rainbowparty",
+        "BannedOn": "2017-03-04T23:19:00+00:00",
+        "BannedBy": "altangy",
+        "Reason": "Threw Facid at a fellow crewmember because they entered their \"personal space\". Over Escalation is the reason cited for this temp Jobban. Please do not do this in the future. If you think the ban is missplaced then please challange it here https://ftl13.com/phpBB3/viewforum.php?f=17&sid=dc0f3050bcd543105c05564e25ce07bc or here https://ftl13.com/phpBB3/viewforum.php?f=15&sid=dc0f3050bcd543105c05564e25ce07bc if you think I have mistreated you. Banning Admin Altangy. The jobban should last only four hours",
+        "Expires": "2017-03-05T03:19:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "chemist"
+            }
+        ]
+    },
+    {
+        "CKey": "fatherofintervention",
+        "BannedOn": "2017-03-04T20:17:00+00:00",
+        "BannedBy": "qustinnus",
+        "Reason": "You have been warned about using that IC name. Appeal on FTL13.com",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "appearance"
+            }
+        ]
+    },
+    {
+        "CKey": "jesshorserage",
+        "BannedOn": "2017-03-04T13:57:00+00:00",
+        "BannedBy": "lordwalnut",
+        "Reason": "Person 3 Of 3 Who helped kill the clown, with no reason, once again, lucky it's not a game ban. This was so uncalled for. Appeal on forums",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "detective"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "security officer"
+            },
+            {
+                "Job": "warden"
+            }
+        ]
+    },
+    {
+        "CKey": "factoryman942",
+        "BannedOn": "2017-03-04T13:54:00+00:00",
+        "BannedBy": "lordwalnut",
+        "Reason": "2 Of 3 People who helped kill the clown, with no actual reason. They killed him in cold blood, they are lucky it's not a game ban. Appeal on the forums.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "detective"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "security officer"
+            },
+            {
+                "Job": "warden"
+            }
+        ]
+    },
+    {
+        "CKey": "avatar4",
+        "BannedOn": "2017-03-04T13:52:00+00:00",
+        "BannedBy": "lordwalnut",
+        "Reason": "They helped kill the clown, the ship was on green alert, and the clown done nothing wrong, the clown was defenceless, and this was 1 of 3 people who helped kill him. Appeal on the forums",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "detective"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "security officer"
+            },
+            {
+                "Job": "warden"
+            }
+        ]
+    },
+    {
+        "CKey": "bigtimetripod",
+        "BannedOn": "2017-02-25T13:50:00+00:00",
+        "BannedBy": "lordwalnut",
+        "Reason": "Same reason as above. Killed chaplain.",
+        "Expires": "2017-03-04T13:50:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "detective"
+            },
+            {
+                "Job": "security officer"
+            },
+            {
+                "Job": "warden"
+            }
+        ]
+    },
+    {
+        "CKey": "bigtimetripod",
+        "BannedOn": "2017-02-25T13:50:00+00:00",
+        "BannedBy": "lordwalnut",
+        "Reason": "Decided to kill the chaplain, was banned, been unbanned, and this is the punishment given to other bridge officer",
+        "Expires": "2017-03-04T13:50:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "head of personnel"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "ecop7",
+        "BannedOn": "2017-02-25T12:13:00+00:00",
+        "BannedBy": "lordwalnut",
+        "Reason": "Killed the chaplain on green alert, feel free to appeal on the forums.",
+        "Expires": "2017-03-04T12:13:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "detective"
+            },
+            {
+                "Job": "security officer"
+            },
+            {
+                "Job": "warden"
+            }
+        ]
+    },
+    {
+        "CKey": "ecop7",
+        "BannedOn": "2017-02-25T12:13:00+00:00",
+        "BannedBy": "lordwalnut",
+        "Reason": "Kiled the chaplain on green alert, feel free to appeal on the forums.",
+        "Expires": "2017-03-04T12:13:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "head of personnel"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "shanikan",
+        "BannedOn": "2017-02-18T20:34:00+00:00",
+        "BannedBy": "lordwalnut",
+        "Reason": "Decided to kill the clown, on green alert, because they where sabotaging the ship. They were a cargo technician at the time.",
+        "Expires": "2017-02-25T20:34:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "detective"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "security officer"
+            },
+            {
+                "Job": "warden"
+            }
+        ]
+    },
+    {
+        "CKey": "fatherofintervention",
+        "BannedOn": "2017-02-18T20:30:00+00:00",
+        "BannedBy": "lordwalnut",
+        "Reason": "Has powergamed, and been warned on executing the clown several times.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "detective"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "security officer"
+            },
+            {
+                "Job": "warden"
+            }
+        ]
+    },
+    {
+        "CKey": "sfagnum22",
+        "BannedOn": "2017-02-12T18:59:00+00:00",
+        "BannedBy": "vivalas",
+        "Reason": "Shooting at people on code green with no reason and no verbal warning. Learn security procedure and proper arrest and escalation of force before you come back. Feel free to appeal this after a few weeks or so.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "detective"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "security officer"
+            },
+            {
+                "Job": "warden"
+            }
+        ]
+    },
+    {
+        "CKey": "lcass123",
+        "BannedOn": "2017-02-12T15:22:00+00:00",
+        "BannedBy": "lordwalnut",
+        "Reason": "Once again, decided to kill with no valid reason.\n",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "security officer"
+            }
+        ]
+    },
+    {
+        "CKey": "lcass123",
+        "BannedOn": "2017-02-12T15:22:00+00:00",
+        "BannedBy": "lordwalnut",
+        "Reason": "Decided to kill, with no valid reason.\n",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "detective"
+            },
+            {
+                "Job": "warden"
+            }
+        ]
+    },
+    {
+        "CKey": "lcass123",
+        "BannedOn": "2017-02-11T15:01:00+00:00",
+        "BannedBy": "devio",
+        "Reason": "Banned from all Command positions untill he can learn how to folow orders and instruct a team. Also working as a team he has to learn.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "head of personnel"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "lcass123",
+        "BannedOn": "2017-02-11T14:58:00+00:00",
+        "BannedBy": "devio",
+        "Reason": "Shitcurity all arround, Defying the captain, firing on own people, carrying the sniper rifle arround on a code green. ",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "head of security"
+            }
+        ]
+    },
+    {
+        "CKey": "xxrobokillerxx",
+        "BannedOn": "2017-02-05T17:09:00+00:00",
+        "BannedBy": "vivalas",
+        "Reason": "Powergaming, immaturity, and generally acting like a sour person. Not the type of player suited for command positions that can make or break a round. Feel free to appeal when you have learned that command positions are not just a powergrab for yourself and can ruin the round for others if played poorly.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "head of personnel"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "uberhagrid",
+        "BannedOn": "2017-02-04T17:08:00+00:00",
+        "BannedBy": "stealthkibbler",
+        "Reason": "Fired on NT vessels because he was frustrated with the engineering staff.",
+        "Expires": "2017-02-18T17:08:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "head of personnel"
+            }
+        ]
+    },
+    {
+        "CKey": "tombomcbombo",
+        "BannedOn": "2017-02-04T13:20:00+00:00",
+        "BannedBy": "stealthkibbler",
+        "Reason": "(MANUAL BAN) Went Captain and decided to get drunk, caused his MO to want to spark a mutiny for various reason and decided to get the Sniper Rifle from the armory and shot out a bridge window",
+        "Expires": "2017-02-18T13:20:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "head of personnel"
+            }
+        ]
+    },
+    {
+        "CKey": "tombomcbombo",
+        "BannedOn": "2017-02-04T09:27:00+00:00",
+        "BannedBy": "stealthkibbler",
+        "Reason": "Went Captain and decided to get drunk, caused his MO to want to spark a mutiny for various reason and decided to get the Sniper Rifle from the armory and shot out a bridge window.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "head of personnel"
+            }
+        ]
+    },
+    {
+        "CKey": "ceanox",
+        "BannedOn": "2017-02-03T20:58:00+00:00",
+        "BannedBy": "vivalas",
+        "Reason": "Not fit for command positions. Opened fire on other people with their laser for no reason and fired on NT ships. Captain can make or break the round and you are not fit for the position.",
+        "Expires": "2017-03-03T20:58:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "head of personnel"
+            }
+        ]
+    },
+    {
+        "CKey": "ceanox",
+        "BannedOn": "2017-02-03T20:58:00+00:00",
+        "BannedBy": "vivalas",
+        "Reason": "Not fit for command positions. Opened fire on other people with their laser for no reason and fired on NT ships. Captain can make or break the round and you are not fit for the position.",
+        "Expires": "2017-03-03T20:58:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "asskek",
+        "BannedOn": "2017-01-29T19:06:00+00:00",
+        "BannedBy": "qustinnus",
+        "Reason": "Killed themselves as captain 5 minutes in the round for literaly zero reason.",
+        "Expires": "2017-01-31T19:06:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "captain"
+            }
+        ]
+    },
+    {
+        "CKey": "xeno366",
+        "BannedOn": "2017-01-29T10:54:00+00:00",
+        "BannedBy": "baskilnation",
+        "Reason": "left crew behind knowingly, has harmed.",
+        "Expires": "2017-01-31T10:54:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "ai"
+            },
+            {
+                "Job": "cyborg"
+            }
+        ]
+    },
+    {
+        "CKey": "supatoasta",
+        "BannedOn": "2017-01-22T13:39:00+00:00",
+        "BannedBy": "devio",
+        "Reason": "Murderboning as ninja, Told to appeal when he has read the rules.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "cultist"
+            }
+        ]
+    },
+    {
+        "CKey": "supatoasta",
+        "BannedOn": "2017-01-22T13:38:00+00:00",
+        "BannedBy": "devio",
+        "Reason": "Murderboning as ninja, Told to appeal when he has read the rules.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "abductor"
+            },
+            {
+                "Job": "alien candidate"
+            },
+            {
+                "Job": "changeling"
+            },
+            {
+                "Job": "gangster"
+            },
+            {
+                "Job": "operative"
+            },
+            {
+                "Job": "revolutionary"
+            },
+            {
+                "Job": "servant of ratvar"
+            },
+            {
+                "Job": "traitor"
+            },
+            {
+                "Job": "wizard"
+            }
+        ]
+    },
+    {
+        "CKey": "mrmooki",
+        "BannedOn": "2017-01-21T11:26:00+00:00",
+        "BannedBy": "baskilnation",
+        "Reason": "Deleted all level 5 research. \"People were breaking in, my character doesn't like violence.\"\n",
+        "Expires": "2017-01-22T11:26:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "research director"
+            },
+            {
+                "Job": "roboticist"
+            },
+            {
+                "Job": "scientist"
+            }
+        ]
+    },
+    {
+        "CKey": "heyitsmegoku",
+        "BannedOn": "2017-01-21T02:52:00+00:00",
+        "BannedBy": "brandonsacawv",
+        "Reason": "Self-admitted that he/she does not know how to actually set up or maintain the SM engine. Believes that simply telling engineers to set it up is proficient knowledge to be CE.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "chief engineer"
+            }
+        ]
+    },
+    {
+        "CKey": "titanfield",
+        "BannedOn": "2017-01-20T23:53:00+00:00",
+        "BannedBy": "vivalas",
+        "Reason": "Additional jobban from command positions for a week after you come back. Don't lie to admins.",
+        "Expires": "2017-02-03T23:53:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "bridge officer"
+            },
+            {
+                "Job": "captain"
+            },
+            {
+                "Job": "chief engineer"
+            },
+            {
+                "Job": "chief medical officer"
+            },
+            {
+                "Job": "head of personnel"
+            },
+            {
+                "Job": "head of security"
+            },
+            {
+                "Job": "research director"
+            }
+        ]
+    },
+    {
+        "CKey": "asskek",
+        "BannedOn": "2017-01-16T14:30:00+00:00",
+        "BannedBy": "nickvr628",
+        "Reason": "Revealed entire cult by shouting flavor text over comms. Appeal on forums.",
+        "Expires": null,
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "syndicate"
+            }
+        ]
+    },
+    {
+        "CKey": "truesovereign",
+        "BannedOn": "2017-01-07T19:55:00+00:00",
+        "BannedBy": "baskilnation",
+        "Reason": "same reason as detective",
+        "Expires": "2017-01-14T19:55:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "security officer"
+            }
+        ]
+    },
+    {
+        "CKey": "truesovereign",
+        "BannedOn": "2017-01-07T19:55:00+00:00",
+        "BannedBy": "baskilnation",
+        "Reason": "same reason as warden",
+        "Expires": "2017-01-14T19:55:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "detective"
+            }
+        ]
+    },
+    {
+        "CKey": "truesovereign",
+        "BannedOn": "2017-01-07T19:54:00+00:00",
+        "BannedBy": "baskilnation",
+        "Reason": "same reason as HoS\n",
+        "Expires": "2017-01-14T19:54:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "warden"
+            }
+        ]
+    },
+    {
+        "CKey": "truesovereign",
+        "BannedOn": "2017-01-07T19:54:00+00:00",
+        "BannedBy": "baskilnation",
+        "Reason": "Banning for sec as he has lethaled people, and has attempted to stun the captain.",
+        "Expires": "2017-01-14T19:54:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "head of security"
+            }
+        ]
+    },
+    {
+        "CKey": "qustinnus",
+        "BannedOn": "2017-01-07T19:49:00+00:00",
+        "BannedBy": "qustinnus",
+        "Reason": "hes a cuck\n",
+        "Expires": "2017-01-07T20:49:00+00:00",
+        "UnbannedBy": null,
+        "Ip": null,
+        "CID": null,
+        "BanType": 1,
+        "BanId": null,
+        "JobBans": [
+            {
+                "Job": "head of personnel"
+            }
+        ]
+    }
+]

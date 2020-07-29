@@ -2,12 +2,11 @@
 using CentCom.Common.Data;
 using CentCom.Server.BanSources;
 using CentCom.Server.Data;
+using CentCom.Server.FlatData;
 using CentCom.Server.Quartz;
 using CentCom.Server.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Console;
 using Quartz;
 using Quartz.Impl;
 using Serilog;
@@ -171,6 +170,7 @@ namespace CentCom.Server
             }
 
             // Add jobs
+            services.AddTransient<FlatDataImporter>();
             services.AddTransient<DatabaseUpdater>();
 
             _serviceProvider = services.BuildServiceProvider(true);
