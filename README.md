@@ -16,6 +16,12 @@ Finally:
 - Run the parsing server first (``CentCom.Server``) to create the database schema and apply any necessary migrations to the database. This will also begin to populate the database based on the parsing schedule, which by default will parse all ban sources for new bans every 5 minutes except for at 00 and 30 minutes of every hour, at which time a full ban pass will occur.
 - AFTER the migration/database setup has occurred successfully, you can now start the API server (``CentCom.API``) without any concerns. This server will now take API requests, the documentation of which you can view at the ``/swagger`` pages.
 
+## FAQ
+
+### How often does the parser run?
+
+I will likely make this configurable in the future, but at the moment it will run at every 5 minute interval in the hour (``XX:05``, ``XX:10``...) for a latest refresh (getting all new bans), except for ``XX:00`` and ``XX:30``, which will be full refreshes. At this point the entire source set is taken from each ban source and compared with what is stored in the database, at which point any differences will be resolved.
+
 ## Contributing
 PRs can be opened on this repository to propose changes to the codebase. There are a few things to note...
 
@@ -41,9 +47,3 @@ Add-Migration -Context MySqlDbContext -OutputDir Migrations/MySql <Name of migra
 ### Adding a New Database Backend
 
 If you wish to support an additional database backend, you will need to create a new subclass of ``CentCom.Common.Data.DatabaseContext``. If necessary, you can overload how model types are stored in the new database backend by providing an override for the ``OnModelCreating`` method of ``DatabaseContext``, which you can see an example of in ``CentCom.Common.Data.MySqlDbContext``. As well as this, you will need to add a migration for your new database backend. You can do so using the same format as found in '*Making Changes to Database Objects*' above.
-
-## FAQ
-
-### How often does the parser run?
-
-I will likely make this configurable in the future, but at the moment it will run at every 5 minute interval in the hour (``XX:05``, ``XX:10``...) for a latest refresh (getting all new bans), except for ``XX:00`` and ``XX:30``, which will be full refreshes. At this point the entire source set is taken from each ban source and compared with what is stored in the database, at which point any differences will be resolved.
