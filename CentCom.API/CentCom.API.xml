@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CentCom.API</name>
+    </assembly>
+    <members>
+        <member name="M:CentCom.API.Controllers.BanController.GetBansForKey(System.String,System.Boolean,System.Nullable{System.Int32})">
+            <summary>
+            Retrieves stored bans for a provided ckey.
+            </summary>
+            <param name="key">A BYOND key, will be converted into CKey</param>
+            <param name="onlyActive">Operator for controlling if only active bans will be returned</param>
+            <param name="source">Operator for specifying a specific source to return bans for</param>
+            <returns>A collection of bans matching the provided conditions</returns>
+            <response code="200">The user's bans</response>
+            <response code="400">Key was null or whitespace</response>
+        </member>
+        <member name="M:CentCom.API.Controllers.BanController.GetSources">
+            <summary>
+            Lists all available ban sources
+            </summary>
+            <returns>A collection of ban sources</returns>
+            <response code="200">The list of ban sources</response>
+        </member>
+        <member name="M:CentCom.API.Controllers.BanController.GetBan(System.Int32)">
+            <summary>
+            Retrieves a specific ban from CentCom using the internal ID
+            </summary>
+            <param name="id">The CentCom Ban ID of the ban</param>
+            <returns>The ban specified</returns>
+            <response code="200">The desired ban</response>
+            <response code="404">Ban ID was invalid</response>
+        </member>
+    </members>
+</doc>
