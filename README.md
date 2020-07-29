@@ -19,7 +19,7 @@ Finally:
 ## Contributing
 PRs can be opened on this repository to propose changes to the codebase. There are a few things to note...
 
-### Adding a New Ban Source**
+### Adding a New Ban Source
 
 If you are going to add an additional ban source, you typically have to add two new objects: a subclass of ``CentCom.Server.BanSources.BanParser``, which is **required**, and optionally a ``BanService`` in ``CentCom.Server.Services`` which helps to isolate the code used for parsing web pages and other forms of online resources.
 
