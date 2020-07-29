@@ -31,11 +31,7 @@ namespace CentCom
             {
                 x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
                 x.JsonSerializerOptions.IgnoreNullValues = true;
-            }); //.AddNewtonsoftJson(x =>
-            //{
-            //    x.SerializerSettings.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter()),
-            //    x.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore
-            //});
+            });
 
             // Add DB context
             var dbConfig = new DbConfig();
