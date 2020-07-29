@@ -1,5 +1,6 @@
 ﻿using AngleSharp;
 using CentCom.Common.Models;
+using CentCom.Server.Exceptions;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,13 @@ namespace CentCom.Server.Services
             var config = AngleSharp.Configuration.Default.WithDefaultLoader();
             var context = BrowsingContext.New(config);
             var document = await context.OpenAsync("https://ss13.moe/index.php/bans");
+
+            if (document.StatusCode != HttpStatusCode.OK)
+            {
+                _logger.LogWarning("/vg/ website returned a non-200 HTTP response code: {document.StatusCode}, aborting parse.");
+                throw new BanSourceUnavailableException($"/vg/ website returned a non-200 HTTP response code: {document.StatusCode}, aborting parse.");
+            }
+
             var tables = document.QuerySelectorAll("form > table > tbody");
             var banTable = tables[0];
             var jobTable = tables[1];

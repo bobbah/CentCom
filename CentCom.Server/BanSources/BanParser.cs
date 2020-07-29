@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CentCom.Common.Data;
+using CentCom.Server.Exceptions;
 
 namespace CentCom.Server.BanSources
 {
@@ -26,15 +27,54 @@ namespace CentCom.Server.BanSources
 
         public virtual async Task Execute(IJobExecutionContext context)
         {
-            _logger.LogInformation($"Firing ban parsing for {GetType().Name}");
-            var storedBans = await _dbContext.Bans
+            try
+            {
+                await ParseBans(context);
+            }
+            catch (JobExecutionException ex)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Encountered unhandled exception during ban parsing");
+                throw new JobExecutionException(ex, false);
+            }
+        }
+
+        public virtual async Task ParseBans(IJobExecutionContext context)
+        {
+            _logger.LogInformation($"Beginning ban parse");
+            IEnumerable<Ban> storedBans = null;
+            try
+            {
+                storedBans = await _dbContext.Bans
                 .Where(x => Sources.Keys.Contains(x.SourceNavigation.Name))
                 .Include(x => x.JobBans)
                 .Include(x => x.SourceNavigation)
                 .ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed to get stored ban data from database, encountered exception");
+                throw new JobExecutionException(ex, false);
+            }
 
-            var isCompleteRefresh = context.JobDetail.JobDataMap.GetBoolean("completeRefresh") || storedBans.Count == 0;
-            IEnumerable<Ban> bans = await (isCompleteRefresh ? FetchAllBansAsync() : FetchNewBansAsync());
+            var isCompleteRefresh = context.MergedJobDataMap.GetBoolean("completeRefresh") || storedBans.Count() == 0;
+            IEnumerable<Ban> bans = null;
+            try
+            {
+                bans = await (isCompleteRefresh ? FetchAllBansAsync() : FetchNewBansAsync());
+            }
+            catch (BanSourceUnavailableException)
+            {
+                return;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed to get ban data from source, encountered exception during fetch");
+                throw new JobExecutionException(ex, false);
+            }
 
             // Assign proper sources
             bans = await AssignBanSources(bans);
@@ -60,8 +100,8 @@ namespace CentCom.Server.BanSources
                         && x.BanType == b.BanType
                         && x.CKey == b.CKey
                         && x.BannedBy == b.BannedBy
-                        && ((x.JobBans == null && b.JobBans == null) 
-                            || x.JobBans.Select(y => y.Job).ToHashSet().SetEquals(bJobs)));
+                        && (((x.JobBans == null || x.JobBans.Count == 0) && b.JobBans == null)
+                            || (x.JobBans != null && b.JobBans != null && x.JobBans.Select(y => y.Job).ToHashSet().SetEquals(bJobs))));
                 }
 
                 // Update ban if an existing one is found

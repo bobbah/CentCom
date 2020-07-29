@@ -1,4 +1,5 @@
 ﻿using CentCom.Common.Models;
+using CentCom.Server.Exceptions;
 using Extensions;
 using Microsoft.Extensions.Logging;
 using RestSharp;
@@ -35,7 +36,8 @@ namespace CentCom.Server.Services
 
             if (response.StatusCode != System.Net.HttpStatusCode.OK)
             {
-                throw new Exception($"Received invalid response code ({response.StatusCode}) from BeeStation13 when requesting ban data");
+                _logger.LogError("Beestation website returned a non-200 HTTP response code: {response.StatusCode}, aborting parse.");
+                throw new BanSourceUnavailableException($"Beestation website returned a non-200 HTTP response code: {response.StatusCode}, aborting parse.");
             }
 
             var toReturn = new List<Ban>();

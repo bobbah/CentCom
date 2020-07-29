@@ -7,11 +7,15 @@ using CentCom.Server.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Console;
 using Quartz;
 using Quartz.Impl;
+using Serilog;
+using Serilog.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace CentCom.Server
@@ -24,7 +28,26 @@ namespace CentCom.Server
 
         static async Task Main(string[] args)
         {
+            // Get application configuration
             BuildConfiguration(args);
+
+            // Setup Serilog
+            Log.Logger = new LoggerConfiguration()
+                .Enrich.FromLogContext()
+                .WriteTo.Logger(lc =>
+                {
+                    lc.Filter.ByExcluding(Matching.FromSource("Quartz"));
+                    lc.WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] ({SourceContext}) {Message:lj}{NewLine}{Exception}");
+                })
+                .WriteTo.Logger(lc =>
+                {
+                    lc.WriteTo.File(path: "centcom-parser-server.txt", 
+                        outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] ({SourceContext}) {Message:lj}{NewLine}{Exception}");
+                })
+                .CreateLogger();
+
+            Log.Logger.ForContext<Program>()
+                .Information($"<== Starting CentCom Server v{Assembly.GetExecutingAssembly().GetName().Version} ==>");
 
             // Get a scheduler factory and scheduler
             StdSchedulerFactory factory = new StdSchedulerFactory();
@@ -48,6 +71,8 @@ namespace CentCom.Server
 
             // Start scheduler
             await _scheduler.Start();
+
+            Log.Logger.ForContext<Program>().Information("Startup completed");
 
             // Run infinitely
             await Task.Delay(-1);
@@ -99,7 +124,8 @@ namespace CentCom.Server
             var services = new ServiceCollection();
 
             // Add logging
-            services.AddLogging(x => x.AddConsole());
+            services.AddLogging(loggingBuilder =>
+                loggingBuilder.AddSerilog(dispose: true));
 
             // Add scheduler
             services.AddSingleton(_scheduler);
