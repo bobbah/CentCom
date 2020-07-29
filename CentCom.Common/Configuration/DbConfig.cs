@@ -6,7 +6,9 @@ namespace CentCom.Common.Configuration
 {
     public enum DbType
     {
-        Postgres
+        Postgres,
+        MySql,
+        MariaDB
     }
 
     public class DbConfig

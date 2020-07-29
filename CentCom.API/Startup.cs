@@ -49,6 +49,10 @@ namespace CentCom
                 case DbType.Postgres:
                     services.AddDbContext<DatabaseContext, NpgsqlDbContext>();
                     break;
+                case DbType.MariaDB:
+                case DbType.MySql:
+                    services.AddDbContext<DatabaseContext, MySqlDbContext>();
+                    break;
             }
             
 

@@ -121,6 +121,10 @@ namespace CentCom.Server
                 case DbType.Postgres:
                     services.AddDbContext<DatabaseContext, NpgsqlDbContext>();
                     break;
+                case DbType.MariaDB:
+                case DbType.MySql:
+                    services.AddDbContext<DatabaseContext, MySqlDbContext>();
+                    break;
             }
 
             // Add ban services as singletons

@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 namespace CentCom.Common.Data.DesignTime
 {
-    public class NpgsqlDbContextFactory : IDesignTimeDbContextFactory<NpgsqlDbContext>
+    class MySqlDbContextFactory : IDesignTimeDbContextFactory<MySqlDbContext>
     {
-        public NpgsqlDbContext CreateDbContext(string[] args)
+        public MySqlDbContext CreateDbContext(string[] args)
         {
             var conf = new Dictionary<string, string>
             {
@@ -14,7 +14,7 @@ namespace CentCom.Common.Data.DesignTime
                 { "dbConfig:dbType", "Postgres" }
             };
             IConfiguration spoofedConfig = new ConfigurationBuilder().AddInMemoryCollection(conf).Build();
-            return new NpgsqlDbContext(spoofedConfig);
+            return new MySqlDbContext(spoofedConfig);
         }
     }
 }
