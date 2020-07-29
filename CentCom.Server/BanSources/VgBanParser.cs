@@ -34,6 +34,7 @@ namespace CentCom.Server.BanSources
 
         public override async Task<IEnumerable<Ban>> FetchNewBansAsync()
         {
+            // Note that the /vg/station website only has a single page for bans, so we always do a full refresh
             _logger.LogInformation("Fetching new bans for Yogstation...");
             return await _banService.GetBansAsync();
         }

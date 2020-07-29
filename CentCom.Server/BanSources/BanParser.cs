@@ -16,7 +16,14 @@ namespace CentCom.Server.BanSources
     {
         protected ILogger _logger;
         protected DatabaseContext _dbContext { get; set; }
+        /// <summary>
+        /// A map of BanSource.Name, BanSource containing the 'offline' skeletons of the ban sources
+        /// for this ban parser. Necessary for creating the sources initially in the database.
+        /// </summary>
         public virtual Dictionary<string, BanSource> Sources { get; }
+        /// <summary>
+        /// Boolean operator detailing if the ban source exposes their own ban IDs in their API
+        /// </summary>
         public virtual bool SourceSupportsBanIDs { get; }
 
         public BanParser(DatabaseContext dbContext, ILogger<BanParser> logger)
@@ -25,6 +32,15 @@ namespace CentCom.Server.BanSources
             _logger = logger;
         }
 
+        /// <summary>
+        /// Executes the ban parsing job
+        /// </summary>
+        /// <remarks>
+        /// This also handles the proper handling of unexpected exceptions to prevent infinite job looping, jobs
+        /// will instead execute again at the next scheduled trigger.
+        /// </remarks>
+        /// <param name="context">The job execution context provided by Quartz' scheduler</param>
+        /// <returns>A task for the asynchronous work</returns>
         public virtual async Task Execute(IJobExecutionContext context)
         {
             try
@@ -42,9 +58,16 @@ namespace CentCom.Server.BanSources
             }
         }
 
+        /// <summary>
+        /// Attempts to fetch and process bans from the source for the ban parser.
+        /// </summary>
+        /// <param name="context">The job execution context provided by Quartz' scheduler</param>
+        /// <returns>A task for the asynchronous work</returns>
         public virtual async Task ParseBans(IJobExecutionContext context)
         {
-            _logger.LogInformation($"Beginning ban parse");
+            _logger.LogInformation($"Beginning ban parsing");
+            
+            // Get stored bans from the database
             IEnumerable<Ban> storedBans = null;
             try
             {
@@ -60,6 +83,7 @@ namespace CentCom.Server.BanSources
                 throw new JobExecutionException(ex, false);
             }
 
+            // Get bans from the source
             var isCompleteRefresh = context.MergedJobDataMap.GetBoolean("completeRefresh") || storedBans.Count() == 0;
             IEnumerable<Ban> bans = null;
             try
@@ -130,6 +154,13 @@ namespace CentCom.Server.BanSources
             {
                 var missingBans = new List<Ban>();
                 var bansHashed = new HashSet<int>(bans.Select(x => x.Id));
+
+                // Prevent accidentally deleting the entire ban source set
+                if (bansHashed.Count == 0)
+                {
+                    throw new Exception("Retrieved zero bans during complete refresh, halting update prior to removing all bans for this source from database.");
+                }
+
                 foreach (var b in storedBans)
                 {
                     if (!bansHashed.Contains(b.Id))
@@ -143,8 +174,14 @@ namespace CentCom.Server.BanSources
                 _logger.LogInformation("Removing deleted bans...");
                 await _dbContext.SaveChangesAsync();
             }
+
+            _logger.LogInformation("Completed ban parsing.");
         }
 
+        /// <summary>
+        /// Gets all BanSource objects from the connected database
+        /// </summary>
+        /// <returns>A dictionary of the BanSource objects found from the database</returns>
         public async Task<Dictionary<string, BanSource>> GetSourcesAsync()
         {
             if (Sources == null)
@@ -152,7 +189,10 @@ namespace CentCom.Server.BanSources
                 throw new NullReferenceException($"Sources for {GetType()} are null.");
             }
 
+            // Get ban sources from the database
             var foundSources = await _dbContext.BanSources.Where(x => Sources.Keys.Contains(x.Name)).ToListAsync();
+
+            // Insert any ban sources that are missing, this is vital to ensure the database is properly configured state-wise
             if (foundSources.Count() != Sources.Count)
             {
                 var missing = Sources.Keys.Except(foundSources.Select(x => x.Name)).ToList();
@@ -167,6 +207,14 @@ namespace CentCom.Server.BanSources
             return foundSources.ToDictionary(x => x.Name);
         }
 
+        /// <summary>
+        /// Maps the correct BanSource database object to the placeholder objects on provided Ban objects.
+        /// </summary>
+        /// <remarks>
+        /// Used for setting the correct BanSource prior to database insertion or interaction
+        /// </remarks>
+        /// <param name="bans">A collection of bans to have their source objects assigned</param>
+        /// <returns>A collection of bans which have correct database-backed BanSource objects assigned</returns>
         public async Task<IEnumerable<Ban>> AssignBanSources(IEnumerable<Ban> bans)
         {
             var sources = await GetSourcesAsync();
@@ -178,7 +226,20 @@ namespace CentCom.Server.BanSources
             return bans;
         }
 
+        /// <summary>
+        /// Attempts to fetch new unseen bans from the ban source
+        /// </summary>
+        /// <remarks>
+        /// This can include existing bans, the BanParser will handle them correctly, the intention is 
+        /// just to limit the response size
+        /// </remarks>
+        /// <returns>A collection of bans found from the source</returns>
         public abstract Task<IEnumerable<Ban>> FetchNewBansAsync();
+
+        /// <summary>
+        /// Attempts to fetch all bans from the ban source
+        /// </summary>
+        /// <returns>A collection of bans found from the source</returns>
         public abstract Task<IEnumerable<Ban>> FetchAllBansAsync();
     }
 }

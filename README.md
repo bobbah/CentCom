@@ -3,7 +3,7 @@ CentCom is a software suite used to provide a global bans database for Space Sta
 
 ## Setup
 To run your own local instance of CentCom, you must have the following...
-- A supported database to store the ban data within (Postgres, MySql, MariaDB). You will need to createe a database for the CentCom data, and users for the parsing server and API server.
+- A supported database to store the ban data within (Postgres, MySql, MariaDB). You will need to create a database for the CentCom data, and users for the parsing server and API server.
 - A machine to run the CentCom Parsing Server
 - A machine to run the CentCom API Server (this could be the same machine as the parsing server)
 

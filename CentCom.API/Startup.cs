@@ -84,6 +84,7 @@ namespace CentCom
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
+                c.RoutePrefix = "";
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "CentCom V1");
             });
 

@@ -47,7 +47,7 @@ namespace CentCom.Server
                 .CreateLogger();
 
             Log.Logger.ForContext<Program>()
-                .Information($"<== Starting CentCom Server v{Assembly.GetExecutingAssembly().GetName().Version} ==>");
+                .Information($"Starting CentCom Server v{Assembly.GetExecutingAssembly().GetName().Version}");
 
             // Get a scheduler factory and scheduler
             StdSchedulerFactory factory = new StdSchedulerFactory();

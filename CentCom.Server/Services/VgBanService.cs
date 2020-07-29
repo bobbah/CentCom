@@ -21,6 +21,7 @@ namespace CentCom.Server.Services
             _logger = logger;
         }
 
+        // TODO: cleanup
         public async Task<IEnumerable<Ban>> GetBansAsync()
         {
             var toReturn = new List<Ban>();
