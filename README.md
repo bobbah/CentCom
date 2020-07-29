@@ -19,7 +19,7 @@ Finally:
 ## Contributing
 PRs can be opened on this repository to propose changes to the codebase. There are a few things to note...
 
-**Adding a New Ban Source**:
+### Adding a New Ban Source**
 
 If you are going to add an additional ban source, you typically have to add two new objects: a subclass of ``CentCom.Server.BanSources.BanParser``, which is **required**, and optionally a ``BanService`` in ``CentCom.Server.Services`` which helps to isolate the code used for parsing web pages and other forms of online resources.
 
@@ -29,7 +29,7 @@ As well as this, you must provide implementations for two different methods, ``F
 
 Once you provide these methods, the base implementation of ``BanParser`` will handle the rest of the work of sorting through and storing bans. You essentially just have to provide it a means of getting those bans.
 
-**Making Changes to Database Objects**:
+### Making Changes to Database Objects
 
 If you make any changes to database objects (typically types in CentCom.Common.Models), you will need to generate a migration. You can do this from Visual Studio using the EntityFrameWorkCore tools, and the following powershell lines:
 ```
@@ -38,12 +38,12 @@ Add-Migration -Context MySqlDbContext -OutputDir Migrations/MySql <Name of migra
 ```
 *Note: You must add a migration for each database type supported, these types should be in ``CentCom.Common.Data``, subclassed from ``DatabaseContext``. The two lines above are intended to be an example and may not represent all the ``DatabaseContext`` subclasses.*
 
-**Adding a New Database Backend**:
+### Adding a New Database Backend
 
 If you wish to support an additional database backend, you will need to create a new subclass of ``CentCom.Common.Data.DatabaseContext``. If necessary, you can overload how model types are stored in the new database backend by providing an override for the ``OnModelCreating`` method of ``DatabaseContext``, which you can see an example of in ``CentCom.Common.Data.MySqlDbContext``. As well as this, you will need to add a migration for your new database backend. You can do so using the same format as found in '*Making Changes to Database Objects*' above.
 
 ## FAQ
 
-**How often does the parser run?**
+### How often does the parser run?
 
 I will likely make this configurable in the future, but at the moment it will run at every 5 minute interval in the hour (``XX:05``, ``XX:10``...) for a latest refresh (getting all new bans), except for ``XX:00`` and ``XX:30``, which will be full refreshes. At this point the entire source set is taken from each ban source and compared with what is stored in the database, at which point any differences will be resolved.
