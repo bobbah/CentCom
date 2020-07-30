@@ -1,7 +1,7 @@
 # CentCom
 CentCom is a software suite used to provide a global bans database for Space Station 13. It is capable of ingesting data from several public ban lists, and provides an API through which to search these collected records.
 
-**There is a central instance of CentCom running at https://centcomm.melonmesa.com, where you can also find the compiled Swagger documentation to read about and experiment with the API.**
+**There is a central instance of CentCom running at https://centcom.melonmesa.com, where you can also find the compiled Swagger documentation to read about and experiment with the API.**
 
 ## Setup
 To run your own local instance of CentCom, you must have the following...
