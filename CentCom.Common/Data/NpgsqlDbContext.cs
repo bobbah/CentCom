@@ -12,7 +12,8 @@ namespace CentCom.Common.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            options.UseNpgsql(Configuration.GetSection("dbConfig")["connectionString"]);
+            options.UseNpgsql(Configuration.GetSection("dbConfig")["connectionString"])
+                .UseSnakeCaseNamingConvention();
         }
     }
 }
