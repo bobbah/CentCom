@@ -28,14 +28,14 @@ namespace CentCom.Server.BanSources
 
         public override async Task<IEnumerable<Ban>> FetchAllBansAsync()
         {
-            _logger.LogInformation("Fetching all bans for Yogstation...");
+            _logger.LogInformation("Fetching all bans for /vg/station...");
             return await _banService.GetBansAsync();
         }
 
         public override async Task<IEnumerable<Ban>> FetchNewBansAsync()
         {
             // Note that the /vg/station website only has a single page for bans, so we always do a full refresh
-            _logger.LogInformation("Fetching new bans for Yogstation...");
+            _logger.LogInformation("Fetching new bans for /vg/station...");
             return await _banService.GetBansAsync();
         }
     }

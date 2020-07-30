@@ -111,7 +111,7 @@ namespace CentCom.Common.Migrations.MySql
                     b.HasOne("CentCom.Common.Models.BanSource", "SourceNavigation")
                         .WithMany("Bans")
                         .HasForeignKey("Source")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 

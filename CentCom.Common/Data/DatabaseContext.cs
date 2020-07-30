@@ -47,7 +47,7 @@ namespace CentCom.Common.Data
                 entity.HasMany(e => e.Bans)
                     .WithOne(b => b.SourceNavigation)
                     .HasForeignKey(b => b.Source)
-                    .OnDelete(DeleteBehavior.Restrict);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<JobBan>(entity =>
