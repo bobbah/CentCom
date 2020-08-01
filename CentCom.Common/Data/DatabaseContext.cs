@@ -13,6 +13,7 @@ namespace CentCom.Common.Data
         public DbSet<Ban> Bans { get; set; }
         public DbSet<BanSource> BanSources { get; set; }
         public DbSet<JobBan> JobBans { get; set; }
+        public DbSet<FlatBansVersion> FlatBansVersion { get; set; }
 
         public DatabaseContext(IConfiguration configuration)
         {
@@ -53,6 +54,16 @@ namespace CentCom.Common.Data
             modelBuilder.Entity<JobBan>(entity =>
             {
                 entity.HasKey(e => new { e.BanId, e.Job });
+            });
+
+            modelBuilder.Entity<FlatBansVersion>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Id).UseIdentityAlwaysColumn();
+                entity.Property(e => e.Name).IsRequired();
+                entity.Property(e => e.PerformedAt).IsRequired();
+                entity.Property(e => e.Version).IsRequired();
+                entity.HasIndex(e => new { e.Name, e.Version }).IsUnique();
             });
         }
 

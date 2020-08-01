@@ -42,7 +42,9 @@ namespace CentCom.API.Services.Implemented
             {
                 query = query.Where(x => x.UnbannedBy != null && (x.Expires == null || x.Expires > DateTime.UtcNow));
             }
-            return await query.Select(x => BanData.FromBan(x)).ToListAsync();
+            return await query.OrderByDescending(x => x.BannedOn)
+                .Select(x => BanData.FromBan(x))
+                .ToListAsync();
         }
 
         public async Task<IEnumerable<BanData>> GetBansForSourceAsync(int source, bool onlyActive = false)
@@ -55,7 +57,9 @@ namespace CentCom.API.Services.Implemented
             {
                 query = query.Where(x => x.UnbannedBy != null && (x.Expires == null || x.Expires > DateTime.UtcNow));
             }
-            return await query.Select(x => BanData.FromBan(x)).ToListAsync();
+            return await query.OrderByDescending(x => x.BannedOn)
+                .Select(x => BanData.FromBan(x))
+                .ToListAsync();
         }
     }
 }

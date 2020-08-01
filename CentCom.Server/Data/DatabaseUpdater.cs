@@ -26,6 +26,7 @@ namespace CentCom.Server.Data
             await _dbContext.Migrate(context.CancellationToken);
 
             // Import any new flat data prior to registering ban parsing jobs
+            _logger.LogInformation("Checking for any updates to flat file data");
             await _importer.RunImports();
 
             // Call register jobs after db migration to ensure that the DB is actually created on first run before doing any ops
