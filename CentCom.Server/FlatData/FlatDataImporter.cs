@@ -1,9 +1,11 @@
 ﻿using CentCom.Common.Data;
+using CentCom.Common.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace CentCom.Server.FlatData
@@ -24,46 +26,113 @@ namespace CentCom.Server.FlatData
 
         public async Task RunImports()
         {
-            var toImport = AppDomain.CurrentDomain.GetAssemblies().SelectMany(x => x.GetTypes())
-                .Where(x => typeof(IFlatDataSource).IsAssignableFrom(x) && !x.IsInterface && !x.IsAbstract).ToList();
-
-            foreach (var fds in toImport)
+            foreach (var file in Directory.GetFiles("FlatData/JSON/"))
             {
-                string sourceName = null;
+                var fileData = File.ReadAllText(file);
+                FlatDataFile deserializedData = null;
                 try
                 {
-                    var dataSource = (IFlatDataSource)Activator.CreateInstance(fds);
-                    sourceName = dataSource.SourceDisplayName();
-                    var source = dataSource.GetSources();
-
-                    // Check if we've already imported this dataset
-                    var sourceNames = source.Select(x => x.Name);
-                    if (_dbContext.BanSources.Any(x => sourceNames.Contains(x.Name)))
+                    deserializedData = JsonSerializer.Deserialize<FlatDataFile>(fileData, new JsonSerializerOptions()
                     {
-                        continue;
-                    }
+                        PropertyNameCaseInsensitive = true
+                    });
 
-                    _logger.LogInformation($"Importing flat ban data for {sourceName}");
-
-                    // Import new sources
-                    _dbContext.BanSources.AddRange(source);
-                    await _dbContext.SaveChangesAsync();
-
-                    // Using new source IDs, import bans
-                    var newBans = dataSource.GetBans();
-                    foreach (var b in newBans)
-                    {
-                        b.SourceNavigation = source.First(x => x.Name == b.SourceNavigation.Name);
-                        b.Source = b.SourceNavigation.Id;
-                    }
-                    _dbContext.Bans.AddRange(newBans);
-                    await _dbContext.SaveChangesAsync();
-
-                    _logger.LogInformation("Import complete");
                 }
                 catch (Exception ex)
                 {
-                    _logger.LogError(ex, $"Failed to import flat ban data from {sourceName ?? "[no name found for importer]"}, see below for details");
+                    _logger.LogError($"Failed to deserialize flat data file: '{file}'");
+                    continue;
+                }
+
+                var lastVersion = await _dbContext.FlatBansVersion
+                    .Where(x => x.Name == deserializedData.Name)
+                    .OrderByDescending(x => x.Version)
+                    .FirstOrDefaultAsync();
+
+                // We need to update the data
+                if (lastVersion == null || lastVersion.Version < deserializedData.Version)
+                {
+                    _logger.LogInformation(lastVersion == null ? $"Data from '{deserializedData.Name}' missing from database, adding..."
+                        : $"Out-of-date data found from '{deserializedData.Name} (v{lastVersion.Version}, updating to v{deserializedData.Version}), updating...'");
+
+                    try
+                    {
+                        // Make this an atomic operation to ensure failed imports don't leave holes in the data
+                        using var transaction = await _dbContext.Database.BeginTransactionAsync();
+                        
+                        // Update any ban sources if necessary
+                        var toUpdate = await _dbContext.BanSources
+                            .Where(x => deserializedData.Sources.Select(x => x.Name).Contains(x.Name))
+                            .Include(x => x.Bans)
+                            .ToListAsync();
+                        foreach (var source in toUpdate)
+                        {
+                            var match = deserializedData.Sources.First(x => x.Name == source.Name);
+                            if (match.RoleplayLevel != source.RoleplayLevel || match.Display != source.Display)
+                            {
+                                _logger.LogInformation($"Updating ban source '{source.Name}', found mis-matching metadata with new version of flat dataset");
+                                source.Display = match.Display;
+                                source.RoleplayLevel = match.RoleplayLevel;
+                            }
+                        }
+                        await _dbContext.SaveChangesAsync();
+
+                        // Remove any existing bans for each updated source
+                        foreach (var source in toUpdate)
+                        {
+                            _dbContext.Bans.RemoveRange(source.Bans);
+                        }
+                        await _dbContext.SaveChangesAsync();
+
+                        // Add any new ban sources that were not present in old file version
+                        foreach (var source in deserializedData.Sources.Where(x => !toUpdate.Select(y => y.Name).Contains(x.Name)))
+                        {
+                            var copy = new BanSource()
+                            {
+                                Display = source.Display,
+                                Name = source.Name,
+                                RoleplayLevel = source.RoleplayLevel
+                            };
+                            _dbContext.BanSources.Add(copy);
+                            toUpdate.Add(copy);
+                        }
+                        await _dbContext.SaveChangesAsync();
+
+                        // Map bans to ban sources
+                        foreach (var group in deserializedData.ServerBans.Concat(deserializedData.JobBans).GroupBy(x => x.Source))
+                        {
+                            var matchingSource = deserializedData.Sources.First(x => x.Id == group.Key);
+                            var matchingDbSource = toUpdate.First(x => x.Name == matchingSource.Name);
+
+                            foreach (var b in group)
+                            {
+                                b.Source = matchingDbSource.Id;
+                                b.SourceNavigation = matchingDbSource;
+                            }
+
+                            _dbContext.Bans.AddRange(group);
+                        }
+                        await _dbContext.SaveChangesAsync();
+
+                        // Add update record reflecting the changes
+                        var thisUpdate = new FlatBansVersion()
+                        {
+                            Name = deserializedData.Name,
+                            Version = deserializedData.Version,
+                            PerformedAt = DateTime.UtcNow
+                        };
+                        _dbContext.FlatBansVersion.Add(thisUpdate);
+                        await _dbContext.SaveChangesAsync();
+
+                        // Commit changes when everything else has gone correctly
+                        await transaction.CommitAsync();
+
+                        _logger.LogInformation("Import/update complete");
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError(ex, $"Failed to import flat ban data from {deserializedData.Name}, see below for details");
+                    }
                 }
             }
         }

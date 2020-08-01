@@ -4,15 +4,17 @@ using System.Net;
 using CentCom.Common.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace CentCom.Common.Migrations.Postgres
 {
     [DbContext(typeof(NpgsqlDbContext))]
-    partial class NpgsqlDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200801000709_AddFlatFileVersioning")]
+    partial class AddFlatFileVersioning
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
