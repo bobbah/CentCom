@@ -104,6 +104,8 @@ namespace CentCom.Server.BanSources
             bans = await AssignBanSources(bans);
 
             // Check for ban updates
+            var inserted = 0;
+            var updated = 0;
             foreach (var b in bans)
             {
                 // Enssure the CKey is actually canonical
@@ -136,34 +138,36 @@ namespace CentCom.Server.BanSources
                         matchedBan.Reason = b.Reason;
                         matchedBan.Expires = b.Expires;
                         matchedBan.UnbannedBy = b.UnbannedBy;
+                        updated++;
                     }
                 }
                 // Otherwise add insert a new ban
                 else
                 {
+                    inserted++;
                     _dbContext.Bans.Add(b);
                 }
             }
 
             // Insert new changes
-            _logger.LogInformation("Inserting new bans, updating modified bans...");
+            _logger.LogInformation($"Inserting {inserted} new bans, updating {updated} modified bans...");
             await _dbContext.SaveChangesAsync();
 
             // Delete any missing bans if we're doing a complete refresh
             if (isCompleteRefresh)
             {
                 var missingBans = new List<Ban>();
-                var bansHashed = new HashSet<int>(bans.Select(x => x.Id));
+                var bansHashed = new HashSet<Ban>(bans);
 
-                // Prevent accidentally deleting the entire ban source set
-                if (bansHashed.Count == 0)
-                {
-                    throw new Exception("Retrieved zero bans during complete refresh, halting update prior to removing all bans for this source from database.");
-                }
+                //// Prevent accidentally deleting the entire ban source set
+                //if (bansHashed.Count == 0)
+                //{
+                //    throw new Exception("Retrieved zero bans during complete refresh, halting update prior to removing all bans for this source from database.");
+                //}
 
                 foreach (var b in storedBans)
                 {
-                    if (!bansHashed.Contains(b.Id))
+                    if (!bansHashed.Contains(b))
                     {
                         missingBans.Add(b);
                     }
@@ -171,7 +175,7 @@ namespace CentCom.Server.BanSources
                 _dbContext.RemoveRange(missingBans);
 
                 // Apply deletions
-                _logger.LogInformation("Removing deleted bans...");
+                _logger.LogInformation($"Removing {missingBans.Count} deleted bans...");
                 await _dbContext.SaveChangesAsync();
             }
 

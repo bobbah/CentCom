@@ -102,7 +102,7 @@ namespace CentCom.Server.Services
                 {
                     CKey = ckey,
                     BanType = BanType.Job,
-                    JobBans = jobs.Select(x => x.ToLower()).ToHashSet().Select(x => new JobBan() { Job = x }).ToList(),
+                    JobBans = jobs.Select(x => x.ToLower()).Select(x => new JobBan() { Job = x }).ToHashSet(),
                     Reason = reason,
                     BannedBy = bannedBy,
                     BannedOn = date.UtcDateTime,
