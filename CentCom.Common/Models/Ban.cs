@@ -46,7 +46,6 @@ namespace CentCom.Common.Models
             }
             else
             {
-                var otherJobs = other.JobBans?.Select(x => x.Job).ToImmutableHashSet();
                 return Source == other.Source
                     && BannedOn == other.BannedOn
                     && BanType == other.BanType
@@ -57,8 +56,8 @@ namespace CentCom.Common.Models
                     && UnbannedBy == other.UnbannedBy
                     && IP == other.IP
                     && CID == other.CID
-                    && (((JobBans == null || JobBans.Count == 0) && other.JobBans == null)
-                            || (JobBans != null && other.JobBans != null && JobBans.Select(y => y.Job).ToImmutableHashSet().SetEquals(otherJobs)));
+                    && (BanType == BanType.Server
+                            || (JobBans != null && other.JobBans != null && JobBans.SetEquals(other.JobBans)));
             }
         }
 

@@ -119,15 +119,14 @@ namespace CentCom.Server.BanSources
                 }
                 else
                 {
-                    var bJobs = b.JobBans?.Select(x => x.Job).ToHashSet();
                     matchedBan = storedBans.FirstOrDefault(x =>
                         x.SourceNavigation.Name == b.SourceNavigation.Name
                         && x.BannedOn == b.BannedOn
                         && x.BanType == b.BanType
                         && x.CKey == b.CKey
                         && x.BannedBy == b.BannedBy
-                        && (((x.JobBans == null || x.JobBans.Count == 0) && b.JobBans == null)
-                            || (x.JobBans != null && b.JobBans != null && x.JobBans.Select(y => y.Job).ToHashSet().SetEquals(bJobs))));
+                        && (x.BanType == BanType.Server 
+                            || (x.JobBans != null && b.JobBans != null && x.JobBans.SetEquals(b.JobBans))));
                 }
 
                 // Update ban if an existing one is found
