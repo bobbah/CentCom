@@ -42,23 +42,32 @@ namespace CentCom.Server.Services
             var content = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(response.Content);
             foreach (var ban in content["value"].GetProperty("bans").EnumerateArray())
             {
+                // Get ban
                 var toAdd = new Ban()
                 {
-                    BannedOn = DateTime.Parse(ban.GetProperty("banApplyTime").GetString()).ToUniversalTime(),
+                    BannedOn = DateTime.Parse(ban.GetProperty("banApplyTime").GetString()),
                     BannedBy = ban.GetProperty("adminCkey").GetString(),
                     BanType = ban.GetProperty("role")[0].GetString().ToLower() == "server" ? BanType.Server : BanType.Job,
-                    Expires = ban.GetProperty("banExpireTime").GetString() == null ? (DateTime?)null : DateTime.Parse(ban.GetProperty("banExpireTime").GetString()).ToUniversalTime(),
+                    Expires = ban.GetProperty("banExpireTime").GetString() == null ? (DateTime?)null : DateTime.Parse(ban.GetProperty("banExpireTime").GetString()),
                     CKey = ban.GetProperty("bannedCkey").GetString(),
                     Reason = ban.GetProperty("reason").GetString(),
                     SourceNavigation = _banSource
                 };
 
+                // Add jobs if relevant
                 if (toAdd.BanType == BanType.Job)
                 {
                     toAdd.JobBans = ban.GetProperty("role").EnumerateArray()
                         .Select(x => x.GetString().ToLower())
                         .Select(x => new JobBan() { Job = x })
                         .ToHashSet();
+                }
+
+                // Specify UTC
+                toAdd.BannedOn = DateTime.SpecifyKind(toAdd.BannedOn, DateTimeKind.Utc);
+                if (toAdd.Expires.HasValue)
+                {
+                    toAdd.Expires = DateTime.SpecifyKind(toAdd.Expires.Value, DateTimeKind.Utc);
                 }
 
                 toReturn.Add(toAdd);

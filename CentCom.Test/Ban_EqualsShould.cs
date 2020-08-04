@@ -1,7 +1,7 @@
 ﻿using CentCom.Common.Models;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Net;
 using Xunit;
 
 namespace CentCom.Test
@@ -177,6 +177,60 @@ namespace CentCom.Test
 
             Assert.True(banA == banB, "Two bans with the same jobbans in different orders should be equal");
             Assert.True(banA.GetHashCode() == banB.GetHashCode(), "Two bans with the same jobbans in different orders should be equal");
+        }
+
+        [Fact]
+        public void Equals_SameBanNullVsEmptyJobBans_ReturnTrue()
+        {
+            var banA = new Ban()
+            {
+                Id = 0,
+                Source = 15,
+                BanType = BanType.Server,
+                JobBans = null
+            };
+
+            var banB = new Ban()
+            {
+                Id = 0,
+                Source = 15,
+                BanType = BanType.Server,
+                JobBans = new HashSet<JobBan>()
+            };
+
+            Assert.True(banA == banB, "Bans should be equal if the jobbans only differ by null and an empty set");
+            Assert.True(banA.GetHashCode() == banB.GetHashCode(), "Bans should have the same hashcode if the jobbans only differ by null and an empty set");
+        }
+
+        [Fact]
+        public void Equals_SameBansSameIP_ReturnsTrue()
+        {
+            var banA = new Ban()
+            {
+                Id = 193912,
+                Source = 84,
+                BanType = BanType.Server,
+                CKey = "kinler101",
+                BannedOn = DateTime.Parse("2020-08-03T22:23:58Z"),
+                BannedBy = "archsunder",
+                Reason = "testing reason",
+                IP = IPAddress.Parse("108.20.220.45")
+            };
+
+            var banB = new Ban()
+            {
+                Id = 0,
+                Source = 84,
+                BanType = BanType.Server,
+                CKey = "kinler101",
+                BannedOn = DateTime.Parse("2020-08-03T22:23:58Z"),
+                BannedBy = "archsunder",
+                Reason = "testing reason",
+                IP = IPAddress.Parse("108.20.220.45")
+            };
+
+            Assert.True(banA == banB, "Bans should be equal if all values are equal, including IP");
+            Assert.True(banA.GetHashCode() == banB.GetHashCode(), "Bans should have the same hashcode if all values are equal, including IP");
         }
     }
 }

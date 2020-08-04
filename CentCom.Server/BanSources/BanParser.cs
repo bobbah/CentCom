@@ -1,4 +1,4 @@
-﻿using CentCom.Common.Models;
+using CentCom.Common.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Quartz;
@@ -109,24 +109,26 @@ namespace CentCom.Server.BanSources
             foreach (var b in bans)
             {
                 // Enssure the CKey is actually canonical
-                b.MakeKeyCanonical();
+                b.MakeKeysCanonical();
 
                 // Attempt to find matching bans in the database
                 Ban matchedBan = null;
                 if (SourceSupportsBanIDs)
                 {
-                    matchedBan = storedBans.FirstOrDefault(x => x.BanID == b.BanID);
+                    matchedBan = storedBans.FirstOrDefault(x => 
+                        b.Source == x.Source
+                        && b.BanID == x.BanID);
                 }
                 else
                 {
                     matchedBan = storedBans.FirstOrDefault(x =>
-                        x.SourceNavigation.Name == b.SourceNavigation.Name
-                        && x.BannedOn == b.BannedOn
-                        && x.BanType == b.BanType
-                        && x.CKey == b.CKey
-                        && x.BannedBy == b.BannedBy
-                        && (x.BanType == BanType.Server 
-                            || (x.JobBans != null && b.JobBans != null && x.JobBans.SetEquals(b.JobBans))));
+                        b.Source == x.Source
+                        && b.BannedOn == x.BannedOn
+                        && b.BanType == x.BanType
+                        && b.CKey == x.CKey
+                        && b.BannedBy == x.BannedBy
+                        && (b.BanType == BanType.Server 
+                            || (b.JobBans != null && x.JobBans != null && b.JobBans.SetEquals(x.JobBans))));
                 }
 
                 // Update ban if an existing one is found
@@ -155,27 +157,17 @@ namespace CentCom.Server.BanSources
             // Delete any missing bans if we're doing a complete refresh
             if (isCompleteRefresh)
             {
-                var missingBans = new List<Ban>();
                 var bansHashed = new HashSet<Ban>(bans);
-
-                //// Prevent accidentally deleting the entire ban source set
-                //if (bansHashed.Count == 0)
-                //{
-                //    throw new Exception("Retrieved zero bans during complete refresh, halting update prior to removing all bans for this source from database.");
-                //}
-
-                foreach (var b in storedBans)
-                {
-                    if (!bansHashed.Contains(b))
-                    {
-                        missingBans.Add(b);
-                    }
-                }
-                _dbContext.RemoveRange(missingBans);
+                var missingBans = storedBans.Except(bansHashed).ToHashSet();
 
                 // Apply deletions
-                _logger.LogInformation($"Removing {missingBans.Count} deleted bans...");
-                await _dbContext.SaveChangesAsync();
+                _logger.LogInformation(missingBans.Count > 0 ? $"Removing {missingBans.Count} deleted bans..." 
+                    : "Found no deleted bans to remove");
+                if (missingBans.Count > 0)
+                {
+                    _dbContext.RemoveRange(missingBans);
+                    await _dbContext.SaveChangesAsync();
+                }
             }
 
             _logger.LogInformation("Completed ban parsing.");

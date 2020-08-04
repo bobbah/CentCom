@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Immutable;
-using System.Configuration;
 using System.Linq;
 using System.Net;
+using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 
 namespace CentCom.Common.Models
@@ -14,6 +13,7 @@ namespace CentCom.Common.Models
 
         public int Id { get; set; }
         public int Source { get; set; }
+        [JsonIgnore]
         public virtual BanSource SourceNavigation { get; set; }
         public BanType BanType { get; set; }
         public string CKey { get; set; }
@@ -22,6 +22,7 @@ namespace CentCom.Common.Models
         public string Reason { get; set; }
         public DateTime? Expires { get; set; }
         public string UnbannedBy { get; set; }
+        [JsonConverter(typeof(JsonIPAddressConverter))]
         public IPAddress IP { get; set; }
         public long? CID { get; set; }
         public string BanID { get; set; }
@@ -54,7 +55,7 @@ namespace CentCom.Common.Models
                     && Reason == other.Reason
                     && Expires == other.Expires
                     && UnbannedBy == other.UnbannedBy
-                    && IP == other.IP
+                    && (IP == null || IP.Equals(other.IP))
                     && CID == other.CID
                     && (BanType == BanType.Server
                             || (JobBans != null && other.JobBans != null && JobBans.SetEquals(other.JobBans)));
@@ -107,9 +108,10 @@ namespace CentCom.Common.Models
             return hash.ToHashCode();
         }
 
-        public void MakeKeyCanonical()
+        public void MakeKeysCanonical()
         {
             CKey = CKey == null ? null : GetCanonicalKey(CKey);
+            BannedBy = BannedBy == null ? null : GetCanonicalKey(BannedBy);
         }
 
         public static string GetCanonicalKey(string raw)
