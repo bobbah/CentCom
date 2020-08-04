@@ -112,6 +112,7 @@ namespace CentCom.Common.Models
         {
             CKey = CKey == null ? null : GetCanonicalKey(CKey);
             BannedBy = BannedBy == null ? null : GetCanonicalKey(BannedBy);
+            UnbannedBy = UnbannedBy == null ? null : GetCanonicalKey(UnbannedBy);
         }
 
         public static string GetCanonicalKey(string raw)
