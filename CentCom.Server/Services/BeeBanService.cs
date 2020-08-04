@@ -36,7 +36,7 @@ namespace CentCom.Server.Services
 
             if (response.StatusCode != System.Net.HttpStatusCode.OK)
             {
-                _logger.LogError("Beestation website returned a non-200 HTTP response code: {response.StatusCode}, aborting parse.");
+                _logger.LogError($"Beestation website returned a non-200 HTTP response code: {response.StatusCode}, aborting parse.");
                 throw new BanSourceUnavailableException($"Beestation website returned a non-200 HTTP response code: {response.StatusCode}, aborting parse.");
             }
 
@@ -59,9 +59,9 @@ namespace CentCom.Server.Services
                 if (toAdd.BanType == BanType.Job)
                 {
                     toAdd.JobBans = b["job"].EnumerateArray()
-                        .Select(x => x.GetString()).ToHashSet()
+                        .Select(x => x.GetString().ToLower())
                         .Select(x => new JobBan() { Job = x })
-                        .ToList();
+                        .ToHashSet();
                 }
 
                 toReturn.Add(toAdd);

@@ -18,7 +18,6 @@ namespace CentCom.Server.BanSources
                 RoleplayLevel = RoleplayLevel.Low
             } }
         };
-        public override bool SourceSupportsBanIDs => false;
         private VgBanService _banService;
 
         public VgBanParser(DatabaseContext dbContext, VgBanService banService, ILogger<VgBanParser> logger) : base(dbContext, logger)
