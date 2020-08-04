@@ -17,7 +17,7 @@ namespace CentCom.Server.BanSources
         {
             { "fulp", new BanSource()
             {
-                Display = "FulpStation",
+                Display = "Fulpstation",
                 Name = "fulp",
                 RoleplayLevel = RoleplayLevel.Low
             } }
@@ -33,13 +33,13 @@ namespace CentCom.Server.BanSources
 
         public override async Task<IEnumerable<Ban>> FetchAllBansAsync()
         {
-            _logger.LogInformation("Getting all bans for FulpStation...");
+            _logger.LogInformation("Getting all bans for Fulpstation...");
             return await _banService.GetBansBatchedAsync();
         }
 
         public override async Task<IEnumerable<Ban>> FetchNewBansAsync()
         {
-            _logger.LogInformation("Getting new bans for FulpStation...");
+            _logger.LogInformation("Getting new bans for Fulpstation...");
             var recent = await _dbContext.Bans
                 .Where(x => Sources.Keys.Contains(x.SourceNavigation.Name))
                 .OrderByDescending(x => x.BannedOn)
