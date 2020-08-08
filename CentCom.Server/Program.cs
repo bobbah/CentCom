@@ -157,6 +157,7 @@ namespace CentCom.Server
             services.AddSingleton<VgBanService>();
             services.AddSingleton<YogBanService>();
             services.AddSingleton<FulpBanService>();
+            services.AddSingleton<TGMCBanService>();
 
             // Add ban parsers
             var parsers = AppDomain.CurrentDomain.GetAssemblies().Aggregate(new List<Type>(), (curr, next) =>

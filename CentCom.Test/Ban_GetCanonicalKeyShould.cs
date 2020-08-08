@@ -1,4 +1,5 @@
 ﻿using CentCom.Common.Models;
+using CentCom.Server.Extensions;
 using System;
 using Xunit;
 
@@ -10,13 +11,13 @@ namespace CentCom.Test
         public void GetCanonicalKey_FromRaw_ReturnTrue()
         {
             var rawKey = "B o bbahbrown";
-            Assert.True("bobbahbrown" == Ban.GetCanonicalKey(rawKey));
+            Assert.True("bobbahbrown" == BanExtensions.GetCanonicalKey(rawKey));
         }
 
         [Fact]
         public void GetCanonicalKey_NullArgument_ThrowsException()
         {
-            Assert.Throws<ArgumentNullException>(() => Ban.GetCanonicalKey(null));
+            Assert.Throws<ArgumentNullException>(() => BanExtensions.GetCanonicalKey(null));
         }
     }
 }

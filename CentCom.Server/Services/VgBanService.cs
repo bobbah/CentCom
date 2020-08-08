@@ -1,12 +1,12 @@
 ﻿using AngleSharp;
 using CentCom.Common.Models;
 using CentCom.Server.Exceptions;
+using CentCom.Server.Extensions;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CentCom.Server.Services
@@ -98,11 +98,10 @@ namespace CentCom.Server.Services
                     expires = DateTime.SpecifyKind(d, DateTimeKind.Utc);
                 }
 
-                toReturn.Add(new Ban()
+                var toAdd = new Ban()
                 {
                     CKey = ckey,
                     BanType = BanType.Job,
-                    JobBans = jobs.Select(x => x.ToLower()).Select(x => new JobBan() { Job = x }).ToHashSet(),
                     Reason = reason,
                     BannedBy = bannedBy,
                     BannedOn = date.UtcDateTime,
@@ -110,7 +109,10 @@ namespace CentCom.Server.Services
                     IP = ip,
                     CID = cid,
                     SourceNavigation = _source
-                });
+                };
+
+                toAdd.AddJobRange(jobs);
+                toReturn.Add(toAdd);
             }
 
             return toReturn;

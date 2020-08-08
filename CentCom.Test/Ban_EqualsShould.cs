@@ -1,4 +1,6 @@
 ﻿using CentCom.Common.Models;
+using CentCom.Common.Models.Equality;
+using CentCom.Server.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -43,8 +45,9 @@ namespace CentCom.Test
                 SourceNavigation = source
             };
 
-            Assert.True(banA == banB, "Two bans equal by internal values should be equal");
-            Assert.True(banA.GetHashCode() == banB.GetHashCode(), "Two bans equal by internal values should have equal hashcodes");
+            var comparer = BanEqualityComparer.Instance;
+            Assert.True(comparer.Equals(banA, banB), "Two bans equal by internal values should be equal");
+            Assert.True(comparer.GetHashCode(banA) == comparer.GetHashCode(banB), "Two bans equal by internal values should have equal hashcodes");
         }
 
         [Fact]
@@ -90,8 +93,9 @@ namespace CentCom.Test
                 SourceNavigation = sourceB
             };
 
-            Assert.False(banA == banB, "Two bans from different sources should not be equal by internal values");
-            Assert.False(banA.GetHashCode() == banB.GetHashCode(), "Two bans from different sources should not have equal hashcodes");
+            var comparer = BanEqualityComparer.Instance;
+            Assert.False(comparer.Equals(banA, banB), "Two bans from different sources should not be equal by internal values");
+            Assert.False(comparer.GetHashCode(banA) == comparer.GetHashCode(banB), "Two bans from different sources should not have equal hashcodes");
         }
 
         [Fact]
@@ -109,8 +113,9 @@ namespace CentCom.Test
                 CKey = "different"
             };
 
-            Assert.True(banA == banB, "Two bans with BanIDs should be checked for equality by ID");
-            Assert.True(banA.GetHashCode() == banB.GetHashCode(), "Two bans with BanIDs that are equal should have equal hashcodes");
+            var comparer = BanEqualityComparer.Instance;
+            Assert.True(comparer.Equals(banA, banB), "Two bans with BanIDs should be checked for equality by ID");
+            Assert.True(comparer.GetHashCode(banA) == comparer.GetHashCode(banB), "Two bans with BanIDs that are equal should have equal hashcodes");
         }
 
         [Fact]
@@ -148,8 +153,9 @@ namespace CentCom.Test
                 SourceNavigation = sourceB
             };
 
-            Assert.False(banA == banB, "Two bans from different sources should not be equal by BanID");
-            Assert.False(banA.GetHashCode() == banB.GetHashCode(), "Two bans from different sources should not have equal hashcodes");
+            var comparer = BanEqualityComparer.Instance;
+            Assert.False(comparer.Equals(banA, banB), "Two bans from different sources should not be equal by BanID");
+            Assert.False(comparer.GetHashCode(banA) == comparer.GetHashCode(banB), "Two bans from different sources should not have equal hashcodes");
         }
 
         [Fact]
@@ -158,25 +164,20 @@ namespace CentCom.Test
             var banA = new Ban()
             {
                 Id = 12,
-                JobBans = new HashSet<JobBan>()
-                {
-                    new JobBan() { Job = "captain" },
-                    new JobBan() { Job = "assistant" }
-                }
+                BanType = BanType.Job
             };
+            banA.AddJobRange(new[] { "detective", "head of security", "security officer", "warden" });
 
             var banB = new Ban()
             {
                 Id = 0,
-                JobBans = new HashSet<JobBan>()
-                {
-                    new JobBan() { Job = "assistant" },
-                    new JobBan() { Job = "captain" }
-                }
+                BanType = BanType.Job
             };
+            banB.AddJobRange(new[] { "head of security", "warden", "detective", "security officer" });
 
-            Assert.True(banA == banB, "Two bans with the same jobbans in different orders should be equal");
-            Assert.True(banA.GetHashCode() == banB.GetHashCode(), "Two bans with the same jobbans in different orders should be equal");
+            var comparer = BanEqualityComparer.Instance;
+            Assert.True(comparer.Equals(banA, banB), "Two bans with the same jobbans in different orders should be equal");
+            Assert.True(comparer.GetHashCode(banA) == comparer.GetHashCode(banB), "Two bans with the same jobbans in different orders should be equal");
         }
 
         [Fact]
@@ -194,12 +195,12 @@ namespace CentCom.Test
             {
                 Id = 0,
                 Source = 15,
-                BanType = BanType.Server,
-                JobBans = new HashSet<JobBan>()
+                BanType = BanType.Server
             };
 
-            Assert.True(banA == banB, "Bans should be equal if the jobbans only differ by null and an empty set");
-            Assert.True(banA.GetHashCode() == banB.GetHashCode(), "Bans should have the same hashcode if the jobbans only differ by null and an empty set");
+            var comparer = BanEqualityComparer.Instance;
+            Assert.True(comparer.Equals(banA, banB), "Bans should be equal if the jobbans only differ by null and an empty set");
+            Assert.True(comparer.GetHashCode(banA) == comparer.GetHashCode(banB), "Bans should have the same hashcode if the jobbans only differ by null and an empty set");
         }
 
         [Fact]
@@ -229,8 +230,9 @@ namespace CentCom.Test
                 IP = IPAddress.Parse("108.20.220.45")
             };
 
-            Assert.True(banA == banB, "Bans should be equal if all values are equal, including IP");
-            Assert.True(banA.GetHashCode() == banB.GetHashCode(), "Bans should have the same hashcode if all values are equal, including IP");
+            var comparer = BanEqualityComparer.Instance;
+            Assert.True(comparer.Equals(banA, banB), "Bans should be equal if all values are equal, including IP");
+            Assert.True(comparer.GetHashCode(banA) == comparer.GetHashCode(banB), "Bans should have the same hashcode if all values are equal, including IP");
         }
     }
 }
