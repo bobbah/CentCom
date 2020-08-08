@@ -8,6 +8,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using CentCom.Common.Data;
 using CentCom.Server.Exceptions;
+using CentCom.Server.Extensions;
+using CentCom.Common.Models.Equality;
 
 namespace CentCom.Server.BanSources
 {
@@ -128,17 +130,26 @@ namespace CentCom.Server.BanSources
                         && b.CKey == x.CKey
                         && b.BannedBy == x.BannedBy
                         && (b.BanType == BanType.Server 
-                            || (b.JobBans != null && x.JobBans != null && b.JobBans.SetEquals(x.JobBans))));
+                            || b.JobBans.SetEquals(x.JobBans)));
                 }
 
                 // Update ban if an existing one is found
                 if (matchedBan != null)
                 {
+                    // Check for a difference in date time, unbans, or reason
                     if (matchedBan.Reason != b.Reason || matchedBan.Expires != b.Expires || matchedBan.UnbannedBy != b.UnbannedBy)
                     {
                         matchedBan.Reason = b.Reason;
                         matchedBan.Expires = b.Expires;
                         matchedBan.UnbannedBy = b.UnbannedBy;
+                        updated++;
+                    }
+
+                    // Check for a difference in recorded jobbans
+                    if (b.BanType == BanType.Job && !b.JobBans.SetEquals(matchedBan.JobBans))
+                    {
+                        matchedBan.JobBans = new HashSet<JobBan>(JobBanEqualityComparer.Instance);
+                        matchedBan.AddJobRange(b.JobBans.Select(x => x.Job));
                         updated++;
                     }
                 }
@@ -157,8 +168,14 @@ namespace CentCom.Server.BanSources
             // Delete any missing bans if we're doing a complete refresh
             if (isCompleteRefresh)
             {
-                var bansHashed = new HashSet<Ban>(bans);
-                var missingBans = storedBans.Except(bansHashed).ToHashSet();
+                var bansHashed = new HashSet<Ban>(bans, BanEqualityComparer.Instance);
+                var missingBans = storedBans.Except(bansHashed, BanEqualityComparer.Instance).ToList();
+
+                if (bansHashed.Count == 0 && missingBans.Count > 1)
+                {
+                    throw new Exception("Failed to find any bans for source, aborting removal phase of ban " +
+                        "parsing to avoid dumping entire set of bans");
+                }
 
                 // Apply deletions
                 _logger.LogInformation(missingBans.Count > 0 ? $"Removing {missingBans.Count} deleted bans..." 

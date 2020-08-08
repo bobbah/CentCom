@@ -1,4 +1,5 @@
 ﻿using CentCom.Common.Models;
+using CentCom.Common.Models.Equality;
 using Xunit;
 
 namespace CentCom.Test
@@ -20,8 +21,9 @@ namespace CentCom.Test
                 Job = "ooc"
             };
 
-            Assert.True(jobA == jobB, "Two jobs equal by internal values should be equal");
-            Assert.True(jobA.GetHashCode() == jobB.GetHashCode(), "Two jobs equal by internal values should have the same hashcode");
+            var comparer = JobBanEqualityComparer.Instance;
+            Assert.True(comparer.Equals(jobA, jobB), "Two jobs equal by internal values should be equal");
+            Assert.True(comparer.GetHashCode(jobA) == comparer.GetHashCode(jobB), "Two jobs equal by internal values should have the same hashcode");
         }
 
         /// <summary>
@@ -44,8 +46,9 @@ namespace CentCom.Test
                 Job = "ooc"
             };
 
-            Assert.True(jobA == jobB, "Two jobs equal by job, even with differing IDs, should be equal");
-            Assert.True(jobA.GetHashCode() == jobB.GetHashCode(), "Two jobs equal by job, even with differing ids, should have the same hashcode");
+            var comparer = JobBanEqualityComparer.Instance;
+            Assert.True(comparer.Equals(jobA, jobB), "Two jobs equal by job, even with differing IDs, should be equal");
+            Assert.True(comparer.GetHashCode(jobA) == comparer.GetHashCode(jobB), "Two jobs equal by job, even with differing ids, should have the same hashcode");
         }
     }
 }

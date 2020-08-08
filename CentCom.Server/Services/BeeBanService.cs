@@ -1,5 +1,6 @@
 ﻿using CentCom.Common.Models;
 using CentCom.Server.Exceptions;
+using CentCom.Server.Extensions;
 using Extensions;
 using Microsoft.Extensions.Logging;
 using RestSharp;
@@ -7,7 +8,6 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -58,10 +58,7 @@ namespace CentCom.Server.Services
 
                 if (toAdd.BanType == BanType.Job)
                 {
-                    toAdd.JobBans = b["job"].EnumerateArray()
-                        .Select(x => x.GetString().ToLower())
-                        .Select(x => new JobBan() { Job = x })
-                        .ToHashSet();
+                    toAdd.AddJobRange(b["job"].EnumerateArray().Select(x => x.GetString()));
                 }
 
                 toReturn.Add(toAdd);

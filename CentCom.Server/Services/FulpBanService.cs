@@ -1,5 +1,6 @@
 ﻿using CentCom.Common.Models;
 using CentCom.Server.Exceptions;
+using CentCom.Server.Extensions;
 using Extensions;
 using Microsoft.Extensions.Logging;
 using RestSharp;
@@ -57,10 +58,7 @@ namespace CentCom.Server.Services
                 // Add jobs if relevant
                 if (toAdd.BanType == BanType.Job)
                 {
-                    toAdd.JobBans = ban.GetProperty("role").EnumerateArray()
-                        .Select(x => x.GetString().ToLower())
-                        .Select(x => new JobBan() { Job = x })
-                        .ToHashSet();
+                    toAdd.AddJobRange(ban.GetProperty("role").EnumerateArray().Select(x => x.GetString()));
                 }
 
                 // Specify UTC
