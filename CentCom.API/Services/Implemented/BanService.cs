@@ -40,7 +40,7 @@ namespace CentCom.API.Services.Implemented
             }
             if (onlyActive)
             {
-                query = query.Where(x => x.UnbannedBy != null && (x.Expires == null || x.Expires > DateTime.UtcNow));
+                query = query.Where(x => x.UnbannedBy == null && (x.Expires == null || x.Expires > DateTime.UtcNow));
             }
             return await query.OrderByDescending(x => x.BannedOn)
                 .Select(x => BanData.FromBan(x))
@@ -55,7 +55,7 @@ namespace CentCom.API.Services.Implemented
                 .Where(x => x.Source == source);
             if (onlyActive)
             {
-                query = query.Where(x => x.UnbannedBy != null && (x.Expires == null || x.Expires > DateTime.UtcNow));
+                query = query.Where(x => x.UnbannedBy == null && (x.Expires == null || x.Expires > DateTime.UtcNow));
             }
             return await query.OrderByDescending(x => x.BannedOn)
                 .Select(x => BanData.FromBan(x))
