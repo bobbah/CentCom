@@ -19,9 +19,6 @@ namespace CentCom.Common.Models
         public string Reason { get; set; }
         public DateTime? Expires { get; set; }
         public string UnbannedBy { get; set; }
-        [JsonConverter(typeof(JsonIPAddressConverter))]
-        public IPAddress IP { get; set; }
-        public long? CID { get; set; }
         public string BanID { get; set; }
         public HashSet<JobBan> JobBans { get; set; }
 

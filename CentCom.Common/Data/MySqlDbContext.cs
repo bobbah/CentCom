@@ -20,14 +20,6 @@ namespace CentCom.Common.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-            // MySql doesn't have support for IPAddress types
-            modelBuilder.Entity<Ban>(e =>
-            {
-                e.Property(b => b.IP).HasConversion(
-                    v => v.ToString(),
-                    v => IPAddress.Parse(v));
-            });
         }
     }
 }

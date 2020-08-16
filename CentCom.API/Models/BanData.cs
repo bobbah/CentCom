@@ -18,8 +18,6 @@ namespace CentCom.API.Models
         public string Reason { get; set; }
         public DateTime? Expires { get; set; }
         public string UnbannedBy { get; set; }
-        public string IP { get; set; }
-        public long? CID { get; set; }
         public string BanID { get; set; }
         public List<string> Jobs { get; set; }
 
@@ -38,8 +36,6 @@ namespace CentCom.API.Models
                 Reason = ban.Reason,
                 Expires = ban.Expires,
                 UnbannedBy = ban.UnbannedBy,
-                IP = ban.IP?.ToString(),
-                CID = ban.CID,
                 BanID = ban.BanID,
                 Jobs = (ban.JobBans?.Count > 0) ? ban.JobBans.Select(x => x.Job).ToList() : null
             };

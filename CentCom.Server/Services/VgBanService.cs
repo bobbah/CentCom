@@ -44,13 +44,6 @@ namespace CentCom.Server.Services
                 var cursor = banTable.Children[i];
                 var ckey = cursor.Children[0].Children[0].TextContent.Trim();
                 DateTimeOffset date = DateTime.SpecifyKind(cursor.Children[0].Children[0].GetAttribute("title") == "0000-00-00 00:00:00" ? DateTime.MinValue : DateTime.Parse(cursor.Children[0].Children[0].GetAttribute("title").Trim()), DateTimeKind.Utc);
-                IPAddress ip = null;
-                long? cid = null;
-                if (cursor.Children[0].Children.Length > 1)
-                {
-                    ip = IPAddress.Parse(cursor.Children[0].Children[1].Children[0].Children[0].Children[1].TextContent.Trim());
-                    cid = cursor.Children[0].Children[1].Children[0].Children.Length > 1 ? long.Parse(cursor.Children[0].Children[1].Children[0].Children[1].Children[1].TextContent.Trim()) : (long?)null;
-                }
                 var reason = cursor.Children[1].TextContent.Trim();
                 var bannedBy = cursor.Children[2].TextContent.Trim();
                 var expiresText = cursor.Children[3].TextContent.Trim();
@@ -67,8 +60,6 @@ namespace CentCom.Server.Services
                     BannedBy = bannedBy,
                     Reason = reason,
                     Expires = expires.HasValue ? expires.Value.UtcDateTime : (DateTime?)null,
-                    IP = ip,
-                    CID = cid,
                     BanType = BanType.Server,
                     SourceNavigation = _source
                 });
@@ -80,13 +71,6 @@ namespace CentCom.Server.Services
                 var bannedDetails = cursor.Children[0];
                 var ckey = bannedDetails.Children[0].TextContent.Trim();
                 DateTimeOffset date = DateTime.SpecifyKind(cursor.Children[0].Children[0].GetAttribute("title") == "0000-00-00 00:00:00" ? DateTime.MinValue : DateTime.Parse(cursor.Children[0].Children[0].GetAttribute("title").Trim()), DateTimeKind.Utc);
-                IPAddress ip = null;
-                long? cid = null;
-                if (bannedDetails.Children.Length > 1)
-                {
-                    ip = IPAddress.Parse(bannedDetails.Children[1].Children[0].Children[0].Children[1].TextContent.Trim());
-                    cid = bannedDetails.Children[1].Children[0].Children.Length > 1 ? long.Parse(bannedDetails.Children[1].Children[0].Children[1].Children[1].TextContent.Trim()) : (long?)null;
-                }
                 var jobDetails = cursor.QuerySelector(".clmJobs");
                 var jobs = jobDetails.QuerySelectorAll("a").Select(x => x.TextContent.Trim()).Distinct();
                 var reason = cursor.Children[2].TextContent.Trim();
@@ -106,8 +90,6 @@ namespace CentCom.Server.Services
                     BannedBy = bannedBy,
                     BannedOn = date.UtcDateTime,
                     Expires = expires.HasValue ? expires.Value.UtcDateTime : (DateTime?)null,
-                    IP = ip,
-                    CID = cid,
                     SourceNavigation = _source
                 };
 

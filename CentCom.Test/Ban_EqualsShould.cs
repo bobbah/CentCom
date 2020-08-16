@@ -202,37 +202,5 @@ namespace CentCom.Test
             Assert.True(comparer.Equals(banA, banB), "Bans should be equal if the jobbans only differ by null and an empty set");
             Assert.True(comparer.GetHashCode(banA) == comparer.GetHashCode(banB), "Bans should have the same hashcode if the jobbans only differ by null and an empty set");
         }
-
-        [Fact]
-        public void Equals_SameBansSameIP_ReturnsTrue()
-        {
-            var banA = new Ban()
-            {
-                Id = 193912,
-                Source = 84,
-                BanType = BanType.Server,
-                CKey = "kinler101",
-                BannedOn = DateTime.Parse("2020-08-03T22:23:58Z"),
-                BannedBy = "archsunder",
-                Reason = "testing reason",
-                IP = IPAddress.Parse("108.20.220.45")
-            };
-
-            var banB = new Ban()
-            {
-                Id = 0,
-                Source = 84,
-                BanType = BanType.Server,
-                CKey = "kinler101",
-                BannedOn = DateTime.Parse("2020-08-03T22:23:58Z"),
-                BannedBy = "archsunder",
-                Reason = "testing reason",
-                IP = IPAddress.Parse("108.20.220.45")
-            };
-
-            var comparer = BanEqualityComparer.Instance;
-            Assert.True(comparer.Equals(banA, banB), "Bans should be equal if all values are equal, including IP");
-            Assert.True(comparer.GetHashCode(banA) == comparer.GetHashCode(banB), "Bans should have the same hashcode if all values are equal, including IP");
-        }
     }
 }
