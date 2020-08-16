@@ -19,7 +19,7 @@ namespace CentCom.Server.BanSources
             {
                 Display = "Fulpstation",
                 Name = "fulp",
-                RoleplayLevel = RoleplayLevel.Low
+                RoleplayLevel = RoleplayLevel.Medium
             } }
         };
         private FulpBanService _banService;

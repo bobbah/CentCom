@@ -27,8 +27,6 @@ namespace CentCom.Common.Models.Equality
                     && x.Reason == y.Reason
                     && x.Expires == y.Expires
                     && x.UnbannedBy == y.UnbannedBy
-                    && (x.IP == null || x.IP.Equals(y.IP))
-                    && x.CID == y.CID
                     && (x.BanType == BanType.Server
                             || (x.JobBans != null && y.JobBans != null && x.JobBans.SetEquals(y.JobBans)));
             }
@@ -52,8 +50,6 @@ namespace CentCom.Common.Models.Equality
                 hash.Add(obj.Reason);
                 hash.Add(obj.Expires);
                 hash.Add(obj.UnbannedBy);
-                hash.Add(obj.IP);
-                hash.Add(obj.CID);
                 if (obj.JobBans != null)
                 {
                     foreach (var job in obj.JobBans.OrderBy(x => x.Job))
