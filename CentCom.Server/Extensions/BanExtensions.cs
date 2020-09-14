@@ -44,5 +44,23 @@ namespace CentCom.Server.Extensions
                 ban.AddJob(job);
             }
         }
+
+        public static void AddAttribute(this Ban ban, BanAttribute attribute)
+        {
+            ban.BanAttributes |= attribute;
+        }
+
+        public static void AddAttributeRange(this Ban ban, IEnumerable<BanAttribute> attributes)
+        {
+            foreach (var attribute in attributes)
+            {
+                ban.BanAttributes |= attribute;
+            }
+        }
+
+        public static void RemoveAttribute(this Ban ban, BanAttribute attribute)
+        {
+            ban.BanAttributes &= ~attribute;
+        }
     }
 }

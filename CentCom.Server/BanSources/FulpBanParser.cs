@@ -58,6 +58,7 @@ namespace CentCom.Server.BanSources
                 {
                     break;
                 }
+                page += PAGES_PER_BATCH;
             }
 
             return foundBans;

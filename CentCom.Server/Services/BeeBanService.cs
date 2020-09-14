@@ -61,6 +61,11 @@ namespace CentCom.Server.Services
                     toAdd.AddJobRange(b["job"].EnumerateArray().Select(x => x.GetString()));
                 }
 
+                if (b["global"].GetBoolean())
+                {
+                    toAdd.AddAttribute(BanAttribute.BeeStationGlobal);
+                }
+
                 toReturn.Add(toAdd);
             }
 

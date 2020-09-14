@@ -15,7 +15,8 @@ namespace CentCom.Common.Models.Equality
             else if (x.BanID != null || y.BanID != null)
             {
                 return x.Source == y.Source
-                    && x.BanID == y.BanID;
+                    && x.BanID == y.BanID
+                    && x.BanAttributes == y.BanAttributes;
             }
             else
             {
@@ -27,14 +28,19 @@ namespace CentCom.Common.Models.Equality
                     && x.Reason == y.Reason
                     && x.Expires == y.Expires
                     && x.UnbannedBy == y.UnbannedBy
-                    && (x.BanType == BanType.Server
-                            || (x.JobBans != null && y.JobBans != null && x.JobBans.SetEquals(y.JobBans)));
+                    && (x.BanType == BanType.Server || ((x.JobBans == y.JobBans && x.JobBans == null) || x.JobBans.SetEquals(y.JobBans)))
+                    && x.BanAttributes == y.BanAttributes;
             }
         }
 
         public int GetHashCode(Ban obj)
         {
+            // Add the hashable components that all bans have
             var hash = new HashCode();
+            hash.Add(obj.Source);
+            hash.Add(obj.BanAttributes);
+
+            // Add those specific to bans with IDs or those without
             if (obj.BanID != null)
             {
                 hash.Add(obj.BanID);
@@ -58,6 +64,7 @@ namespace CentCom.Common.Models.Equality
                     }
                 }
             }
+
             return hash.ToHashCode();
         }
     }

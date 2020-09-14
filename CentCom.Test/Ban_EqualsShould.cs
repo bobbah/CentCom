@@ -2,8 +2,6 @@
 using CentCom.Common.Models.Equality;
 using CentCom.Server.Extensions;
 using System;
-using System.Collections.Generic;
-using System.Net;
 using Xunit;
 
 namespace CentCom.Test
@@ -201,6 +199,49 @@ namespace CentCom.Test
             var comparer = BanEqualityComparer.Instance;
             Assert.True(comparer.Equals(banA, banB), "Bans should be equal if the jobbans only differ by null and an empty set");
             Assert.True(comparer.GetHashCode(banA) == comparer.GetHashCode(banB), "Bans should have the same hashcode if the jobbans only differ by null and an empty set");
+        }
+
+        [Fact]
+        public void Equals_SameBanDifferingAttributes_ReturnFalse()
+        {
+            var banA = new Ban()
+            {
+                Id = 0,
+                Source = 15
+            };
+
+            var banB = new Ban()
+            {
+                Id = 0,
+                Source = 15
+            };
+            banB.AddAttribute(BanAttribute.BeeStationGlobal);
+
+            var comparer = BanEqualityComparer.Instance;
+            Assert.False(comparer.Equals(banA, banB), "Bans should not be equal if they differ in attributes");
+            Assert.False(comparer.GetHashCode(banA) == comparer.GetHashCode(banB), "Bans should not have the same hashcode if they differ in attributes");
+        }
+
+        [Fact]
+        public void Equals_SameBanSameAttributes_ReturnTrue()
+        {
+            var banA = new Ban()
+            {
+                Id = 0,
+                Source = 15
+            };
+            banA.AddAttribute(BanAttribute.BeeStationGlobal);
+
+            var banB = new Ban()
+            {
+                Id = 0,
+                Source = 15
+            };
+            banB.AddAttribute(BanAttribute.BeeStationGlobal);
+
+            var comparer = BanEqualityComparer.Instance;
+            Assert.True(comparer.Equals(banA, banB), "Bans should be equal when they are equal including attributes");
+            Assert.True(comparer.GetHashCode(banA) == comparer.GetHashCode(banB), "Bans should have the same hashcode if they are equal including attributes");
         }
     }
 }
