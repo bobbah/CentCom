@@ -129,27 +129,33 @@ namespace CentCom.Server.BanSources
                         && b.BanType == x.BanType
                         && b.CKey == x.CKey
                         && b.BannedBy == x.BannedBy
-                        && (b.BanType == BanType.Server 
+                        && (b.BanType == BanType.Server
                             || b.JobBans.SetEquals(x.JobBans)));
                 }
 
                 // Update ban if an existing one is found
                 if (matchedBan != null)
                 {
+                    bool changed = false;
+
                     // Check for a difference in date time, unbans, or reason
                     if (matchedBan.Reason != b.Reason || matchedBan.Expires != b.Expires || matchedBan.UnbannedBy != b.UnbannedBy)
                     {
                         matchedBan.Reason = b.Reason;
                         matchedBan.Expires = b.Expires;
                         matchedBan.UnbannedBy = b.UnbannedBy;
-                        updated++;
+                        changed = true;
                     }
 
-                    // Check for a difference in recorded jobbans
-                    if (b.BanType == BanType.Job && !b.JobBans.SetEquals(matchedBan.JobBans))
+                    // Check for a difference in ban attributes
+                    if (b.BanAttributes != matchedBan.BanAttributes)
                     {
-                        matchedBan.JobBans = new HashSet<JobBan>(JobBanEqualityComparer.Instance);
-                        matchedBan.AddJobRange(b.JobBans.Select(x => x.Job));
+                        matchedBan.BanAttributes = b.BanAttributes;
+                        changed = true;
+                    }
+
+                    if (changed)
+                    {
                         updated++;
                     }
                 }

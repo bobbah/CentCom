@@ -1,4 +1,5 @@
 ﻿using CentCom.Common.Models;
+using EnumsNET;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,7 @@ namespace CentCom.API.Models
         public string UnbannedBy { get; set; }
         public string BanID { get; set; }
         public List<string> Jobs { get; set; }
+        public List<string> BanAttributes { get; set; }
 
         public static BanData FromBan(Ban ban)
         {
@@ -37,13 +39,10 @@ namespace CentCom.API.Models
                 Expires = ban.Expires,
                 UnbannedBy = ban.UnbannedBy,
                 BanID = ban.BanID,
-                Jobs = (ban.JobBans?.Count > 0) ? ban.JobBans.Select(x => x.Job).ToList() : null
+                Jobs = (ban.JobBans?.Count > 0) ? ban.JobBans.Select(x => x.Job).ToList() : null,
+                BanAttributes = ban.BanAttributes.GetFlagCount() != 0
+                    ? ban.BanAttributes.GetFlags().Select(x => x.ToString()).ToList() : null
             };
-        }
-
-        public bool ShouldSerializeJobs()
-        {
-            return Type == BanType.Job;
         }
     }
 }

@@ -21,6 +21,7 @@ namespace CentCom.Common.Models
         public string UnbannedBy { get; set; }
         public string BanID { get; set; }
         public HashSet<JobBan> JobBans { get; set; }
+        public BanAttribute BanAttributes { get; set; }
 
         public Ban()
         {
