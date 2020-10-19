@@ -26,5 +26,9 @@
     <ProjectReference Include="..\CentCom.Common\CentCom.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
 
 </Project>

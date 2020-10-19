@@ -1,4 +1,5 @@
-﻿using CentCom.Common.Models;
+﻿using CentCom.Common;
+using CentCom.Common.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,19 +13,9 @@ namespace CentCom.Server.Extensions
 
         public static void MakeKeysCanonical(this Ban ban)
         {
-            ban.CKey = ban.CKey == null ? null : GetCanonicalKey(ban.CKey);
-            ban.BannedBy = ban.BannedBy == null ? null : GetCanonicalKey(ban.BannedBy);
-            ban.UnbannedBy = ban.UnbannedBy == null ? null : GetCanonicalKey(ban.UnbannedBy);
-        }
-
-        public static string GetCanonicalKey(string raw)
-        {
-            if (raw == null)
-            {
-                throw new ArgumentNullException(nameof(raw));
-            }
-
-            return _keyReplacePattern.Replace(raw.ToLower(), "");
+            ban.CKey = ban.CKey == null ? null : KeyUtilities.GetCanonicalKey(ban.CKey);
+            ban.BannedBy = ban.BannedBy == null ? null : KeyUtilities.GetCanonicalKey(ban.BannedBy);
+            ban.UnbannedBy = ban.UnbannedBy == null ? null : KeyUtilities.GetCanonicalKey(ban.UnbannedBy);
         }
 
         public static string CleanJob(string job)
