@@ -1,0 +1,68 @@
+﻿@model BanViewViewModel
+@{
+    ViewBag.Title = "CentCom | View Bans";
+
+    var banTraits = new Dictionary<int, List<(string title, string value)>>();
+    foreach (var b in Model.Bans)
+    {
+        var thisBan = new List<(string title, string value)>()
+        {
+            ("Banned", b.BannedOn.ToString()),
+            ("Admin", b.BannedBy)
+        };
+
+        if (b.Expires.HasValue)
+        {
+            thisBan.Add(("Expires", b.Expires.ToString()));
+        }
+        if (b.BanID != null)
+        {
+            thisBan.Add(("Origin Ban ID", b.BanID));
+        }
+        if (b.Jobs != null)
+        {
+            thisBan.Insert(0, ("Jobs", string.Join(", ", b.Jobs)));
+        }
+        banTraits.Add(b.ID, thisBan);
+    }
+}
+
+<div class="col-12 col-lg-9 mr-auto">
+    <h2 class="mb-3">
+        Ban Data for '@Model.CKey'
+        <a asp-controller="Viewer" asp-action="ViewBans" asp-route-key="@Model.CKey" asp-route-onlyactive="@(!Model.OnlyActive)" class="btn btn-outline-primary float-right">Show @(Model.OnlyActive ? "All" : "Active")</a>
+    </h2>
+
+    @{
+        if (Model.Bans.Count() == 0)
+        {
+            <div>
+                <p>
+                    Found no bans for this ckey, perhaps you wish to <a asp-controller="Viewer" asp-action="SearchBans" asp-route-key="@Model.CKey">search</a> for this ckey instead?
+                </p>
+            </div>
+        }
+        else
+        {
+
+            @foreach (var b in Model.Bans.OrderByDescending(x => x.BannedOn))
+            {
+                <div class="ban-container @(b.Expires.HasValue && b.Expires.Value < DateTime.UtcNow ? "expired-ban" : "active-ban")">
+                    <div class="ban-title">
+                        <span>@(b.Type) Ban / @b.SourceName / @(b.Expires.HasValue && b.Expires.Value < DateTime.UtcNow ? "Expired" : "Active")</span>
+                    </div>
+                    <div class="ban-contents">
+                        <div class="ban-reason">@b.Reason</div>
+                        <div class="ban-attribute-container">
+                            @foreach (var kvp in banTraits[b.ID])
+                            {
+                                <span class="ban-trait"><b class="ban-trait-title">@kvp.title</b>: @kvp.value</span>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+
+        }
+    }
+</div>

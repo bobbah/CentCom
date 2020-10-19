@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Configuration;
 using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -15,6 +16,7 @@ namespace CentCom.Common.Data
         public DbSet<BanSource> BanSources { get; set; }
         public DbSet<JobBan> JobBans { get; set; }
         public DbSet<FlatBansVersion> FlatBansVersion { get; set; }
+        public DbSet<KeySummary> KeySummaries { get; set; }
 
         public DatabaseContext(IConfiguration configuration)
         {
@@ -66,6 +68,19 @@ namespace CentCom.Common.Data
                 entity.Property(e => e.PerformedAt).IsRequired().HasConversion(v => v, v => DateTime.SpecifyKind(v, DateTimeKind.Utc));
                 entity.Property(e => e.Version).IsRequired();
                 entity.HasIndex(e => new { e.Name, e.Version }).IsUnique();
+            });
+
+            modelBuilder.Entity<KeySummary>(entity =>
+            {
+                entity.HasNoKey();
+                entity.ToQuery(() => Bans.GroupBy(x => x.CKey,
+                    (k, g) => new KeySummary
+                    {
+                        CKey = k,
+                        ServerBans = g.Sum(y => y.BanType == BanType.Server ? 1 : 0),
+                        JobBans = g.Sum(y => y.BanType == BanType.Job ? 1 : 0),
+                        LatestBan = g.Max(x => x.BannedOn)
+                    }));
             });
         }
 

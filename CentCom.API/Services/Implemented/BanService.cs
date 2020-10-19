@@ -1,5 +1,7 @@
 ﻿using CentCom.API.Models;
+using CentCom.Common;
 using CentCom.Common.Data;
+using CentCom.Common.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,7 +14,6 @@ namespace CentCom.API.Services.Implemented
     public class BanService : IBanService
     {
         private DatabaseContext _dbContext;
-        private static Regex _canonicalKeyInvalidChars = new Regex(@"[^a-z0-9]");
 
         public BanService(DatabaseContext dbContext)
         {
@@ -29,7 +30,7 @@ namespace CentCom.API.Services.Implemented
 
         public async Task<IEnumerable<BanData>> GetBansForKeyAsync(string key, int? source, bool onlyActive = false)
         {
-            var ckey = _canonicalKeyInvalidChars.Replace(key.ToLower(), "");
+            var ckey = KeyUtilities.GetCanonicalKey(key);
             var query = _dbContext.Bans
                 .Include(x => x.JobBans)
                 .Include(x => x.SourceNavigation)
@@ -59,6 +60,16 @@ namespace CentCom.API.Services.Implemented
             }
             return await query.OrderByDescending(x => x.BannedOn)
                 .Select(x => BanData.FromBan(x))
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<KeySummary>> SearchSummariesForKeyAsync(string key)
+        {
+            key = KeyUtilities.GetCanonicalKey(key);
+            var query = _dbContext.KeySummaries
+                .Where(x => x.CKey.ToLower().Contains(key));
+
+            return await query.OrderByDescending(x => x.LatestBan)
                 .ToListAsync();
         }
     }
