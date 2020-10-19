@@ -54,6 +54,16 @@ namespace CentCom.Server.Services
             {
                 var ban = bh.Value;
 
+                // Ban expiration could be based on the expiration time field or the existance of the unbanned datetime
+                // field, so we have to check both.
+                var expiration = ban.GetProperty("unbanned_datetime").GetString() == null ? (DateTime?)null
+                        : DateTime.Parse(ban.GetProperty("unbanned_datetime").GetString());
+                if (!expiration.HasValue)
+                {
+                    expiration = ban.GetProperty("expiration_time").GetString() == null ? (DateTime?)null 
+                        : DateTime.Parse(ban.GetProperty("expiration_time").GetString());
+                }
+
                 // Get ban
                 var toAdd = new Ban()
                 {
@@ -61,8 +71,7 @@ namespace CentCom.Server.Services
                     BannedBy = ban.GetProperty("admin").GetString(),
                     BannedOn = DateTime.Parse(ban.GetProperty("bantime").ToString()),
                     CKey = ban.GetProperty("ckey").GetString(),
-                    Expires = ban.GetProperty("expiration_time").GetString() == null ? (DateTime?)null
-                        : DateTime.Parse(ban.GetProperty("expiration_time").GetString()),
+                    Expires = expiration,
                     Reason = ban.GetProperty("reason").ToString(),
                     BanType = ban.GetProperty("role").GetString().ToLower() == "server" ? BanType.Server : BanType.Job,
                     SourceNavigation = _banSource
