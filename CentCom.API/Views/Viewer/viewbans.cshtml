@@ -27,24 +27,30 @@
     }
 }
 
-<h2 class="mb-3">Ban Data for '@Model.CKey'</h2>
+<div class="col-12 col-lg-9 mr-auto">
+    <h2 class="mb-3">
+        Ban Data for '@Model.CKey'
+        <a asp-controller="Viewer" asp-action="ViewBans" asp-route-key="@Model.CKey" asp-route-onlyactive="@(!Model.OnlyActive)" class="btn btn-outline-primary float-right">Show @(Model.OnlyActive ? "All" : "Active")</a>
+    </h2>
 
-@{ 
-    if (Model.Bans.Count() == 0)
-    {
-        <div>
-            <p>
-                Found no bans for this ckey, perhaps you wish to <a asp-controller="Viewer" asp-action="SearchBans" asp-route-key="@Model.CKey">search</a> for this ckey instead?
-            </p>
-        </div>
-    }
-    else
-    {
-        <div class="col-12 col-lg-9 mr-auto">
+    @{
+        if (Model.Bans.Count() == 0)
+        {
+            <div>
+                <p>
+                    Found no bans for this ckey, perhaps you wish to <a asp-controller="Viewer" asp-action="SearchBans" asp-route-key="@Model.CKey">search</a> for this ckey instead?
+                </p>
+            </div>
+        }
+        else
+        {
+
             @foreach (var b in Model.Bans.OrderByDescending(x => x.BannedOn))
             {
                 <div class="ban-container @(b.Expires.HasValue && b.Expires.Value < DateTime.UtcNow ? "expired-ban" : "active-ban")">
-                    <div class="ban-title"><span>@(b.Type) Ban / @b.SourceName / @(b.Expires.HasValue && b.Expires.Value < DateTime.UtcNow ? "Expired" : "Active")</span></div>
+                    <div class="ban-title">
+                        <span>@(b.Type) Ban / @b.SourceName / @(b.Expires.HasValue && b.Expires.Value < DateTime.UtcNow ? "Expired" : "Active")</span>
+                    </div>
                     <div class="ban-contents">
                         <div class="ban-reason">@b.Reason</div>
                         <div class="ban-attribute-container">
@@ -56,6 +62,7 @@
                     </div>
                 </div>
             }
-        </div>
+
+        }
     }
-}
+</div>

@@ -50,11 +50,11 @@ namespace CentCom.API.Controllers
         }
 
         [HttpGet("viewer/view/{key}")]
-        public async Task<IActionResult> ViewBans(string key)
+        public async Task<IActionResult> ViewBans(string key, bool onlyActive = false)
         {
-            var bans = await _banService.GetBansForKeyAsync(key, null);
+            var bans = await _banService.GetBansForKeyAsync(key, null, onlyActive);
 
-            return View(new BanViewViewModel() { CKey = KeyUtilities.GetCanonicalKey(key), Bans = bans });
+            return View(new BanViewViewModel() { CKey = KeyUtilities.GetCanonicalKey(key), Bans = bans, OnlyActive = onlyActive });
         }
     }
 }
