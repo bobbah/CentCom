@@ -43,13 +43,22 @@ namespace CentCom.Server.Services
             var content = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(response.Content);
             foreach (var ban in content["value"].GetProperty("bans").EnumerateArray())
             {
+                // Need to get both the expiration as well as the unbanned time as they can differ
+                DateTime? expiration = expiration = ban.GetProperty("unbannedTime").GetString() == null ? (DateTime?)null
+                        : DateTime.Parse(ban.GetProperty("unbannedTime").GetString()); ;
+                if (!expiration.HasValue)
+                {
+                    expiration = ban.GetProperty("banExpireTime").GetString() == null ? (DateTime?)null
+                        : DateTime.Parse(ban.GetProperty("banExpireTime").GetString());
+                }
+
                 // Get ban
                 var toAdd = new Ban()
                 {
                     BannedOn = DateTime.Parse(ban.GetProperty("banApplyTime").GetString()),
                     BannedBy = ban.GetProperty("adminCkey").GetString(),
                     BanType = ban.GetProperty("role")[0].GetString().ToLower() == "server" ? BanType.Server : BanType.Job,
-                    Expires = ban.GetProperty("banExpireTime").GetString() == null ? (DateTime?)null : DateTime.Parse(ban.GetProperty("banExpireTime").GetString()),
+                    Expires = expiration,
                     CKey = ban.GetProperty("bannedCkey").GetString(),
                     Reason = ban.GetProperty("reason").GetString(),
                     SourceNavigation = _banSource
