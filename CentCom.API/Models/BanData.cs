@@ -22,6 +22,7 @@ namespace CentCom.API.Models
         public string BanID { get; set; }
         public List<string> Jobs { get; set; }
         public List<string> BanAttributes { get; set; }
+        public bool Active => (!Expires.HasValue || Expires.Value > DateTime.UtcNow) && UnbannedBy == null;
 
         public static BanData FromBan(Ban ban)
         {
