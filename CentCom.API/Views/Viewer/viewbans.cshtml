@@ -23,6 +23,10 @@
         {
             thisBan.Insert(0, ("Jobs", string.Join(", ", b.Jobs)));
         }
+        if (b.UnbannedBy != null)
+        {
+            thisBan.Add(("Unbanned By", b.UnbannedBy));
+        }
         banTraits.Add(b.ID, thisBan);
     }
 }
@@ -47,9 +51,9 @@
 
             @foreach (var b in Model.Bans.OrderByDescending(x => x.BannedOn))
             {
-                <div class="ban-container @(b.Expires.HasValue && b.Expires.Value < DateTime.UtcNow ? "expired-ban" : "active-ban")">
+                <div class="ban-container @(b.Active ? "active-ban" : "expired-ban")">
                     <div class="ban-title">
-                        <span>@(b.Type) Ban / @b.SourceName / @(b.Expires.HasValue && b.Expires.Value < DateTime.UtcNow ? "Expired" : "Active")</span>
+                        <span>@(b.Type) Ban / @b.SourceName / @(b.Active ? "Active" : "Expired")</span>
                     </div>
                     <div class="ban-contents">
                         <div class="ban-reason">@b.Reason</div>
@@ -58,11 +62,14 @@
                             {
                                 <span class="ban-trait"><b class="ban-trait-title">@kvp.title</b>: @kvp.value</span>
                             }
+                            @if (b.BanAttributes?.Count() > 0)
+                            {
+                                <span class="ban-trait"><b class="ban-trait-title">CentCom Attributes</b>: @(string.Join(", ", b.BanAttributes))</span>
+                            }
                         </div>
                     </div>
                 </div>
             }
-
         }
     }
 </div>

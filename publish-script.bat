@@ -1,3 +1,10 @@
+rmdir /Q /S publish
+rmdir /Q /S CentCom.API\bin
+rmdir /Q /S CentCom.API\obj
+rmdir /Q /S CentCom.Common\bin
+rmdir /Q /S CentCom.Common\obj
+rmdir /Q /S CentCom.Server\bin
+rmdir /Q /S CentCom.Server\obj
 dotnet publish CentCom.API -o publish/linux-x64/CentCom.API/ -r "linux-x64" --self-contained false
 7z a publish/CentCom.API-linux-x64.zip -r ./publish/linux-x64/CentCom.API/*
 dotnet publish CentCom.Server -o publish/linux-x64/CentCom.Server -r "linux-x64" --self-contained false
