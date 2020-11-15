@@ -13,8 +13,8 @@ namespace CentCom.Server.Services
 {
     public class VgBanService
     {
-        private static BanSource _source = new BanSource() { Name = "vgstation" };
-        private ILogger _logger;
+        private readonly static BanSource _source = new BanSource() { Name = "vgstation" };
+        private readonly ILogger _logger;
 
         public VgBanService(ILogger<VgBanService> logger)
         {

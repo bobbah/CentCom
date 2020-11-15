@@ -2,7 +2,6 @@
 using CentCom.API.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -12,13 +11,11 @@ namespace CentCom.API.Controllers
     [ApiController]
     public class BanController : ControllerBase
     {
-        private readonly ILogger<BanController> _logger;
         private readonly IBanService _banService;
         private readonly IBanSourceService _banSourceService;
 
-        public BanController(ILogger<BanController> logger, IBanService banService, IBanSourceService banSourceService)
+        public BanController(IBanService banService, IBanSourceService banSourceService)
         {
-            _logger = logger;
             _banService = banService;
             _banSourceService = banSourceService;
         }

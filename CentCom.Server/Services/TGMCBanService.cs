@@ -24,11 +24,11 @@ namespace CentCom.Server.Services
     /// </remarks>
     public class TGMCBanService
     {
-        private IRestClient _client;
-        ILogger _logger;
+        private readonly IRestClient _client;
+        private readonly ILogger _logger;
         private const string BASE_URL = "http://statbus.psykzz.com:8080/api/";
         private const int RECORDS_PER_PAGE = 100;
-        private static BanSource _banSource = new BanSource() { Name = "tgmc" };
+        private readonly static BanSource _banSource = new BanSource() { Name = "tgmc" };
 
         public TGMCBanService(ILogger<TGMCBanService> logger)
         {
@@ -60,7 +60,7 @@ namespace CentCom.Server.Services
                         : DateTime.Parse(ban.GetProperty("unbanned_datetime").GetString());
                 if (!expiration.HasValue)
                 {
-                    expiration = ban.GetProperty("expiration_time").GetString() == null ? (DateTime?)null 
+                    expiration = ban.GetProperty("expiration_time").GetString() == null ? (DateTime?)null
                         : DateTime.Parse(ban.GetProperty("expiration_time").GetString());
                 }
 
@@ -142,7 +142,7 @@ namespace CentCom.Server.Services
             {
                 // Discard the last ban if it is a job ban as it may be incomplete.
                 // Same reasoning above, except it would require a pagewalk forward.
-                cleanBans.RemoveAt(cleanBans.Count() - 1);
+                cleanBans.RemoveAt(cleanBans.Count - 1);
             }
 
             return cleanBans;

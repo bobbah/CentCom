@@ -1,8 +1,5 @@
-﻿using CentCom.Common.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using System.Net;
 
 namespace CentCom.Common.Data
 {
@@ -14,7 +11,8 @@ namespace CentCom.Common.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            options.UseMySql(Configuration.GetSection("dbConfig")["connectionString"]);
+            var connStr = Configuration.GetSection("dbConfig")["connectionString"];
+            options.UseMySql(connStr, ServerVersion.AutoDetect(connStr));
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

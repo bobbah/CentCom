@@ -15,8 +15,8 @@ namespace CentCom.Server.FlatData
     /// </summary>
     public class FlatDataImporter
     {
-        private ILogger _logger;
-        private DatabaseContext _dbContext;
+        private readonly ILogger _logger;
+        private readonly DatabaseContext _dbContext;
 
         public FlatDataImporter(DatabaseContext dbContext, ILogger<FlatDataImporter> logger)
         {
@@ -59,7 +59,7 @@ namespace CentCom.Server.FlatData
                     {
                         // Make this an atomic operation to ensure failed imports don't leave holes in the data
                         using var transaction = await _dbContext.Database.BeginTransactionAsync();
-                        
+
                         // Update any ban sources if necessary
                         var toUpdate = await _dbContext.BanSources
                             .Where(x => deserializedData.Sources.Select(x => x.Name).Contains(x.Name))

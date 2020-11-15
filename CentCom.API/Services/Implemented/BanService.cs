@@ -12,7 +12,7 @@ namespace CentCom.API.Services.Implemented
 {
     public class BanService : IBanService
     {
-        private DatabaseContext _dbContext;
+        private readonly DatabaseContext _dbContext;
 
         public BanService(DatabaseContext dbContext)
         {
@@ -65,8 +65,14 @@ namespace CentCom.API.Services.Implemented
         public async Task<IEnumerable<KeySummary>> SearchSummariesForKeyAsync(string key)
         {
             key = KeyUtilities.GetCanonicalKey(key);
-            var query = _dbContext.KeySummaries
-                .Where(x => x.CKey.ToLower().Contains(key));
+            var query = _dbContext.Bans.GroupBy(x => x.CKey,
+                (k, g) => new KeySummary
+                {
+                    CKey = k,
+                    ServerBans = g.Sum(y => y.BanType == BanType.Server ? 1 : 0),
+                    JobBans = g.Sum(y => y.BanType == BanType.Job ? 1 : 0),
+                    LatestBan = g.Max(x => x.BannedOn)
+                }).Where(x => x.CKey.ToLower().Contains(key));
 
             return await query.OrderByDescending(x => x.LatestBan)
                 .ToListAsync();

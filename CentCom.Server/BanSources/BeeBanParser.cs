@@ -1,4 +1,5 @@
-﻿using CentCom.Common.Models;
+﻿using CentCom.Common.Data;
+using CentCom.Common.Models;
 using CentCom.Server.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -6,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CentCom.Common.Data;
 
 namespace CentCom.Server.BanSources
 {
@@ -28,7 +28,7 @@ namespace CentCom.Server.BanSources
             } }
         };
         public override bool SourceSupportsBanIDs => true;
-        private BeeBanService _banService;
+        private readonly BeeBanService _banService;
         private const int PAGES_PER_BATCH = 12;
 
         public BeeBanParser(DatabaseContext dbContext, BeeBanService banService, ILogger<BeeBanParser> logger) : base(dbContext, logger)
@@ -53,7 +53,7 @@ namespace CentCom.Server.BanSources
             {
                 var batch = await _banService.GetBansBatchedAsync(page, PAGES_PER_BATCH);
                 foundBans.AddRange(batch);
-                if (batch.Count() == 0 || batch.Any(x => recent.Any(y => y.BanID == x.BanID)))
+                if (!batch.Any() || batch.Any(x => recent.Any(y => y.BanID == x.BanID)))
                 {
                     break;
                 }

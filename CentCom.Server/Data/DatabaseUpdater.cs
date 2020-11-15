@@ -9,11 +9,11 @@ namespace CentCom.Server.Data
     [DisallowConcurrentExecution]
     public class DatabaseUpdater : IJob
     {
-        private DatabaseContext _dbContext;
-        private ILogger _logger;
-        private FlatDataImporter _importer;
+        private readonly DatabaseContext _dbContext;
+        private readonly ILogger _logger;
+        private readonly FlatDataImporter _importer;
 
-        public DatabaseUpdater(DatabaseContext dbContext, IScheduler scheduler, ILogger<DatabaseUpdater> logger, FlatDataImporter importer)
+        public DatabaseUpdater(DatabaseContext dbContext, ILogger<DatabaseUpdater> logger, FlatDataImporter importer)
         {
             _dbContext = dbContext;
             _logger = logger;
