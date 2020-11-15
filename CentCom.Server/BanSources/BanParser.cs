@@ -49,7 +49,7 @@ namespace CentCom.Server.BanSources
             {
                 await ParseBans(context);
             }
-            catch (JobExecutionException ex)
+            catch (JobExecutionException)
             {
                 throw;
             }

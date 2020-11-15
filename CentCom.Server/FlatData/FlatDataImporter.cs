@@ -38,7 +38,7 @@ namespace CentCom.Server.FlatData
                     });
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     _logger.LogError($"Failed to deserialize flat data file: '{file}'");
                     continue;
