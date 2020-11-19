@@ -9,7 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CentCom.API", "CentCom.API\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CentCom.Common", "CentCom.Common\CentCom.Common.csproj", "{1908B013-99C9-499C-ABA1-BC249CBDE3ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentCom.Test", "CentCom.Test\CentCom.Test.csproj", "{B4A8FED4-ED2C-471B-9F07-A72B0E80E089}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CentCom.Test", "CentCom.Test\CentCom.Test.csproj", "{B4A8FED4-ED2C-471B-9F07-A72B0E80E089}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{32C29C63-00D2-4A72-BA1D-6FD7FDE89A7F}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

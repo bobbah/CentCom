@@ -64,7 +64,7 @@ namespace CentCom.API.Models
         /// </summary>
         public List<string> Jobs { get; set; }
         /// <summary>
-        /// Any addditional attributes added to this ban by CentCom
+        /// Any additional attributes added to this ban by CentCom
         /// </summary>
         public List<string> BanAttributes { get; set; }
         /// <summary>
