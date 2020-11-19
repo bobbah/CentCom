@@ -1,7 +1,6 @@
 ﻿using CentCom.Common.Models.Equality;
 using System;
 using System.Collections.Generic;
-using System.Net;
 using System.Text.Json.Serialization;
 
 namespace CentCom.Common.Models

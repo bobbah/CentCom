@@ -1,6 +1,4 @@
 ﻿using CentCom.Common;
-using CentCom.Common.Models;
-using CentCom.Server.Extensions;
 using System;
 using Xunit;
 

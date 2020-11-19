@@ -1,9 +1,9 @@
-﻿using CentCom.Common.Models;
+﻿using CentCom.Common.Data;
+using CentCom.Common.Models;
 using CentCom.Server.Services;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using CentCom.Common.Data;
 
 namespace CentCom.Server.BanSources
 {
@@ -18,7 +18,7 @@ namespace CentCom.Server.BanSources
                 RoleplayLevel = RoleplayLevel.Low
             } }
         };
-        private VgBanService _banService;
+        private readonly VgBanService _banService;
 
         public VgBanParser(DatabaseContext dbContext, VgBanService banService, ILogger<VgBanParser> logger) : base(dbContext, logger)
         {

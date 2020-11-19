@@ -2,9 +2,6 @@
 using CentCom.API.Services;
 using CentCom.Common;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,19 +9,15 @@ namespace CentCom.API.Controllers
 {
     public class ViewerController : Controller
     {
-        private readonly ILogger<ViewerController> _logger;
         private readonly IBanService _banService;
-        private readonly IBanSourceService _banSourceService;
 
-        public ViewerController(ILogger<ViewerController> logger, IBanService banService, IBanSourceService banSourceService)
+        public ViewerController(IBanService banService)
         {
-            _logger = logger;
             _banService = banService;
-            _banSourceService = banSourceService;
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             return View();
         }

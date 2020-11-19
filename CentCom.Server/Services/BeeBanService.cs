@@ -16,12 +16,12 @@ namespace CentCom.Server.Services
 {
     public class BeeBanService
     {
-        private IRestClient _client;
-        private string _baseURL = "https://beestation13.com/";
-        private Regex _pagesPattern = new Regex("page [0-9]+ of (?<maxpages>[0-9]+)");
-        private static BanSource _lrpSource = new BanSource() { Name = "bee-lrp" };
-        private static BanSource _mrpSource = new BanSource() { Name = "bee-mrp" };
-        private ILogger _logger;
+        private readonly IRestClient _client;
+        private readonly string _baseURL = "https://beestation13.com/";
+        private readonly Regex _pagesPattern = new Regex("page [0-9]+ of (?<maxpages>[0-9]+)");
+        private readonly static BanSource _lrpSource = new BanSource() { Name = "bee-lrp" };
+        private readonly static BanSource _mrpSource = new BanSource() { Name = "bee-mrp" };
+        private readonly ILogger _logger;
 
         public BeeBanService(ILogger<BeeBanService> logger)
         {
@@ -108,30 +108,24 @@ namespace CentCom.Server.Services
             }
         }
 
-        private BanType ParseBanType(string raw)
+        private static BanType ParseBanType(string raw)
         {
-            switch (raw.ToLower())
+            return (raw.ToLower()) switch
             {
-                case "server":
-                    return BanType.Server;
-                case "job":
-                    return BanType.Job;
-                default:
-                    throw new Exception($"Failed to convert raw value of Beestation ban to BanType: \"{raw}\"");
-            }
+                "server" => BanType.Server,
+                "job" => BanType.Job,
+                _ => throw new Exception($"Failed to convert raw value of Beestation ban to BanType: \"{raw}\""),
+            };
         }
 
-        private BanSource ParseBanSource(string raw)
+        private static BanSource ParseBanSource(string raw)
         {
-            switch (raw.ToLower())
+            return (raw.ToLower()) switch
             {
-                case "bs_golden":
-                    return _lrpSource;
-                case "bs_sage":
-                    return _mrpSource;
-                default:
-                    throw new Exception($"Failed to convert raw value of Beestation ban source to BanSource: \"{raw}\"");
-            }
+                "bs_golden" => _lrpSource,
+                "bs_sage" => _mrpSource,
+                _ => throw new Exception($"Failed to convert raw value of Beestation ban source to BanSource: \"{raw}\""),
+            };
         }
     }
 }

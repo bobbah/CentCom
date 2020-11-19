@@ -9,7 +9,7 @@ namespace CentCom.API.Services.Implemented
 {
     public class BanSourceService : IBanSourceService
     {
-        private DatabaseContext _dbContext;
+        private readonly DatabaseContext _dbContext;
 
         public BanSourceService(DatabaseContext dbContext)
         {

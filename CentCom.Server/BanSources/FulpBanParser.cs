@@ -6,7 +6,6 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CentCom.Server.BanSources
@@ -22,7 +21,7 @@ namespace CentCom.Server.BanSources
                 RoleplayLevel = RoleplayLevel.Medium
             } }
         };
-        private FulpBanService _banService;
+        private readonly FulpBanService _banService;
         private const int PAGES_PER_BATCH = 12;
 
         public FulpBanParser(DatabaseContext dbContext, FulpBanService banService, ILogger<FulpBanParser> logger) : base(dbContext, logger)
@@ -54,7 +53,7 @@ namespace CentCom.Server.BanSources
             {
                 var batch = await _banService.GetBansBatchedAsync(page, PAGES_PER_BATCH);
                 foundBans.AddRange(batch);
-                if (batch.Count() == 0 || batch.Any(x => recent.Any(y => y.BannedOn == x.BannedOn && y.CKey == y.CKey)))
+                if (!batch.Any() || batch.Any(x => recent.Any(y => y.BannedOn == x.BannedOn && y.CKey == y.CKey)))
                 {
                     break;
                 }

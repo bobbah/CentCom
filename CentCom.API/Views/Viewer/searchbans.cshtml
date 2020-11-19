@@ -33,7 +33,7 @@
                             <td>@b.CKey</td>
                             <td>@b.ServerBans</td>
                             <td>@b.JobBans</td>
-                            <td>@b.LatestBan</td>
+                            <td>@b.LatestBan.ToString("yyyy'-'MM'-'dd HH':'mm':'ss")</td>
                             <td><a asp-controller="Viewer" asp-action="ViewBans" asp-route-key="@b.CKey" class="btn btn-outline-primary">View</a></td>
                         </tr>
                     }

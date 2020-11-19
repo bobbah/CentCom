@@ -1,16 +1,11 @@
 ﻿using CentCom.Common;
 using CentCom.Common.Models;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 
 namespace CentCom.Server.Extensions
 {
     public static class BanExtensions
     {
-        private static Regex _keyReplacePattern = new Regex(@"[^a-z0-9]");
-
         public static void MakeKeysCanonical(this Ban ban)
         {
             ban.CKey = ban.CKey == null ? null : KeyUtilities.GetCanonicalKey(ban.CKey);

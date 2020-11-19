@@ -15,12 +15,12 @@ namespace CentCom.Server.Services
 {
     public class FulpBanService
     {
-        private IRestClient _client;
-        ILogger _logger;
+        private readonly IRestClient _client;
+        private readonly ILogger _logger;
         private const string BASE_URL = "https://api.fulp.gg/";
         private const int RECORDS_PER_PAGE = 50;
-        private static BanSource _banSource = new BanSource() { Name = "fulp" };
-        
+        private readonly static BanSource _banSource = new BanSource() { Name = "fulp" };
+
 
         public FulpBanService(ILogger<FulpBanService> logger)
         {

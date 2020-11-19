@@ -40,7 +40,7 @@ namespace CentCom.Server
                 })
                 .WriteTo.Logger(lc =>
                 {
-                    lc.WriteTo.File(path: "centcom-parser-server.txt", 
+                    lc.WriteTo.File(path: "centcom-parser-server.txt",
                         outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] ({SourceContext}) {Message:lj}{NewLine}{Exception}");
                 })
                 .CreateLogger();
@@ -185,9 +185,9 @@ namespace CentCom.Server
                 return;
             }
 
-            if (_serviceProvider is IDisposable)
+            if (_serviceProvider is IDisposable disposable)
             {
-                ((IDisposable)_serviceProvider).Dispose();
+                disposable.Dispose();
             }
         }
     }

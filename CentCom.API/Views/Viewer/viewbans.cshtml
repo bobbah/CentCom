@@ -7,13 +7,13 @@
     {
         var thisBan = new List<(string title, string value)>()
         {
-            ("Banned", b.BannedOn.ToString()),
+            ("Banned", b.BannedOn.ToString("yyyy'-'MM'-'dd HH':'mm':'ss")),
             ("Admin", b.BannedBy)
         };
 
         if (b.Expires.HasValue)
         {
-            thisBan.Add(("Expires", b.Expires.ToString()));
+            thisBan.Add(("Expires", b.Expires.Value.ToString("yyyy'-'MM'-'dd HH':'mm':'ss")));
         }
         if (b.BanID != null)
         {

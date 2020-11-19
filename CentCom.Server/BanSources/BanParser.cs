@@ -1,4 +1,8 @@
+using CentCom.Common.Data;
 using CentCom.Common.Models;
+using CentCom.Common.Models.Equality;
+using CentCom.Server.Exceptions;
+using CentCom.Server.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Quartz;
@@ -6,10 +10,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CentCom.Common.Data;
-using CentCom.Server.Exceptions;
-using CentCom.Server.Extensions;
-using CentCom.Common.Models.Equality;
 
 namespace CentCom.Server.BanSources
 {
@@ -49,7 +49,7 @@ namespace CentCom.Server.BanSources
             {
                 await ParseBans(context);
             }
-            catch (JobExecutionException ex)
+            catch (JobExecutionException)
             {
                 throw;
             }
@@ -68,7 +68,7 @@ namespace CentCom.Server.BanSources
         public virtual async Task ParseBans(IJobExecutionContext context)
         {
             _logger.LogInformation($"Beginning ban parsing");
-            
+
             // Get stored bans from the database
             IEnumerable<Ban> storedBans = null;
             try
@@ -86,7 +86,7 @@ namespace CentCom.Server.BanSources
             }
 
             // Get bans from the source
-            var isCompleteRefresh = context.MergedJobDataMap.GetBoolean("completeRefresh") || storedBans.Count() == 0;
+            var isCompleteRefresh = context.MergedJobDataMap.GetBoolean("completeRefresh") || !storedBans.Any();
             IEnumerable<Ban> bans = null;
             try
             {
@@ -117,7 +117,7 @@ namespace CentCom.Server.BanSources
                 Ban matchedBan = null;
                 if (SourceSupportsBanIDs)
                 {
-                    matchedBan = storedBans.FirstOrDefault(x => 
+                    matchedBan = storedBans.FirstOrDefault(x =>
                         b.Source == x.Source
                         && b.BanID == x.BanID);
                 }
@@ -184,7 +184,7 @@ namespace CentCom.Server.BanSources
                 }
 
                 // Apply deletions
-                _logger.LogInformation(missingBans.Count > 0 ? $"Removing {missingBans.Count} deleted bans..." 
+                _logger.LogInformation(missingBans.Count > 0 ? $"Removing {missingBans.Count} deleted bans..."
                     : "Found no deleted bans to remove");
                 if (missingBans.Count > 0)
                 {
@@ -211,7 +211,7 @@ namespace CentCom.Server.BanSources
             var foundSources = await _dbContext.BanSources.Where(x => Sources.Keys.Contains(x.Name)).ToListAsync();
 
             // Insert any ban sources that are missing, this is vital to ensure the database is properly configured state-wise
-            if (foundSources.Count() != Sources.Count)
+            if (foundSources.Count != Sources.Count)
             {
                 var missing = Sources.Keys.Except(foundSources.Select(x => x.Name)).ToList();
                 foreach (var source in missing)
