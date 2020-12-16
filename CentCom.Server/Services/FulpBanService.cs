@@ -2,6 +2,7 @@
 using CentCom.Server.Exceptions;
 using CentCom.Server.Extensions;
 using Extensions;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using RestSharp;
 using System;
@@ -22,10 +23,15 @@ namespace CentCom.Server.Services
         private readonly static BanSource _banSource = new BanSource() { Name = "fulp" };
 
 
-        public FulpBanService(ILogger<FulpBanService> logger)
+        public FulpBanService(ILogger<FulpBanService> logger, IConfiguration config)
         {
             _logger = logger;
             _client = new RestClient(BASE_URL);
+
+            if (config.GetSection("sourceConfig").GetValue<bool>("allowFulpExpiredSSL"))
+            {
+                _client.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyError) => true;
+            }
         }
 
         public async Task<IEnumerable<Ban>> GetBansAsync(int page = 1)
