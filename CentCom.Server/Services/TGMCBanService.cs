@@ -5,6 +5,7 @@ using Extensions;
 using Microsoft.Extensions.Logging;
 using RestSharp;
 using System;
+using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
@@ -119,6 +120,10 @@ namespace CentCom.Server.Services
                     dirtyBans.Add(b);
                 }
             }, 12);
+
+
+            if (dirtyBans.IsEmpty)
+                return Enumerable.Empty<Ban>();
 
             // We have to ensure that our jobs are correctly grouped due to possible errors with paging
             var cleanBans = new List<Ban>(dirtyBans.Where(x => x.BanType == BanType.Server));

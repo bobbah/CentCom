@@ -44,12 +44,13 @@ namespace CentCom.Server.Services
             var content = JsonSerializer.Deserialize<IEnumerable<Dictionary<string, JsonElement>>>(response.Content);
             foreach (var b in content)
             {
+                var expiryString = b["unban_date"].GetString() ?? b["expire_date"].GetString();
                 var toAdd = new Ban()
                 {
                     BannedOn = DateTime.Parse(b["ban_date"].GetString()).ToUniversalTime(),
                     BannedBy = b["banner"].GetString(),
                     BanType = ParseBanType(b["type"].GetString()),
-                    Expires = b["unban_date"].GetString() == null ? (DateTime?)null : DateTime.Parse(b["unban_date"].GetString()).ToUniversalTime(),
+                    Expires = expiryString == null ? (DateTime?)null : DateTime.Parse(expiryString).ToUniversalTime(),
                     CKey = b["user"].GetString(),
                     Reason = b["reason"].GetString(),
                     BanID = b["id"].GetInt32().ToString(),
