@@ -105,6 +105,14 @@ namespace CentCom.Server.BanSources
             // Assign proper sources
             bans = await AssignBanSources(bans);
 
+            // Remove and report any invalid data from the parsed data
+            var dirtyBans = bans.Where(x => x.CKey == null);
+            if (dirtyBans.Any())
+            {
+                bans = bans.Except(dirtyBans);
+                _logger.LogWarning($"Removed {dirtyBans.Count()} erroneous bans from parsed data. This shouldn't happen!");
+            }
+            
             // Check for ban updates
             var inserted = 0;
             var updated = 0;
