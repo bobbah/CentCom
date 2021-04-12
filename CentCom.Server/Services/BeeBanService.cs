@@ -47,12 +47,12 @@ namespace CentCom.Server.Services
                 var expiryString = b["unbanned_datetime"].GetString() ?? b["expiration_time"].GetString();
                 var toAdd = new Ban()
                 {
-                    BannedOn = DateTime.Parse(b["bantime"].GetString()).ToUniversalTime(),
+                    BannedOn = DateTime.SpecifyKind(DateTime.Parse(b["bantime"].GetString()), DateTimeKind.Utc),
                     BannedBy = b["a_ckey"].GetString(),
                     BanType = b["roles"].EnumerateArray().Select(x => x.GetString()).Contains("Server")
                         ? BanType.Server
                         : BanType.Job,
-                    Expires = expiryString == null ? (DateTime?)null : DateTime.Parse(expiryString).ToUniversalTime(),
+                    Expires = expiryString == null ? (DateTime?)null : DateTime.SpecifyKind(DateTime.Parse(expiryString), DateTimeKind.Utc),
                     CKey = b["ckey"].GetString(),
                     Reason = b["reason"].GetString(),
                     BanID = b["id"].GetInt32().ToString(),
@@ -64,7 +64,7 @@ namespace CentCom.Server.Services
                     toAdd.AddJobRange(b["roles"].EnumerateArray().Select(x => x.GetString()));
                 }
 
-                if (b["global"].GetInt32() == 1)
+                if (b["global_ban"].GetInt32() == 1)
                 {
                     toAdd.AddAttribute(BanAttribute.BeeStationGlobal);
                 }
