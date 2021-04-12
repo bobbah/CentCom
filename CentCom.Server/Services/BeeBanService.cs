@@ -17,52 +17,54 @@ namespace CentCom.Server.Services
     public class BeeBanService
     {
         private readonly IRestClient _client;
-        private readonly string _baseURL = "https://beestation13.com/";
-        private readonly Regex _pagesPattern = new Regex("page [0-9]+ of (?<maxpages>[0-9]+)");
-        private readonly static BanSource _lrpSource = new BanSource() { Name = "bee-lrp" };
-        private readonly static BanSource _mrpSource = new BanSource() { Name = "bee-mrp" };
+        private const string BaseUrl = "https://beestation13.com/";
+        private readonly Regex _pagesPattern = new Regex("page [0-9]+ of (?<maxpages>[0-9]+)", RegexOptions.Compiled);
+        private static readonly BanSource LrpSource = new BanSource() { Name = "bee-lrp" };
+        private static readonly BanSource MrpSource = new BanSource() { Name = "bee-mrp" };
         private readonly ILogger _logger;
 
         public BeeBanService(ILogger<BeeBanService> logger)
         {
-            _client = new RestClient(_baseURL);
+            _client = new RestClient(BaseUrl);
             _logger = logger;
         }
 
-        public async Task<IEnumerable<Ban>> GetBansAsync(int page = 1)
+        private async Task<IEnumerable<Ban>> GetBansAsync(int page = 1)
         {
             var request = new RestRequest("bans", Method.GET, DataFormat.Json).AddQueryParameter("json", "1").AddQueryParameter("page", page.ToString());
             var response = await _client.ExecuteAsync(request);
 
             if (response.StatusCode != System.Net.HttpStatusCode.OK)
             {
-                _logger.LogError($"Beestation website returned a non-200 HTTP response code: {response.StatusCode}, aborting parse.");
-                throw new BanSourceUnavailableException($"Beestation website returned a non-200 HTTP response code: {response.StatusCode}, aborting parse.");
+                _logger.LogError("Beestation website returned a non-200 HTTP response code: {StatusCode}, aborting parse", response.StatusCode);
+                throw new BanSourceUnavailableException($"Beestation website returned a non-200 HTTP response code: {response.StatusCode}, aborting parse");
             }
 
             var toReturn = new List<Ban>();
             var content = JsonSerializer.Deserialize<IEnumerable<Dictionary<string, JsonElement>>>(response.Content);
             foreach (var b in content)
             {
-                var expiryString = b["unban_date"].GetString() ?? b["expire_date"].GetString();
+                var expiryString = b["unbanned_datetime"].GetString() ?? b["expiration_time"].GetString();
                 var toAdd = new Ban()
                 {
-                    BannedOn = DateTime.Parse(b["ban_date"].GetString()).ToUniversalTime(),
-                    BannedBy = b["banner"].GetString(),
-                    BanType = ParseBanType(b["type"].GetString()),
+                    BannedOn = DateTime.Parse(b["bantime"].GetString()).ToUniversalTime(),
+                    BannedBy = b["a_ckey"].GetString(),
+                    BanType = b["roles"].EnumerateArray().Select(x => x.GetString()).Contains("Server")
+                        ? BanType.Server
+                        : BanType.Job,
                     Expires = expiryString == null ? (DateTime?)null : DateTime.Parse(expiryString).ToUniversalTime(),
-                    CKey = b["user"].GetString(),
+                    CKey = b["ckey"].GetString(),
                     Reason = b["reason"].GetString(),
                     BanID = b["id"].GetInt32().ToString(),
-                    SourceNavigation = ParseBanSource(b["server"].GetString())
+                    SourceNavigation = ParseBanSource(b["server_name"].GetString())
                 };
 
                 if (toAdd.BanType == BanType.Job)
                 {
-                    toAdd.AddJobRange(b["job"].EnumerateArray().Select(x => x.GetString()));
+                    toAdd.AddJobRange(b["roles"].EnumerateArray().Select(x => x.GetString()));
                 }
 
-                if (b["global"].GetBoolean())
+                if (b["global"].GetInt32() == 1)
                 {
                     toAdd.AddAttribute(BanAttribute.BeeStationGlobal);
                 }
@@ -88,14 +90,14 @@ namespace CentCom.Server.Services
             return toReturn;
         }
 
-        public async Task<int> GetNumberOfPagesAsync()
+        private async Task<int> GetNumberOfPagesAsync()
         {
             var request = new RestRequest("bans", Method.GET, DataFormat.None);
             var result = await _client.ExecuteAsync(request);
 
             if (result.StatusCode != System.Net.HttpStatusCode.OK)
             {
-                throw new Exception($"Unexpected non-200 status code [{result.StatusCode}] when trying to retrieve number of ban pages on beestation13.com.");
+                throw new Exception($"Unexpected non-200 status code [{result.StatusCode}] when trying to retrieve number of ban pages on beestation13.com");
             }
 
             var match = _pagesPattern.Match(result.Content);
@@ -103,28 +105,16 @@ namespace CentCom.Server.Services
             {
                 throw new Exception("Failed to find page numbers on beestation13.com bans page");
             }
-            else
-            {
-                return int.Parse(match.Groups["maxpages"].Value);
-            }
-        }
 
-        private static BanType ParseBanType(string raw)
-        {
-            return (raw.ToLower()) switch
-            {
-                "server" => BanType.Server,
-                "job" => BanType.Job,
-                _ => throw new Exception($"Failed to convert raw value of Beestation ban to BanType: \"{raw}\""),
-            };
+            return int.Parse(match.Groups["maxpages"].Value);
         }
 
         private static BanSource ParseBanSource(string raw)
         {
             return (raw.ToLower()) switch
             {
-                "bs_golden" => _lrpSource,
-                "bs_sage" => _mrpSource,
+                "bs_golden" => LrpSource,
+                "bs_sage" => MrpSource,
                 _ => throw new Exception($"Failed to convert raw value of Beestation ban source to BanSource: \"{raw}\""),
             };
         }
