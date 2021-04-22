@@ -50,6 +50,7 @@ namespace CentCom.Server.Services
                 {
                     BannedOn = DateTime.SpecifyKind(DateTime.Parse(b["bantime"].GetString()), DateTimeKind.Utc),
                     BannedBy = b["a_ckey"].GetString(),
+                    UnbannedBy = b["unbanned_ckey"].GetString(),
                     BanType = b["roles"].EnumerateArray().Select(x => x.GetString()).Contains("Server")
                         ? BanType.Server
                         : BanType.Job,
