@@ -51,9 +51,9 @@
 
             @foreach (var b in Model.Bans.OrderByDescending(x => x.BannedOn))
             {
-                <div class="ban-container @(b.Active ? "active-ban" : "expired-ban")">
+                <div class="ban-container @(b.Active ? "active-ban" : (b.UnbannedBy != null ? "lifted-ban" : "expired-ban"))">
                     <div class="ban-title">
-                        <span>@(b.Type) Ban / @b.SourceName / @(b.Active ? "Active" : "Expired")</span>
+                        <span>@(b.Type) Ban / @b.SourceName / @(b.Active ? "Active" : (b.UnbannedBy != null ? "Unbanned" : "Expired"))</span>
                     </div>
                     <div class="ban-contents">
                         <div class="ban-reason">@b.Reason</div>

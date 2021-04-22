@@ -16,6 +16,7 @@ namespace CentCom.Server.Services
 {
     public class BeeBanService
     {
+        private const int _parallelRequests = 12;
         private readonly IRestClient _client;
         private const string BaseUrl = "https://beestation13.com/";
         private readonly Regex _pagesPattern = new Regex("page [0-9]+ of (?<maxpages>[0-9]+)", RegexOptions.Compiled);
@@ -49,10 +50,11 @@ namespace CentCom.Server.Services
                 {
                     BannedOn = DateTime.SpecifyKind(DateTime.Parse(b["bantime"].GetString()), DateTimeKind.Utc),
                     BannedBy = b["a_ckey"].GetString(),
+                    UnbannedBy = b["unbanned_ckey"].GetString(),
                     BanType = b["roles"].EnumerateArray().Select(x => x.GetString()).Contains("Server")
                         ? BanType.Server
                         : BanType.Job,
-                    Expires = expiryString == null ? (DateTime?)null : DateTime.SpecifyKind(DateTime.Parse(expiryString), DateTimeKind.Utc),
+                    Expires = expiryString == null ? null : DateTime.SpecifyKind(DateTime.Parse(expiryString), DateTimeKind.Utc),
                     CKey = b["ckey"].GetString(),
                     Reason = b["reason"].GetString(),
                     BanID = b["id"].GetInt32().ToString(),
@@ -86,7 +88,7 @@ namespace CentCom.Server.Services
                 {
                     toReturn.Add(b);
                 }
-            }, 12);
+            }, _parallelRequests);
             return toReturn;
         }
 
