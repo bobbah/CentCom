@@ -1,8 +1,8 @@
 using CentCom.Common.Data;
+using CentCom.Common.Extensions;
 using CentCom.Common.Models;
 using CentCom.Common.Models.Equality;
 using CentCom.Server.Exceptions;
-using CentCom.Server.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Quartz;
@@ -70,7 +70,7 @@ namespace CentCom.Server.BanSources
             _logger.LogInformation($"Beginning ban parsing");
 
             // Get stored bans from the database
-            IEnumerable<Ban> storedBans = null;
+            List<Ban> storedBans = null;
             try
             {
                 storedBans = await _dbContext.Bans
@@ -106,16 +106,28 @@ namespace CentCom.Server.BanSources
             bans = await AssignBanSources(bans);
 
             // Remove and report any invalid data from the parsed data
-            var dirtyBans = bans.Where(x => x.CKey == null);
+            var dirtyBans = bans.Where(x => x.CKey == null || (SourceSupportsBanIDs && x.BanID == null));
             if (dirtyBans.Any())
             {
                 bans = bans.Except(dirtyBans);
                 _logger.LogWarning($"Removed {dirtyBans.Count()} erroneous bans from parsed data. This shouldn't happen!");
             }
-            
+
+            // Remove erronenous duplicates from source
+            var sourceDupes = bans.GroupBy(x => x, BanEqualityComparer.Instance)
+                .Where(x => x.Count() > 1)
+                .SelectMany(x => x.OrderBy(x => x.Id).Skip(1));
+            if (sourceDupes.Any())
+            {
+                _logger.LogWarning($"Removing {sourceDupes.Count()} duplicated bans from source, this indicates an issue with the source data!");
+                bans = bans.Except(sourceDupes);
+            }
+
             // Check for ban updates
             var inserted = 0;
             var updated = 0;
+            var toInsert = new List<Ban>();
+            var count = bans.Count();
             foreach (var b in bans)
             {
                 // Enssure the CKey is actually canonical
@@ -170,38 +182,61 @@ namespace CentCom.Server.BanSources
                 // Otherwise add insert a new ban
                 else
                 {
-                    inserted++;
-                    _dbContext.Bans.Add(b);
+                    toInsert.Add(b);
                 }
             }
 
             // Insert new changes
-            _logger.LogInformation($"Inserting {inserted} new bans, updating {updated} modified bans...");
+            if (toInsert.Any())
+            {
+                _dbContext.AddRange(toInsert);
+                storedBans.AddRange(toInsert);
+            }
+                
+            _logger.LogInformation($"Inserting {toInsert.Count} new bans, updating {updated} modified bans...");
             await _dbContext.SaveChangesAsync();
 
-            // Delete any missing bans if we're doing a complete refresh
-            if (isCompleteRefresh)
+            // No need to continue unless this is a complete refresh
+            if (!isCompleteRefresh)
             {
-                var bansHashed = new HashSet<Ban>(bans, BanEqualityComparer.Instance);
-                var missingBans = storedBans.Except(bansHashed, BanEqualityComparer.Instance).ToList();
-
-                if (bansHashed.Count == 0 && missingBans.Count > 1)
-                {
-                    throw new Exception("Failed to find any bans for source, aborting removal phase of ban " +
-                        "parsing to avoid dumping entire set of bans");
-                }
-
-                // Apply deletions
-                _logger.LogInformation(missingBans.Count > 0 ? $"Removing {missingBans.Count} deleted bans..."
-                    : "Found no deleted bans to remove");
-                if (missingBans.Count > 0)
-                {
-                    _dbContext.RemoveRange(missingBans);
-                    await _dbContext.SaveChangesAsync();
-                }
+                _logger.LogInformation("Completed ban parsing. Partial refresh complete.");
+                return;
             }
 
-            _logger.LogInformation("Completed ban parsing.");
+            // Delete any missing bans if we're doing a complete refresh
+            var bansHashed = new HashSet<Ban>(bans, BanEqualityComparer.Instance);
+            var missingBans = storedBans.Except(bansHashed, BanEqualityComparer.Instance).ToList();
+
+            if (bansHashed.Count == 0 && missingBans.Count > 1)
+            {
+                throw new Exception("Failed to find any bans for source, aborting removal phase of ban parsing to avoid dumping entire set of bans");
+            }
+
+            // Apply deletions
+            _logger.LogInformation(missingBans.Count > 0 ? $"Removing {missingBans.Count} deleted bans..."
+                : "Found no deleted bans to remove");
+            if (missingBans.Count > 0)
+            {
+                _dbContext.RemoveRange(missingBans);
+                foreach (var ban in missingBans)
+                {
+                    storedBans.Remove(ban);
+                }
+                await _dbContext.SaveChangesAsync();
+            }
+
+            // Delete any accidental duplications
+            var duplicates = storedBans.GroupBy(x => x, BanEqualityComparer.Instance)
+                .Where(x => x.Count() > 1)
+                .SelectMany(x => x.OrderBy(x => x.Id).Skip(1));
+            if (duplicates.Any())
+            {
+                _logger.LogWarning($"Removing {duplicates.Count()} duplicated bans from the database");
+                _dbContext.RemoveRange(duplicates);
+                await _dbContext.SaveChangesAsync();
+            }
+
+            _logger.LogInformation("Completed ban parsing. Complete refresh complete.");
         }
 
         /// <summary>

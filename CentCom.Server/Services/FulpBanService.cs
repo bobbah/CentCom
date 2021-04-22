@@ -1,6 +1,6 @@
-﻿using CentCom.Common.Models;
+﻿using CentCom.Common.Extensions;
+using CentCom.Common.Models;
 using CentCom.Server.Exceptions;
-using CentCom.Server.Extensions;
 using Extensions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;

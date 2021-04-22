@@ -43,11 +43,9 @@ namespace CentCom.Common.Models.Equality
             if (obj.BanID != null)
             {
                 hash.Add(obj.BanID);
-                hash.Add(obj.Source);
             }
             else
             {
-                hash.Add(obj.Source);
                 hash.Add(obj.BannedOn);
                 hash.Add(obj.BanType);
                 hash.Add(obj.CKey);

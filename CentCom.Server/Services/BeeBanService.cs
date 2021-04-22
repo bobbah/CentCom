@@ -1,6 +1,6 @@
-﻿using CentCom.Common.Models;
+﻿using CentCom.Common.Extensions;
+using CentCom.Common.Models;
 using CentCom.Server.Exceptions;
-using CentCom.Server.Extensions;
 using Extensions;
 using Microsoft.Extensions.Logging;
 using RestSharp;
@@ -82,6 +82,7 @@ namespace CentCom.Server.Services
             var maxPages = await GetNumberOfPagesAsync();
             var range = Enumerable.Range(startpage, pages != -1 ? pages : maxPages + 8); // pad with 8 pages for safety
             var toReturn = new ConcurrentBag<Ban>();
+            
             await range.AsyncParallelForEach(async page =>
             {
                 foreach (var b in await GetBansAsync(page))
