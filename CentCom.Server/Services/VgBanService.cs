@@ -1,7 +1,7 @@
 ﻿using AngleSharp;
+using CentCom.Common.Extensions;
 using CentCom.Common.Models;
 using CentCom.Server.Exceptions;
-using CentCom.Server.Extensions;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;

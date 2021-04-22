@@ -2,7 +2,7 @@
 using CentCom.Common.Models;
 using System.Collections.Generic;
 
-namespace CentCom.Server.Extensions
+namespace CentCom.Common.Extensions
 {
     public static class BanExtensions
     {

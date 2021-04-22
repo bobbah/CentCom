@@ -1,11 +1,10 @@
-﻿using CentCom.Common.Models;
+﻿using CentCom.Common.Extensions;
+using CentCom.Common.Models;
 using CentCom.Server.Exceptions;
-using CentCom.Server.Extensions;
 using Extensions;
 using Microsoft.Extensions.Logging;
 using RestSharp;
 using System;
-using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
@@ -98,7 +97,7 @@ namespace CentCom.Server.Services
             }
 
             // Group jobbans
-            foreach (var group in dirtyBans.GroupBy(x => new { x.BannedOn, x.CKey, x.Reason }))
+            foreach (var group in dirtyBans.GroupBy(x => new { x.CKey, x.BannedOn }))
             {
                 var firstBan = group.OrderBy(x => x.BanID).First();
                 firstBan.AddJobRange(group.SelectMany(x => x.JobBans).Select(x => x.Job));
@@ -127,7 +126,7 @@ namespace CentCom.Server.Services
 
             // We have to ensure that our jobs are correctly grouped due to possible errors with paging
             var cleanBans = new List<Ban>(dirtyBans.Where(x => x.BanType == BanType.Server));
-            foreach (var group in dirtyBans.Where(x => x.BanType == BanType.Job).GroupBy(x => new { x.BannedOn, x.CKey, x.Reason }))
+            foreach (var group in dirtyBans.Where(x => x.BanType == BanType.Job).GroupBy(x => new { x.CKey, x.BannedOn }))
             {
                 var firstBan = group.OrderBy(x => x.BanID).First();
                 firstBan.AddJobRange(group.SelectMany(x => x.JobBans).Select(x => x.Job));

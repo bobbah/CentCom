@@ -1,6 +1,6 @@
-﻿using CentCom.Common.Models;
+﻿using CentCom.Common.Extensions;
+using CentCom.Common.Models;
 using CentCom.Common.Models.Equality;
-using CentCom.Server.Extensions;
 using System;
 using Xunit;
 
