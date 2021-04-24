@@ -1,51 +1,58 @@
 ﻿using CentCom.Common.Extensions;
 using CentCom.Common.Models;
 using System;
+using System.Globalization;
 using System.Text.Json.Serialization;
 
 namespace CentCom.Server.External.Raw
 {
-    public enum TgBanStatus
-    {
-        Active,
-        Expired,
-        Unbanned
-    }
-
     public class TgRawBan : IRawBan
     {
         [JsonPropertyName("id")]
         public int Id { get; set; }
-        [JsonPropertyName("status")]
-        public TgBanStatus Status { get; set; }
+        private string _expirationTime;
         [JsonPropertyName("expiration_time")]
-        public DateTime ExpirationTime { get; set; }
-        [JsonPropertyName("expired")]
-        public bool IsExpired { get; set; }
+        public string ExpirationTimeRaw
+        {
+            get => _expirationTime; set
+            {
+                _expirationTime = value;
+                ExpirationTime = ParseTgDateTime(value);
+            }
+        }
+        public DateTime? ExpirationTime { get; private set; }
         [JsonPropertyName("role")]
         public string Role { get; set; }
-        [JsonPropertyName("length")]
-        public string Length { get; set; }
         [JsonPropertyName("ckey")]
         public string CKey { get; set; }
         [JsonPropertyName("a_ckey")]
-        public string AdminCkey { get; set; }
+        public string AdminCKey { get; set; }
         [JsonPropertyName("reason")]
         public string Reason { get; set; }
+        private string _bannedAt;
         [JsonPropertyName("bantime")]
-        public DateTime BannedAt { get; set; }
-        [JsonPropertyName("round_id")]
-        public int Round { get; set; }
-        [JsonPropertyName("server_port")]
-        public int ServerPort { get; set; }
+        public string BannedAtRaw
+        {
+            get => _bannedAt; set
+            {
+                _bannedAt = value;
+                BannedAt = ParseTgDateTime(value).Value;
+            }
+        }
+        public DateTime BannedAt { get; private set; }
+        private string _unbannedAt;
         [JsonPropertyName("unbanned_datetime")]
-        public DateTime UnbannedAt { get; set; }
+        public string UnbannedAtRaw
+        {
+            get => _unbannedAt; set
+            {
+                _unbannedAt = value;
+                UnbannedAt = ParseTgDateTime(value);
+            }
+        }
+        public DateTime? UnbannedAt { get; private set; }
         [JsonPropertyName("unbanned_Ckey")]
         public string UnbannedBy { get; set; }
-        [JsonPropertyName("unbanned")]
-        public bool IsUnbanned { get; set; }
-        [JsonPropertyName("applies_to_admins")]
-        public bool AppliesToAdmins { get; set; }
 
         public BanType GetBanType() => Role.ToLower() == "server" ? BanType.Server : BanType.Job;
 
@@ -54,7 +61,7 @@ namespace CentCom.Server.External.Raw
             var toReturn = new Ban()
             {
                 BanID = Id.ToString(),
-                BannedBy = AdminCkey,
+                BannedBy = AdminCKey,
                 BannedOn = BannedAt,
                 BanType = GetBanType(),
                 CKey = CKey,
@@ -70,6 +77,19 @@ namespace CentCom.Server.External.Raw
             }
 
             return toReturn;
+        }
+
+        private static DateTime? ParseTgDateTime(string value)
+        {
+            if (DateTime.TryParse(value, 
+                CultureInfo.InvariantCulture.DateTimeFormat,
+                DateTimeStyles.AllowWhiteSpaces,
+                out var expiration))
+            {
+                return DateTime.SpecifyKind(expiration, DateTimeKind.Utc);
+            }
+
+            return null;
         }
     }
 }

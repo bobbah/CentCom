@@ -9,6 +9,7 @@ using RestSharp.Serializers.SystemTextJson;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace CentCom.Server.Services
@@ -26,7 +27,8 @@ namespace CentCom.Server.Services
             _client = new RestClient(BASE_URL);
             _client.UseSystemTextJson(new System.Text.Json.JsonSerializerOptions()
             {
-                PropertyNameCaseInsensitive = true
+                PropertyNameCaseInsensitive = true,
+                Converters = { new JsonStringEnumConverter() }
             });
         }
 
@@ -58,12 +60,14 @@ namespace CentCom.Server.Services
             do
             {
                 lastResponse = await GetBansAsync(lastRequested);
+                if (!lastResponse.Any())
+                    break;
 
                 // If the last ban on the page is a job ban, get the next page to ensure we have the full ban
-                if (lastResponse[^0].GetBanType() == BanType.Job)
+                if (lastResponse[^1].GetBanType() == BanType.Job)
                 {
-                    var nextPage = await GetBansAsync(lastResponse[^0].Id);
-                    lastResponse.AddRange(nextPage.Where(x => x.CKey == lastResponse[^0].CKey && x.BannedAt == lastResponse[^0].BannedAt));
+                    var nextPage = await GetBansAsync(lastResponse[^1].Id);
+                    lastResponse.AddRange(nextPage.Where(x => x.CKey == lastResponse[^1].CKey && x.BannedAt == lastResponse[^1].BannedAt));
                 }
 
                 lastRequested = lastResponse.Min(x => x.Id);
