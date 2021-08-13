@@ -18,7 +18,7 @@ namespace CentCom.Server.Services
     {
         private const int _parallelRequests = 12;
         private readonly IRestClient _client;
-        private const string BaseUrl = "https://beestation13.com/";
+        private const string BaseUrl = "https://api.beestation13.com/";
         private readonly Regex _pagesPattern = new Regex("page [0-9]+ of (?<maxpages>[0-9]+)", RegexOptions.Compiled);
         private static readonly BanSource LrpSource = new BanSource() { Name = "bee-lrp" };
         private static readonly BanSource MrpSource = new BanSource() { Name = "bee-mrp" };
