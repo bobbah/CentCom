@@ -9,7 +9,6 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace CentCom.Server.Services
@@ -19,7 +18,6 @@ namespace CentCom.Server.Services
         private const int _parallelRequests = 12;
         private readonly IRestClient _client;
         private const string BaseUrl = "https://api.beestation13.com/";
-        private readonly Regex _pagesPattern = new Regex("page [0-9]+ of (?<maxpages>[0-9]+)", RegexOptions.Compiled);
         private static readonly BanSource LrpSource = new BanSource() { Name = "bee-lrp" };
         private static readonly BanSource MrpSource = new BanSource() { Name = "bee-mrp" };
         private readonly ILogger _logger;
@@ -32,7 +30,7 @@ namespace CentCom.Server.Services
 
         private async Task<IEnumerable<Ban>> GetBansAsync(int page = 1)
         {
-            var request = new RestRequest("bans", Method.GET, DataFormat.Json).AddQueryParameter("json", "1").AddQueryParameter("page", page.ToString());
+            var request = new RestRequest("bans", Method.GET, DataFormat.Json).AddQueryParameter("page", page.ToString());
             var response = await _client.ExecuteAsync(request);
 
             if (response.StatusCode != System.Net.HttpStatusCode.OK)
@@ -42,31 +40,31 @@ namespace CentCom.Server.Services
             }
 
             var toReturn = new List<Ban>();
-            var content = JsonSerializer.Deserialize<IEnumerable<Dictionary<string, JsonElement>>>(response.Content);
-            foreach (var b in content)
+            var content = JsonSerializer.Deserialize<JsonElement>(response.Content);
+            foreach (var b in content.GetProperty("data").EnumerateArray())
             {
-                var expiryString = b["unbanned_datetime"].GetString() ?? b["expiration_time"].GetString();
+                var expiryString = b.GetProperty("unbanned_datetime").GetString() ?? b.GetProperty("expiration_time").GetString();
                 var toAdd = new Ban()
                 {
-                    BannedOn = DateTime.SpecifyKind(DateTime.Parse(b["bantime"].GetString()), DateTimeKind.Utc),
-                    BannedBy = b["a_ckey"].GetString(),
-                    UnbannedBy = b["unbanned_ckey"].GetString(),
-                    BanType = b["roles"].EnumerateArray().Select(x => x.GetString()).Contains("Server")
+                    BannedOn = DateTime.SpecifyKind(DateTime.Parse(b.GetProperty("bantime").GetString()), DateTimeKind.Utc),
+                    BannedBy = b.GetProperty("a_ckey").GetString(),
+                    UnbannedBy = b.GetProperty("unbanned_ckey").GetString(),
+                    BanType = b.GetProperty("roles").EnumerateArray().Select(x => x.GetString()).Contains("Server")
                         ? BanType.Server
                         : BanType.Job,
                     Expires = expiryString == null ? null : DateTime.SpecifyKind(DateTime.Parse(expiryString), DateTimeKind.Utc),
-                    CKey = b["ckey"].GetString(),
-                    Reason = b["reason"].GetString(),
-                    BanID = b["id"].GetInt32().ToString(),
-                    SourceNavigation = ParseBanSource(b["server_name"].GetString())
+                    CKey = b.GetProperty("ckey").GetString(),
+                    Reason = b.GetProperty("reason").GetString(),
+                    BanID = b.GetProperty("id").GetInt32().ToString(),
+                    SourceNavigation = ParseBanSource(b.GetProperty("server_name").GetString())
                 };
 
                 if (toAdd.BanType == BanType.Job)
                 {
-                    toAdd.AddJobRange(b["roles"].EnumerateArray().Select(x => x.GetString()));
+                    toAdd.AddJobRange(b.GetProperty("roles").EnumerateArray().Select(x => x.GetString()));
                 }
 
-                if (b["global_ban"].GetInt32() == 1)
+                if (b.GetProperty("global_ban").GetInt32() == 1)
                 {
                     toAdd.AddAttribute(BanAttribute.BeeStationGlobal);
                 }
@@ -95,7 +93,7 @@ namespace CentCom.Server.Services
 
         private async Task<int> GetNumberOfPagesAsync()
         {
-            var request = new RestRequest("bans", Method.GET, DataFormat.None);
+            var request = new RestRequest("bans", Method.GET, DataFormat.Json);
             var result = await _client.ExecuteAsync(request);
 
             if (result.StatusCode != System.Net.HttpStatusCode.OK)
@@ -103,13 +101,7 @@ namespace CentCom.Server.Services
                 throw new Exception($"Unexpected non-200 status code [{result.StatusCode}] when trying to retrieve number of ban pages on beestation13.com");
             }
 
-            var match = _pagesPattern.Match(result.Content);
-            if (!match.Success)
-            {
-                throw new Exception("Failed to find page numbers on beestation13.com bans page");
-            }
-
-            return int.Parse(match.Groups["maxpages"].Value);
+            return JsonSerializer.Deserialize<JsonElement>(result.Content).GetProperty("pages").GetInt32();
         }
 
         private static BanSource ParseBanSource(string raw)
