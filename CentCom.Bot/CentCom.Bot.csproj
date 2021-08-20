@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <Version>1.3.10</Version>
+        <Version>1.3.10.1</Version>
         <TargetFramework>net5.0</TargetFramework>
         <UserSecretsId>c8af1449-8cdf-4707-a66d-51e896551bfb</UserSecretsId>
     </PropertyGroup>
@@ -13,6 +13,7 @@
         <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="5.0.0" />
         <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="5.0.0" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.2" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
         <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="5.0.0" />
         <PackageReference Include="Quartz" Version="3.3.3" />
         <PackageReference Include="Quartz.Extensions.DependencyInjection" Version="3.3.3" />
@@ -34,12 +35,6 @@
 
     <ItemGroup>
         <ProjectReference Include="..\CentCom.Common\CentCom.Common.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Reference Include="Microsoft.Extensions.Hosting, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
-        <HintPath>..\..\..\..\..\Program Files\dotnet\shared\Microsoft.AspNetCore.App\5.0.7\Microsoft.Extensions.Hosting.dll</HintPath>
-      </Reference>
     </ItemGroup>
 
 </Project>

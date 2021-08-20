@@ -11,7 +11,6 @@ using CentCom.Common.Configuration;
 using CentCom.Common.Data;
 using Quartz;
 using Serilog;
-using Serilog.Filters;
 
 namespace CentCom.Bot
 {
