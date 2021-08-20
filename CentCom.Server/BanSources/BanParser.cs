@@ -83,7 +83,8 @@ namespace CentCom.Server.BanSources
                     Parser = Name,
                     Started = context.FireTimeUtc,
                     Failed = DateTimeOffset.UtcNow,
-                    Exception = ex.ToString(),
+                    Exception = ex.Message,
+                    ExceptionDetailed = ex.ToString(),
                     Success = false,
                     // technically could be false if we haven't used this source before
                     CompleteRefresh = context.MergedJobDataMap.GetBoolean("completeRefresh") 

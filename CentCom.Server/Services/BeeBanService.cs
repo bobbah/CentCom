@@ -30,7 +30,7 @@ namespace CentCom.Server.Services
             var request =
                 new RestRequest("bans", Method.GET, DataFormat.Json).AddQueryParameter("page", page.ToString());
             var response = await Client.ExecuteAsync(request);
-
+            
             if (response.StatusCode != HttpStatusCode.OK)
             {
                 FailedRequest(response);

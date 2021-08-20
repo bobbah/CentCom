@@ -118,6 +118,9 @@ namespace CentCom.Common.Migrations.MariaDb
                     b.Property<string>("Exception")
                         .HasColumnType("longtext");
 
+                    b.Property<string>("ExceptionDetailed")
+                        .HasColumnType("longtext");
+
                     b.Property<DateTimeOffset?>("Failed")
                         .HasColumnType("datetime(6)");
 
@@ -179,6 +182,27 @@ namespace CentCom.Common.Migrations.MariaDb
                     b.ToTable("JobBans");
                 });
 
+            modelBuilder.Entity("CentCom.Common.Models.NotifiedFailure", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityAlwaysColumn);
+
+                    b.Property<long>("CheckHistoryId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTimeOffset>("Timestamp")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CheckHistoryId")
+                        .IsUnique();
+
+                    b.ToTable("NotifiedFailures");
+                });
+
             modelBuilder.Entity("CentCom.Common.Models.Ban", b =>
                 {
                     b.HasOne("CentCom.Common.Models.BanSource", "SourceNavigation")
@@ -201,6 +225,17 @@ namespace CentCom.Common.Migrations.MariaDb
                     b.Navigation("BanNavigation");
                 });
 
+            modelBuilder.Entity("CentCom.Common.Models.NotifiedFailure", b =>
+                {
+                    b.HasOne("CentCom.Common.Models.CheckHistory", "CheckHistory")
+                        .WithOne("Notification")
+                        .HasForeignKey("CentCom.Common.Models.NotifiedFailure", "CheckHistoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CheckHistory");
+                });
+
             modelBuilder.Entity("CentCom.Common.Models.Ban", b =>
                 {
                     b.Navigation("JobBans");
@@ -209,6 +244,11 @@ namespace CentCom.Common.Migrations.MariaDb
             modelBuilder.Entity("CentCom.Common.Models.BanSource", b =>
                 {
                     b.Navigation("Bans");
+                });
+
+            modelBuilder.Entity("CentCom.Common.Models.CheckHistory", b =>
+                {
+                    b.Navigation("Notification");
                 });
 #pragma warning restore 612, 618
         }

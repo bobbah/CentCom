@@ -3,15 +3,17 @@ using System;
 using CentCom.Common.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
-namespace CentCom.Common.Migrations.MySql
+namespace CentCom.Common.Migrations.MariaDb
 {
-    [DbContext(typeof(MySqlDbContext))]
-    partial class MySqlDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(MariaDbContext))]
+    [Migration("20210820052648_AddBotNotifications")]
+    partial class AddBotNotifications
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -116,9 +118,6 @@ namespace CentCom.Common.Migrations.MySql
                         .HasColumnType("int");
 
                     b.Property<string>("Exception")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("ExceptionDetailed")
                         .HasColumnType("longtext");
 
                     b.Property<DateTimeOffset?>("Failed")
