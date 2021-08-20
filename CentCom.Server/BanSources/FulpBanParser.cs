@@ -1,17 +1,25 @@
-﻿using CentCom.Common.Data;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using CentCom.Common.Data;
 using CentCom.Common.Models;
 using CentCom.Server.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CentCom.Server.BanSources
 {
     public class FulpBanParser : BanParser
     {
+        private const int PAGES_PER_BATCH = 12;
+        private readonly FulpBanService _banService;
+
+        public FulpBanParser(DatabaseContext dbContext, FulpBanService banService, ILogger<FulpBanParser> logger) : base(dbContext, logger)
+        {
+            _banService = banService;
+            Logger = logger;
+        }
+
         protected override Dictionary<string, BanSource> Sources => new Dictionary<string, BanSource>()
         {
             { "fulp", new BanSource()
@@ -24,14 +32,6 @@ namespace CentCom.Server.BanSources
 
         protected override bool SourceSupportsBanIDs => false;
         protected override string Name => "Fulpstation";
-        private readonly FulpBanService _banService;
-        private const int PAGES_PER_BATCH = 12;
-
-        public FulpBanParser(DatabaseContext dbContext, FulpBanService banService, ILogger<FulpBanParser> logger) : base(dbContext, logger)
-        {
-            _banService = banService;
-            Logger = logger;
-        }
 
         public override async Task<IEnumerable<Ban>> FetchAllBansAsync()
         {

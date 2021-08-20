@@ -1,16 +1,24 @@
-﻿using CentCom.Common.Data;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using CentCom.Common.Data;
 using CentCom.Common.Models;
 using CentCom.Server.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CentCom.Server.BanSources
 {
     public class YogBanParser : BanParser
     {
+        private const int PagesPerBatch = 12;
+        private readonly YogBanService _banService;
+
+        public YogBanParser(DatabaseContext dbContext, YogBanService banService, ILogger<YogBanParser> logger) : base(dbContext, logger)
+        {
+            _banService = banService;
+        }
+
         protected override Dictionary<string, BanSource> Sources => new Dictionary<string, BanSource>()
         {
             { "yogstation", new BanSource()
@@ -23,13 +31,6 @@ namespace CentCom.Server.BanSources
 
         protected override bool SourceSupportsBanIDs => true;
         protected override string Name => "YogStation";
-        private readonly YogBanService _banService;
-        private const int PagesPerBatch = 12;
-
-        public YogBanParser(DatabaseContext dbContext, YogBanService banService, ILogger<YogBanParser> logger) : base(dbContext, logger)
-        {
-            _banService = banService;
-        }
 
         public override async Task<IEnumerable<Ban>> FetchNewBansAsync()
         {

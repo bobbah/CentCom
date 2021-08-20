@@ -1,30 +1,31 @@
-﻿using CentCom.Common.Extensions;
-using CentCom.Common.Models;
-using CentCom.Server.Exceptions;
-using Microsoft.Extensions.Logging;
-using RestSharp;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using CentCom.Common.Extensions;
+using CentCom.Common.Models;
+using Microsoft.Extensions.Logging;
+using RestSharp;
 
 namespace CentCom.Server.Services
 {
     public class YogBanService : RestBanService
     {
-        protected override string BaseUrl => "https://yogstation.net/";
         private const int ParallelRequests = 12;
         private const int RequestsPerMinute = 60;
-        private readonly Regex _pagesPattern = new Regex(@"<a class=""pagination-link[^>]+>(?<pagenum>[0-9]+)<\/a>", RegexOptions.Compiled | RegexOptions.Multiline);
         private static readonly BanSource BanSource = new BanSource() { Name = "yogstation" };
+        private readonly Regex _pagesPattern = new Regex(@"<a class=""pagination-link[^>]+>(?<pagenum>[0-9]+)<\/a>", RegexOptions.Compiled | RegexOptions.Multiline);
 
         public YogBanService(ILogger<YogBanService> logger) : base(logger)
         {
         }
+
+        protected override string BaseUrl => "https://yogstation.net/";
 
         private async Task<IEnumerable<Ban>> GetBansAsync(int page = 1)
         {
@@ -34,7 +35,7 @@ namespace CentCom.Server.Services
                 .AddQueryParameter("amount", "1000");
             var response = await Client.ExecuteAsync(request);
 
-            if (response.StatusCode != System.Net.HttpStatusCode.OK)
+            if (response.StatusCode != HttpStatusCode.OK)
             {
                 FailedRequest(response);
             }
@@ -120,7 +121,7 @@ namespace CentCom.Server.Services
             var request = new RestRequest("bans", Method.GET, DataFormat.None);
             var result = await Client.ExecuteAsync(request);
 
-            if (result.StatusCode != System.Net.HttpStatusCode.OK)
+            if (result.StatusCode != HttpStatusCode.OK)
             {
                 FailedRequest(result);
             }

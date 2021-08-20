@@ -1,15 +1,15 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System;
+using System.Collections.Concurrent;
+using Microsoft.Extensions.DependencyInjection;
 using Quartz;
 using Quartz.Spi;
-using System;
-using System.Collections.Concurrent;
 
 namespace CentCom.Server.Quartz
 {
     public class JobFactory : IJobFactory
     {
-        protected readonly IServiceProvider _serviceProvider;
         protected readonly ConcurrentDictionary<IJob, IServiceScope> _scopes = new ConcurrentDictionary<IJob, IServiceScope>();
+        protected readonly IServiceProvider _serviceProvider;
 
         public JobFactory(IServiceProvider serviceProvider)
         {

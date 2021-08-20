@@ -7,15 +7,16 @@ namespace CentCom.Server.Services
 {
     public abstract class RestBanService
     {
-        protected IRestClient Client { get; private set; }
         private readonly ILogger _logger;
-        protected abstract string BaseUrl { get; }
 
         protected RestBanService(ILogger logger)
         {
             _logger = logger;
             InitializeClient();
         }
+
+        protected IRestClient Client { get; private set; }
+        protected abstract string BaseUrl { get; }
 
         protected void FailedRequest(IRestResponse response)
         {

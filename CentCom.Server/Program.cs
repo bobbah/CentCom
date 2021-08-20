@@ -1,4 +1,9 @@
-﻿using CentCom.Common.Configuration;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Threading.Tasks;
+using CentCom.Common.Configuration;
 using CentCom.Common.Data;
 using CentCom.Server.BanSources;
 using CentCom.Server.Data;
@@ -11,11 +16,6 @@ using Quartz;
 using Quartz.Impl;
 using Serilog;
 using Serilog.Filters;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
 
 namespace CentCom.Server
 {
@@ -49,7 +49,7 @@ namespace CentCom.Server
                 .Information($"Starting CentCom Server v{Assembly.GetExecutingAssembly().GetName().Version}");
 
             // Get a scheduler factory and scheduler
-            StdSchedulerFactory factory = new StdSchedulerFactory();
+            var factory = new StdSchedulerFactory();
             _scheduler = await factory.GetScheduler();
 
             // Build services provider and register it with the job factory
@@ -57,11 +57,11 @@ namespace CentCom.Server
             _scheduler.JobFactory = new JobFactory(_serviceProvider);
 
             // Add updater job
-            IJobDetail job = JobBuilder.Create<DatabaseUpdater>()
+            var job = JobBuilder.Create<DatabaseUpdater>()
                 .WithIdentity("updater")
                 .Build();
 
-            ITrigger trigger = TriggerBuilder.Create()
+            var trigger = TriggerBuilder.Create()
                 .WithIdentity("updaterTrigger")
                 .StartNow()
                 .Build();
