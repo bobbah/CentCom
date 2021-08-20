@@ -1,12 +1,12 @@
-﻿using CentCom.Common.Data;
-using CentCom.Common.Models;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-using System;
+﻿using System;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
+using CentCom.Common.Data;
+using CentCom.Common.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace CentCom.Server.FlatData
 {
@@ -15,8 +15,8 @@ namespace CentCom.Server.FlatData
     /// </summary>
     public class FlatDataImporter
     {
-        private readonly ILogger _logger;
         private readonly DatabaseContext _dbContext;
+        private readonly ILogger _logger;
 
         public FlatDataImporter(DatabaseContext dbContext, ILogger<FlatDataImporter> logger)
         {

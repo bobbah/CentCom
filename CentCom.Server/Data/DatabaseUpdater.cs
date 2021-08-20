@@ -1,8 +1,8 @@
-﻿using CentCom.Common.Data;
+﻿using System.Threading.Tasks;
+using CentCom.Common.Data;
 using CentCom.Server.FlatData;
 using Microsoft.Extensions.Logging;
 using Quartz;
-using System.Threading.Tasks;
 
 namespace CentCom.Server.Data
 {
@@ -10,8 +10,8 @@ namespace CentCom.Server.Data
     public class DatabaseUpdater : IJob
     {
         private readonly DatabaseContext _dbContext;
-        private readonly ILogger _logger;
         private readonly FlatDataImporter _importer;
+        private readonly ILogger _logger;
 
         public DatabaseUpdater(DatabaseContext dbContext, ILogger<DatabaseUpdater> logger, FlatDataImporter importer)
         {

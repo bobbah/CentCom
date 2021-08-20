@@ -17,5 +17,7 @@ namespace CentCom.Common.Models
         public bool Success { get; set; }
         public bool CompleteRefresh { get; set; }
         public string Exception { get; set; }
+        public string ExceptionDetailed { get; set; }
+        public virtual NotifiedFailure Notification { get; set; }
     }
 }

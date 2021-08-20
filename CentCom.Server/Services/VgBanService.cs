@@ -1,13 +1,13 @@
-﻿using AngleSharp;
-using CentCom.Common.Extensions;
-using CentCom.Common.Models;
-using CentCom.Server.Exceptions;
-using Microsoft.Extensions.Logging;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using AngleSharp;
+using CentCom.Common.Extensions;
+using CentCom.Common.Models;
+using CentCom.Server.Exceptions;
+using Microsoft.Extensions.Logging;
 
 namespace CentCom.Server.Services
 {
@@ -25,7 +25,7 @@ namespace CentCom.Server.Services
         public async Task<IEnumerable<Ban>> GetBansAsync()
         {
             var toReturn = new List<Ban>();
-            var config = AngleSharp.Configuration.Default.WithDefaultLoader();
+            var config = Configuration.Default.WithDefaultLoader();
             var context = BrowsingContext.New(config);
             var document = await context.OpenAsync("https://ss13.moe/index.php/bans");
 

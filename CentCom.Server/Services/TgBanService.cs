@@ -1,32 +1,33 @@
-﻿using CentCom.Common.Extensions;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.Threading.Tasks;
+using CentCom.Common.Extensions;
 using CentCom.Common.Models;
-using CentCom.Server.Exceptions;
 using CentCom.Server.External;
 using CentCom.Server.External.Raw;
 using Microsoft.Extensions.Logging;
 using RestSharp;
 using RestSharp.Serializers.SystemTextJson;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace CentCom.Server.Services
 {
     public class TgBanService : RestBanService
     {
-        protected override string BaseUrl => "https://tgstation13.org/";
         private static readonly BanSource BanSource = new BanSource { Name = "tgstation" };
 
         public TgBanService(ILogger<TgBanService> logger) : base(logger)
         {
-            Client.UseSystemTextJson(new System.Text.Json.JsonSerializerOptions()
+            Client.UseSystemTextJson(new JsonSerializerOptions()
             {
                 PropertyNameCaseInsensitive = true,
                 Converters = { new JsonStringEnumConverter() }
             });
         }
+
+        protected override string BaseUrl => "https://tgstation13.org/";
 
         private async Task<List<TgRawBan>> GetBansAsync(int? startingId = null)
         {
@@ -36,7 +37,7 @@ namespace CentCom.Server.Services
                 request.AddQueryParameter("beforeid", startingId.ToString());
             var response = await Client.ExecuteAsync<TgApiResponse>(request);
 
-            if (response.StatusCode != System.Net.HttpStatusCode.OK)
+            if (response.StatusCode != HttpStatusCode.OK)
                 FailedRequest(response);
 
             return response.Data.Bans.ToList();

@@ -1,20 +1,20 @@
-﻿using CentCom.Common.Extensions;
+﻿using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Text.Json;
+using System.Threading.Tasks;
+using CentCom.Common.Extensions;
 using CentCom.Common.Models;
 using Extensions;
 using Microsoft.Extensions.Logging;
 using RestSharp;
-using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace CentCom.Server.Services
 {
     public class BeeBanService : RestBanService
     {
-        protected override string BaseUrl => "https://api.beestation13.com/";
         private const int ParallelRequests = 1;
         private static readonly BanSource LrpSource = new BanSource() { Name = "bee-lrp" };
         private static readonly BanSource MrpSource = new BanSource() { Name = "bee-mrp" };
@@ -23,13 +23,15 @@ namespace CentCom.Server.Services
         {
         }
 
+        protected override string BaseUrl => "https://api.beestation13.com/";
+
         internal async Task<IEnumerable<Ban>> GetBansAsync(int page = 1)
         {
             var request =
                 new RestRequest("bans", Method.GET, DataFormat.Json).AddQueryParameter("page", page.ToString());
             var response = await Client.ExecuteAsync(request);
-
-            if (response.StatusCode != System.Net.HttpStatusCode.OK)
+            
+            if (response.StatusCode != HttpStatusCode.OK)
             {
                 FailedRequest(response);
             }
@@ -95,7 +97,7 @@ namespace CentCom.Server.Services
             var request = new RestRequest("bans", Method.GET, DataFormat.Json);
             var result = await Client.ExecuteAsync(request);
 
-            if (result.StatusCode != System.Net.HttpStatusCode.OK)
+            if (result.StatusCode != HttpStatusCode.OK)
                 FailedRequest(result);
 
             return JsonSerializer.Deserialize<JsonElement>(result.Content).GetProperty("pages").GetInt32();

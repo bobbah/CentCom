@@ -1,22 +1,21 @@
-﻿using CentCom.Common.Extensions;
+﻿using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Text.Json;
+using System.Threading.Tasks;
+using CentCom.Common.Extensions;
 using CentCom.Common.Models;
-using CentCom.Server.Exceptions;
 using Extensions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using RestSharp;
-using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace CentCom.Server.Services
 {
     public class FulpBanService : RestBanService
     {
-        protected override string BaseUrl => "https://api.fulp.gg/";
         private const int RecordsPerPage = 50;
         private static readonly BanSource BanSource = new BanSource() { Name = "fulp" };
 
@@ -28,12 +27,14 @@ namespace CentCom.Server.Services
             }
         }
 
+        protected override string BaseUrl => "https://api.fulp.gg/";
+
         public async Task<IEnumerable<Ban>> GetBansAsync(int page = 1)
         {
             var request = new RestRequest($"bans/{RecordsPerPage}/{page}", Method.GET, DataFormat.Json);
             var response = await Client.ExecuteAsync(request);
 
-            if (response.StatusCode != System.Net.HttpStatusCode.OK)
+            if (response.StatusCode != HttpStatusCode.OK)
             {
                 FailedRequest(response);
             }
@@ -104,7 +105,7 @@ namespace CentCom.Server.Services
             var request = new RestRequest($"bans/{RecordsPerPage}/1", Method.GET, DataFormat.Json);
             var result = await Client.ExecuteAsync(request);
 
-            if (result.StatusCode != System.Net.HttpStatusCode.OK)
+            if (result.StatusCode != HttpStatusCode.OK)
             {
                 FailedRequest(result);
             }

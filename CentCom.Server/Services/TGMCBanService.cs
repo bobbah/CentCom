@@ -1,15 +1,15 @@
-﻿using CentCom.Common.Extensions;
-using CentCom.Common.Models;
-using CentCom.Server.Exceptions;
-using Extensions;
-using Microsoft.Extensions.Logging;
-using RestSharp;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text.Json;
 using System.Threading.Tasks;
+using CentCom.Common.Extensions;
+using CentCom.Common.Models;
+using Extensions;
+using Microsoft.Extensions.Logging;
+using RestSharp;
 
 namespace CentCom.Server.Services
 {
@@ -24,7 +24,6 @@ namespace CentCom.Server.Services
     /// </remarks>
     public class TGMCBanService : RestBanService
     {
-        protected override string BaseUrl => "http://statbus.psykzz.com:8080/api/";
         private const int RecordsPerPage = 100;
         private static readonly BanSource BanSource = new BanSource() { Name = "tgmc" };
 
@@ -32,12 +31,14 @@ namespace CentCom.Server.Services
         {
         }
 
+        protected override string BaseUrl => "http://statbus.psykzz.com:8080/api/";
+
         public async Task<IEnumerable<Ban>> GetBansAsync(int page = 1)
         {
             var request = new RestRequest($"bans/{page}", Method.GET, DataFormat.Json).AddQueryParameter("limit", RecordsPerPage.ToString());
             var response = await Client.ExecuteAsync(request);
 
-            if (response.StatusCode != System.Net.HttpStatusCode.OK)
+            if (response.StatusCode != HttpStatusCode.OK)
             {
                 FailedRequest(response);
             }
@@ -152,7 +153,7 @@ namespace CentCom.Server.Services
             var request = new RestRequest($"bans/1", Method.GET, DataFormat.Json).AddQueryParameter("limit", RecordsPerPage.ToString());
             var result = await Client.ExecuteAsync(request);
 
-            if (result.StatusCode != System.Net.HttpStatusCode.OK)
+            if (result.StatusCode != HttpStatusCode.OK)
             {
                 FailedRequest(result);
             }

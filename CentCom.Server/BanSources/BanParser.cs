@@ -1,43 +1,44 @@
-using CentCom.Common.Data;
-using CentCom.Common.Extensions;
-using CentCom.Common.Models;
-using CentCom.Common.Models.Equality;
-using CentCom.Server.Exceptions;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-using Quartz;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CentCom.Common.Data;
+using CentCom.Common.Extensions;
+using CentCom.Common.Models;
+using CentCom.Common.Models.Equality;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Quartz;
 
 namespace CentCom.Server.BanSources
 {
     [DisallowConcurrentExecution]
     public abstract class BanParser : IJob
     {
-        protected ILogger Logger;
         protected readonly DatabaseContext DbContext;
-        /// <summary>
-        /// A map of BanSource.Name, BanSource containing the 'offline' skeletons of the ban sources
-        /// for this ban parser. Necessary for creating the sources initially in the database.
-        /// </summary>
-        protected abstract Dictionary<string, BanSource> Sources { get; }
-        /// <summary>
-        /// Boolean operator detailing if the ban source exposes their own ban IDs in their API
-        /// </summary>
-        protected abstract bool SourceSupportsBanIDs { get; }
-        
-        /// <summary>
-        /// Descriptive name of the parser, used for logging
-        /// </summary>
-        protected abstract string Name { get; }
+        protected ILogger Logger;
 
         public BanParser(DatabaseContext dbContext, ILogger<BanParser> logger)
         {
             DbContext = dbContext;
             Logger = logger;
         }
+
+        /// <summary>
+        /// A map of BanSource.Name, BanSource containing the 'offline' skeletons of the ban sources
+        /// for this ban parser. Necessary for creating the sources initially in the database.
+        /// </summary>
+        protected abstract Dictionary<string, BanSource> Sources { get; }
+
+        /// <summary>
+        /// Boolean operator detailing if the ban source exposes their own ban IDs in their API
+        /// </summary>
+        protected abstract bool SourceSupportsBanIDs { get; }
+
+        /// <summary>
+        /// Descriptive name of the parser, used for logging
+        /// </summary>
+        protected abstract string Name { get; }
 
         /// <summary>
         /// Executes the ban parsing job
@@ -82,7 +83,8 @@ namespace CentCom.Server.BanSources
                     Parser = Name,
                     Started = context.FireTimeUtc,
                     Failed = DateTimeOffset.UtcNow,
-                    Exception = ex.ToString(),
+                    Exception = ex.Message,
+                    ExceptionDetailed = ex.ToString(),
                     Success = false,
                     // technically could be false if we haven't used this source before
                     CompleteRefresh = context.MergedJobDataMap.GetBoolean("completeRefresh") 
@@ -195,7 +197,7 @@ namespace CentCom.Server.BanSources
                 // Update ban if an existing one is found
                 if (matchedBan != null)
                 {
-                    bool changed = false;
+                    var changed = false;
 
                     // Check for a difference in date time, unbans, or reason
                     if (matchedBan.Reason != b.Reason || matchedBan.Expires != b.Expires || matchedBan.UnbannedBy != b.UnbannedBy)

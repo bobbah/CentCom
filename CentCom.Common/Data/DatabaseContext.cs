@@ -16,6 +16,7 @@ namespace CentCom.Common.Data
         public DbSet<JobBan> JobBans { get; set; }
         public DbSet<FlatBansVersion> FlatBansVersion { get; set; }
         public DbSet<CheckHistory> CheckHistory { get; set; }
+        public DbSet<NotifiedFailure> NotifiedFailures { get; set; }
 
         public DatabaseContext(IConfiguration configuration)
         {
@@ -32,8 +33,10 @@ namespace CentCom.Common.Data
                 entity.Property(e => e.Id).UseIdentityAlwaysColumn();
                 entity.Property(e => e.CKey).IsRequired().HasMaxLength(32);
                 entity.Property(e => e.Source).IsRequired();
-                entity.Property(e => e.BannedOn).IsRequired().HasConversion(v => v, v => DateTime.SpecifyKind(v, DateTimeKind.Utc));
-                entity.Property(e => e.Expires).HasConversion(v => v, v => v.HasValue ? DateTime.SpecifyKind(v.Value, DateTimeKind.Utc) : (DateTime?)null);
+                entity.Property(e => e.BannedOn).IsRequired()
+                    .HasConversion(v => v, v => DateTime.SpecifyKind(v, DateTimeKind.Utc));
+                entity.Property(e => e.Expires).HasConversion(v => v,
+                    v => v.HasValue ? DateTime.SpecifyKind(v.Value, DateTimeKind.Utc) : (DateTime?)null);
                 entity.Property(e => e.BannedBy).IsRequired().HasMaxLength(32);
                 entity.Property(e => e.UnbannedBy).HasMaxLength(32);
                 entity.Property(e => e.BanType).IsRequired();
@@ -54,17 +57,15 @@ namespace CentCom.Common.Data
                     .OnDelete(DeleteBehavior.Cascade);
             });
 
-            modelBuilder.Entity<JobBan>(entity =>
-            {
-                entity.HasKey(e => new { e.BanId, e.Job });
-            });
+            modelBuilder.Entity<JobBan>(entity => { entity.HasKey(e => new { e.BanId, e.Job }); });
 
             modelBuilder.Entity<FlatBansVersion>(entity =>
             {
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Id).UseIdentityAlwaysColumn();
                 entity.Property(e => e.Name).IsRequired();
-                entity.Property(e => e.PerformedAt).IsRequired().HasConversion(v => v, v => DateTime.SpecifyKind(v, DateTimeKind.Utc));
+                entity.Property(e => e.PerformedAt).IsRequired()
+                    .HasConversion(v => v, v => DateTime.SpecifyKind(v, DateTimeKind.Utc));
                 entity.Property(e => e.Version).IsRequired();
                 entity.HasIndex(e => new { e.Name, e.Version }).IsUnique();
             });
@@ -74,7 +75,16 @@ namespace CentCom.Common.Data
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Id).UseIdentityAlwaysColumn();
                 entity.Property(e => e.Parser).IsRequired();
-                entity.HasIndex(e => new {e.Parser, e.Started});
+                entity.HasIndex(e => new { e.Parser, e.Started });
+            });
+
+            modelBuilder.Entity<NotifiedFailure>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Id).UseIdentityAlwaysColumn();
+                entity.HasOne(e => e.CheckHistory)
+                    .WithOne(e => e.Notification)
+                    .HasForeignKey<NotifiedFailure>(e => e.CheckHistoryId);
             });
         }
 
@@ -86,6 +96,7 @@ namespace CentCom.Common.Data
             {
                 await Database.MigrateAsync(cancellationToken);
             }
+
             return wasEmpty;
         }
     }

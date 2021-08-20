@@ -1,14 +1,21 @@
-﻿using CentCom.Common.Data;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using CentCom.Common.Data;
 using CentCom.Common.Models;
 using CentCom.Server.Services;
 using Microsoft.Extensions.Logging;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace CentCom.Server.BanSources
 {
     public class VgBanParser : BanParser
     {
+        private readonly VgBanService _banService;
+
+        public VgBanParser(DatabaseContext dbContext, VgBanService banService, ILogger<VgBanParser> logger) : base(dbContext, logger)
+        {
+            _banService = banService;
+        }
+
         protected override Dictionary<string, BanSource> Sources => new Dictionary<string, BanSource>()
         {
             { "vgstation", new BanSource()
@@ -21,12 +28,6 @@ namespace CentCom.Server.BanSources
 
         protected override bool SourceSupportsBanIDs => false;
         protected override string Name => "/vg/station";
-        private readonly VgBanService _banService;
-
-        public VgBanParser(DatabaseContext dbContext, VgBanService banService, ILogger<VgBanParser> logger) : base(dbContext, logger)
-        {
-            _banService = banService;
-        }
 
         public override async Task<IEnumerable<Ban>> FetchAllBansAsync()
         {
