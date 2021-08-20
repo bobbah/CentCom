@@ -1,21 +1,21 @@
-﻿using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Configuration;
 
 namespace CentCom.Common.Data.DesignTime
 {
-    class MySqlDbContextFactory : IDesignTimeDbContextFactory<MySqlDbContext>
+    public class MariaDbContextFactory : IDesignTimeDbContextFactory<MariaDbContext>
     {
-        public MySqlDbContext CreateDbContext(string[] args)
+        public MariaDbContext CreateDbContext(string[] args)
         {
             var conf = new Dictionary<string, string>
             {
                 { "dbConfig:connectionString", "Host=127.0.0.1;Database=centcom_design;Username=centcom_parser;Password=spoof" },
-                { "dbConfig:dbType", "MySql" },
+                { "dbConfig:dbType", "MariaDb" },
                 { "dbConfig:efcoreBuild", "any-value" }
             };
             IConfiguration spoofedConfig = new ConfigurationBuilder().AddInMemoryCollection(conf).Build();
-            return new MySqlDbContext(spoofedConfig);
+            return new MariaDbContext(spoofedConfig);
         }
     }
 }

@@ -22,29 +22,24 @@ namespace CentCom.Server.Services
     /// for using the paging must account for the possibility of a job ban
     /// spanning two seperate pages.
     /// </remarks>
-    public class TGMCBanService
+    public class TGMCBanService : RestBanService
     {
-        private readonly IRestClient _client;
-        private readonly ILogger _logger;
-        private const string BASE_URL = "http://statbus.psykzz.com:8080/api/";
-        private const int RECORDS_PER_PAGE = 100;
-        private readonly static BanSource _banSource = new BanSource() { Name = "tgmc" };
+        protected override string BaseUrl => "http://statbus.psykzz.com:8080/api/";
+        private const int RecordsPerPage = 100;
+        private static readonly BanSource BanSource = new BanSource() { Name = "tgmc" };
 
-        public TGMCBanService(ILogger<TGMCBanService> logger)
+        public TGMCBanService(ILogger<TGMCBanService> logger) : base(logger)
         {
-            _logger = logger;
-            _client = new RestClient(BASE_URL);
         }
 
         public async Task<IEnumerable<Ban>> GetBansAsync(int page = 1)
         {
-            var request = new RestRequest($"bans/{page}", Method.GET, DataFormat.Json).AddQueryParameter("limit", RECORDS_PER_PAGE.ToString());
-            var response = await _client.ExecuteAsync(request);
+            var request = new RestRequest($"bans/{page}", Method.GET, DataFormat.Json).AddQueryParameter("limit", RecordsPerPage.ToString());
+            var response = await Client.ExecuteAsync(request);
 
             if (response.StatusCode != System.Net.HttpStatusCode.OK)
             {
-                _logger.LogError($"TGMC website returned a non-200 HTTP response code: {response.StatusCode}, aborting parse.");
-                throw new BanSourceUnavailableException($"TGMC website returned a non-200 HTTP response code: {response.StatusCode}, aborting parse.");
+                FailedRequest(response);
             }
 
             var toReturn = new List<Ban>();
@@ -74,7 +69,7 @@ namespace CentCom.Server.Services
                     Expires = expiration,
                     Reason = ban.GetProperty("reason").ToString(),
                     BanType = ban.GetProperty("role").GetString().ToLower() == "server" ? BanType.Server : BanType.Job,
-                    SourceNavigation = _banSource
+                    SourceNavigation = BanSource
                 };
 
                 // Specify UTC
@@ -154,12 +149,12 @@ namespace CentCom.Server.Services
 
         public async Task<int> GetNumberOfPagesAsync()
         {
-            var request = new RestRequest($"bans/1", Method.GET, DataFormat.Json).AddQueryParameter("limit", RECORDS_PER_PAGE.ToString());
-            var result = await _client.ExecuteAsync(request);
+            var request = new RestRequest($"bans/1", Method.GET, DataFormat.Json).AddQueryParameter("limit", RecordsPerPage.ToString());
+            var result = await Client.ExecuteAsync(request);
 
             if (result.StatusCode != System.Net.HttpStatusCode.OK)
             {
-                throw new Exception($"Unexpected non-200 status code [{result.StatusCode}] when trying to retrieve number of ban pages for TGMC");
+                FailedRequest(result);
             }
 
             var content = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(result.Content);
@@ -167,10 +162,8 @@ namespace CentCom.Server.Services
             {
                 return lastpage.GetInt32();
             }
-            else
-            {
-                throw new Exception("Failed to find the last page number in the response from TGMC's API");
-            }
+
+            throw new Exception("Failed to find the last page number in the response from TGMC's API");
         }
     }
 }

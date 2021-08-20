@@ -14,20 +14,16 @@ using System.Threading.Tasks;
 
 namespace CentCom.Server.Services
 {
-    public class YogBanService
+    public class YogBanService : RestBanService
     {
-        private const int _parallelRequests = 12;
-        private const int _requestsPerMinute = 60;
-        private readonly IRestClient _client;
-        private const string BaseUrl = "https://yogstation.net/";
+        protected override string BaseUrl => "https://yogstation.net/";
+        private const int ParallelRequests = 12;
+        private const int RequestsPerMinute = 60;
         private readonly Regex _pagesPattern = new Regex(@"<a class=""pagination-link[^>]+>(?<pagenum>[0-9]+)<\/a>", RegexOptions.Compiled | RegexOptions.Multiline);
-        private static readonly BanSource _source = new BanSource() { Name = "yogstation" };
-        private readonly ILogger _logger;
+        private static readonly BanSource BanSource = new BanSource() { Name = "yogstation" };
 
-        public YogBanService(ILogger<YogBanService> logger)
+        public YogBanService(ILogger<YogBanService> logger) : base(logger)
         {
-            _client = new RestClient(BaseUrl);
-            _logger = logger;
         }
 
         private async Task<IEnumerable<Ban>> GetBansAsync(int page = 1)
@@ -36,12 +32,11 @@ namespace CentCom.Server.Services
                 .AddQueryParameter("json", "1")
                 .AddQueryParameter("page", page.ToString())
                 .AddQueryParameter("amount", "1000");
-            var response = await _client.ExecuteAsync(request);
+            var response = await Client.ExecuteAsync(request);
 
             if (response.StatusCode != System.Net.HttpStatusCode.OK)
             {
-                _logger.LogError("Yogstation website returned a non-200 HTTP response code: {StatusCode}, aborting parse", response.StatusCode);
-                throw new BanSourceUnavailableException($"Yogstation website returned a non-200 HTTP response code: {response.StatusCode}, aborting parse");
+                FailedRequest(response);
             }
 
             var toReturn = new List<Ban>();
@@ -61,7 +56,7 @@ namespace CentCom.Server.Services
                     CKey = b["ckey"].GetString(),
                     Reason = b["reason"].GetString(),
                     BanID = b["id"].GetInt32().ToString(),
-                    SourceNavigation = _source
+                    SourceNavigation = BanSource
                 };
 
                 if (toAdd.BanType == BanType.Job)
@@ -81,7 +76,7 @@ namespace CentCom.Server.Services
             var range = Enumerable.Range(startpage, pages != -1 ? pages : maxPages + 1); // pad with a page for safety
             var toReturn = new ConcurrentBag<Ban>();
             var allTasks = new List<Task>();
-            var throttle = new SemaphoreSlim(_parallelRequests);
+            var throttle = new SemaphoreSlim(ParallelRequests);
             var requestsInPeriod = 0;
             var periodReset = DateTime.Now.AddMinutes(1);
             
@@ -90,7 +85,7 @@ namespace CentCom.Server.Services
                 await throttle.WaitAsync();
 
                 // Handle rate limiting
-                if (requestsInPeriod >= _requestsPerMinute)
+                if (requestsInPeriod >= RequestsPerMinute)
                 {
                     await Task.Delay(periodReset - DateTime.Now);
                     periodReset = periodReset.AddMinutes(1);
@@ -123,11 +118,11 @@ namespace CentCom.Server.Services
         private async Task<int> GetNumberOfPagesAsync()
         {
             var request = new RestRequest("bans", Method.GET, DataFormat.None);
-            var result = await _client.ExecuteAsync(request);
+            var result = await Client.ExecuteAsync(request);
 
             if (result.StatusCode != System.Net.HttpStatusCode.OK)
             {
-                throw new Exception($"Unexpected non-200 status code [{result.StatusCode}] when trying to retrieve number of ban pages on yogstation.net");
+                FailedRequest(result);
             }
 
             var match = _pagesPattern.Matches(result.Content);

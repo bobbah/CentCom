@@ -12,7 +12,7 @@ namespace CentCom.Server.BanSources
 {
     public class FulpBanParser : BanParser
     {
-        public override Dictionary<string, BanSource> Sources => new Dictionary<string, BanSource>()
+        protected override Dictionary<string, BanSource> Sources => new Dictionary<string, BanSource>()
         {
             { "fulp", new BanSource()
             {
@@ -21,25 +21,28 @@ namespace CentCom.Server.BanSources
                 RoleplayLevel = RoleplayLevel.Medium
             } }
         };
+
+        protected override bool SourceSupportsBanIDs => false;
+        protected override string Name => "Fulpstation";
         private readonly FulpBanService _banService;
         private const int PAGES_PER_BATCH = 12;
 
         public FulpBanParser(DatabaseContext dbContext, FulpBanService banService, ILogger<FulpBanParser> logger) : base(dbContext, logger)
         {
             _banService = banService;
-            _logger = logger;
+            Logger = logger;
         }
 
         public override async Task<IEnumerable<Ban>> FetchAllBansAsync()
         {
-            _logger.LogInformation("Getting all bans for Fulpstation...");
+            Logger.LogInformation("Getting all bans for Fulpstation...");
             return await _banService.GetBansBatchedAsync();
         }
 
         public override async Task<IEnumerable<Ban>> FetchNewBansAsync()
         {
-            _logger.LogInformation("Getting new bans for Fulpstation...");
-            var recent = await _dbContext.Bans
+            Logger.LogInformation("Getting new bans for Fulpstation...");
+            var recent = await DbContext.Bans
                 .Where(x => Sources.Keys.Contains(x.SourceNavigation.Name))
                 .OrderByDescending(x => x.BannedOn)
                 .Take(5)

@@ -12,7 +12,7 @@ namespace CentCom.Server.BanSources
 {
     public class TGMCBanParser : BanParser
     {
-        public override Dictionary<string, BanSource> Sources => new Dictionary<string, BanSource>()
+        protected override Dictionary<string, BanSource> Sources => new Dictionary<string, BanSource>()
         {
             { "tgmc", new BanSource()
             {
@@ -21,7 +21,9 @@ namespace CentCom.Server.BanSources
                 RoleplayLevel = RoleplayLevel.Medium
             } }
         };
-        public override bool SourceSupportsBanIDs => true;
+
+        protected override bool SourceSupportsBanIDs => true;
+        protected override string Name => "TGMC";
         private readonly TGMCBanService _banService;
         private const int PAGES_PER_BATCH = 3;
 
@@ -32,14 +34,14 @@ namespace CentCom.Server.BanSources
 
         public override async Task<IEnumerable<Ban>> FetchAllBansAsync()
         {
-            _logger.LogInformation("Getting all bans for TGMC...");
+            Logger.LogInformation("Getting all bans for TGMC...");
             return await _banService.GetBansBatchedAsync();
         }
 
         public override async Task<IEnumerable<Ban>> FetchNewBansAsync()
         {
-            _logger.LogInformation("Getting new bans for TGMC...");
-            var recent = await _dbContext.Bans
+            Logger.LogInformation("Getting new bans for TGMC...");
+            var recent = await DbContext.Bans
                 .Where(x => Sources.Keys.Contains(x.SourceNavigation.Name))
                 .OrderByDescending(x => x.BannedOn)
                 .Take(5)

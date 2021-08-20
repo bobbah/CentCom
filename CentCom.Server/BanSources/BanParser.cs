@@ -16,22 +16,27 @@ namespace CentCom.Server.BanSources
     [DisallowConcurrentExecution]
     public abstract class BanParser : IJob
     {
-        protected ILogger _logger;
-        protected DatabaseContext _dbContext { get; set; }
+        protected ILogger Logger;
+        protected readonly DatabaseContext DbContext;
         /// <summary>
         /// A map of BanSource.Name, BanSource containing the 'offline' skeletons of the ban sources
         /// for this ban parser. Necessary for creating the sources initially in the database.
         /// </summary>
-        public virtual Dictionary<string, BanSource> Sources { get; }
+        protected abstract Dictionary<string, BanSource> Sources { get; }
         /// <summary>
         /// Boolean operator detailing if the ban source exposes their own ban IDs in their API
         /// </summary>
-        public virtual bool SourceSupportsBanIDs { get; }
+        protected abstract bool SourceSupportsBanIDs { get; }
+        
+        /// <summary>
+        /// Descriptive name of the parser, used for logging
+        /// </summary>
+        protected abstract string Name { get; }
 
         public BanParser(DatabaseContext dbContext, ILogger<BanParser> logger)
         {
-            _dbContext = dbContext;
-            _logger = logger;
+            DbContext = dbContext;
+            Logger = logger;
         }
 
         /// <summary>
@@ -47,16 +52,47 @@ namespace CentCom.Server.BanSources
         {
             try
             {
-                await ParseBans(context);
+                var history = await ParseBans(context);
+                DbContext.CheckHistory.Add(history);
+                await DbContext.SaveChangesAsync();
             }
-            catch (JobExecutionException)
+            catch (JobExecutionException ex)
             {
+                await LogFailure(context, ex);
                 throw;
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Encountered unhandled exception during ban parsing");
+                Logger.LogError(ex, "Encountered unhandled exception during ban parsing");
                 throw new JobExecutionException(ex, false);
+            }
+        }
+
+        /// <summary>
+        /// Logs a failed update event to the database, 
+        /// </summary>
+        /// <param name="context">The job context</param>
+        /// <param name="ex">The exception that was thrown when performing the update</param>
+        private async Task LogFailure(IJobExecutionContext context, Exception ex)
+        {
+            try
+            {
+                DbContext.CheckHistory.Add(new CheckHistory()
+                {
+                    Parser = Name,
+                    Started = context.FireTimeUtc,
+                    Failed = DateTimeOffset.UtcNow,
+                    Exception = ex.ToString(),
+                    Success = false,
+                    // technically could be false if we haven't used this source before
+                    CompleteRefresh = context.MergedJobDataMap.GetBoolean("completeRefresh") 
+                });
+                await DbContext.SaveChangesAsync();
+            }
+            catch (Exception newEx)
+            {
+                // Don't re-throw, just log
+                Logger.LogError(newEx, "Failed to log exception in database");
             }
         }
 
@@ -65,15 +101,21 @@ namespace CentCom.Server.BanSources
         /// </summary>
         /// <param name="context">The job execution context provided by Quartz' scheduler</param>
         /// <returns>A task for the asynchronous work</returns>
-        public virtual async Task ParseBans(IJobExecutionContext context)
+        private async Task<CheckHistory> ParseBans(IJobExecutionContext context)
         {
-            _logger.LogInformation($"Beginning ban parsing");
-
+            Logger.LogInformation("Beginning ban parsing");
+            var history = new CheckHistory()
+            {
+                Parser = Name,
+                Started = context.FireTimeUtc,
+                Success = true
+            };
+            
             // Get stored bans from the database
             List<Ban> storedBans = null;
             try
             {
-                storedBans = await _dbContext.Bans
+                storedBans = await DbContext.Bans
                 .Where(x => Sources.Keys.Contains(x.SourceNavigation.Name))
                 .Include(x => x.JobBans)
                 .Include(x => x.SourceNavigation)
@@ -81,26 +123,24 @@ namespace CentCom.Server.BanSources
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Failed to get stored ban data from database, encountered exception");
+                Logger.LogError(ex, "Failed to get stored ban data from database, encountered exception");
                 throw new JobExecutionException(ex, false);
             }
 
             // Get bans from the source
             var isCompleteRefresh = context.MergedJobDataMap.GetBoolean("completeRefresh") || !storedBans.Any();
+            history.CompleteRefresh = isCompleteRefresh;
             IEnumerable<Ban> bans = null;
             try
             {
                 bans = await (isCompleteRefresh ? FetchAllBansAsync() : FetchNewBansAsync());
             }
-            catch (BanSourceUnavailableException)
-            {
-                return;
-            }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Failed to get ban data from source, encountered exception during fetch");
+                Logger.LogError(ex, "Failed to get ban data from source, encountered exception during fetch");
                 throw new JobExecutionException(ex, false);
             }
+            history.CompletedDataFetch = DateTimeOffset.UtcNow;
 
             // Assign proper sources
             bans = await AssignBanSources(bans);
@@ -110,24 +150,23 @@ namespace CentCom.Server.BanSources
             if (dirtyBans.Any())
             {
                 bans = bans.Except(dirtyBans);
-                _logger.LogWarning($"Removed {dirtyBans.Count()} erroneous bans from parsed data. This shouldn't happen!");
+                history.Erroneous = dirtyBans.Count();
+                Logger.LogWarning($"Removed {history.Erroneous} erroneous bans from parsed data. This shouldn't happen!");
             }
 
             // Remove erronenous duplicates from source
             var sourceDupes = bans.GroupBy(x => x, BanEqualityComparer.Instance)
                 .Where(x => x.Count() > 1)
-                .SelectMany(x => x.OrderBy(x => x.Id).Skip(1));
+                .SelectMany(x => x.OrderBy(y => y.Id).Skip(1));
             if (sourceDupes.Any())
             {
-                _logger.LogWarning($"Removing {sourceDupes.Count()} duplicated bans from source, this indicates an issue with the source data!");
+                Logger.LogWarning($"Removing {sourceDupes.Count()} duplicated bans from source, this indicates an issue with the source data!");
                 bans = bans.Except(sourceDupes);
             }
 
             // Check for ban updates
-            var inserted = 0;
             var updated = 0;
             var toInsert = new List<Ban>();
-            var count = bans.Count();
             foreach (var b in bans)
             {
                 // Enssure the CKey is actually canonical
@@ -189,18 +228,21 @@ namespace CentCom.Server.BanSources
             // Insert new changes
             if (toInsert.Any())
             {
-                _dbContext.AddRange(toInsert);
+                DbContext.AddRange(toInsert);
                 storedBans.AddRange(toInsert);
             }
-                
-            _logger.LogInformation($"Inserting {toInsert.Count} new bans, updating {updated} modified bans...");
-            await _dbContext.SaveChangesAsync();
+            
+            Logger.LogInformation($"Inserting {toInsert.Count} new bans, updating {updated} modified bans...");
+            history.Added = toInsert.Count;
+            history.Updated = updated;
+            await DbContext.SaveChangesAsync();
 
             // No need to continue unless this is a complete refresh
             if (!isCompleteRefresh)
             {
-                _logger.LogInformation("Completed ban parsing. Partial refresh complete.");
-                return;
+                Logger.LogInformation("Completed ban parsing. Partial refresh complete.");
+                history.CompletedUpload = DateTimeOffset.UtcNow;
+                return history;
             }
 
             // Delete any missing bans if we're doing a complete refresh
@@ -213,16 +255,17 @@ namespace CentCom.Server.BanSources
             }
 
             // Apply deletions
-            _logger.LogInformation(missingBans.Count > 0 ? $"Removing {missingBans.Count} deleted bans..."
+            Logger.LogInformation(missingBans.Count > 0 ? $"Removing {missingBans.Count} deleted bans..."
                 : "Found no deleted bans to remove");
+            history.Deleted = missingBans.Count;
             if (missingBans.Count > 0)
             {
-                _dbContext.RemoveRange(missingBans);
+                DbContext.RemoveRange(missingBans);
                 foreach (var ban in missingBans)
                 {
                     storedBans.Remove(ban);
                 }
-                await _dbContext.SaveChangesAsync();
+                await DbContext.SaveChangesAsync();
             }
 
             // Delete any accidental duplications
@@ -231,12 +274,14 @@ namespace CentCom.Server.BanSources
                 .SelectMany(x => x.OrderBy(x => x.Id).Skip(1));
             if (duplicates.Any())
             {
-                _logger.LogWarning($"Removing {duplicates.Count()} duplicated bans from the database");
-                _dbContext.RemoveRange(duplicates);
-                await _dbContext.SaveChangesAsync();
+                Logger.LogWarning($"Removing {duplicates.Count()} duplicated bans from the database");
+                DbContext.RemoveRange(duplicates);
+                await DbContext.SaveChangesAsync();
             }
 
-            _logger.LogInformation("Completed ban parsing. Complete refresh complete.");
+            history.CompletedUpload = DateTimeOffset.UtcNow;
+            Logger.LogInformation("Completed ban parsing. Complete refresh complete.");
+            return history;
         }
 
         /// <summary>
@@ -251,7 +296,7 @@ namespace CentCom.Server.BanSources
             }
 
             // Get ban sources from the database
-            var foundSources = await _dbContext.BanSources.Where(x => Sources.Keys.Contains(x.Name)).ToListAsync();
+            var foundSources = await DbContext.BanSources.Where(x => Sources.Keys.Contains(x.Name)).ToListAsync();
 
             // Insert any ban sources that are missing, this is vital to ensure the database is properly configured state-wise
             if (foundSources.Count != Sources.Count)
@@ -259,10 +304,10 @@ namespace CentCom.Server.BanSources
                 var missing = Sources.Keys.Except(foundSources.Select(x => x.Name)).ToList();
                 foreach (var source in missing)
                 {
-                    _dbContext.BanSources.Add(Sources[source]);
+                    DbContext.BanSources.Add(Sources[source]);
                 }
-                await _dbContext.SaveChangesAsync();
-                foundSources = await _dbContext.BanSources.Where(x => Sources.Keys.Contains(x.Name)).ToListAsync();
+                await DbContext.SaveChangesAsync();
+                foundSources = await DbContext.BanSources.Where(x => Sources.Keys.Contains(x.Name)).ToListAsync();
             }
 
             return foundSources.ToDictionary(x => x.Name);
