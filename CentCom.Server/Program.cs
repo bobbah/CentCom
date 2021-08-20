@@ -19,7 +19,7 @@ using System.Threading.Tasks;
 
 namespace CentCom.Server
 {
-    class Program
+    internal class Program
     {
         private static IScheduler _scheduler;
         private static IServiceProvider _serviceProvider;
@@ -78,11 +78,12 @@ namespace CentCom.Server
             DisposeServices();
         }
 
-        public static void BuildConfiguration(string[] args)
+        private static void BuildConfiguration(string[] args)
         {
             _configuration = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false)
                 .AddCommandLine(args)
+                .AddUserSecrets<Program>()
                 .Build();
         }
 
@@ -96,18 +97,18 @@ namespace CentCom.Server
 
             foreach (var p in parsers)
             {
-                IJobDetail regularJob = JobBuilder.Create(p)
+                var regularJob = JobBuilder.Create(p)
                     .WithIdentity(p.Name, "parsers")
                     .Build();
 
-                ITrigger regularTrigger = TriggerBuilder.Create()
+                var regularTrigger = TriggerBuilder.Create()
                     .WithIdentity($"{p.Name}Trigger", "parsers")
                     .UsingJobData("completeRefresh", false)
                     .WithCronSchedule("0 5-25/5,35-55/5 * * * ?") // Every 5 minutes except at the half hours
                     .StartNow()
                     .Build();
 
-                ITrigger fullTrigger = TriggerBuilder.Create()
+                var fullTrigger = TriggerBuilder.Create()
                     .WithIdentity($"{p.Name}FullRefreshTrigger", "parsersFullRefresh")
                     .UsingJobData("completeRefresh", true)
                     .WithCronSchedule("0 0,30 * * * ?") // Every half hour
@@ -118,7 +119,7 @@ namespace CentCom.Server
             }
         }
 
-        public static void RegisterServices()
+        private static void RegisterServices()
         {
             var services = new ServiceCollection();
 
@@ -147,9 +148,13 @@ namespace CentCom.Server
                     services.AddDbContext<DatabaseContext, NpgsqlDbContext>();
                     break;
                 case DbType.MariaDB:
+                    services.AddDbContext<DatabaseContext, MariaDbContext>();
+                    break;
                 case DbType.MySql:
                     services.AddDbContext<DatabaseContext, MySqlDbContext>();
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
 
             // Add ban services as singletons
@@ -179,13 +184,8 @@ namespace CentCom.Server
             _serviceProvider = services.BuildServiceProvider(true);
         }
 
-        public static void DisposeServices()
+        private static void DisposeServices()
         {
-            if (_serviceProvider == null)
-            {
-                return;
-            }
-
             if (_serviceProvider is IDisposable disposable)
             {
                 disposable.Dispose();

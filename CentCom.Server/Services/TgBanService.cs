@@ -14,18 +14,14 @@ using System.Threading.Tasks;
 
 namespace CentCom.Server.Services
 {
-    public class TgBanService
+    public class TgBanService : RestBanService
     {
-        private readonly IRestClient _client;
-        private readonly ILogger _logger;
-        private const string BASE_URL = "https://tgstation13.org/";
-        private readonly static BanSource _banSource = new BanSource { Name = "tgstation" };
+        protected override string BaseUrl => "https://tgstation13.org/";
+        private static readonly BanSource BanSource = new BanSource { Name = "tgstation" };
 
-        public TgBanService(ILogger<TgBanService> logger)
+        public TgBanService(ILogger<TgBanService> logger) : base(logger)
         {
-            _logger = logger;
-            _client = new RestClient(BASE_URL);
-            _client.UseSystemTextJson(new System.Text.Json.JsonSerializerOptions()
+            Client.UseSystemTextJson(new System.Text.Json.JsonSerializerOptions()
             {
                 PropertyNameCaseInsensitive = true,
                 Converters = { new JsonStringEnumConverter() }
@@ -38,14 +34,10 @@ namespace CentCom.Server.Services
                 .AddQueryParameter("format", "json");
             if (startingId.HasValue)
                 request.AddQueryParameter("beforeid", startingId.ToString());
-            var response = await _client.ExecuteAsync<TgApiResponse>(request);
+            var response = await Client.ExecuteAsync<TgApiResponse>(request);
 
             if (response.StatusCode != System.Net.HttpStatusCode.OK)
-            {
-                var errorMessage = $"tgdb returned a non-200 HTTP response code: { response.StatusCode}, aborting parse.";
-                _logger.LogError(errorMessage);
-                throw new BanSourceUnavailableException(errorMessage);
-            }
+                FailedRequest(response);
 
             return response.Data.Bans.ToList();
         }
@@ -55,8 +47,8 @@ namespace CentCom.Server.Services
             // Get bans, must use a sequential approach here due to the last ban
             // ID only being available once we finish a page
             var dirtyBans = new List<TgRawBan>();
-            int? lastRequested = startingId;
-            List<TgRawBan> lastResponse = null;
+            var lastRequested = startingId;
+            List<TgRawBan> lastResponse;
             do
             {
                 lastResponse = await GetBansAsync(lastRequested);
@@ -76,7 +68,7 @@ namespace CentCom.Server.Services
             while (lastResponse.Any() && (searchFor == null || lastResponse.Any(x => searchFor.Contains(x.Id))));
 
             // Flatten any jobbans
-            var intermediateBans = dirtyBans.Select(x => x.AsBan(_banSource));
+            var intermediateBans = dirtyBans.Select(x => x.AsBan(BanSource));
             var cleanBans = intermediateBans.Where(x => x.BanType == BanType.Server).ToList();
             foreach (var group in intermediateBans.Where(x => x.BanType == BanType.Job).GroupBy(x => new { x.CKey, x.BannedOn }))
             {

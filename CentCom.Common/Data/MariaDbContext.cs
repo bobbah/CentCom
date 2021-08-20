@@ -1,11 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 namespace CentCom.Common.Data
 {
-    public sealed class MySqlDbContext : DatabaseContext
+    public class MariaDbContext : DatabaseContext
     {
-        public MySqlDbContext(IConfiguration configuration) : base(configuration)
+        public MariaDbContext(IConfiguration configuration) : base(configuration)
         {
         }
 
@@ -15,7 +15,7 @@ namespace CentCom.Common.Data
             var efcoreBuild =
                 Configuration.GetSection("dbConfig")["efcoreBuild"] != null; // Used for building migrations
             options.UseMySql(connStr,
-                efcoreBuild ? MySqlServerVersion.LatestSupportedServerVersion : ServerVersion.AutoDetect(connStr));
+                efcoreBuild ? MariaDbServerVersion.LatestSupportedServerVersion : ServerVersion.AutoDetect(connStr));
         }
     }
 }

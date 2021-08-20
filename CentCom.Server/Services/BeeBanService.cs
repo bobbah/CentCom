@@ -1,6 +1,5 @@
 ﻿using CentCom.Common.Extensions;
 using CentCom.Common.Models;
-using CentCom.Server.Exceptions;
 using Extensions;
 using Microsoft.Extensions.Logging;
 using RestSharp;
@@ -13,46 +12,46 @@ using System.Threading.Tasks;
 
 namespace CentCom.Server.Services
 {
-    public class BeeBanService
+    public class BeeBanService : RestBanService
     {
-        private const int _parallelRequests = 12;
-        private readonly IRestClient _client;
-        private const string BaseUrl = "https://api.beestation13.com/";
+        protected override string BaseUrl => "https://api.beestation13.com/";
+        private const int ParallelRequests = 1;
         private static readonly BanSource LrpSource = new BanSource() { Name = "bee-lrp" };
         private static readonly BanSource MrpSource = new BanSource() { Name = "bee-mrp" };
-        private readonly ILogger _logger;
 
-        public BeeBanService(ILogger<BeeBanService> logger)
+        public BeeBanService(ILogger<BeeBanService> logger) : base(logger)
         {
-            _client = new RestClient(BaseUrl);
-            _logger = logger;
         }
 
-        private async Task<IEnumerable<Ban>> GetBansAsync(int page = 1)
+        internal async Task<IEnumerable<Ban>> GetBansAsync(int page = 1)
         {
-            var request = new RestRequest("bans", Method.GET, DataFormat.Json).AddQueryParameter("page", page.ToString());
-            var response = await _client.ExecuteAsync(request);
+            var request =
+                new RestRequest("bans", Method.GET, DataFormat.Json).AddQueryParameter("page", page.ToString());
+            var response = await Client.ExecuteAsync(request);
 
             if (response.StatusCode != System.Net.HttpStatusCode.OK)
             {
-                _logger.LogError("Beestation website returned a non-200 HTTP response code: {StatusCode}, aborting parse", response.StatusCode);
-                throw new BanSourceUnavailableException($"Beestation website returned a non-200 HTTP response code: {response.StatusCode}, aborting parse");
+                FailedRequest(response);
             }
 
             var toReturn = new List<Ban>();
             var content = JsonSerializer.Deserialize<JsonElement>(response.Content);
             foreach (var b in content.GetProperty("data").EnumerateArray())
             {
-                var expiryString = b.GetProperty("unbanned_datetime").GetString() ?? b.GetProperty("expiration_time").GetString();
+                var expiryString = b.GetProperty("unbanned_datetime").GetString() ??
+                                   b.GetProperty("expiration_time").GetString();
                 var toAdd = new Ban()
                 {
-                    BannedOn = DateTime.SpecifyKind(DateTime.Parse(b.GetProperty("bantime").GetString()), DateTimeKind.Utc),
+                    BannedOn = DateTime.SpecifyKind(DateTime.Parse(b.GetProperty("bantime").GetString()),
+                        DateTimeKind.Utc),
                     BannedBy = b.GetProperty("a_ckey").GetString(),
                     UnbannedBy = b.GetProperty("unbanned_ckey").GetString(),
                     BanType = b.GetProperty("roles").EnumerateArray().Select(x => x.GetString()).Contains("Server")
                         ? BanType.Server
                         : BanType.Job,
-                    Expires = expiryString == null ? null : DateTime.SpecifyKind(DateTime.Parse(expiryString), DateTimeKind.Utc),
+                    Expires = expiryString == null
+                        ? null
+                        : DateTime.SpecifyKind(DateTime.Parse(expiryString), DateTimeKind.Utc),
                     CKey = b.GetProperty("ckey").GetString(),
                     Reason = b.GetProperty("reason").GetString(),
                     BanID = b.GetProperty("id").GetInt32().ToString(),
@@ -80,26 +79,24 @@ namespace CentCom.Server.Services
             var maxPages = await GetNumberOfPagesAsync();
             var range = Enumerable.Range(startpage, pages != -1 ? pages : maxPages + 8); // pad with 8 pages for safety
             var toReturn = new ConcurrentBag<Ban>();
-            
+
             await range.AsyncParallelForEach(async page =>
             {
                 foreach (var b in await GetBansAsync(page))
                 {
                     toReturn.Add(b);
                 }
-            }, _parallelRequests);
+            }, ParallelRequests);
             return toReturn;
         }
 
-        private async Task<int> GetNumberOfPagesAsync()
+        internal async Task<int> GetNumberOfPagesAsync()
         {
             var request = new RestRequest("bans", Method.GET, DataFormat.Json);
-            var result = await _client.ExecuteAsync(request);
+            var result = await Client.ExecuteAsync(request);
 
             if (result.StatusCode != System.Net.HttpStatusCode.OK)
-            {
-                throw new Exception($"Unexpected non-200 status code [{result.StatusCode}] when trying to retrieve number of ban pages on beestation13.com");
-            }
+                FailedRequest(result);
 
             return JsonSerializer.Deserialize<JsonElement>(result.Content).GetProperty("pages").GetInt32();
         }
@@ -111,7 +108,8 @@ namespace CentCom.Server.Services
                 "bs_golden" => LrpSource,
                 "bs_sage" => MrpSource,
                 "bs_acacia" => MrpSource,
-                _ => throw new Exception($"Failed to convert raw value of Beestation ban source to BanSource: \"{raw}\""),
+                _ => throw new Exception(
+                    $"Failed to convert raw value of Beestation ban source to BanSource: \"{raw}\""),
             };
         }
     }

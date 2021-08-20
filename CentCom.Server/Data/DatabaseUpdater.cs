@@ -23,8 +23,10 @@ namespace CentCom.Server.Data
         public async Task Execute(IJobExecutionContext context)
         {
             _logger.LogInformation("Checking for any pending migrations");
-            await _dbContext.Migrate(context.CancellationToken);
-
+            var appliedMigration = await _dbContext.Migrate(context.CancellationToken);
+            if (appliedMigration)
+                _logger.LogInformation("Applied new migration");
+            
             // Import any new flat data prior to registering ban parsing jobs
             _logger.LogInformation("Checking for any updates to flat file data");
             await _importer.RunImports();

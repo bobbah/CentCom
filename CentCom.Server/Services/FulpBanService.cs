@@ -14,35 +14,28 @@ using System.Threading.Tasks;
 
 namespace CentCom.Server.Services
 {
-    public class FulpBanService
+    public class FulpBanService : RestBanService
     {
-        private readonly IRestClient _client;
-        private readonly ILogger _logger;
-        private const string BASE_URL = "https://api.fulp.gg/";
-        private const int RECORDS_PER_PAGE = 50;
-        private readonly static BanSource _banSource = new BanSource() { Name = "fulp" };
+        protected override string BaseUrl => "https://api.fulp.gg/";
+        private const int RecordsPerPage = 50;
+        private static readonly BanSource BanSource = new BanSource() { Name = "fulp" };
 
-
-        public FulpBanService(ILogger<FulpBanService> logger, IConfiguration config)
+        public FulpBanService(ILogger<FulpBanService> logger, IConfiguration config) : base(logger)
         {
-            _logger = logger;
-            _client = new RestClient(BASE_URL);
-
             if (config.GetSection("sourceConfig").GetValue<bool>("allowFulpExpiredSSL"))
             {
-                _client.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyError) => true;
+                Client.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyError) => true;
             }
         }
 
         public async Task<IEnumerable<Ban>> GetBansAsync(int page = 1)
         {
-            var request = new RestRequest($"bans/{RECORDS_PER_PAGE}/{page}", Method.GET, DataFormat.Json);
-            var response = await _client.ExecuteAsync(request);
+            var request = new RestRequest($"bans/{RecordsPerPage}/{page}", Method.GET, DataFormat.Json);
+            var response = await Client.ExecuteAsync(request);
 
             if (response.StatusCode != System.Net.HttpStatusCode.OK)
             {
-                _logger.LogError($"Fulpstation website returned a non-200 HTTP response code: {response.StatusCode}, aborting parse.");
-                throw new BanSourceUnavailableException($"Fulpstation website returned a non-200 HTTP response code: {response.StatusCode}, aborting parse.");
+                FailedRequest(response);
             }
 
             var toReturn = new List<Ban>();
@@ -50,24 +43,26 @@ namespace CentCom.Server.Services
             foreach (var ban in content["value"].GetProperty("bans").EnumerateArray())
             {
                 // Need to get both the expiration as well as the unbanned time as they can differ
-                DateTime? expiration = expiration = ban.GetProperty("unbannedTime").GetString() == null ? (DateTime?)null
-                        : DateTime.Parse(ban.GetProperty("unbannedTime").GetString()); ;
-                if (!expiration.HasValue)
-                {
-                    expiration = ban.GetProperty("banExpireTime").GetString() == null ? (DateTime?)null
-                        : DateTime.Parse(ban.GetProperty("banExpireTime").GetString());
-                }
+                DateTime? expiration = null;
+                var unbannedTime = ban.GetProperty("unbannedTime").GetString();
+                var expireTime = ban.GetProperty("banExpireTime").GetString();
+                if (unbannedTime != null)
+                    expiration = DateTime.Parse(unbannedTime);
+                if (expireTime != null)
+                    expiration ??= DateTime.Parse(expireTime);
 
                 // Get ban
                 var toAdd = new Ban()
                 {
                     BannedOn = DateTime.Parse(ban.GetProperty("banApplyTime").GetString()),
                     BannedBy = ban.GetProperty("adminCkey").GetString(),
-                    BanType = ban.GetProperty("role")[0].GetString().ToLower() == "server" ? BanType.Server : BanType.Job,
+                    BanType = ban.GetProperty("role")[0].GetString().ToLower() == "server"
+                        ? BanType.Server
+                        : BanType.Job,
                     Expires = expiration,
                     CKey = ban.GetProperty("bannedCkey").GetString(),
                     Reason = ban.GetProperty("reason").GetString(),
-                    SourceNavigation = _banSource
+                    SourceNavigation = BanSource
                 };
 
                 // Add jobs if relevant
@@ -106,12 +101,12 @@ namespace CentCom.Server.Services
 
         public async Task<int> GetNumberOfPagesAsync()
         {
-            var request = new RestRequest($"bans/{RECORDS_PER_PAGE}/1", Method.GET, DataFormat.Json);
-            var result = await _client.ExecuteAsync(request);
+            var request = new RestRequest($"bans/{RecordsPerPage}/1", Method.GET, DataFormat.Json);
+            var result = await Client.ExecuteAsync(request);
 
             if (result.StatusCode != System.Net.HttpStatusCode.OK)
             {
-                throw new Exception($"Unexpected non-200 status code [{result.StatusCode}] when trying to retrieve number of ban pages for Fulpstation");
+                FailedRequest(result);
             }
 
             var content = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(result.Content);

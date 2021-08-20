@@ -11,7 +11,7 @@ namespace CentCom.Server.BanSources
 {
     public class YogBanParser : BanParser
     {
-        public override Dictionary<string, BanSource> Sources => new Dictionary<string, BanSource>()
+        protected override Dictionary<string, BanSource> Sources => new Dictionary<string, BanSource>()
         {
             { "yogstation", new BanSource()
             {
@@ -20,7 +20,9 @@ namespace CentCom.Server.BanSources
                 RoleplayLevel = RoleplayLevel.Medium
             } }
         };
-        public override bool SourceSupportsBanIDs => true;
+
+        protected override bool SourceSupportsBanIDs => true;
+        protected override string Name => "YogStation";
         private readonly YogBanService _banService;
         private const int PagesPerBatch = 12;
 
@@ -31,8 +33,8 @@ namespace CentCom.Server.BanSources
 
         public override async Task<IEnumerable<Ban>> FetchNewBansAsync()
         {
-            _logger.LogInformation("Getting new bans for YogStation...");
-            var recent = await _dbContext.Bans
+            Logger.LogInformation("Getting new bans for YogStation...");
+            var recent = await DbContext.Bans
                 .Where(x => Sources.Keys.Contains(x.SourceNavigation.Name))
                 .OrderByDescending(x => x.BannedOn)
                 .Take(5)
@@ -58,7 +60,7 @@ namespace CentCom.Server.BanSources
 
         public override async Task<IEnumerable<Ban>> FetchAllBansAsync()
         {
-            _logger.LogInformation("Getting all bans for YogStation...");
+            Logger.LogInformation("Getting all bans for YogStation...");
             return await _banService.GetBansBatchedAsync();
         }
     }

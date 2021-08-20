@@ -13,7 +13,7 @@ namespace CentCom.Server.Services
 {
     public class VgBanService
     {
-        private readonly static BanSource _source = new BanSource() { Name = "vgstation" };
+        private static readonly BanSource BanSource = new BanSource() { Name = "vgstation" };
         private readonly ILogger _logger;
 
         public VgBanService(ILogger<VgBanService> logger)
@@ -31,8 +31,10 @@ namespace CentCom.Server.Services
 
             if (document.StatusCode != HttpStatusCode.OK)
             {
-                _logger.LogWarning("/vg/ website returned a non-200 HTTP response code: {document.StatusCode}, aborting parse.");
-                throw new BanSourceUnavailableException($"/vg/ website returned a non-200 HTTP response code: {document.StatusCode}, aborting parse.");
+                _logger.LogError(
+                    $"Source website returned a non-200 HTTP response code. Url: \"{document.Url}\", code: {document.StatusCode}");
+                throw new BanSourceUnavailableException(
+                    $"Source website returned a non-200 HTTP response code. Url: \"{document.Url}\", code: {document.StatusCode}");
             }
 
             var tables = document.QuerySelectorAll("form > table > tbody");
@@ -43,7 +45,11 @@ namespace CentCom.Server.Services
             {
                 var cursor = banTable.Children[i];
                 var ckey = cursor.Children[0].Children[0].TextContent.Trim();
-                DateTimeOffset date = DateTime.SpecifyKind(cursor.Children[0].Children[0].GetAttribute("title") == "0000-00-00 00:00:00" ? DateTime.MinValue : DateTime.Parse(cursor.Children[0].Children[0].GetAttribute("title").Trim()), DateTimeKind.Utc);
+                DateTimeOffset date = DateTime.SpecifyKind(
+                    cursor.Children[0].Children[0].GetAttribute("title") == "0000-00-00 00:00:00"
+                        ? DateTime.MinValue
+                        : DateTime.Parse(cursor.Children[0].Children[0].GetAttribute("title").Trim()),
+                    DateTimeKind.Utc);
                 var reason = cursor.Children[1].TextContent.Trim();
                 var bannedBy = cursor.Children[2].TextContent.Trim();
                 var expiresText = cursor.Children[3].TextContent.Trim();
@@ -61,7 +67,7 @@ namespace CentCom.Server.Services
                     Reason = reason,
                     Expires = expires.HasValue ? expires.Value.UtcDateTime : (DateTime?)null,
                     BanType = BanType.Server,
-                    SourceNavigation = _source
+                    SourceNavigation = BanSource
                 });
             }
 
@@ -70,7 +76,11 @@ namespace CentCom.Server.Services
                 var cursor = jobTable.Children[i];
                 var bannedDetails = cursor.Children[0];
                 var ckey = bannedDetails.Children[0].TextContent.Trim();
-                DateTimeOffset date = DateTime.SpecifyKind(cursor.Children[0].Children[0].GetAttribute("title") == "0000-00-00 00:00:00" ? DateTime.MinValue : DateTime.Parse(cursor.Children[0].Children[0].GetAttribute("title").Trim()), DateTimeKind.Utc);
+                DateTimeOffset date = DateTime.SpecifyKind(
+                    cursor.Children[0].Children[0].GetAttribute("title") == "0000-00-00 00:00:00"
+                        ? DateTime.MinValue
+                        : DateTime.Parse(cursor.Children[0].Children[0].GetAttribute("title").Trim()),
+                    DateTimeKind.Utc);
                 var jobDetails = cursor.QuerySelector(".clmJobs");
                 var jobs = jobDetails.QuerySelectorAll("a").Select(x => x.TextContent.Trim()).Distinct();
                 var reason = cursor.Children[2].TextContent.Trim();
@@ -89,8 +99,8 @@ namespace CentCom.Server.Services
                     Reason = reason,
                     BannedBy = bannedBy,
                     BannedOn = date.UtcDateTime,
-                    Expires = expires.HasValue ? expires.Value.UtcDateTime : (DateTime?)null,
-                    SourceNavigation = _source
+                    Expires = expires?.UtcDateTime,
+                    SourceNavigation = BanSource
                 };
 
                 toAdd.AddJobRange(jobs);

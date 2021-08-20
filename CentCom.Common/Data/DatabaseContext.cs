@@ -15,6 +15,7 @@ namespace CentCom.Common.Data
         public DbSet<BanSource> BanSources { get; set; }
         public DbSet<JobBan> JobBans { get; set; }
         public DbSet<FlatBansVersion> FlatBansVersion { get; set; }
+        public DbSet<CheckHistory> CheckHistory { get; set; }
 
         public DatabaseContext(IConfiguration configuration)
         {
@@ -66,6 +67,14 @@ namespace CentCom.Common.Data
                 entity.Property(e => e.PerformedAt).IsRequired().HasConversion(v => v, v => DateTime.SpecifyKind(v, DateTimeKind.Utc));
                 entity.Property(e => e.Version).IsRequired();
                 entity.HasIndex(e => new { e.Name, e.Version }).IsUnique();
+            });
+
+            modelBuilder.Entity<CheckHistory>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Id).UseIdentityAlwaysColumn();
+                entity.Property(e => e.Parser).IsRequired();
+                entity.HasIndex(e => new {e.Parser, e.Started});
             });
         }
 
