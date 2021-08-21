@@ -55,6 +55,7 @@ namespace CentCom.Common.Data
                     .WithOne(b => b.SourceNavigation)
                     .HasForeignKey(b => b.Source)
                     .OnDelete(DeleteBehavior.Cascade);
+                entity.HasIndex(e => e.Name).IsUnique(); // Force unique source names
             });
 
             modelBuilder.Entity<JobBan>(entity => { entity.HasKey(e => new { e.BanId, e.Job }); });

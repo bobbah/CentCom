@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using CentCom.Common.Abstract;
 using CentCom.Exporter.Configuration;
-using CentCom.Exporter.Data;
 using CentCom.Exporter.Data.Providers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -12,7 +11,7 @@ namespace CentCom.Exporter.Controllers
 {
     [ApiController]
     [Route("api/ban")]
-    public class BanController
+    public class BanController : ControllerBase
     {
         private readonly BanProviderOptions _providerOptions;
         private readonly IBanProvider _provider;
@@ -25,9 +24,9 @@ namespace CentCom.Exporter.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<IRestBan>> GetBans(int? cursor)
+        public async Task<IActionResult> GetBans(int? cursor)
         {
-            return await _provider.GetBansAsync(cursor, _providerOptions);
+            return Ok(await _provider.GetBansAsync(cursor, _providerOptions));
         }
     }
 }

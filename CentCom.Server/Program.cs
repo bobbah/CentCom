@@ -101,18 +101,32 @@ namespace CentCom.Server
                     .WithIdentity(p.Name, "parsers")
                     .Build();
 
+                // var regularTrigger = TriggerBuilder.Create()
+                //     .WithIdentity($"{p.Name}Trigger", "parsers")
+                //     .UsingJobData("completeRefresh", false)
+                //     .WithCronSchedule("0 5-25/5,35-55/5 * * * ?") // Every 5 minutes except at the half hours
+                //     .StartNow()
+                //     .Build();
+                //
+                // var fullTrigger = TriggerBuilder.Create()
+                //     .WithIdentity($"{p.Name}FullRefreshTrigger", "parsersFullRefresh")
+                //     .UsingJobData("completeRefresh", true)
+                //     .WithCronSchedule("0 0,30 * * * ?") // Every half hour
+                //     .StartNow()
+                //     .Build();
+                
                 var regularTrigger = TriggerBuilder.Create()
                     .WithIdentity($"{p.Name}Trigger", "parsers")
                     .UsingJobData("completeRefresh", false)
-                    .WithCronSchedule("0 5-25/5,35-55/5 * * * ?") // Every 5 minutes except at the half hours
+                    .WithSimpleSchedule(x => x.WithIntervalInMinutes(5))
                     .StartNow()
                     .Build();
 
                 var fullTrigger = TriggerBuilder.Create()
                     .WithIdentity($"{p.Name}FullRefreshTrigger", "parsersFullRefresh")
                     .UsingJobData("completeRefresh", true)
-                    .WithCronSchedule("0 0,30 * * * ?") // Every half hour
-                    .StartNow()
+                    .WithSimpleSchedule(x => x.WithIntervalInMinutes(10))
+                    .StartAt(DateTimeOffset.UtcNow.AddMinutes(2))
                     .Build();
 
                 await _scheduler.ScheduleJob(regularJob, new[] { regularTrigger, fullTrigger }, false);
@@ -164,6 +178,7 @@ namespace CentCom.Server
             services.AddSingleton<FulpBanService>();
             services.AddSingleton<TGMCBanService>();
             services.AddSingleton<TgBanService>();
+            services.AddSingleton<ExporterService>();
 
             // Add ban parsers
             var parsers = AppDomain.CurrentDomain.GetAssemblies().Aggregate(new List<Type>(), (curr, next) =>

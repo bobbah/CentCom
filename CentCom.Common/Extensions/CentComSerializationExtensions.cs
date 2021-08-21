@@ -13,9 +13,8 @@ namespace CentCom.Common.Extensions
             => services.Configure<JsonSerializerOptions>(options =>
             {
                 options.AddCentComOptions();
-                options.AddDataObjectConverter<ICKey, RestCKey>();
-                options.AddDataObjectConverter<IRestJobBan, RestJobBan>();
                 options.AddDataObjectConverter<IRestBan, RestBan>();
+                options.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
             });
 
         public static JsonSerializerOptions AddCentComOptions(this JsonSerializerOptions options)
