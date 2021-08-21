@@ -13,6 +13,7 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.7" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="5.0.1" />
     <PackageReference Include="Quartz" Version="3.3.3" />
+    <PackageReference Include="Remora.Discord.API" Version="29.0.0" />
   </ItemGroup>
 
 </Project>
