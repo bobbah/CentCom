@@ -1,5 +1,3 @@
-using Remora.Discord.Core;
-
 namespace CentCom.Bot.Configuration
 {
     public class DiscordConfiguration

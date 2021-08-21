@@ -1,5 +1,4 @@
 using System;
-using CentCom.Exporter.Data;
 
 namespace CentCom.Exporter.Configuration
 {

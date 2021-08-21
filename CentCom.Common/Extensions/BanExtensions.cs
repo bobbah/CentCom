@@ -1,6 +1,5 @@
-﻿using CentCom.Common;
+﻿using System.Collections.Generic;
 using CentCom.Common.Models;
-using System.Collections.Generic;
 
 namespace CentCom.Common.Extensions
 {

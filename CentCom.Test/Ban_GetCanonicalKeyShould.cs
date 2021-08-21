@@ -1,5 +1,5 @@
-﻿using CentCom.Common;
-using System;
+﻿using System;
+using CentCom.Common;
 using Xunit;
 
 namespace CentCom.Test

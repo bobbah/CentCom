@@ -1,7 +1,7 @@
-﻿using CentCom.Common.Extensions;
+﻿using System;
+using CentCom.Common.Extensions;
 using CentCom.Common.Models;
 using CentCom.Common.Models.Equality;
-using System;
 using Xunit;
 
 namespace CentCom.Test

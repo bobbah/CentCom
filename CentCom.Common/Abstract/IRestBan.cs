@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 using CentCom.Common.Models;
 
 namespace CentCom.Common.Abstract

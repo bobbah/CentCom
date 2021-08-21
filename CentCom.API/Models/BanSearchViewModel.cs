@@ -1,5 +1,5 @@
-﻿using CentCom.Common.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using CentCom.Common.Models;
 
 namespace CentCom.API.Models
 {

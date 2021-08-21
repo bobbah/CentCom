@@ -14,6 +14,7 @@ namespace CentCom.Exporter.Data
         public BanType BanType => Role.Equals("server", StringComparison.InvariantCultureIgnoreCase)
             ? BanType.Server
             : BanType.Job;
+
         public DateTimeOffset? Expiration { get; set; }
         public string Reason { get; set; }
         public CKey CKey { get; set; }
