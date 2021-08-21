@@ -1,7 +1,5 @@
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using CentCom.Common.Abstract;
 using CentCom.Exporter.Configuration;
 using CentCom.Exporter.Data.Providers;
 using Microsoft.AspNetCore.Mvc;
@@ -13,8 +11,8 @@ namespace CentCom.Exporter.Controllers
     [Route("api/ban")]
     public class BanController : ControllerBase
     {
-        private readonly BanProviderOptions _providerOptions;
         private readonly IBanProvider _provider;
+        private readonly BanProviderOptions _providerOptions;
 
         public BanController(IOptions<BanProviderOptions> providerOptions, IBanProvider provider)
         {

@@ -11,22 +11,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28c8f7e3-4e14-4e22-b8f6-ae65cdd7cd09" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/MariaDb/20210821145930_UniqueSourceNames.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/MariaDb/20210821145930_UniqueSourceNames.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/MySql/20210821145927_UniqueSourceNames.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/MySql/20210821145927_UniqueSourceNames.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/Postgres/20210821145924_UniqueSourceNames.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/Postgres/20210821145924_UniqueSourceNames.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CentCom.Server/BanSources/TestBanParser.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CentCom.Server/Services/ExporterService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Data/DatabaseContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Data/DatabaseContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Extensions/CentComSerializationExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Extensions/CentComSerializationExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/MariaDb/MariaDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/MariaDb/MariaDbContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/MySql/MySqlDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/MySql/MySqlDbContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/Postgres/NpgsqlDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/Postgres/NpgsqlDbContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CentCom/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CentCom/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.API/CentCom.API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.API/CentCom.API.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.API/wwwroot/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.API/wwwroot/css/site.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Bot/CentCom.Bot.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Bot/CentCom.Bot.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Bot/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Bot/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Common/CentCom.Common.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/CentCom.Common.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Exporter/CentCom.Exporter.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Exporter/CentCom.Exporter.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CentCom.Exporter/Controllers/BanController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Exporter/Controllers/BanController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Exporter/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Exporter/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CentCom.Server/CentCom.Server.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/CentCom.Server.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Server/Data/DatabaseUpdater.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/Data/DatabaseUpdater.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CentCom.Server/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Server/Quartz/JobFactory.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Server/Services/ExporterService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/Services/ExporterService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Test/CentCom.Test.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Test/CentCom.Test.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -254,7 +253,7 @@
       <workItem from="1629428801502" duration="17265000" />
       <workItem from="1629478040004" duration="17933000" />
       <workItem from="1629505090375" duration="12956000" />
-      <workItem from="1629519384044" duration="7569000" />
+      <workItem from="1629519384044" duration="11888000" />
     </task>
     <task id="LOCAL-00001" summary="update bee ban url">
       <created>1628898475361</created>
@@ -332,6 +331,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/CentCom.Server/Data/DatabaseUpdater.cs</url>
+          <line>31</line>
+          <properties documentPath="C:\Users\bobbahbrown\repos\CentCom\CentCom.Server\Data\DatabaseUpdater.cs" initialLine="31" containingFunctionPresentation="method 'Execute'">
+            <startOffsets>
+              <option value="943" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1005" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

@@ -18,7 +18,6 @@ namespace CentCom.Server.Services
     public class ExporterService : RestBanService
     {
         private static readonly BanSource BanSource = new BanSource { Name = "teststation" };
-        protected override string BaseUrl => "https://localhost:6658/";
 
         public ExporterService(ILogger<ExporterService> logger) : base(logger)
         {
@@ -29,6 +28,8 @@ namespace CentCom.Server.Services
             options.Converters.Insert(0, new JsonStringEnumConverter());
             Client.UseSystemTextJson(options);
         }
+
+        protected override string BaseUrl => "https://localhost:6658/";
 
         private async Task<IEnumerable<Ban>> GetBansAsync(int? cursor = null)
         {
