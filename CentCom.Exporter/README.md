@@ -26,6 +26,8 @@ of [IBanProvider](Data/Providers/IBanProvider.cs) in a PR, or request that bobba
 
 [Requires ASP.NET Core Runtime 5+.](https://dotnet.microsoft.com/download/dotnet/5.0)
 
+[Find the latest compiled executables for CentCom.Exporter here](https://github.com/bobbahbrown/CentCom/releases/latest)
+
 To use the exporter, simply configure ``appsettings.json`` as described in the [configuration section](#configuration)
 of this README, specifically the provider and connection string. Optionally configure ``hostsettings.json`` to control
 the port on which the application will bind to.
