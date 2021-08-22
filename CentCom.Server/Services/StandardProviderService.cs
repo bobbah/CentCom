@@ -19,14 +19,14 @@ namespace CentCom.Server.Services
 {
     public class StandardProviderService : RestBanService
     {
+        private string _baseUrl;
         private bool _configured;
-        public BanSource Source { get; private set; }
 
         public StandardProviderService(ILogger<StandardProviderService> logger) : base(logger)
         {
         }
 
-        private string _baseUrl;
+        public BanSource Source { get; private set; }
         protected override string BaseUrl => _baseUrl;
 
         private async Task<IEnumerable<Ban>> GetBansAsync(int? cursor = null)

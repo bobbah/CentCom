@@ -15,11 +15,19 @@ namespace CentCom.Server.Data
     [DisallowConcurrentExecution]
     public class DatabaseUpdater : IJob
     {
+        /// <summary>
+        /// Types of BanParsers which should not be automatically configured with a refresh schedule
+        /// </summary>
+        private readonly List<Type> _autoConfigBypass = new List<Type>()
+        {
+            typeof(StandardBanParser)
+        };
+
         private readonly DatabaseContext _dbContext;
         private readonly FlatDataImporter _importer;
         private readonly ILogger _logger;
-        private readonly ISchedulerFactory _schedulerFactory;
         private readonly List<StandardProviderConfiguration> _providerConfigs;
+        private readonly ISchedulerFactory _schedulerFactory;
 
         public DatabaseUpdater(DatabaseContext dbContext, ILogger<DatabaseUpdater> logger, FlatDataImporter importer,
             ISchedulerFactory schedulerFactory, IConfiguration config)
@@ -48,14 +56,6 @@ namespace CentCom.Server.Data
             if (_providerConfigs != null)
                 await RegisterStandardJobs();
         }
-
-        /// <summary>
-        /// Types of BanParsers which should not be automatically configured with a refresh schedule
-        /// </summary>
-        private readonly List<Type> _autoConfigBypass = new List<Type>()
-        {
-            typeof(StandardBanParser)
-        };
 
         /// <summary>
         /// Registers all jobs with Quartz' job scheduler for special ban sources
