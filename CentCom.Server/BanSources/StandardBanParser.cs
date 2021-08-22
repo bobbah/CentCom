@@ -17,6 +17,9 @@ namespace CentCom.Server.BanSources
     {
         private readonly StandardProviderService _banService;
         private readonly List<StandardProviderConfiguration> _providerConfigs;
+        private string _name;
+
+        private Dictionary<string, BanSource> _sources;
 
         public StandardBanParser(DatabaseContext dbContext, ILogger<StandardBanParser> logger,
             StandardProviderService banService,
@@ -27,11 +30,9 @@ namespace CentCom.Server.BanSources
             _providerConfigs = config.GetSection("standardSources").Get<List<StandardProviderConfiguration>>();
         }
 
-        private Dictionary<string, BanSource> _sources;
         protected override Dictionary<string, BanSource> Sources => _sources;
 
         protected override bool SourceSupportsBanIDs => true;
-        private string _name;
         protected override string Name => _name;
 
         protected override Task Configure(IJobExecutionContext context)

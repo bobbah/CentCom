@@ -11,18 +11,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28c8f7e3-4e14-4e22-b8f6-ae65cdd7cd09" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/CentCom.Server/BanSources/StandardBanParser.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CentCom.Server/Configuration/StandardProviderConfiguration.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CentCom/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CentCom/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.API/CentCom.API.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.API/CentCom.API.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Server/BanSources/BanParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/BanSources/BanParser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Server/BanSources/TestBanParser.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Server/Data/DatabaseUpdater.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/Data/DatabaseUpdater.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Server/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Server/Services/ExporterService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/Services/StandardProviderService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Server/Services/RestBanService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/Services/RestBanService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Server/Services/VgBanService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/Services/VgBanService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Server/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/appsettings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -257,7 +246,7 @@
       <workItem from="1629478040004" duration="17933000" />
       <workItem from="1629505090375" duration="12956000" />
       <workItem from="1629519384044" duration="15086000" />
-      <workItem from="1629581834573" duration="8926000" />
+      <workItem from="1629581834573" duration="10816000" />
     </task>
     <task id="LOCAL-00001" summary="update bee ban url">
       <created>1628898475361</created>

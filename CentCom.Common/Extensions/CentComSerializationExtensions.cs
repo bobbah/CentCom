@@ -7,6 +7,10 @@ using Remora.Discord.API.Extensions;
 
 namespace CentCom.Common.Extensions
 {
+    /// <summary>
+    /// Extension methods used to add JSON serialization options to support serialization of ICKey, IRestBan, and
+    /// IRestJobBan objects
+    /// </summary>
     public static class CentComSerializationExtensions
     {
         public static IServiceCollection AddCentComSerialization(this IServiceCollection services)

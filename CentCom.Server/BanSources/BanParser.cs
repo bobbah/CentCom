@@ -69,7 +69,7 @@ namespace CentCom.Server.BanSources
                 throw new JobExecutionException(ex, false);
             }
         }
-        
+
         /// <summary>
         /// Runs before executing the ban parsing, use to configure source
         /// </summary>

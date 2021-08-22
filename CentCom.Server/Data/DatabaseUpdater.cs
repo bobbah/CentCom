@@ -57,6 +57,9 @@ namespace CentCom.Server.Data
             typeof(StandardBanParser)
         };
 
+        /// <summary>
+        /// Registers all jobs with Quartz' job scheduler for special ban sources
+        /// </summary>
         private async Task RegisterJobs()
         {
             var parsers = AppDomain.CurrentDomain.GetAssemblies().Aggregate(new List<Type>(), (curr, next) =>
@@ -93,6 +96,9 @@ namespace CentCom.Server.Data
             }
         }
 
+        /// <summary>
+        /// Registers all jobs with Quartz' job scheduler for standardized ban sources
+        /// </summary>
         private async Task RegisterStandardJobs()
         {
             // Get a scheduler instance

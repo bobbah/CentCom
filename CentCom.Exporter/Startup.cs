@@ -39,9 +39,6 @@ namespace CentCom.Exporter
                 throw new Exception("Invalid or unknown ban provider kind found in configuration");
             switch (providerKind)
             {
-                case BanProviderKind.Debug:
-                    services.AddTransient<IBanProvider, DebugProvider>();
-                    break;
                 case BanProviderKind.Tgstation:
                     services.AddTransient<IBanProvider, TgBanProvider>();
                     break;

@@ -6,8 +6,20 @@ using CentCom.Common.Models.Rest;
 
 namespace CentCom.Exporter.Data
 {
+    /// <summary>
+    /// Provides utilities for clustering bans such that job bans are correctly grouped into one ban
+    /// </summary>
     public static class BanClusterer
     {
+        /// <summary>
+        /// Clusters a collection of IRestBans to ensure that all job bans are grouped appropriately
+        /// </summary>
+        /// <param name="bans">The bans to cluster</param>
+        /// <returns>The collection of bans with all job bans clustered appropriately</returns>
+        /// <remarks>
+        /// Job bans are considered to be in a group if the ckey, banning ckey, reason,
+        /// banned timestamp, expiration timestamp, and unbanned ckey are the same.
+        /// </remarks>
         public static IEnumerable<IRestBan> ClusterBans(IEnumerable<IRestBan> bans)
         {
             var clusteredBans = bans.Where(x => x.BanType == BanType.Server).ToList();

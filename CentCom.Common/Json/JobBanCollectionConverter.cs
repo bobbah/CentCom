@@ -7,6 +7,9 @@ using CentCom.Common.Models.Rest;
 
 namespace CentCom.Common.Json
 {
+    /// <summary>
+    /// Converter to serialize and deserialize collections of job bans into arrays of strings
+    /// </summary>
     public class JobBanCollectionConverter : JsonConverter<IReadOnlyList<IRestJobBan>>
     {
         public override IReadOnlyList<IRestJobBan> Read(ref Utf8JsonReader reader, Type typeToConvert,

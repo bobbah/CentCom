@@ -12,6 +12,9 @@ using MySqlConnector;
 
 namespace CentCom.Exporter.Data.Providers
 {
+    /// <summary>
+    /// Provides a generic implementation of a ban provider for all /tg/-derived ban databases.
+    /// </summary>
     public class TgBanProvider : IBanProvider
     {
         private readonly string _connStr;
@@ -23,6 +26,7 @@ namespace CentCom.Exporter.Data.Providers
             _rawData = new List<IRestBan>();
         }
 
+        /// <inheritdoc />
         public async Task<IEnumerable<IRestBan>> GetBansAsync(int? cursor, BanProviderOptions options)
         {
             var result = new List<IRestBan>();
@@ -39,7 +43,7 @@ namespace CentCom.Exporter.Data.Providers
 
                 // Determine if we have reached the end of the dataset
                 var belowLimit = batchSize < options.Limit;
-                
+
                 // Update result set
                 result = FilterRaw(belowLimit, options).ToList();
             }
@@ -48,6 +52,12 @@ namespace CentCom.Exporter.Data.Providers
             return result.Take(Math.Min(result.Count, options.Limit));
         }
 
+        /// <summary>
+        /// Retrieves bans from the database starting at a given cursor (ban ID) and moving in a descending ban ID order
+        /// </summary>
+        /// <param name="cursor">The optional ban ID to start at, NOT inclusive</param>
+        /// <param name="options">The options to apply to this query</param>
+        /// <returns>A collection of raw bans up to the limit for this page</returns>
         private async Task<int> FetchMore(int? cursor, BanProviderOptions options)
         {
             const string query = @"
@@ -74,14 +84,14 @@ namespace CentCom.Exporter.Data.Providers
 
             await using var conn = GetConnection();
             var rawBans = await conn.QueryAsync<ExportedBan>(query, new
-                {
-                    cursor,
-                    options.Limit,
-                    options.AfterDate,
-                    options.AfterId,
-                    includeJobBans = options.JobBans != BanInclusionOption.None,
-                    includeServerBans = options.ServerBans != BanInclusionOption.None
-                });
+            {
+                cursor,
+                options.Limit,
+                options.AfterDate,
+                options.AfterId,
+                includeJobBans = options.JobBans != BanInclusionOption.None,
+                includeServerBans = options.ServerBans != BanInclusionOption.None
+            });
 
             // Specify timestamps UTC where appropriate
             if (!options.UseLocalTimezone)
@@ -90,7 +100,8 @@ namespace CentCom.Exporter.Data.Providers
                 {
                     ban.BannedAt = new DateTimeOffset(ban.BannedAt.Ticks, options.UtcOffset ?? TimeSpan.Zero);
                     if (ban.Expiration.HasValue)
-                        ban.Expiration = new DateTimeOffset(ban.Expiration.Value.Ticks, options.UtcOffset ?? TimeSpan.Zero);
+                        ban.Expiration = new DateTimeOffset(ban.Expiration.Value.Ticks,
+                            options.UtcOffset ?? TimeSpan.Zero);
                     if (ban.Unbanned.HasValue)
                         ban.Unbanned = new DateTimeOffset(ban.Unbanned.Value.Ticks, options.UtcOffset ?? TimeSpan.Zero);
                 }
@@ -100,6 +111,13 @@ namespace CentCom.Exporter.Data.Providers
             return rawBans?.Count() ?? 0;
         }
 
+        /// <summary>
+        /// Filters the collection of raw bans to be properly clustered and account for any possible 'hanging' job bans
+        /// at the end of the dataset
+        /// </summary>
+        /// <param name="belowLimit">If the last set of raw bans retrieved was below the configured limit for each page</param>
+        /// <param name="options">The options for the ban source</param>
+        /// <returns></returns>
         private IEnumerable<IRestBan> FilterRaw(bool belowLimit, BanProviderOptions options)
         {
             // Filter based on allowed ban types
@@ -117,6 +135,13 @@ namespace CentCom.Exporter.Data.Providers
             return clustered;
         }
 
+        /// <summary>
+        /// Determines if a provided ban should be filtered by the provided job ban options
+        /// </summary>
+        /// <param name="ban">The ban to check</param>
+        /// <param name="options">The options provided for the check</param>
+        /// <returns>True if the ban should pass the filter, false if it failed</returns>
+        /// <exception cref="ArgumentOutOfRangeException">An invalid BanInclusionOption was provided</exception>
         private static bool JobBanFilter(IRestBan ban, BanProviderOptions options)
             => ban.BanType switch
             {
@@ -132,6 +157,13 @@ namespace CentCom.Exporter.Data.Providers
                 _ => throw new ArgumentOutOfRangeException()
             };
 
+        /// <summary>
+        /// Determines if a provided ban should be filtered by the provided server ban options
+        /// </summary>
+        /// <param name="ban">The ban to check</param>
+        /// <param name="options">The options provided for the check</param>
+        /// <returns>True if the ban should pass the filter, false if it failed</returns>
+        /// <exception cref="ArgumentOutOfRangeException">An invalid BanInclusionOption was provided</exception>
         private static bool ServerBanFilter(IRestBan ban, BanProviderOptions options)
             => ban.BanType switch
             {
@@ -147,6 +179,10 @@ namespace CentCom.Exporter.Data.Providers
                 _ => throw new ArgumentOutOfRangeException()
             };
 
+        /// <summary>
+        /// Creates a new database connection
+        /// </summary>
+        /// <returns>The created database connection</returns>
         private MySqlConnection GetConnection() => new MySqlConnection(_connStr);
     }
 }

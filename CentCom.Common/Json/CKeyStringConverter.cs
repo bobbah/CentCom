@@ -6,6 +6,9 @@ using CentCom.Common.Models.Byond;
 
 namespace CentCom.Common.Json
 {
+    /// <summary>
+    /// Converter to serialize and deserialize ckeys as strings
+    /// </summary>
     public class CKeyStringConverter : JsonConverter<ICKey>
     {
         public override ICKey Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
