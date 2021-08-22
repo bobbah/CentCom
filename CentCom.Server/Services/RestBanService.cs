@@ -1,3 +1,4 @@
+using System.Reflection;
 using System.Text;
 using CentCom.Server.Exceptions;
 using Microsoft.Extensions.Logging;
@@ -39,6 +40,11 @@ namespace CentCom.Server.Services
         protected void InitializeClient()
         {
             Client = BaseUrl != null ? new RestClient(BaseUrl) : null;
+            if (Client == null)
+                return;
+            
+            // Setup user agent
+            Client.UserAgent = $"Mozilla/5.0 (compatible; CentComBot/{Assembly.GetExecutingAssembly().GetName().Version}; +https://centcom.melonmesa.com/scraper)";
         }
     }
 }
