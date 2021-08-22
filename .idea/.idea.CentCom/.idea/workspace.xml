@@ -11,8 +11,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28c8f7e3-4e14-4e22-b8f6-ae65cdd7cd09" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/CentCom.API/Controllers/ScraperInfoController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CentCom.API/Views/ScraperInfo/index.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CentCom/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CentCom/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Exporter/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Exporter/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.API/CentCom.API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.API/CentCom.API.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.API/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.API/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Bot/CentCom.Bot.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Bot/CentCom.Bot.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Common/CentCom.Common.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/CentCom.Common.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Exporter/CentCom.Exporter.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Exporter/CentCom.Exporter.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Server/CentCom.Server.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/CentCom.Server.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Server/Services/RestBanService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/Services/RestBanService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Server/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/appsettings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +59,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/99919d9074764a7a9c35d701086b12cdd7580/21/Utf8JsonReader.TryGet.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/99919d9074764a7a9c35d701086b12cdd7580/2E/JsonSerializer.Read.Helpers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/99dcbb8b1f8643499bd68c278929fb53d6a00/da/60102cae/ObjectExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/483801266a064cf6a016c4137514860b2ea00/2C/IRestClient.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ad6403114c5244e69ff82ccc5fd383048a200/C4/DataObjectConverter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/99919d9074764a7a9c35d701086b12cdd7580/31/JsonSerializer.Read.String.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2e9beeb180834f4b9abea5f3db1bc8bd8f5578/9B/Lazy.cs" root0="SKIP_HIGHLIGHTING" />
@@ -247,7 +257,7 @@
       <workItem from="1629478040004" duration="17933000" />
       <workItem from="1629505090375" duration="12956000" />
       <workItem from="1629519384044" duration="15086000" />
-      <workItem from="1629581834573" duration="15969000" />
+      <workItem from="1629581834573" duration="21431000" />
     </task>
     <task id="LOCAL-00001" summary="update bee ban url">
       <created>1628898475361</created>
@@ -312,6 +322,21 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/CentCom.Exporter/Controllers/BanController.cs</url>
+          <line>26</line>
+          <properties documentPath="C:\Users\bobbahbrown\repos\CentCom\CentCom.Exporter\Controllers\BanController.cs" initialLine="26" containingFunctionPresentation="method 'GetBans'">
+            <startOffsets>
+              <option value="853" />
+            </startOffsets>
+            <endOffsets>
+              <option value="919" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint enabled="true" type="DotNet Exception Breakpoints" />
       </default-breakpoints>

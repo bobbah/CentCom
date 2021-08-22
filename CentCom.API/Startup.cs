@@ -31,7 +31,7 @@ namespace CentCom
             {
                 x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
                 x.JsonSerializerOptions.IgnoreNullValues = true;
-            });
+            }).AddRazorRuntimeCompilation();
 
             // Add DB context
             var dbConfig = new DbConfig();
