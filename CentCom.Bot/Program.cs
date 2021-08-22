@@ -2,14 +2,14 @@
 using System.Threading.Tasks;
 using CentCom.Bot.Configuration;
 using CentCom.Bot.Jobs;
+using CentCom.Common.Configuration;
+using CentCom.Common.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Quartz;
 using Remora.Discord.Commands.Extensions;
 using Remora.Discord.Hosting.Extensions;
-using CentCom.Common.Configuration;
-using CentCom.Common.Data;
-using Quartz;
 using Serilog;
 
 namespace CentCom.Bot

@@ -107,6 +107,10 @@ namespace CentCom.Common.Migrations.Postgres
                     b.HasKey("Id")
                         .HasName("pk_ban_sources");
 
+                    b.HasIndex("Name")
+                        .IsUnique()
+                        .HasDatabaseName("ix_ban_sources_name");
+
                     b.ToTable("ban_sources");
                 });
 

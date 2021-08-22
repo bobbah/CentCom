@@ -11,10 +11,12 @@ namespace CentCom.API.Models
         /// Internal CentCom DB ID
         /// </summary>
         public int ID { get; set; }
+
         /// <summary>
         /// Display name
         /// </summary>
         public string Name { get; set; }
+
         /// <summary>
         /// The roleplay level of this ban source
         /// </summary>

@@ -1,27 +1,28 @@
-﻿using CentCom.Common.Models;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using System;
+﻿using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using CentCom.Common.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace CentCom.Common.Data
 {
     public abstract class DatabaseContext : DbContext
     {
         protected readonly IConfiguration Configuration;
+
+        public DatabaseContext(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
         public DbSet<Ban> Bans { get; set; }
         public DbSet<BanSource> BanSources { get; set; }
         public DbSet<JobBan> JobBans { get; set; }
         public DbSet<FlatBansVersion> FlatBansVersion { get; set; }
         public DbSet<CheckHistory> CheckHistory { get; set; }
         public DbSet<NotifiedFailure> NotifiedFailures { get; set; }
-
-        public DatabaseContext(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -55,6 +56,7 @@ namespace CentCom.Common.Data
                     .WithOne(b => b.SourceNavigation)
                     .HasForeignKey(b => b.Source)
                     .OnDelete(DeleteBehavior.Cascade);
+                entity.HasIndex(e => e.Name).IsUnique(); // Force unique source names
             });
 
             modelBuilder.Entity<JobBan>(entity => { entity.HasKey(e => new { e.BanId, e.Job }); });

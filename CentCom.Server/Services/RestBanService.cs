@@ -36,7 +36,7 @@ namespace CentCom.Server.Services
         }
 
 
-        private void InitializeClient()
+        protected void InitializeClient()
         {
             Client = BaseUrl != null ? new RestClient(BaseUrl) : null;
         }

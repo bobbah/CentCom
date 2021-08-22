@@ -17,9 +17,9 @@ namespace CentCom.Bot.Jobs
     [DisallowConcurrentExecution]
     public class FailedParseJob : IJob
     {
-        private readonly DatabaseContext _dbContext;
         private readonly IDiscordRestChannelAPI _channelAPI;
         private readonly IOptions<DiscordConfiguration> _config;
+        private readonly DatabaseContext _dbContext;
 
         public FailedParseJob(DatabaseContext dbContext, IOptions<DiscordConfiguration> config,
             IDiscordRestChannelAPI channelAPI)

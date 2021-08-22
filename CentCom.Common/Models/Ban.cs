@@ -1,16 +1,23 @@
-﻿using CentCom.Common.Models.Equality;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using CentCom.Common.Models.Equality;
 
 namespace CentCom.Common.Models
 {
     public class Ban
     {
+        public Ban()
+        {
+            JobBans = new HashSet<JobBan>(JobBanEqualityComparer.Instance);
+        }
+
         public int Id { get; set; }
         public int Source { get; set; }
+
         [JsonIgnore]
         public virtual BanSource SourceNavigation { get; set; }
+
         public BanType BanType { get; set; }
         public string CKey { get; set; }
         public DateTime BannedOn { get; set; }
@@ -21,10 +28,5 @@ namespace CentCom.Common.Models
         public string BanID { get; set; }
         public HashSet<JobBan> JobBans { get; set; }
         public BanAttribute BanAttributes { get; set; }
-
-        public Ban()
-        {
-            JobBans = new HashSet<JobBan>(JobBanEqualityComparer.Instance);
-        }
     }
 }

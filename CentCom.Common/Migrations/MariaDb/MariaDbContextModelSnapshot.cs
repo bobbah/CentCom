@@ -80,12 +80,15 @@ namespace CentCom.Common.Migrations.MariaDb
                         .HasColumnType("longtext");
 
                     b.Property<string>("Name")
-                        .HasColumnType("longtext");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<uint>("RoleplayLevel")
                         .HasColumnType("int unsigned");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.ToTable("BanSources");
                 });

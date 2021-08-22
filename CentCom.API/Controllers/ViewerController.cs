@@ -1,9 +1,9 @@
-﻿using CentCom.API.Models;
+﻿using System.Linq;
+using System.Threading.Tasks;
+using CentCom.API.Models;
 using CentCom.API.Services;
 using CentCom.Common;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CentCom.API.Controllers
 {

@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System.Net;
+﻿using System.Net;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CentCom.Common.Migrations.Postgres
 {

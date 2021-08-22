@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.Design;
+﻿using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
-using System.Collections.Generic;
 
 namespace CentCom.Common.Data.DesignTime
 {

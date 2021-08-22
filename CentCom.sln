@@ -15,9 +15,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		add-migration.bat = add-migration.bat
+		README.md = README.md
+		publish-script.bat = publish-script.bat
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentCom.Bot", "CentCom.Bot\CentCom.Bot.csproj", "{A99A54D9-F216-45EA-9758-1092C82CEC57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentCom.Exporter", "CentCom.Exporter\CentCom.Exporter.csproj", "{F3B6E80D-A12F-4D26-8E7A-1A5A3D6E50AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,10 @@ Global
 		{A99A54D9-F216-45EA-9758-1092C82CEC57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A99A54D9-F216-45EA-9758-1092C82CEC57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A99A54D9-F216-45EA-9758-1092C82CEC57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3B6E80D-A12F-4D26-8E7A-1A5A3D6E50AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3B6E80D-A12F-4D26-8E7A-1A5A3D6E50AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3B6E80D-A12F-4D26-8E7A-1A5A3D6E50AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3B6E80D-A12F-4D26-8E7A-1A5A3D6E50AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

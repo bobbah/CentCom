@@ -53,6 +53,7 @@ namespace CentCom.Server.BanSources
         {
             try
             {
+                await Configure(context);
                 var history = await ParseBans(context);
                 DbContext.CheckHistory.Add(history);
                 await DbContext.SaveChangesAsync();
@@ -67,6 +68,14 @@ namespace CentCom.Server.BanSources
                 Logger.LogError(ex, "Encountered unhandled exception during ban parsing");
                 throw new JobExecutionException(ex, false);
             }
+        }
+
+        /// <summary>
+        /// Runs before executing the ban parsing, use to configure source
+        /// </summary>
+        /// <param name="context">The job execution context provided by Quartz' scheduler</param>
+        protected virtual async Task Configure(IJobExecutionContext context)
+        {
         }
 
         /// <summary>
@@ -87,7 +96,7 @@ namespace CentCom.Server.BanSources
                     ExceptionDetailed = ex.ToString(),
                     Success = false,
                     // technically could be false if we haven't used this source before
-                    CompleteRefresh = context.MergedJobDataMap.GetBoolean("completeRefresh") 
+                    CompleteRefresh = context.MergedJobDataMap.GetBoolean("completeRefresh")
                 });
                 await DbContext.SaveChangesAsync();
             }
@@ -112,16 +121,16 @@ namespace CentCom.Server.BanSources
                 Started = context.FireTimeUtc,
                 Success = true
             };
-            
+
             // Get stored bans from the database
             List<Ban> storedBans = null;
             try
             {
                 storedBans = await DbContext.Bans
-                .Where(x => Sources.Keys.Contains(x.SourceNavigation.Name))
-                .Include(x => x.JobBans)
-                .Include(x => x.SourceNavigation)
-                .ToListAsync();
+                    .Where(x => Sources.Keys.Contains(x.SourceNavigation.Name))
+                    .Include(x => x.JobBans)
+                    .Include(x => x.SourceNavigation)
+                    .ToListAsync();
             }
             catch (Exception ex)
             {
@@ -142,6 +151,7 @@ namespace CentCom.Server.BanSources
                 Logger.LogError(ex, "Failed to get ban data from source, encountered exception during fetch");
                 throw new JobExecutionException(ex, false);
             }
+
             history.CompletedDataFetch = DateTimeOffset.UtcNow;
 
             // Assign proper sources
@@ -153,7 +163,8 @@ namespace CentCom.Server.BanSources
             {
                 bans = bans.Except(dirtyBans);
                 history.Erroneous = dirtyBans.Count();
-                Logger.LogWarning($"Removed {history.Erroneous} erroneous bans from parsed data. This shouldn't happen!");
+                Logger.LogWarning(
+                    $"Removed {history.Erroneous} erroneous bans from parsed data. This shouldn't happen!");
             }
 
             // Remove erronenous duplicates from source
@@ -162,7 +173,8 @@ namespace CentCom.Server.BanSources
                 .SelectMany(x => x.OrderBy(y => y.Id).Skip(1));
             if (sourceDupes.Any())
             {
-                Logger.LogWarning($"Removing {sourceDupes.Count()} duplicated bans from source, this indicates an issue with the source data!");
+                Logger.LogWarning(
+                    $"Removing {sourceDupes.Count()} duplicated bans from source, this indicates an issue with the source data!");
                 bans = bans.Except(sourceDupes);
             }
 
@@ -200,7 +212,8 @@ namespace CentCom.Server.BanSources
                     var changed = false;
 
                     // Check for a difference in date time, unbans, or reason
-                    if (matchedBan.Reason != b.Reason || matchedBan.Expires != b.Expires || matchedBan.UnbannedBy != b.UnbannedBy)
+                    if (matchedBan.Reason != b.Reason || matchedBan.Expires != b.Expires ||
+                        matchedBan.UnbannedBy != b.UnbannedBy)
                     {
                         matchedBan.Reason = b.Reason;
                         matchedBan.Expires = b.Expires;
@@ -233,7 +246,7 @@ namespace CentCom.Server.BanSources
                 DbContext.AddRange(toInsert);
                 storedBans.AddRange(toInsert);
             }
-            
+
             Logger.LogInformation($"Inserting {toInsert.Count} new bans, updating {updated} modified bans...");
             history.Added = toInsert.Count;
             history.Updated = updated;
@@ -253,11 +266,13 @@ namespace CentCom.Server.BanSources
 
             if (bansHashed.Count == 0 && missingBans.Count > 1)
             {
-                throw new Exception("Failed to find any bans for source, aborting removal phase of ban parsing to avoid dumping entire set of bans");
+                throw new Exception(
+                    "Failed to find any bans for source, aborting removal phase of ban parsing to avoid dumping entire set of bans");
             }
 
             // Apply deletions
-            Logger.LogInformation(missingBans.Count > 0 ? $"Removing {missingBans.Count} deleted bans..."
+            Logger.LogInformation(missingBans.Count > 0
+                ? $"Removing {missingBans.Count} deleted bans..."
                 : "Found no deleted bans to remove");
             history.Deleted = missingBans.Count;
             if (missingBans.Count > 0)
@@ -267,6 +282,7 @@ namespace CentCom.Server.BanSources
                 {
                     storedBans.Remove(ban);
                 }
+
                 await DbContext.SaveChangesAsync();
             }
 
@@ -308,6 +324,7 @@ namespace CentCom.Server.BanSources
                 {
                     DbContext.BanSources.Add(Sources[source]);
                 }
+
                 await DbContext.SaveChangesAsync();
                 foundSources = await DbContext.BanSources.Where(x => Sources.Keys.Contains(x.Name)).ToListAsync();
             }
@@ -331,6 +348,7 @@ namespace CentCom.Server.BanSources
                 b.SourceNavigation = sources[b.SourceNavigation.Name];
                 b.Source = b.SourceNavigation.Id;
             }
+
             return bans;
         }
 
