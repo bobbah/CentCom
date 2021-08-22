@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -8,6 +9,7 @@ using CentCom.Common.Abstract;
 using CentCom.Common.Extensions;
 using CentCom.Common.Models;
 using CentCom.Common.Models.Rest;
+using CentCom.Server.Configuration;
 using Microsoft.Extensions.Logging;
 using Remora.Discord.API.Extensions;
 using RestSharp;
@@ -15,21 +17,17 @@ using RestSharp.Serializers.SystemTextJson;
 
 namespace CentCom.Server.Services
 {
-    public class ExporterService : RestBanService
+    public class StandardProviderService : RestBanService
     {
-        private static readonly BanSource BanSource = new BanSource { Name = "teststation" };
+        private bool _configured;
+        public BanSource Source { get; private set; }
 
-        public ExporterService(ILogger<ExporterService> logger) : base(logger)
+        public StandardProviderService(ILogger<StandardProviderService> logger) : base(logger)
         {
-            var options = new JsonSerializerOptions();
-            options.AddCentComOptions();
-            options.AddDataObjectConverter<IRestBan, RestBan>();
-            options.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
-            options.Converters.Insert(0, new JsonStringEnumConverter());
-            Client.UseSystemTextJson(options);
         }
 
-        protected override string BaseUrl => "https://localhost:6658/";
+        private string _baseUrl;
+        protected override string BaseUrl => _baseUrl;
 
         private async Task<IEnumerable<Ban>> GetBansAsync(int? cursor = null)
         {
@@ -56,12 +54,15 @@ namespace CentCom.Server.Services
                         Job = j.Job
                     })
                     .ToHashSet(),
-                SourceNavigation = BanSource
+                SourceNavigation = Source
             });
         }
 
         public async Task<IEnumerable<Ban>> GetBansBatchedAsync(int? cursor = null, IEnumerable<int> searchFor = null)
         {
+            if (!_configured)
+                throw new Exception("Cannot get bans from an unconfigured external source");
+
             // Get bans, must use a sequential approach here due to the last ban
             // ID only being available once we finish a page
             var result = new List<Ban>();
@@ -78,6 +79,27 @@ namespace CentCom.Server.Services
                      (searchFor == null || lastResponse.Any(x => searchFor.Contains(int.Parse(x.BanID)))));
 
             return result;
+        }
+
+        public void Configure(StandardProviderConfiguration config)
+        {
+            if (_configured)
+                throw new Exception("Cannot re-configure standard exporter provider, already configured");
+            _configured = true;
+            _baseUrl = config.Url;
+            Source = new BanSource()
+                { Name = config.Id, Display = config.Display, RoleplayLevel = config.RoleplayLevel };
+
+            // Re-initialize client with new url
+            InitializeClient();
+
+            // Setup JSON for client
+            var options = new JsonSerializerOptions();
+            options.AddCentComOptions();
+            options.AddDataObjectConverter<IRestBan, RestBan>();
+            options.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+            options.Converters.Insert(0, new JsonStringEnumConverter());
+            Client.UseSystemTextJson(options);
         }
     }
 }

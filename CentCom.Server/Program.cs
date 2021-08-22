@@ -96,7 +96,9 @@ namespace CentCom.Server
                     services.AddSingleton<FulpBanService>();
                     services.AddSingleton<TGMCBanService>();
                     services.AddSingleton<TgBanService>();
-                    services.AddSingleton<ExporterService>();
+                    
+                    // Standard provider is transient as it differs per request
+                    services.AddTransient<StandardProviderService>();
 
                     // Add ban parsers
                     var parsers = AppDomain.CurrentDomain.GetAssemblies().Aggregate(new List<Type>(), (curr, next) =>
