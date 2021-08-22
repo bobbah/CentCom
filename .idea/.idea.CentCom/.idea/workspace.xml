@@ -11,13 +11,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28c8f7e3-4e14-4e22-b8f6-ae65cdd7cd09" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/CentCom.Exporter/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CentCom/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CentCom/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Exporter/CentCom.Exporter.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Exporter/CentCom.Exporter.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Exporter/Configuration/BanProviderKind.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Exporter/Configuration/BanProviderKind.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Server/CentCom.Server.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/CentCom.Server.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.sln" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -252,7 +246,7 @@
       <workItem from="1629478040004" duration="17933000" />
       <workItem from="1629505090375" duration="12956000" />
       <workItem from="1629519384044" duration="15086000" />
-      <workItem from="1629581834573" duration="14942000" />
+      <workItem from="1629581834573" duration="14996000" />
     </task>
     <task id="LOCAL-00001" summary="update bee ban url">
       <created>1628898475361</created>
