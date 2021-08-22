@@ -13,7 +13,7 @@ Swagger documentation to read about and experiment with the API.**
 
 ## Exporter
 
-Looking to run the standardized ban exporter? [See the documentation here](CentCom.Exporter/README.md).
+Looking to run the standardized ban exporter? [See the documentation here](CentCom.Exporter).
 
 ## Setup
 
