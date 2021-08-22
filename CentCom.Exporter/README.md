@@ -32,6 +32,9 @@ To use the exporter, simply configure ``appsettings.json`` as described in the [
 of this README, specifically the provider and connection string. Optionally configure ``hostsettings.json`` to control
 the port on which the application will bind to.
 
+To implement HTTPS I personally recommend proxying the service through CloudFlare, or behind NGINX. If you wish to use
+HTTPS directly, edit ``hostsettings.json`` to use ``https`` and configure the other settings for Kestrel as appropriate.
+
 ## Configuration
 
 Configure your exporter instance through ``appsettings.json``. The possible configuration values are described below,
