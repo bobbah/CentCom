@@ -4,8 +4,6 @@ namespace CentCom.Server.Exceptions
 {
     class BanSourceUnavailableException : Exception
     {
-        public string ResponseContent { get; set; }
-
         public BanSourceUnavailableException(string message, string responseContent) : base(message)
         {
             ResponseContent = responseContent;
@@ -15,5 +13,7 @@ namespace CentCom.Server.Exceptions
         {
             ResponseContent = responseContent;
         }
+
+        public string ResponseContent { get; set; }
     }
 }
