@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using CentCom.Common.Models;
 using EnumsNET;
 
-namespace CentCom.API.Models
+namespace CentCom.Common.Models.DTO
 {
     /// <summary>
     /// DTO for all data that a ban contains

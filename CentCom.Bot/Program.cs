@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Threading.Tasks;
+using CentCom.Bot.Commands;
 using CentCom.Bot.Configuration;
 using CentCom.Bot.Jobs;
+using CentCom.Bot.Responders;
 using CentCom.Common.Configuration;
 using CentCom.Common.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Quartz;
+using Remora.Commands.Extensions;
 using Remora.Discord.Commands.Extensions;
+using Remora.Discord.Gateway.Extensions;
 using Remora.Discord.Hosting.Extensions;
 using Serilog;
 
@@ -97,9 +101,9 @@ namespace CentCom.Bot
                     q.UseMicrosoftDependencyInjectionJobFactory();
 
                     q.ScheduleJob<FailedParseJob>(trigger =>
-                        trigger
-                            .StartNow()
-                            .WithSimpleSchedule(x => x.WithIntervalInSeconds(10).RepeatForever()),
+                            trigger
+                                .StartNow()
+                                .WithSimpleSchedule(x => x.WithIntervalInSeconds(10).RepeatForever()),
                         job => job.WithIdentity("failed-parse"));
                 });
                 services.AddQuartzHostedService();
@@ -108,7 +112,11 @@ namespace CentCom.Bot
                 services.AddTransient<FailedParseJob>();
 
                 // Add Discord commands
-                services.AddDiscordCommands();
+                services
+                    .AddDiscordCommands(true)
+                    .AddCommandGroup<AboutCommands>()
+                    .AddCommandGroup<SearchCommands>()
+                    .AddResponder<ServerJoinResponder>();
             })
             .UseSerilog();
     }
