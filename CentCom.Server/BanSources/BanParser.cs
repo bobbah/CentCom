@@ -6,6 +6,7 @@ using CentCom.Common.Data;
 using CentCom.Common.Extensions;
 using CentCom.Common.Models;
 using CentCom.Common.Models.Equality;
+using CentCom.Server.Exceptions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Quartz;
@@ -94,6 +95,9 @@ namespace CentCom.Server.BanSources
                     Failed = DateTimeOffset.UtcNow,
                     Exception = ex.Message,
                     ExceptionDetailed = ex.ToString(),
+                    ResponseContent =
+                        (ex as BanSourceUnavailableException ?? ex.InnerException as BanSourceUnavailableException)
+                        ?.ResponseContent,
                     Success = false,
                     // technically could be false if we haven't used this source before
                     CompleteRefresh = context.MergedJobDataMap.GetBoolean("completeRefresh")
