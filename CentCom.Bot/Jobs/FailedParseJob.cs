@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,20 +55,37 @@ namespace CentCom.Bot.Jobs
             var channel = channelRequest.Entity;
             foreach (var failure in failures)
             {
+                // Attach text content of response where available
+                FileData fileData = null;
+                var messageSuffix = "The content of the response was missing or empty.";
+                if (failure.ResponseContent != null)
+                {
+                    var dataStream = new MemoryStream();
+                    var writer = new StreamWriter(dataStream);
+                    await writer.WriteAsync(failure.ResponseContent);
+                    dataStream.Seek(0, SeekOrigin.Begin);
+                    fileData = new FileData("response_content.txt", dataStream);
+                    messageSuffix = "The content of the response is attached to this message.";
+                }
+                
                 var message = new StringBuilder();
                 if (_config.Value.FailureMention.HasValue)
                     message.Append($"<@{_config.Value.FailureMention}> ");
                 message.Append(
                     $"Failed to parse bans for {failure.Parser} at <t:{failure.Failed.Value.ToUnixTimeSeconds()}>, exception is as follows... ```");
-                
+
                 // Ensure that our length fits
-                var currLength = message.Length + failure.Exception.Length + 3;
+                var currLength = message.Length + failure.Exception.Length + messageSuffix.Length + 3;
                 message.Append(currLength > 2000
                     ? $"{failure.Exception[0..^(currLength - 2000 + 4)]}...```"
                     : $"{failure.Exception}```");
 
+                // Add suffix
+                message.Append(messageSuffix);
+
                 // Try to send, only mark completed if successful
-                var result = await _channelAPI.CreateMessageAsync(channel.ID, message.ToString());
+                var result = await _channelAPI.CreateMessageAsync(channel.ID, message.ToString(),
+                    file: fileData ?? new Optional<FileData>());
                 if (result.IsSuccess)
                     notified.Add(new NotifiedFailure()
                     {

@@ -11,17 +11,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28c8f7e3-4e14-4e22-b8f6-ae65cdd7cd09" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/CentCom.API/Controllers/ScraperInfoController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CentCom.API/Views/ScraperInfo/index.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/MariaDb/20210823002811_FailedResponseContent.Designer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/MariaDb/20210823002811_FailedResponseContent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/MySql/20210823002807_FailedResponseContent.Designer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/MySql/20210823002807_FailedResponseContent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/Postgres/20210823002803_FailedResponseContent.Designer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/Postgres/20210823002803_FailedResponseContent.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CentCom/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CentCom/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.API/CentCom.API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.API/CentCom.API.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.API/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.API/Startup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Bot/CentCom.Bot.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Bot/CentCom.Bot.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/CentCom.Common.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/CentCom.Common.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Exporter/CentCom.Exporter.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Exporter/CentCom.Exporter.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Server/CentCom.Server.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/CentCom.Server.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Bot/Jobs/FailedParseJob.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Bot/Jobs/FailedParseJob.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/MariaDb/MariaDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/MariaDb/MariaDbContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/MySql/MySqlDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/MySql/MySqlDbContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/Postgres/NpgsqlDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/Postgres/NpgsqlDbContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Common/Models/CheckHistory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Models/CheckHistory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Server/BanSources/BanParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/BanSources/BanParser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Server/Exceptions/BanSourceUnavailableException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/Exceptions/BanSourceUnavailableException.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CentCom.Server/Services/RestBanService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/Services/RestBanService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Server/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Server/Services/StandardProviderService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/Services/StandardProviderService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Server/Services/VgBanService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/Services/VgBanService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +77,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1caea5797bc04e55adebcc8011b21ab81a190/3/OptionsServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e62ae84440144114b63de444644ef1b82000/3/SystemTextJsonSerializer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/90689221616d496d80797d821b753cca2800/4/Optional.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/fc577a47a9ae4d289ea4e815bea8e7528800/3/IServiceCollectionQuartzConfigurator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/IL/ad6403114c5244e69ff82ccc5fd383048a200/8a/a76fa575/0200002Apdb.il" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/90689221616d496d80797d821b753cca2800/5/Snowflake.cs" root0="SKIP_HIGHLIGHTING" />
@@ -137,7 +144,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected=".NET Project.CentCom.Server">
+  <component name="RunManager" selected=".NET Project.CentCom.Bot">
     <configuration name="CentCom.Bot" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -257,7 +264,7 @@
       <workItem from="1629478040004" duration="17933000" />
       <workItem from="1629505090375" duration="12956000" />
       <workItem from="1629519384044" duration="15086000" />
-      <workItem from="1629581834573" duration="21431000" />
+      <workItem from="1629581834573" duration="27229000" />
     </task>
     <task id="LOCAL-00001" summary="update bee ban url">
       <created>1628898475361</created>
@@ -319,27 +326,5 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="update bee ban url" />
     <option name="LAST_COMMIT_MESSAGE" value="update bee ban url" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/CentCom.Exporter/Controllers/BanController.cs</url>
-          <line>26</line>
-          <properties documentPath="C:\Users\bobbahbrown\repos\CentCom\CentCom.Exporter\Controllers\BanController.cs" initialLine="26" containingFunctionPresentation="method 'GetBans'">
-            <startOffsets>
-              <option value="853" />
-            </startOffsets>
-            <endOffsets>
-              <option value="919" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-      </breakpoints>
-      <default-breakpoints>
-        <breakpoint enabled="true" type="DotNet Exception Breakpoints" />
-      </default-breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

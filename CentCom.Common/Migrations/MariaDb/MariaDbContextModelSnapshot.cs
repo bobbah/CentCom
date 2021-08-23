@@ -131,6 +131,9 @@ namespace CentCom.Common.Migrations.MariaDb
                         .IsRequired()
                         .HasColumnType("varchar(255)");
 
+                    b.Property<string>("ResponseContent")
+                        .HasColumnType("longtext");
+
                     b.Property<DateTimeOffset>("Started")
                         .HasColumnType("datetime(6)");
 

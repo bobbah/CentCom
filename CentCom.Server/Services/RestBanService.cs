@@ -33,7 +33,7 @@ namespace CentCom.Server.Services
             
             // Log error as appropriate
             _logger.LogError(message);
-            throw new BanSourceUnavailableException(message);
+            throw new BanSourceUnavailableException(message, response.Content);
         }
 
 

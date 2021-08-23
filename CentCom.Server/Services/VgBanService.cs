@@ -34,7 +34,7 @@ namespace CentCom.Server.Services
                 _logger.LogError(
                     $"Source website returned a non-200 HTTP response code. Url: \"{document.Url}\", code: {document.StatusCode}");
                 throw new BanSourceUnavailableException(
-                    $"Source website returned a non-200 HTTP response code. Url: \"{document.Url}\", code: {document.StatusCode}");
+                    $"Source website returned a non-200 HTTP response code. Url: \"{document.Url}\", code: {document.StatusCode}", document.TextContent);
             }
 
             var tables = document.QuerySelectorAll("form > table > tbody");
