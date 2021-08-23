@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CentCom.API.Models;
 using CentCom.Common;
 using CentCom.Common.Data;
 using CentCom.Common.Models;

@@ -6,15 +6,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="EFCore.NamingConventions" Version="5.0.2" />
-        <PackageReference Include="Enums.NET" Version="4.0.0" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.9" />
-        <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
-        <PackageReference Include="Npgsql" Version="5.0.7" />
-        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.7" />
-        <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="5.0.1" />
-        <PackageReference Include="Quartz" Version="3.3.3" />
-        <PackageReference Include="Remora.Discord.API" Version="29.0.0" />
+        <PackageReference Include="EFCore.NamingConventions" Version="5.0.2"/>
+        <PackageReference Include="Enums.NET" Version="4.0.0"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.9"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0"/>
+        <PackageReference Include="Npgsql" Version="5.0.7"/>
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.7"/>
+        <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="5.0.1"/>
+        <PackageReference Include="Quartz" Version="3.3.3"/>
+        <PackageReference Include="Remora.Discord.API" Version="29.0.0"/>
     </ItemGroup>
 
 </Project>

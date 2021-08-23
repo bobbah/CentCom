@@ -6,7 +6,7 @@
     <members>
         <member name="M:CentCom.API.Controllers.BanController.GetBansForKey(System.String,System.Boolean,System.Nullable{System.Int32})">
             <summary>
-            Retrieves stored bans for a provided ckey.
+                Retrieves stored bans for a provided ckey.
             </summary>
             <param name="key">A BYOND key, will be converted into CKey</param>
             <param name="onlyActive">Operator for controlling if only active bans will be returned</param>
@@ -17,14 +17,14 @@
         </member>
         <member name="M:CentCom.API.Controllers.BanController.GetSources">
             <summary>
-            Lists all available ban sources
+                Lists all available ban sources
             </summary>
             <returns>A collection of ban sources</returns>
             <response code="200">The list of ban sources</response>
         </member>
         <member name="M:CentCom.API.Controllers.BanController.GetBan(System.Int32)">
             <summary>
-            Retrieves a specific ban from CentCom using the internal ID
+                Retrieves a specific ban from CentCom using the internal ID
             </summary>
             <param name="id">The CentCom Ban ID of the ban</param>
             <returns>The ban specified</returns>
@@ -33,114 +33,114 @@
         </member>
         <member name="T:CentCom.API.Models.BanData">
             <summary>
-            DTO for all data that a ban contains
+                DTO for all data that a ban contains
             </summary>
         </member>
         <member name="P:CentCom.API.Models.BanData.ID">
             <summary>
-            Internal CentCom DB ID
+                Internal CentCom DB ID
             </summary>
         </member>
         <member name="P:CentCom.API.Models.BanData.SourceID">
             <summary>
-            Internal CentCom DB ID for the ban source
+                Internal CentCom DB ID for the ban source
             </summary>
         </member>
         <member name="P:CentCom.API.Models.BanData.SourceName">
             <summary>
-            The textual name of the ban source
+                The textual name of the ban source
             </summary>
         </member>
         <member name="P:CentCom.API.Models.BanData.SourceRoleplayLevel">
             <summary>
-            The roleplay level of the ban source
+                The roleplay level of the ban source
             </summary>
         </member>
         <member name="P:CentCom.API.Models.BanData.Type">
             <summary>
-            The type of ban
+                The type of ban
             </summary>
         </member>
         <member name="P:CentCom.API.Models.BanData.CKey">
             <summary>
-            The CKey of the banned user
+                The CKey of the banned user
             </summary>
         </member>
         <member name="P:CentCom.API.Models.BanData.BannedOn">
             <summary>
-            The DateTime at which the user was banned
+                The DateTime at which the user was banned
             </summary>
         </member>
         <member name="P:CentCom.API.Models.BanData.BannedBy">
             <summary>
-            The user who created the ban
+                The user who created the ban
             </summary>
         </member>
         <member name="P:CentCom.API.Models.BanData.Reason">
             <summary>
-            The reason for the ban
+                The reason for the ban
             </summary>
         </member>
         <member name="P:CentCom.API.Models.BanData.Expires">
             <summary>
-            The expiration, if present, of the ban
+                The expiration, if present, of the ban
             </summary>
         </member>
         <member name="P:CentCom.API.Models.BanData.UnbannedBy">
             <summary>
-            The user, if present, who removed the ban
+                The user, if present, who removed the ban
             </summary>
         </member>
         <member name="P:CentCom.API.Models.BanData.BanID">
             <summary>
-            The ban ID, if present, as provided by the source
+                The ban ID, if present, as provided by the source
             </summary>
         </member>
         <member name="P:CentCom.API.Models.BanData.Jobs">
             <summary>
-            The jobs, if present, that the user is banned from
+                The jobs, if present, that the user is banned from
             </summary>
         </member>
         <member name="P:CentCom.API.Models.BanData.BanAttributes">
             <summary>
-            Any additional attributes added to this ban by CentCom
+                Any additional attributes added to this ban by CentCom
             </summary>
         </member>
         <member name="P:CentCom.API.Models.BanData.Active">
             <summary>
-            If the ban is currently active, as predicted by CentCom
+                If the ban is currently active, as predicted by CentCom
             </summary>
         </member>
         <member name="M:CentCom.API.Models.BanData.FromBan(CentCom.Common.Models.Ban)">
             <summary>
-            Generates a BanData DTO from a database Ban.
+                Generates a BanData DTO from a database Ban.
             </summary>
             <param name="ban">The object to copy data from</param>
             <returns>A BanData DTO</returns>
         </member>
         <member name="T:CentCom.API.Models.BanSourceData">
             <summary>
-            DTO for ban sources
+                DTO for ban sources
             </summary>
         </member>
         <member name="P:CentCom.API.Models.BanSourceData.ID">
             <summary>
-            Internal CentCom DB ID
+                Internal CentCom DB ID
             </summary>
         </member>
         <member name="P:CentCom.API.Models.BanSourceData.Name">
             <summary>
-            Display name
+                Display name
             </summary>
         </member>
         <member name="P:CentCom.API.Models.BanSourceData.RoleplayLevel">
             <summary>
-            The roleplay level of this ban source
+                The roleplay level of this ban source
             </summary>
         </member>
         <member name="M:CentCom.API.Models.BanSourceData.FromBanSource(CentCom.Common.Models.BanSource)">
             <summary>
-            Generates a DTO from a database BanSource
+                Generates a DTO from a database BanSource
             </summary>
             <param name="source">The object to copy data from</param>
             <returns>A BanSource DTO</returns>
