@@ -74,7 +74,8 @@ namespace CentCom.Exporter.Data.Providers
 				FROM
 					ban b
 				WHERE
-					(@cursor IS NULL OR b.id < @cursor)
+                    b.ckey IS NOT NULL
+					AND (@cursor IS NULL OR b.id < @cursor)
 					AND (@afterDate IS NULL OR b.bantime > @afterDate)
 					AND (@afterId IS NULL OR b.id > @afterId)
 					AND (@includeJobBans OR b.role = 'Server')
