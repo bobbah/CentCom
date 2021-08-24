@@ -45,7 +45,7 @@ namespace CentCom.Server.Services
                 BannedBy = x.BannedBy?.CanonicalKey,
                 BannedOn = x.BannedOn.DateTime,
                 BanType = x.BanType,
-                CKey = x.CKey.CanonicalKey,
+                CKey = x.CKey?.CanonicalKey,
                 Expires = x.Expires?.DateTime,
                 UnbannedBy = x.UnbannedBy?.CanonicalKey,
                 Reason = x.Reason,
