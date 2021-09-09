@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CentCom.API.Controllers
 {
+    [ApiExplorerSettings(IgnoreApi = true)]
     public class ViewerController : Controller
     {
         private readonly IBanService _banService;
