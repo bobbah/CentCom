@@ -110,6 +110,7 @@ namespace CentCom.Server.Services
                 "bs_golden" => LrpSource,
                 "bs_sage" => MrpSource,
                 "bs_acacia" => MrpSource,
+                "bs_linden" => MrpSource,
                 _ => throw new Exception(
                     $"Failed to convert raw value of Beestation ban source to BanSource: \"{raw}\""),
             };
