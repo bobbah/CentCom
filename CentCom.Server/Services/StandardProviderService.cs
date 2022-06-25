@@ -11,9 +11,9 @@ using CentCom.Common.Models;
 using CentCom.Common.Models.Rest;
 using CentCom.Server.Configuration;
 using Microsoft.Extensions.Logging;
-using Remora.Discord.API.Extensions;
+using Remora.Rest.Extensions;
 using RestSharp;
-using RestSharp.Serializers.SystemTextJson;
+using RestSharp.Serializers.Json;
 
 namespace CentCom.Server.Services
 {
@@ -31,7 +31,7 @@ namespace CentCom.Server.Services
 
         private async Task<IEnumerable<Ban>> GetBansAsync(int? cursor = null)
         {
-            var request = new RestRequest("api/ban", Method.GET, DataFormat.Json);
+            var request = new RestRequest("api/ban");
             if (cursor.HasValue)
                 request.AddQueryParameter("cursor", cursor.ToString());
             var response = await Client.ExecuteAsync<IEnumerable<IRestBan>>(request);

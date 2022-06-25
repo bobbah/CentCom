@@ -114,8 +114,10 @@ namespace CentCom.Bot
                 // Add Discord commands
                 services
                     .AddDiscordCommands(true)
-                    .AddCommandGroup<AboutCommands>()
-                    .AddCommandGroup<SearchCommands>()
+                    .AddCommandTree()
+                    .WithCommandGroup<AboutCommands>()
+                    .WithCommandGroup<SearchCommands>()
+                    .Finish()
                     .AddResponder<ServerJoinResponder>();
             })
             .UseSerilog();

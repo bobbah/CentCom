@@ -28,7 +28,7 @@ namespace CentCom.Server.Services
         internal async Task<IEnumerable<Ban>> GetBansAsync(int page = 1)
         {
             var request =
-                new RestRequest("bans", Method.GET, DataFormat.Json).AddQueryParameter("page", page.ToString());
+                new RestRequest("bans").AddQueryParameter("page", page.ToString());
             var response = await Client.ExecuteAsync(request);
             
             if (response.StatusCode != HttpStatusCode.OK)
@@ -94,7 +94,7 @@ namespace CentCom.Server.Services
 
         internal async Task<int> GetNumberOfPagesAsync()
         {
-            var request = new RestRequest("bans", Method.GET, DataFormat.Json);
+            var request = new RestRequest("bans");
             var result = await Client.ExecuteAsync(request);
 
             if (result.StatusCode != HttpStatusCode.OK)

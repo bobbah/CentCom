@@ -3,7 +3,7 @@ using CentCom.Common.Abstract;
 using CentCom.Common.Json;
 using CentCom.Common.Models.Rest;
 using Microsoft.Extensions.DependencyInjection;
-using Remora.Discord.API.Extensions;
+using Remora.Rest.Extensions;
 
 namespace CentCom.Common.Extensions
 {

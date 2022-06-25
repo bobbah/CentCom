@@ -37,7 +37,7 @@ namespace CentCom.Common.Data
                 entity.Property(e => e.BannedOn).IsRequired()
                     .HasConversion(v => v, v => DateTime.SpecifyKind(v, DateTimeKind.Utc));
                 entity.Property(e => e.Expires).HasConversion(v => v,
-                    v => v.HasValue ? DateTime.SpecifyKind(v.Value, DateTimeKind.Utc) : (DateTime?)null);
+                    v => v.HasValue ? DateTime.SpecifyKind(v.Value, DateTimeKind.Utc) : null);
                 entity.Property(e => e.BannedBy).IsRequired().HasMaxLength(32);
                 entity.Property(e => e.UnbannedBy).HasMaxLength(32);
                 entity.Property(e => e.BanType).IsRequired();

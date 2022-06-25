@@ -31,11 +31,11 @@ namespace CentCom.Server.Services
         {
         }
 
-        protected override string BaseUrl => "http://statbus.psykzz.com:8080/api/";
+        protected override string BaseUrl => "https://statbus.psykzz.com/api/";
 
         public async Task<IEnumerable<Ban>> GetBansAsync(int page = 1)
         {
-            var request = new RestRequest($"bans/{page}", Method.GET, DataFormat.Json).AddQueryParameter("limit", RecordsPerPage.ToString());
+            var request = new RestRequest($"bans/{page}").AddQueryParameter("limit", RecordsPerPage.ToString());
             var response = await Client.ExecuteAsync(request);
 
             if (response.StatusCode != HttpStatusCode.OK)
@@ -150,7 +150,7 @@ namespace CentCom.Server.Services
 
         public async Task<int> GetNumberOfPagesAsync()
         {
-            var request = new RestRequest($"bans/1", Method.GET, DataFormat.Json).AddQueryParameter("limit", RecordsPerPage.ToString());
+            var request = new RestRequest($"bans/1").AddQueryParameter("limit", RecordsPerPage.ToString());
             var result = await Client.ExecuteAsync(request);
 
             if (result.StatusCode != HttpStatusCode.OK)

@@ -49,7 +49,7 @@ namespace CentCom.Bot.Commands
                 Colour: _feedback.Theme.Success,
                 Timestamp: DateTimeOffset.UtcNow,
                 Footer: new EmbedFooter(VersionUtility.Version));
-            var result = await _feedback.SendContextualEmbedAsync(embed, CancellationToken);
+            var result = await _feedback.SendContextualEmbedAsync(embed, ct: CancellationToken);
             return result.IsSuccess ? Result.FromSuccess() : Result.FromError(result);
         }
 

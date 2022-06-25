@@ -16,10 +16,10 @@ namespace CentCom.Server.Services
             InitializeClient();
         }
 
-        protected IRestClient Client { get; private set; }
+        protected RestClient Client { get; private set; }
         protected abstract string BaseUrl { get; }
 
-        protected void FailedRequest(IRestResponse response)
+        protected void FailedRequest(RestResponse response)
         {
             // Build error
             var url = Client.BuildUri(response.Request);
@@ -39,12 +39,17 @@ namespace CentCom.Server.Services
 
         protected void InitializeClient()
         {
-            Client = BaseUrl != null ? new RestClient(BaseUrl) : null;
-            if (Client == null)
+            if (BaseUrl == null)
                 return;
             
-            // Setup user agent
-            Client.UserAgent = $"Mozilla/5.0 (compatible; CentComBot/{Assembly.GetExecutingAssembly().GetName().Version}; +https://centcom.melonmesa.com/scraper)";
+            var options = new RestClientOptions(BaseUrl)
+            {
+                // Setup user agent
+                UserAgent =
+                    $"Mozilla/5.0 (compatible; CentComBot/{Assembly.GetExecutingAssembly().GetName().Version}; +https://centcom.melonmesa.com/scraper)"
+            };
+
+            Client = new RestClient(options);
         }
     }
 }

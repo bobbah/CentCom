@@ -13,7 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 
-namespace CentCom
+namespace CentCom.API
 {
     public class Startup
     {
@@ -30,7 +30,7 @@ namespace CentCom
             services.AddControllersWithViews().AddJsonOptions(x =>
             {
                 x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-                x.JsonSerializerOptions.IgnoreNullValues = true;
+                x.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
             }).AddRazorRuntimeCompilation();
 
             // Add DB context

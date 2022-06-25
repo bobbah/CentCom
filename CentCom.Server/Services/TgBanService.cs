@@ -10,7 +10,7 @@ using CentCom.Server.External;
 using CentCom.Server.External.Raw;
 using Microsoft.Extensions.Logging;
 using RestSharp;
-using RestSharp.Serializers.SystemTextJson;
+using RestSharp.Serializers.Json;
 
 namespace CentCom.Server.Services
 {
@@ -31,7 +31,7 @@ namespace CentCom.Server.Services
 
         private async Task<List<TgRawBan>> GetBansAsync(int? startingId = null)
         {
-            var request = new RestRequest($"tgdb/publicbans.php", Method.GET, DataFormat.Json)
+            var request = new RestRequest($"tgdb/publicbans.php")
                 .AddQueryParameter("format", "json");
             if (startingId.HasValue)
                 request.AddQueryParameter("beforeid", startingId.ToString());

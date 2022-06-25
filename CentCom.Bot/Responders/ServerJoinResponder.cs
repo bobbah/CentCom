@@ -30,7 +30,7 @@ namespace CentCom.Bot.Responders
                 return Result.FromError(slashSupport.Error);
             }
             
-            var update = await _slash.UpdateSlashCommandsAsync(gatewayEvent.ID, ct);
+            var update = await _slash.UpdateSlashCommandsAsync(gatewayEvent.ID, ct: ct);
             if (!update.IsSuccess)
             {
                 _logger.LogWarning("Failed to update slash commands: {Reason}", update.Error?.Message);

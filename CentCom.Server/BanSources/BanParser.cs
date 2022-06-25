@@ -75,9 +75,7 @@ namespace CentCom.Server.BanSources
         /// Runs before executing the ban parsing, use to configure source
         /// </summary>
         /// <param name="context">The job execution context provided by Quartz' scheduler</param>
-        protected virtual async Task Configure(IJobExecutionContext context)
-        {
-        }
+        protected virtual Task Configure(IJobExecutionContext context) => Task.CompletedTask;
 
         /// <summary>
         /// Logs a failed update event to the database, 

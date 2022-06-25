@@ -23,7 +23,7 @@ namespace CentCom.Server.Services
         {
             if (config.GetSection("sourceConfig").GetValue<bool>("allowFulpExpiredSSL"))
             {
-                Client.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyError) => true;
+                Client.Options.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyError) => true;
             }
         }
 
@@ -31,7 +31,7 @@ namespace CentCom.Server.Services
 
         public async Task<IEnumerable<Ban>> GetBansAsync(int page = 1)
         {
-            var request = new RestRequest($"bans/{RecordsPerPage}/{page}", Method.GET, DataFormat.Json);
+            var request = new RestRequest($"bans/{RecordsPerPage}/{page}");
             var response = await Client.ExecuteAsync(request);
 
             if (response.StatusCode != HttpStatusCode.OK)
@@ -102,7 +102,7 @@ namespace CentCom.Server.Services
 
         public async Task<int> GetNumberOfPagesAsync()
         {
-            var request = new RestRequest($"bans/{RecordsPerPage}/1", Method.GET, DataFormat.Json);
+            var request = new RestRequest($"bans/{RecordsPerPage}/1");
             var result = await Client.ExecuteAsync(request);
 
             if (result.StatusCode != HttpStatusCode.OK)

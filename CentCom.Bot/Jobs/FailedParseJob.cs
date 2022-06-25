@@ -10,8 +10,9 @@ using CentCom.Common.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Quartz;
+using Remora.Discord.API.Abstractions.Objects;
 using Remora.Discord.API.Abstractions.Rest;
-using Remora.Discord.Core;
+using Remora.Rest.Core;
 
 namespace CentCom.Bot.Jobs
 {
@@ -84,8 +85,9 @@ namespace CentCom.Bot.Jobs
                 message.Append(messageSuffix);
 
                 // Try to send, only mark completed if successful
+                var attachments = new List<OneOf.OneOf<FileData, IPartialAttachment>>() { fileData };
                 var result = await _channelAPI.CreateMessageAsync(channel.ID, message.ToString(),
-                    file: fileData ?? new Optional<FileData>());
+                    attachments: attachments);
                 if (result.IsSuccess)
                     notified.Add(new NotifiedFailure()
                     {
