@@ -5,6 +5,8 @@
     <projectFile>CentCom.Exporter/CentCom.Exporter.csproj</projectFile>
     <projectFile>CentCom.Server/CentCom.Server.csproj</projectFile>
     <projectFile>CentCom.Bot/CentCom.Bot.csproj</projectFile>
+    <projectFile>CentCom.Test/CentCom.Test.csproj</projectFile>
+    <projectFile pubXmlPath="CentCom.Server/Properties/PublishProfiles/Portable.pubxml">CentCom.Server/CentCom.Server.csproj</projectFile>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
@@ -12,15 +14,20 @@
   <component name="ChangeListManager">
     <list default="true" id="28c8f7e3-4e14-4e22-b8f6-ae65cdd7cd09" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CentCom/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CentCom/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.API/CentCom.API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.API/CentCom.API.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.API/CentCom.API.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.API/CentCom.API.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Bot/CentCom.Bot.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Bot/CentCom.Bot.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.API/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.API/Views/Shared/_Layout.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CentCom.Common/CentCom.Common.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/CentCom.Common.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Exporter/CentCom.Exporter.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Exporter/CentCom.Exporter.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Exporter/Data/Providers/TgBanProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Exporter/Data/Providers/TgBanProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Server/CentCom.Server.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/CentCom.Server.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Common/Data/DatabaseContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Data/DatabaseContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/MariaDb/MariaDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/MariaDb/MariaDbContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/MySql/MySqlDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/MySql/MySqlDbContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/Postgres/NpgsqlDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/Postgres/NpgsqlDbContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Server/BanSources/BanParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/BanSources/BanParser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Server/External/Raw/TgRawBan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/External/Raw/TgRawBan.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Server/Services/BeeBanService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/Services/BeeBanService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Server/Services/FulpBanService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/Services/FulpBanService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CentCom.Server/Services/StandardProviderService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/Services/StandardProviderService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Server/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Server/Services/TGMCBanService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/Services/TGMCBanService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Server/Services/VgBanService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/Services/VgBanService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Server/Services/YogBanService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/Services/YogBanService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,45 +51,44 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/CentCom.Server/Services/BeeBanService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/IL/ad6403114c5244e69ff82ccc5fd383048a200/8a/a76fa575/0200002Apdb.il" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/83e464da02e4442dbb3c2d22f628b0e816e00/b8/5ea09f12/IDiscordRestChannelAPI.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e62ae84440144114b63de444644ef1b82000/1/RestClientExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/20da24d0bff84a729a67db2dc17a322566588/19/First.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/99dcbb8b1f8643499bd68c278929fb53d6a00/da/60102cae/ObjectExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/07dfb1ea008b47158970c250ea4475fc1bbb78/12/MvcCoreMvcBuilderExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/07dfb1ea008b47158970c250ea4475fc1bbb78/54/JsonOptions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/CentCom.Server/BanSources/BanParser.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/fc9e539d4213450583fc62c50c0ca6013c00/A/Result.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1caea5797bc04e55adebcc8011b21ab81a190/3/OptionsServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/20da24d0bff84a729a67db2dc17a322566588/19/First.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/29a328843bdc4762af89c8fdc084c4d68f5778/78/DateTimeOffset.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2e9beeb180834f4b9abea5f3db1bc8bd8f5578/233/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2e9beeb180834f4b9abea5f3db1bc8bd8f5578/9B/Lazy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/483801266a064cf6a016c4137514860b2ea00/2C/IRestClient.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/56dda7c0541e451f84f8a5c8ebed2df17f78/3/UserSecretsConfigurationExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e374277598aa4762b65ec1f4d202aa6313400/E/CommandGroup.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/575c31ecc35a636b6f962cb71d53992552941a18982aae1c8e6c16305cc3761b/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/703d0017f7a14d9b91c387e2e63051027d88/6/EventLogSettings.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/90689221616d496d80797d821b753cca2800/4/Optional.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/90689221616d496d80797d821b753cca2800/5/Snowflake.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/99919d9074764a7a9c35d701086b12cdd7580/21/Utf8JsonReader.TryGet.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/99919d9074764a7a9c35d701086b12cdd7580/2E/JsonSerializer.Read.Helpers.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/99dcbb8b1f8643499bd68c278929fb53d6a00/da/60102cae/ObjectExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/483801266a064cf6a016c4137514860b2ea00/2C/IRestClient.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ad6403114c5244e69ff82ccc5fd383048a200/C4/DataObjectConverter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/99919d9074764a7a9c35d701086b12cdd7580/31/JsonSerializer.Read.String.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2e9beeb180834f4b9abea5f3db1bc8bd8f5578/9B/Lazy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2e9beeb180834f4b9abea5f3db1bc8bd8f5578/233/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ad6403114c5244e69ff82ccc5fd383048a200/C0/JsonSerializerOptionsExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/07dfb1ea008b47158970c250ea4475fc1bbb78/12/MvcCoreMvcBuilderExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/99919d9074764a7a9c35d701086b12cdd7580/70/JsonConverterOfT.ReadCore.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1caea5797bc04e55adebcc8011b21ab81a190/3/OptionsServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e62ae84440144114b63de444644ef1b82000/3/SystemTextJsonSerializer.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/90689221616d496d80797d821b753cca2800/4/Optional.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/fc577a47a9ae4d289ea4e815bea8e7528800/3/IServiceCollectionQuartzConfigurator.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/IL/ad6403114c5244e69ff82ccc5fd383048a200/8a/a76fa575/0200002Apdb.il" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/90689221616d496d80797d821b753cca2800/5/Snowflake.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/99919d9074764a7a9c35d701086b12cdd7580/6F/JsonConverterFactory.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/CentCom.Server/Services/FulpBanService.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/CentCom.Common/Models/Byond/CKey.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/703d0017f7a14d9b91c387e2e63051027d88/6/EventLogSettings.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/99919d9074764a7a9c35d701086b12cdd7580/70/JsonConverterOfT.ReadCore.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ad6403114c5244e69ff82ccc5fd383048a200/C0/JsonSerializerOptionsExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ad6403114c5244e69ff82ccc5fd383048a200/C4/DataObjectConverter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/adca43476d9d407a9622cf630a50aceb55f80/1E/Utf8JsonReader.TryGet.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e374277598aa4762b65ec1f4d202aa6313400/E/CommandGroup.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e62ae84440144114b63de444644ef1b82000/1/RestClientExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e62ae84440144114b63de444644ef1b82000/3/SystemTextJsonSerializer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/fc577a47a9ae4d289ea4e815bea8e7528800/3/IServiceCollectionQuartzConfigurator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/fc9e539d4213450583fc62c50c0ca6013c00/A/Result.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/bobbahbrown/repos/CentCom/CentCom.API/Views/Shared/_Layout.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/CentCom.Common/Models/Byond/CKey.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/CentCom.Server/BanSources/BanParser.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/CentCom.Server/Services/BeeBanService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/CentCom.Server/Services/FulpBanService.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -113,6 +119,12 @@
       <option value="$PROJECT_DIR$/CentCom.Server/BanSources/BanParser.cs" />
     </changedPaths>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectId" id="1sxKdRg1734DQ7wv2EOKnTrLMff" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -124,21 +136,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.53575295" />
-    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RunManager" selected=".NET Project.CentCom.Server">
+    <configuration name="CentCom.Server: Portable" type="DotNetMsBuildPublish" factoryName="Publish to IIS">
+      <riderPublish publish_profile="Portable.pubxml" pubxml_path="$PROJECT_DIR$/CentCom.Server/Properties/PublishProfiles/Portable.pubxml" uuid_high="-1696680645765414218" uuid_low="-7045077597192557862" />
+      <method v="2" />
+    </configuration>
     <configuration name="CentCom.Bot" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -166,6 +180,24 @@
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
       <option name="PROJECT_PATH" value="$PROJECT_DIR$/CentCom.Server/CentCom.Server.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value="" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+    <configuration name="CentCom.Test" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/CentCom.Test/CentCom.Test.csproj" />
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
@@ -259,6 +291,20 @@
       <workItem from="1629505090375" duration="12956000" />
       <workItem from="1629519384044" duration="15086000" />
       <workItem from="1629581834573" duration="41343000" />
+      <workItem from="1633033668324" duration="803000" />
+      <workItem from="1633035075589" duration="3359000" />
+      <workItem from="1636037349701" duration="919000" />
+      <workItem from="1636492470347" duration="1810000" />
+      <workItem from="1636645062169" duration="1501000" />
+      <workItem from="1636648294418" duration="2400000" />
+      <workItem from="1640619014548" duration="626000" />
+      <workItem from="1641574950663" duration="3049000" />
+      <workItem from="1645839113059" duration="4763000" />
+      <workItem from="1648651493634" duration="11000" />
+      <workItem from="1655583818460" duration="88000" />
+      <workItem from="1655910415953" duration="114000" />
+      <workItem from="1656126668338" duration="35000" />
+      <workItem from="1656160866736" duration="9684000" />
     </task>
     <task id="LOCAL-00001" summary="update bee ban url">
       <created>1628898475361</created>
@@ -267,7 +313,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628898475361</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add support for linden">
+      <created>1636645949025</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1636645949026</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -313,19 +366,16 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="update bee ban url" />
-    <option name="LAST_COMMIT_MESSAGE" value="update bee ban url" />
+    <MESSAGE value="add support for linden" />
+    <option name="LAST_COMMIT_MESSAGE" value="add support for linden" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <default-breakpoints>
-        <breakpoint enabled="true" type="DotNet Exception Breakpoints" />
-      </default-breakpoints>
-    </breakpoint-manager>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

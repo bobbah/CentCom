@@ -2,13 +2,13 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace CentCom.Common.Migrations.MariaDb
+namespace CentCom.Common.Migrations.MariaDb;
+
+public partial class AddBotNotifications : Migration
 {
-    public partial class AddBotNotifications : Migration
+    protected override void Up(MigrationBuilder migrationBuilder)
     {
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.CreateTable(
+        migrationBuilder.CreateTable(
                 name: "NotifiedFailures",
                 columns: table => new
                 {
@@ -27,19 +27,18 @@ namespace CentCom.Common.Migrations.MariaDb
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
-                .Annotation("MySql:CharSet", "utf8mb4");
+            .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_NotifiedFailures_CheckHistoryId",
-                table: "NotifiedFailures",
-                column: "CheckHistoryId",
-                unique: true);
-        }
+        migrationBuilder.CreateIndex(
+            name: "IX_NotifiedFailures_CheckHistoryId",
+            table: "NotifiedFailures",
+            column: "CheckHistoryId",
+            unique: true);
+    }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropTable(
-                name: "NotifiedFailures");
-        }
+    protected override void Down(MigrationBuilder migrationBuilder)
+    {
+        migrationBuilder.DropTable(
+            name: "NotifiedFailures");
     }
 }

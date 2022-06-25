@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace CentCom.Common.Migrations.MySql
+namespace CentCom.Common.Migrations.MySql;
+
+public partial class UniqueSourceNames : Migration
 {
-    public partial class UniqueSourceNames : Migration
+    protected override void Up(MigrationBuilder migrationBuilder)
     {
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.AlterColumn<string>(
+        migrationBuilder.AlterColumn<string>(
                 name: "Name",
                 table: "BanSources",
                 type: "varchar(255)",
@@ -14,23 +14,23 @@ namespace CentCom.Common.Migrations.MySql
                 oldClrType: typeof(string),
                 oldType: "longtext",
                 oldNullable: true)
-                .Annotation("MySql:CharSet", "utf8mb4")
-                .OldAnnotation("MySql:CharSet", "utf8mb4");
+            .Annotation("MySql:CharSet", "utf8mb4")
+            .OldAnnotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_BanSources_Name",
-                table: "BanSources",
-                column: "Name",
-                unique: true);
-        }
+        migrationBuilder.CreateIndex(
+            name: "IX_BanSources_Name",
+            table: "BanSources",
+            column: "Name",
+            unique: true);
+    }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropIndex(
-                name: "IX_BanSources_Name",
-                table: "BanSources");
+    protected override void Down(MigrationBuilder migrationBuilder)
+    {
+        migrationBuilder.DropIndex(
+            name: "IX_BanSources_Name",
+            table: "BanSources");
 
-            migrationBuilder.AlterColumn<string>(
+        migrationBuilder.AlterColumn<string>(
                 name: "Name",
                 table: "BanSources",
                 type: "longtext",
@@ -38,8 +38,7 @@ namespace CentCom.Common.Migrations.MySql
                 oldClrType: typeof(string),
                 oldType: "varchar(255)",
                 oldNullable: true)
-                .Annotation("MySql:CharSet", "utf8mb4")
-                .OldAnnotation("MySql:CharSet", "utf8mb4");
-        }
+            .Annotation("MySql:CharSet", "utf8mb4")
+            .OldAnnotation("MySql:CharSet", "utf8mb4");
     }
 }

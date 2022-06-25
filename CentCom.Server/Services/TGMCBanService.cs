@@ -11,160 +11,152 @@ using Extensions;
 using Microsoft.Extensions.Logging;
 using RestSharp;
 
-namespace CentCom.Server.Services
+namespace CentCom.Server.Services;
+
+/// <summary>
+/// TGMC Ban Service for getting bans from the API
+/// </summary>
+/// <remarks>
+/// Note that the data is provided in a flat tg format, meaning
+/// that each role in a jobban has its own ban ID. Thus, our strategy
+/// for using the paging must account for the possibility of a job ban
+/// spanning two seperate pages.
+/// </remarks>
+public class TGMCBanService : RestBanService
 {
-    /// <summary>
-    /// TGMC Ban Service for getting bans from the API
-    /// </summary>
-    /// <remarks>
-    /// Note that the data is provided in a flat tg format, meaning
-    /// that each role in a jobban has its own ban ID. Thus, our strategy
-    /// for using the paging must account for the possibility of a job ban
-    /// spanning two seperate pages.
-    /// </remarks>
-    public class TGMCBanService : RestBanService
+    private const int RecordsPerPage = 100;
+    private static readonly BanSource BanSource = new BanSource { Name = "tgmc" };
+
+    public TGMCBanService(ILogger<TGMCBanService> logger) : base(logger)
     {
-        private const int RecordsPerPage = 100;
-        private static readonly BanSource BanSource = new BanSource() { Name = "tgmc" };
+    }
 
-        public TGMCBanService(ILogger<TGMCBanService> logger) : base(logger)
+    protected override string BaseUrl => "https://statbus.psykzz.com/api/";
+
+    public async Task<IEnumerable<Ban>> GetBansAsync(int page = 1)
+    {
+        var request = new RestRequest($"bans/{page}").AddQueryParameter("limit", RecordsPerPage.ToString());
+        var response = await Client.ExecuteAsync(request);
+
+        if (response.StatusCode != HttpStatusCode.OK)
         {
+            FailedRequest(response);
         }
 
-        protected override string BaseUrl => "http://statbus.psykzz.com:8080/api/";
-
-        public async Task<IEnumerable<Ban>> GetBansAsync(int page = 1)
+        var toReturn = new List<Ban>();
+        var dirtyBans = new List<Ban>();
+        var content = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(response.Content);
+        foreach (var bh in content["bans"].EnumerateObject())
         {
-            var request = new RestRequest($"bans/{page}", Method.GET, DataFormat.Json).AddQueryParameter("limit", RecordsPerPage.ToString());
-            var response = await Client.ExecuteAsync(request);
+            var ban = bh.Value;
 
-            if (response.StatusCode != HttpStatusCode.OK)
+            // Ban expiration could be based on the expiration time field or the existance of the unbanned datetime
+            // field, so we have to check both.
+            var expiration = ban.GetProperty("unbanned_datetime").GetString() == null ? (DateTime?)null
+                : DateTime.Parse(ban.GetProperty("unbanned_datetime").GetString());
+            if (!expiration.HasValue)
             {
-                FailedRequest(response);
+                expiration = ban.GetProperty("expiration_time").GetString() == null ? null
+                    : DateTime.Parse(ban.GetProperty("expiration_time").GetString());
             }
 
-            var toReturn = new List<Ban>();
-            var dirtyBans = new List<Ban>();
-            var content = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(response.Content);
-            foreach (var bh in content["bans"].EnumerateObject())
+            // Get ban
+            var toAdd = new Ban
             {
-                var ban = bh.Value;
+                BanID = bh.Name,
+                BannedBy = ban.GetProperty("admin").GetString(),
+                BannedOn = DateTime.Parse(ban.GetProperty("bantime").ToString()),
+                CKey = ban.GetProperty("ckey").GetString(),
+                Expires = expiration,
+                Reason = ban.GetProperty("reason").ToString(),
+                BanType = ban.GetProperty("role").GetString().ToLower() == "server" ? BanType.Server : BanType.Job,
+                SourceNavigation = BanSource
+            };
 
-                // Ban expiration could be based on the expiration time field or the existance of the unbanned datetime
-                // field, so we have to check both.
-                var expiration = ban.GetProperty("unbanned_datetime").GetString() == null ? (DateTime?)null
-                        : DateTime.Parse(ban.GetProperty("unbanned_datetime").GetString());
-                if (!expiration.HasValue)
-                {
-                    expiration = ban.GetProperty("expiration_time").GetString() == null ? (DateTime?)null
-                        : DateTime.Parse(ban.GetProperty("expiration_time").GetString());
-                }
-
-                // Get ban
-                var toAdd = new Ban()
-                {
-                    BanID = bh.Name,
-                    BannedBy = ban.GetProperty("admin").GetString(),
-                    BannedOn = DateTime.Parse(ban.GetProperty("bantime").ToString()),
-                    CKey = ban.GetProperty("ckey").GetString(),
-                    Expires = expiration,
-                    Reason = ban.GetProperty("reason").ToString(),
-                    BanType = ban.GetProperty("role").GetString().ToLower() == "server" ? BanType.Server : BanType.Job,
-                    SourceNavigation = BanSource
-                };
-
-                // Specify UTC
-                toAdd.BannedOn = DateTime.SpecifyKind(toAdd.BannedOn, DateTimeKind.Utc);
-                if (toAdd.Expires.HasValue)
-                {
-                    toAdd.Expires = DateTime.SpecifyKind(toAdd.Expires.Value, DateTimeKind.Utc);
-                }
-
-                // Add jobban if relevant
-                if (toAdd.BanType == BanType.Job)
-                {
-                    toAdd.AddJob(ban.GetProperty("role").GetString());
-                    dirtyBans.Add(toAdd);
-                }
-                else
-                {
-                    toReturn.Add(toAdd);
-                }
-            }
-
-            // Group jobbans
-            foreach (var group in dirtyBans.GroupBy(x => new { x.CKey, x.BannedOn }))
+            // Add jobban if relevant
+            if (toAdd.BanType == BanType.Job)
             {
-                var firstBan = group.OrderBy(x => x.BanID).First();
-                firstBan.AddJobRange(group.SelectMany(x => x.JobBans).Select(x => x.Job));
-                toReturn.Add(firstBan);
+                toAdd.AddJob(ban.GetProperty("role").GetString());
+                dirtyBans.Add(toAdd);
             }
-
-            return toReturn;
+            else
+            {
+                toReturn.Add(toAdd);
+            }
         }
 
-        public async Task<IEnumerable<Ban>> GetBansBatchedAsync(int startPage = 1, int pages = -1)
+        // Group jobbans
+        foreach (var group in dirtyBans.GroupBy(x => new { x.CKey, x.BannedOn }))
         {
-            var maxPages = await GetNumberOfPagesAsync();
-            var range = Enumerable.Range(startPage, pages != -1 ? Math.Min(startPage + pages, maxPages) : maxPages);
-            var dirtyBans = new ConcurrentBag<Ban>();
-            await range.AsyncParallelForEach(async page =>
-            {
-                foreach (var b in await GetBansAsync(page))
-                {
-                    dirtyBans.Add(b);
-                }
-            }, 12);
-
-
-            if (dirtyBans.IsEmpty)
-                return Enumerable.Empty<Ban>();
-
-            // We have to ensure that our jobs are correctly grouped due to possible errors with paging
-            var cleanBans = new List<Ban>(dirtyBans.Where(x => x.BanType == BanType.Server));
-            foreach (var group in dirtyBans.Where(x => x.BanType == BanType.Job).GroupBy(x => new { x.CKey, x.BannedOn }))
-            {
-                var firstBan = group.OrderBy(x => x.BanID).First();
-                firstBan.AddJobRange(group.SelectMany(x => x.JobBans).Select(x => x.Job));
-                cleanBans.Add(firstBan);
-            }
-
-            // Check for the possibility of a job ban spanning multiple pages
-            cleanBans = cleanBans.OrderBy(x => int.Parse(x.BanID)).ToList();
-            if (startPage != 1 && cleanBans.First().BanType == BanType.Job)
-            {
-                // Discard the first ban if it is a job ban, as it may be incomplete.
-                // The alternate would be walking backwards in the page list, but that
-                // is not an optimal solution
-                cleanBans.RemoveAt(0);
-            }
-            if (pages != -1 && startPage + pages < maxPages && cleanBans.LastOrDefault()?.BanType == BanType.Job)
-            {
-                // Discard the last ban if it is a job ban as it may be incomplete.
-                // Same reasoning above, except it would require a pagewalk forward.
-                cleanBans.RemoveAt(cleanBans.Count - 1);
-            }
-
-            return cleanBans;
+            var firstBan = group.OrderBy(x => x.BanID).First();
+            firstBan.AddJobRange(group.SelectMany(x => x.JobBans).Select(x => x.Job));
+            toReturn.Add(firstBan);
         }
 
-        public async Task<int> GetNumberOfPagesAsync()
+        return toReturn;
+    }
+
+    public async Task<IEnumerable<Ban>> GetBansBatchedAsync(int startPage = 1, int pages = -1)
+    {
+        var maxPages = await GetNumberOfPagesAsync();
+        var range = Enumerable.Range(startPage, pages != -1 ? Math.Min(startPage + pages, maxPages) : maxPages);
+        var dirtyBans = new ConcurrentBag<Ban>();
+        await range.AsyncParallelForEach(async page =>
         {
-            var request = new RestRequest($"bans/1", Method.GET, DataFormat.Json).AddQueryParameter("limit", RecordsPerPage.ToString());
-            var result = await Client.ExecuteAsync(request);
-
-            if (result.StatusCode != HttpStatusCode.OK)
+            foreach (var b in await GetBansAsync(page))
             {
-                FailedRequest(result);
+                dirtyBans.Add(b);
             }
+        }, 12);
 
-            var content = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(result.Content);
-            if (content["page"].TryGetProperty("total", out var lastpage))
-            {
-                return lastpage.GetInt32();
-            }
 
-            throw new Exception("Failed to find the last page number in the response from TGMC's API");
+        if (dirtyBans.IsEmpty)
+            return Enumerable.Empty<Ban>();
+
+        // We have to ensure that our jobs are correctly grouped due to possible errors with paging
+        var cleanBans = new List<Ban>(dirtyBans.Where(x => x.BanType == BanType.Server));
+        foreach (var group in dirtyBans.Where(x => x.BanType == BanType.Job).GroupBy(x => new { x.CKey, x.BannedOn }))
+        {
+            var firstBan = group.OrderBy(x => x.BanID).First();
+            firstBan.AddJobRange(group.SelectMany(x => x.JobBans).Select(x => x.Job));
+            cleanBans.Add(firstBan);
         }
+
+        // Check for the possibility of a job ban spanning multiple pages
+        cleanBans = cleanBans.OrderBy(x => int.Parse(x.BanID)).ToList();
+        if (startPage != 1 && cleanBans.First().BanType == BanType.Job)
+        {
+            // Discard the first ban if it is a job ban, as it may be incomplete.
+            // The alternate would be walking backwards in the page list, but that
+            // is not an optimal solution
+            cleanBans.RemoveAt(0);
+        }
+        if (pages != -1 && startPage + pages < maxPages && cleanBans.LastOrDefault()?.BanType == BanType.Job)
+        {
+            // Discard the last ban if it is a job ban as it may be incomplete.
+            // Same reasoning above, except it would require a pagewalk forward.
+            cleanBans.RemoveAt(cleanBans.Count - 1);
+        }
+
+        return cleanBans;
+    }
+
+    public async Task<int> GetNumberOfPagesAsync()
+    {
+        var request = new RestRequest("bans/1").AddQueryParameter("limit", RecordsPerPage.ToString());
+        var result = await Client.ExecuteAsync(request);
+
+        if (result.StatusCode != HttpStatusCode.OK)
+        {
+            FailedRequest(result);
+        }
+
+        var content = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(result.Content);
+        if (content["page"].TryGetProperty("total", out var lastpage))
+        {
+            return lastpage.GetInt32();
+        }
+
+        throw new Exception("Failed to find the last page number in the response from TGMC's API");
     }
 }

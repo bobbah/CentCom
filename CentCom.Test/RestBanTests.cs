@@ -9,50 +9,49 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Xunit;
 
-namespace CentCom.Test
+namespace CentCom.Test;
+
+public class RestBanTests
 {
-    public class RestBanTests
+    [Fact]
+    public void CanCreateBan()
     {
-        [Fact]
-        public void CanCreateBan()
-        {
-            IRestBan ban = new RestBan(
-                1,
-                BanType.Job,
-                new CKey("Bobbahbrown"),
-                DateTimeOffset.Now,
-                new CKey("Pomf"),
-                "Test ban please ignore",
-                null,
-                null,
-                new[] { new RestJobBan("Janitor") });
-            Assert.NotNull(ban);
-        }
+        IRestBan ban = new RestBan(
+            1,
+            BanType.Job,
+            new CKey("Bobbahbrown"),
+            DateTimeOffset.Now,
+            new CKey("Pomf"),
+            "Test ban please ignore",
+            null,
+            null,
+            new[] { new RestJobBan("Janitor") });
+        Assert.NotNull(ban);
+    }
 
-        [Fact]
-        public void CanSerializeBan()
-        {
-            IRestBan ban = new RestBan(
-                1,
-                BanType.Job,
-                new CKey("Bobbahbrown"),
-                DateTimeOffset.Now,
-                new CKey("Pomf"),
-                "Test ban please ignore",
-                null,
-                null,
-                new[] { new RestJobBan("Janitor") });
+    [Fact]
+    public void CanSerializeBan()
+    {
+        IRestBan ban = new RestBan(
+            1,
+            BanType.Job,
+            new CKey("Bobbahbrown"),
+            DateTimeOffset.Now,
+            new CKey("Pomf"),
+            "Test ban please ignore",
+            null,
+            null,
+            new[] { new RestJobBan("Janitor") });
 
-            var options = GetOptions();
-            var serialized = JsonSerializer.Serialize(ban, options);
-            var deserialized = JsonSerializer.Deserialize<IRestBan>(serialized, options);
-            Assert.NotNull(deserialized);
-        }
+        var options = GetOptions();
+        var serialized = JsonSerializer.Serialize(ban, options);
+        var deserialized = JsonSerializer.Deserialize<IRestBan>(serialized, options);
+        Assert.NotNull(deserialized);
+    }
 
-        private static JsonSerializerOptions GetOptions()
-        {
-            return (new ServiceCollection()).AddCentComSerialization().BuildServiceProvider()
-                .GetRequiredService<IOptions<JsonSerializerOptions>>().Value;
-        }
+    private static JsonSerializerOptions GetOptions()
+    {
+        return (new ServiceCollection()).AddCentComSerialization().BuildServiceProvider()
+            .GetRequiredService<IOptions<JsonSerializerOptions>>().Value;
     }
 }

@@ -2,13 +2,13 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace CentCom.Common.Migrations.MySql
+namespace CentCom.Common.Migrations.MySql;
+
+public partial class AddCheckHistory : Migration
 {
-    public partial class AddCheckHistory : Migration
+    protected override void Up(MigrationBuilder migrationBuilder)
     {
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.AlterColumn<string>(
+        migrationBuilder.AlterColumn<string>(
                 name: "Name",
                 table: "BanSources",
                 type: "longtext",
@@ -16,10 +16,10 @@ namespace CentCom.Common.Migrations.MySql
                 oldClrType: typeof(string),
                 oldType: "longtext CHARACTER SET utf8mb4",
                 oldNullable: true)
-                .Annotation("MySql:CharSet", "utf8mb4")
-                .OldAnnotation("MySql:CharSet", "utf8mb4");
+            .Annotation("MySql:CharSet", "utf8mb4")
+            .OldAnnotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.AlterColumn<string>(
+        migrationBuilder.AlterColumn<string>(
                 name: "Display",
                 table: "BanSources",
                 type: "longtext",
@@ -27,10 +27,10 @@ namespace CentCom.Common.Migrations.MySql
                 oldClrType: typeof(string),
                 oldType: "longtext CHARACTER SET utf8mb4",
                 oldNullable: true)
-                .Annotation("MySql:CharSet", "utf8mb4")
-                .OldAnnotation("MySql:CharSet", "utf8mb4");
+            .Annotation("MySql:CharSet", "utf8mb4")
+            .OldAnnotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.AlterColumn<string>(
+        migrationBuilder.AlterColumn<string>(
                 name: "Reason",
                 table: "Bans",
                 type: "longtext",
@@ -38,10 +38,10 @@ namespace CentCom.Common.Migrations.MySql
                 oldClrType: typeof(string),
                 oldType: "longtext CHARACTER SET utf8mb4",
                 oldNullable: true)
-                .Annotation("MySql:CharSet", "utf8mb4")
-                .OldAnnotation("MySql:CharSet", "utf8mb4");
+            .Annotation("MySql:CharSet", "utf8mb4")
+            .OldAnnotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.AlterColumn<string>(
+        migrationBuilder.AlterColumn<string>(
                 name: "BanID",
                 table: "Bans",
                 type: "longtext",
@@ -49,10 +49,10 @@ namespace CentCom.Common.Migrations.MySql
                 oldClrType: typeof(string),
                 oldType: "longtext CHARACTER SET utf8mb4",
                 oldNullable: true)
-                .Annotation("MySql:CharSet", "utf8mb4")
-                .OldAnnotation("MySql:CharSet", "utf8mb4");
+            .Annotation("MySql:CharSet", "utf8mb4")
+            .OldAnnotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
+        migrationBuilder.CreateTable(
                 name: "CheckHistory",
                 columns: table => new
                 {
@@ -77,20 +77,20 @@ namespace CentCom.Common.Migrations.MySql
                 {
                     table.PrimaryKey("PK_CheckHistory", x => x.Id);
                 })
-                .Annotation("MySql:CharSet", "utf8mb4");
+            .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_CheckHistory_Parser_Started",
-                table: "CheckHistory",
-                columns: new[] { "Parser", "Started" });
-        }
+        migrationBuilder.CreateIndex(
+            name: "IX_CheckHistory_Parser_Started",
+            table: "CheckHistory",
+            columns: new[] { "Parser", "Started" });
+    }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropTable(
-                name: "CheckHistory");
+    protected override void Down(MigrationBuilder migrationBuilder)
+    {
+        migrationBuilder.DropTable(
+            name: "CheckHistory");
 
-            migrationBuilder.AlterColumn<string>(
+        migrationBuilder.AlterColumn<string>(
                 name: "Name",
                 table: "BanSources",
                 type: "longtext CHARACTER SET utf8mb4",
@@ -98,10 +98,10 @@ namespace CentCom.Common.Migrations.MySql
                 oldClrType: typeof(string),
                 oldType: "longtext",
                 oldNullable: true)
-                .Annotation("MySql:CharSet", "utf8mb4")
-                .OldAnnotation("MySql:CharSet", "utf8mb4");
+            .Annotation("MySql:CharSet", "utf8mb4")
+            .OldAnnotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.AlterColumn<string>(
+        migrationBuilder.AlterColumn<string>(
                 name: "Display",
                 table: "BanSources",
                 type: "longtext CHARACTER SET utf8mb4",
@@ -109,10 +109,10 @@ namespace CentCom.Common.Migrations.MySql
                 oldClrType: typeof(string),
                 oldType: "longtext",
                 oldNullable: true)
-                .Annotation("MySql:CharSet", "utf8mb4")
-                .OldAnnotation("MySql:CharSet", "utf8mb4");
+            .Annotation("MySql:CharSet", "utf8mb4")
+            .OldAnnotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.AlterColumn<string>(
+        migrationBuilder.AlterColumn<string>(
                 name: "Reason",
                 table: "Bans",
                 type: "longtext CHARACTER SET utf8mb4",
@@ -120,10 +120,10 @@ namespace CentCom.Common.Migrations.MySql
                 oldClrType: typeof(string),
                 oldType: "longtext",
                 oldNullable: true)
-                .Annotation("MySql:CharSet", "utf8mb4")
-                .OldAnnotation("MySql:CharSet", "utf8mb4");
+            .Annotation("MySql:CharSet", "utf8mb4")
+            .OldAnnotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.AlterColumn<string>(
+        migrationBuilder.AlterColumn<string>(
                 name: "BanID",
                 table: "Bans",
                 type: "longtext CHARACTER SET utf8mb4",
@@ -131,8 +131,7 @@ namespace CentCom.Common.Migrations.MySql
                 oldClrType: typeof(string),
                 oldType: "longtext",
                 oldNullable: true)
-                .Annotation("MySql:CharSet", "utf8mb4")
-                .OldAnnotation("MySql:CharSet", "utf8mb4");
-        }
+            .Annotation("MySql:CharSet", "utf8mb4")
+            .OldAnnotation("MySql:CharSet", "utf8mb4");
     }
 }

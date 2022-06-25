@@ -1,24 +1,23 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace CentCom.Common.Migrations.MySql
+namespace CentCom.Common.Migrations.MySql;
+
+public partial class AddExceptionDetails : Migration
 {
-    public partial class AddExceptionDetails : Migration
+    protected override void Up(MigrationBuilder migrationBuilder)
     {
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.AddColumn<string>(
+        migrationBuilder.AddColumn<string>(
                 name: "ExceptionDetailed",
                 table: "CheckHistory",
                 type: "longtext",
                 nullable: true)
-                .Annotation("MySql:CharSet", "utf8mb4");
-        }
+            .Annotation("MySql:CharSet", "utf8mb4");
+    }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropColumn(
-                name: "ExceptionDetailed",
-                table: "CheckHistory");
-        }
+    protected override void Down(MigrationBuilder migrationBuilder)
+    {
+        migrationBuilder.DropColumn(
+            name: "ExceptionDetailed",
+            table: "CheckHistory");
     }
 }

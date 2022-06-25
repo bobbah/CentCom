@@ -2,11 +2,10 @@
 using System.Threading.Tasks;
 using CentCom.API.Models;
 
-namespace CentCom.API.Services
+namespace CentCom.API.Services;
+
+public interface IBanSourceService
 {
-    public interface IBanSourceService
-    {
-        public Task<BanSourceData> GetBanSourceAsync(int source);
-        public Task<IEnumerable<BanSourceData>> GetAllBanSourcesAsync();
-    }
+    public Task<BanSourceData> GetBanSourceAsync(int source);
+    public Task<IEnumerable<BanSourceData>> GetAllBanSourcesAsync();
 }

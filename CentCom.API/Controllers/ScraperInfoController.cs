@@ -1,15 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace CentCom.API.Controllers
+namespace CentCom.API.Controllers;
+
+[ApiExplorerSettings(IgnoreApi = true)]
+[Route("scraper")]
+public class ScraperInfoController : Controller
 {
-    [ApiExplorerSettings(IgnoreApi = true)]
-    [Route("scraper")]
-    public class ScraperInfoController : Controller
+    [HttpGet]
+    public IActionResult Index()
     {
-        [HttpGet]
-        public IActionResult Index()
-        {
-            return View();
-        }
+        return View();
     }
 }

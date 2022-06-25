@@ -7,62 +7,61 @@ using CentCom.Server.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace CentCom.Server.BanSources
+namespace CentCom.Server.BanSources;
+
+public class YogBanParser : BanParser
 {
-    public class YogBanParser : BanParser
+    private const int PagesPerBatch = 12;
+    private readonly YogBanService _banService;
+
+    public YogBanParser(DatabaseContext dbContext, YogBanService banService, ILogger<YogBanParser> logger) : base(dbContext, logger)
     {
-        private const int PagesPerBatch = 12;
-        private readonly YogBanService _banService;
+        _banService = banService;
+    }
 
-        public YogBanParser(DatabaseContext dbContext, YogBanService banService, ILogger<YogBanParser> logger) : base(dbContext, logger)
+    protected override Dictionary<string, BanSource> Sources => new Dictionary<string, BanSource>
+    {
+        { "yogstation", new BanSource
         {
-            _banService = banService;
-        }
+            Display = "YogStation",
+            Name = "yogstation",
+            RoleplayLevel = RoleplayLevel.Medium
+        } }
+    };
 
-        protected override Dictionary<string, BanSource> Sources => new Dictionary<string, BanSource>()
+    protected override bool SourceSupportsBanIDs => true;
+    protected override string Name => "YogStation";
+
+    public override async Task<IEnumerable<Ban>> FetchNewBansAsync()
+    {
+        Logger.LogInformation("Getting new bans for YogStation...");
+        var recent = await DbContext.Bans
+            .Where(x => Sources.Keys.Contains(x.SourceNavigation.Name))
+            .OrderByDescending(x => x.BannedOn)
+            .Take(5)
+            .Include(x => x.JobBans)
+            .Include(x => x.SourceNavigation)
+            .ToListAsync();
+        var foundBans = new List<Ban>();
+        var page = 1;
+
+        while (true)
         {
-            { "yogstation", new BanSource()
+            var batch = (await _banService.GetBansBatchedAsync(page, PagesPerBatch)).ToArray();
+            foundBans.AddRange(batch);
+            if (!batch.Any() || batch.Any(x => recent.Any(y => y.BanID == x.BanID)))
             {
-                Display = "YogStation",
-                Name = "yogstation",
-                RoleplayLevel = RoleplayLevel.Medium
-            } }
-        };
-
-        protected override bool SourceSupportsBanIDs => true;
-        protected override string Name => "YogStation";
-
-        public override async Task<IEnumerable<Ban>> FetchNewBansAsync()
-        {
-            Logger.LogInformation("Getting new bans for YogStation...");
-            var recent = await DbContext.Bans
-                .Where(x => Sources.Keys.Contains(x.SourceNavigation.Name))
-                .OrderByDescending(x => x.BannedOn)
-                .Take(5)
-                .Include(x => x.JobBans)
-                .Include(x => x.SourceNavigation)
-                .ToListAsync();
-            var foundBans = new List<Ban>();
-            var page = 1;
-
-            while (true)
-            {
-                var batch = (await _banService.GetBansBatchedAsync(page, PagesPerBatch)).ToArray();
-                foundBans.AddRange(batch);
-                if (!batch.Any() || batch.Any(x => recent.Any(y => y.BanID == x.BanID)))
-                {
-                    break;
-                }
-                page += PagesPerBatch;
+                break;
             }
-
-            return foundBans;
+            page += PagesPerBatch;
         }
 
-        public override async Task<IEnumerable<Ban>> FetchAllBansAsync()
-        {
-            Logger.LogInformation("Getting all bans for YogStation...");
-            return await _banService.GetBansBatchedAsync();
-        }
+        return foundBans;
+    }
+
+    public override async Task<IEnumerable<Ban>> FetchAllBansAsync()
+    {
+        Logger.LogInformation("Getting all bans for YogStation...");
+        return await _banService.GetBansBatchedAsync();
     }
 }

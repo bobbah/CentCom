@@ -9,59 +9,58 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace CentCom.Exporter
+namespace CentCom.Exporter;
+
+public class Startup
 {
-    public class Startup
+    public Startup(IConfiguration configuration)
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+        Configuration = configuration;
+    }
 
-        public IConfiguration Configuration { get; }
+    public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddControllers()
-                .AddJsonOptions(options =>
-                {
-                    options.JsonSerializerOptions.Converters.Insert(0, new JsonStringEnumConverter());
-                    options.JsonSerializerOptions.AddCentComOptions();
-                });
+    // This method gets called by the runtime. Use this method to add services to the container.
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddControllers()
+            .AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.Converters.Insert(0, new JsonStringEnumConverter());
+                options.JsonSerializerOptions.AddCentComOptions();
+            });
 
-            // Add provider configuration
-            services.AddOptions<BanProviderOptions>().Bind(Configuration.GetSection("CentCom"));
+        // Add provider configuration
+        services.AddOptions<BanProviderOptions>().Bind(Configuration.GetSection("CentCom"));
 
-            // Add providers
-            if (!Enum.TryParse(typeof(BanProviderKind), Configuration.GetSection("centcom")["provider"],
+        // Add providers
+        if (!Enum.TryParse(typeof(BanProviderKind), Configuration.GetSection("centcom")["provider"],
                 out var providerKind))
-                throw new Exception("Invalid or unknown ban provider kind found in configuration");
-            switch (providerKind)
-            {
-                case BanProviderKind.Tgstation:
-                    services.AddTransient<IBanProvider, TgBanProvider>();
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-        }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+            throw new Exception("Invalid or unknown ban provider kind found in configuration");
+        switch (providerKind)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
-            app.UseHttpsRedirection();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+            case BanProviderKind.Tgstation:
+                services.AddTransient<IBanProvider, TgBanProvider>();
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
+    }
+
+    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+        if (env.IsDevelopment())
+        {
+            app.UseDeveloperExceptionPage();
+        }
+
+        app.UseHttpsRedirection();
+
+        app.UseRouting();
+
+        app.UseAuthorization();
+
+        app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
     }
 }
