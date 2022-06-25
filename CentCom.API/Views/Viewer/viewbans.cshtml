@@ -5,7 +5,7 @@
     var banTraits = new Dictionary<int, List<(string title, string value)>>();
     foreach (var b in Model.Bans)
     {
-        var thisBan = new List<(string title, string value)>()
+        var thisBan = new List<(string title, string value)>
         {
             ("Banned", b.BannedOn.ToString("yyyy'-'MM'-'dd HH':'mm':'ss")),
             ("Admin", b.BannedBy)

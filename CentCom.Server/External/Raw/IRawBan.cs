@@ -1,10 +1,9 @@
 ﻿using CentCom.Common.Models;
 
-namespace CentCom.Server.External.Raw
+namespace CentCom.Server.External.Raw;
+
+interface IRawBan
 {
-    interface IRawBan
-    {
-        BanType GetBanType();
-        Ban AsBan(BanSource source);
-    }
+    BanType GetBanType();
+    Ban AsBan(BanSource source);
 }

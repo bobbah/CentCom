@@ -1,29 +1,28 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace CentCom.Common
+namespace CentCom.Common;
+
+/// <summary>
+/// Contains utilities for interacting with BYOND keys
+/// </summary>
+public static class KeyUtilities
 {
+    private static readonly Regex KeyReplacePattern = new Regex(@"[^a-z0-9]", RegexOptions.Compiled);
+
     /// <summary>
-    /// Contains utilities for interacting with BYOND keys
+    /// Sanitizes a BYOND key into a valid ckey
     /// </summary>
-    public static class KeyUtilities
+    /// <param name="raw">The raw key to be sanitized</param>
+    /// <returns>A sanitized BYOND canonical key</returns>
+    /// <exception cref="ArgumentNullException">Null key provided</exception>
+    public static string GetCanonicalKey(string raw)
     {
-        private static readonly Regex KeyReplacePattern = new Regex(@"[^a-z0-9]", RegexOptions.Compiled);
-
-        /// <summary>
-        /// Sanitizes a BYOND key into a valid ckey
-        /// </summary>
-        /// <param name="raw">The raw key to be sanitized</param>
-        /// <returns>A sanitized BYOND canonical key</returns>
-        /// <exception cref="ArgumentNullException">Null key provided</exception>
-        public static string GetCanonicalKey(string raw)
+        if (raw == null)
         {
-            if (raw == null)
-            {
-                throw new ArgumentNullException(nameof(raw));
-            }
-
-            return KeyReplacePattern.Replace(raw.ToLower(), "");
+            throw new ArgumentNullException(nameof(raw));
         }
+
+        return KeyReplacePattern.Replace(raw.ToLower(), "");
     }
 }

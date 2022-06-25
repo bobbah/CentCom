@@ -2,19 +2,18 @@
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
-namespace CentCom.Common.Data.DesignTime
+namespace CentCom.Common.Data.DesignTime;
+
+public class NpgsqlDbContextFactory : IDesignTimeDbContextFactory<NpgsqlDbContext>
 {
-    public class NpgsqlDbContextFactory : IDesignTimeDbContextFactory<NpgsqlDbContext>
+    public NpgsqlDbContext CreateDbContext(string[] args)
     {
-        public NpgsqlDbContext CreateDbContext(string[] args)
+        var conf = new Dictionary<string, string>
         {
-            var conf = new Dictionary<string, string>
-            {
-                { "dbConfig:connectionString", "Host=127.0.0.1;Database=centcom_design;Username=centcom_parser;Password=spoof" },
-                { "dbConfig:dbType", "Postgres" }
-            };
-            IConfiguration spoofedConfig = new ConfigurationBuilder().AddInMemoryCollection(conf).Build();
-            return new NpgsqlDbContext(spoofedConfig);
-        }
+            { "dbConfig:connectionString", "Host=127.0.0.1;Database=centcom_design;Username=centcom_parser;Password=spoof" },
+            { "dbConfig:dbType", "Postgres" }
+        };
+        IConfiguration spoofedConfig = new ConfigurationBuilder().AddInMemoryCollection(conf).Build();
+        return new NpgsqlDbContext(spoofedConfig);
     }
 }

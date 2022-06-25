@@ -2,16 +2,16 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace CentCom.Common.Migrations.MariaDb
-{
-    public partial class AddCheckHistory : Migration
-    {
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.AlterDatabase()
-                .Annotation("MySql:CharSet", "utf8mb4");
+namespace CentCom.Common.Migrations.MariaDb;
 
-            migrationBuilder.CreateTable(
+public partial class AddCheckHistory : Migration
+{
+    protected override void Up(MigrationBuilder migrationBuilder)
+    {
+        migrationBuilder.AlterDatabase()
+            .Annotation("MySql:CharSet", "utf8mb4");
+
+        migrationBuilder.CreateTable(
                 name: "BanSources",
                 columns: table => new
                 {
@@ -27,9 +27,9 @@ namespace CentCom.Common.Migrations.MariaDb
                 {
                     table.PrimaryKey("PK_BanSources", x => x.Id);
                 })
-                .Annotation("MySql:CharSet", "utf8mb4");
+            .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
+        migrationBuilder.CreateTable(
                 name: "CheckHistory",
                 columns: table => new
                 {
@@ -54,9 +54,9 @@ namespace CentCom.Common.Migrations.MariaDb
                 {
                     table.PrimaryKey("PK_CheckHistory", x => x.Id);
                 })
-                .Annotation("MySql:CharSet", "utf8mb4");
+            .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
+        migrationBuilder.CreateTable(
                 name: "FlatBansVersion",
                 columns: table => new
                 {
@@ -71,9 +71,9 @@ namespace CentCom.Common.Migrations.MariaDb
                 {
                     table.PrimaryKey("PK_FlatBansVersion", x => x.Id);
                 })
-                .Annotation("MySql:CharSet", "utf8mb4");
+            .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
+        migrationBuilder.CreateTable(
                 name: "Bans",
                 columns: table => new
                 {
@@ -105,9 +105,9 @@ namespace CentCom.Common.Migrations.MariaDb
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
-                .Annotation("MySql:CharSet", "utf8mb4");
+            .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
+        migrationBuilder.CreateTable(
                 name: "JobBans",
                 columns: table => new
                 {
@@ -125,46 +125,45 @@ namespace CentCom.Common.Migrations.MariaDb
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
-                .Annotation("MySql:CharSet", "utf8mb4");
+            .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Bans_CKey",
-                table: "Bans",
-                column: "CKey");
+        migrationBuilder.CreateIndex(
+            name: "IX_Bans_CKey",
+            table: "Bans",
+            column: "CKey");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Bans_Source",
-                table: "Bans",
-                column: "Source");
+        migrationBuilder.CreateIndex(
+            name: "IX_Bans_Source",
+            table: "Bans",
+            column: "Source");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_CheckHistory_Parser_Started",
-                table: "CheckHistory",
-                columns: new[] { "Parser", "Started" });
+        migrationBuilder.CreateIndex(
+            name: "IX_CheckHistory_Parser_Started",
+            table: "CheckHistory",
+            columns: new[] { "Parser", "Started" });
 
-            migrationBuilder.CreateIndex(
-                name: "IX_FlatBansVersion_Name_Version",
-                table: "FlatBansVersion",
-                columns: new[] { "Name", "Version" },
-                unique: true);
-        }
+        migrationBuilder.CreateIndex(
+            name: "IX_FlatBansVersion_Name_Version",
+            table: "FlatBansVersion",
+            columns: new[] { "Name", "Version" },
+            unique: true);
+    }
 
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropTable(
-                name: "CheckHistory");
+    protected override void Down(MigrationBuilder migrationBuilder)
+    {
+        migrationBuilder.DropTable(
+            name: "CheckHistory");
 
-            migrationBuilder.DropTable(
-                name: "FlatBansVersion");
+        migrationBuilder.DropTable(
+            name: "FlatBansVersion");
 
-            migrationBuilder.DropTable(
-                name: "JobBans");
+        migrationBuilder.DropTable(
+            name: "JobBans");
 
-            migrationBuilder.DropTable(
-                name: "Bans");
+        migrationBuilder.DropTable(
+            name: "Bans");
 
-            migrationBuilder.DropTable(
-                name: "BanSources");
-        }
+        migrationBuilder.DropTable(
+            name: "BanSources");
     }
 }

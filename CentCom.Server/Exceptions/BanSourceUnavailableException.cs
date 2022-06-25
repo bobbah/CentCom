@@ -1,19 +1,18 @@
 ﻿using System;
 
-namespace CentCom.Server.Exceptions
+namespace CentCom.Server.Exceptions;
+
+class BanSourceUnavailableException : Exception
 {
-    class BanSourceUnavailableException : Exception
+    public BanSourceUnavailableException(string message, string responseContent) : base(message)
     {
-        public BanSourceUnavailableException(string message, string responseContent) : base(message)
-        {
-            ResponseContent = responseContent;
-        }
-
-        public BanSourceUnavailableException(string message, string responseContent, Exception inner) : base(message, inner)
-        {
-            ResponseContent = responseContent;
-        }
-
-        public string ResponseContent { get; set; }
+        ResponseContent = responseContent;
     }
+
+    public BanSourceUnavailableException(string message, string responseContent, Exception inner) : base(message, inner)
+    {
+        ResponseContent = responseContent;
+    }
+
+    public string ResponseContent { get; set; }
 }

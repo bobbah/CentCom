@@ -1,10 +1,9 @@
-﻿namespace CentCom.Common.Models
+﻿namespace CentCom.Common.Models;
+
+public enum RoleplayLevel : uint
 {
-    public enum RoleplayLevel : uint
-    {
-        Unknown,
-        Low,
-        Medium,
-        High
-    }
+    Unknown,
+    Low,
+    Medium,
+    High
 }

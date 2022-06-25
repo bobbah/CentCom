@@ -13,90 +13,89 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 
-namespace CentCom.API
+namespace CentCom.API;
+
+public class Startup
 {
-    public class Startup
+    public Startup(IConfiguration configuration)
     {
-        public Startup(IConfiguration configuration)
+        Configuration = configuration;
+    }
+
+    public IConfiguration Configuration { get; }
+
+    // This method gets called by the runtime. Use this method to add services to the container.
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddControllersWithViews().AddJsonOptions(x =>
         {
-            Configuration = configuration;
+            x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+            x.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+        }).AddRazorRuntimeCompilation();
+
+        // Add DB context
+        var dbConfig = new DbConfig();
+        Configuration.Bind("dbConfig", dbConfig);
+        if (dbConfig == null)
+        {
+            throw new Exception("Failed to read DB configuration, please ensure you provide one in appsettings.json");
+        }
+        switch (dbConfig.DbType)
+        {
+            case DbType.Postgres:
+                services.AddDbContext<DatabaseContext, NpgsqlDbContext>();
+                break;
+            case DbType.MariaDB:
+            case DbType.MySql:
+                services.AddDbContext<DatabaseContext, MySqlDbContext>();
+                break;
         }
 
-        public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        services.AddTransient<IBanService, BanService>();
+        services.AddTransient<IBanSourceService, BanSourceService>();
+
+        services.AddSwaggerGen(c =>
         {
-            services.AddControllersWithViews().AddJsonOptions(x =>
+            c.SwaggerDoc("v1", new OpenApiInfo
             {
-                x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-                x.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
-            }).AddRazorRuntimeCompilation();
-
-            // Add DB context
-            var dbConfig = new DbConfig();
-            Configuration.Bind("dbConfig", dbConfig);
-            if (dbConfig == null)
-            {
-                throw new Exception("Failed to read DB configuration, please ensure you provide one in appsettings.json");
-            }
-            switch (dbConfig.DbType)
-            {
-                case DbType.Postgres:
-                    services.AddDbContext<DatabaseContext, NpgsqlDbContext>();
-                    break;
-                case DbType.MariaDB:
-                case DbType.MySql:
-                    services.AddDbContext<DatabaseContext, MySqlDbContext>();
-                    break;
-            }
-
-
-            services.AddTransient<IBanService, BanService>();
-            services.AddTransient<IBanSourceService, BanSourceService>();
-
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Title = "CentCom",
-                    Version = "v1",
-                    Description = "An API for accesing CentCom, a central ban intelligence service for Space Station 13 servers"
-                });
-
-                // Set the comments path for the Swagger JSON and UI.
-                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                c.IncludeXmlComments(xmlPath);
+                Title = "CentCom",
+                Version = "v1",
+                Description = "An API for accesing CentCom, a central ban intelligence service for Space Station 13 servers"
             });
+
+            // Set the comments path for the Swagger JSON and UI.
+            var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+            var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+            c.IncludeXmlComments(xmlPath);
+        });
+    }
+
+    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+        if (env.IsDevelopment())
+        {
+            app.UseDeveloperExceptionPage();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        app.UseHttpsRedirection();
+        app.UseStaticFiles();
+
+        app.UseSwagger();
+        app.UseSwaggerUI(c =>
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            c.RoutePrefix = "swagger";
+            c.SwaggerEndpoint("/swagger/v1/swagger.json", "CentCom V1");
+        });
 
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
+        app.UseRouting();
 
-            app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.RoutePrefix = "swagger";
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "CentCom V1");
-            });
+        app.UseAuthorization();
 
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute("default", "{controller=Viewer}/{action=Index}/{id?}");
-            });
-        }
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllerRoute("default", "{controller=Viewer}/{action=Index}/{id?}");
+        });
     }
 }

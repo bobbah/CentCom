@@ -5,41 +5,40 @@ using CentCom.Common.Models;
 using CentCom.Server.Services;
 using Microsoft.Extensions.Logging;
 
-namespace CentCom.Server.BanSources
+namespace CentCom.Server.BanSources;
+
+public class VgBanParser : BanParser
 {
-    public class VgBanParser : BanParser
+    private readonly VgBanService _banService;
+
+    public VgBanParser(DatabaseContext dbContext, VgBanService banService, ILogger<VgBanParser> logger) : base(dbContext, logger)
     {
-        private readonly VgBanService _banService;
+        _banService = banService;
+    }
 
-        public VgBanParser(DatabaseContext dbContext, VgBanService banService, ILogger<VgBanParser> logger) : base(dbContext, logger)
+    protected override Dictionary<string, BanSource> Sources => new Dictionary<string, BanSource>
+    {
+        { "vgstation", new BanSource
         {
-            _banService = banService;
-        }
+            Display = "/vg/station",
+            Name = "vgstation",
+            RoleplayLevel = RoleplayLevel.Low
+        } }
+    };
 
-        protected override Dictionary<string, BanSource> Sources => new Dictionary<string, BanSource>()
-        {
-            { "vgstation", new BanSource()
-            {
-                Display = "/vg/station",
-                Name = "vgstation",
-                RoleplayLevel = RoleplayLevel.Low
-            } }
-        };
+    protected override bool SourceSupportsBanIDs => false;
+    protected override string Name => "/vg/station";
 
-        protected override bool SourceSupportsBanIDs => false;
-        protected override string Name => "/vg/station";
+    public override async Task<IEnumerable<Ban>> FetchAllBansAsync()
+    {
+        Logger.LogInformation("Fetching all bans for /vg/station...");
+        return await _banService.GetBansAsync();
+    }
 
-        public override async Task<IEnumerable<Ban>> FetchAllBansAsync()
-        {
-            Logger.LogInformation("Fetching all bans for /vg/station...");
-            return await _banService.GetBansAsync();
-        }
-
-        public override async Task<IEnumerable<Ban>> FetchNewBansAsync()
-        {
-            // Note that the /vg/station website only has a single page for bans, so we always do a full refresh
-            Logger.LogInformation("Fetching new bans for /vg/station...");
-            return await _banService.GetBansAsync();
-        }
+    public override async Task<IEnumerable<Ban>> FetchNewBansAsync()
+    {
+        // Note that the /vg/station website only has a single page for bans, so we always do a full refresh
+        Logger.LogInformation("Fetching new bans for /vg/station...");
+        return await _banService.GetBansAsync();
     }
 }

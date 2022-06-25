@@ -9,105 +9,104 @@ using CentCom.Common.Models;
 using CentCom.Server.Exceptions;
 using Microsoft.Extensions.Logging;
 
-namespace CentCom.Server.Services
+namespace CentCom.Server.Services;
+
+public class VgBanService
 {
-    public class VgBanService
+    private static readonly BanSource BanSource = new BanSource { Name = "vgstation" };
+    private readonly ILogger _logger;
+
+    public VgBanService(ILogger<VgBanService> logger)
     {
-        private static readonly BanSource BanSource = new BanSource() { Name = "vgstation" };
-        private readonly ILogger _logger;
+        _logger = logger;
+    }
 
-        public VgBanService(ILogger<VgBanService> logger)
+    // TODO: cleanup
+    public async Task<IEnumerable<Ban>> GetBansAsync()
+    {
+        var toReturn = new List<Ban>();
+        var config = AngleSharp.Configuration.Default.WithDefaultLoader();
+        var context = BrowsingContext.New(config);
+        var document = await context.OpenAsync("https://ss13.moe/index.php/bans");
+
+        if (document.StatusCode != HttpStatusCode.OK)
         {
-            _logger = logger;
+            _logger.LogError(
+                $"Source website returned a non-200 HTTP response code. Url: \"{document.Url}\", code: {document.StatusCode}");
+            throw new BanSourceUnavailableException(
+                $"Source website returned a non-200 HTTP response code. Url: \"{document.Url}\", code: {document.StatusCode}", document.TextContent);
         }
 
-        // TODO: cleanup
-        public async Task<IEnumerable<Ban>> GetBansAsync()
+        var tables = document.QuerySelectorAll("form > table > tbody");
+        var banTable = tables[0];
+        var jobTable = tables[1];
+
+        for (var i = 1; i < banTable.Children.Length; i++)
         {
-            var toReturn = new List<Ban>();
-            var config = AngleSharp.Configuration.Default.WithDefaultLoader();
-            var context = BrowsingContext.New(config);
-            var document = await context.OpenAsync("https://ss13.moe/index.php/bans");
-
-            if (document.StatusCode != HttpStatusCode.OK)
+            var cursor = banTable.Children[i];
+            var ckey = cursor.Children[0].Children[0].TextContent.Trim();
+            DateTimeOffset date = DateTime.SpecifyKind(
+                cursor.Children[0].Children[0].GetAttribute("title") == "0000-00-00 00:00:00"
+                    ? DateTime.MinValue
+                    : DateTime.Parse(cursor.Children[0].Children[0].GetAttribute("title").Trim()),
+                DateTimeKind.Utc);
+            var reason = cursor.Children[1].TextContent.Trim();
+            var bannedBy = cursor.Children[2].TextContent.Trim();
+            var expiresText = cursor.Children[3].TextContent.Trim();
+            DateTimeOffset? expires = null;
+            if (DateTime.TryParse(expiresText, out var d))
             {
-                _logger.LogError(
-                    $"Source website returned a non-200 HTTP response code. Url: \"{document.Url}\", code: {document.StatusCode}");
-                throw new BanSourceUnavailableException(
-                    $"Source website returned a non-200 HTTP response code. Url: \"{document.Url}\", code: {document.StatusCode}", document.TextContent);
+                expires = DateTime.SpecifyKind(d, DateTimeKind.Utc);
             }
 
-            var tables = document.QuerySelectorAll("form > table > tbody");
-            var banTable = tables[0];
-            var jobTable = tables[1];
-
-            for (var i = 1; i < banTable.Children.Length; i++)
+            toReturn.Add(new Ban
             {
-                var cursor = banTable.Children[i];
-                var ckey = cursor.Children[0].Children[0].TextContent.Trim();
-                DateTimeOffset date = DateTime.SpecifyKind(
-                    cursor.Children[0].Children[0].GetAttribute("title") == "0000-00-00 00:00:00"
-                        ? DateTime.MinValue
-                        : DateTime.Parse(cursor.Children[0].Children[0].GetAttribute("title").Trim()),
-                    DateTimeKind.Utc);
-                var reason = cursor.Children[1].TextContent.Trim();
-                var bannedBy = cursor.Children[2].TextContent.Trim();
-                var expiresText = cursor.Children[3].TextContent.Trim();
-                DateTimeOffset? expires = null;
-                if (DateTime.TryParse(expiresText, out var d))
-                {
-                    expires = DateTime.SpecifyKind(d, DateTimeKind.Utc);
-                }
-
-                toReturn.Add(new Ban()
-                {
-                    CKey = ckey,
-                    BannedOn = date.UtcDateTime,
-                    BannedBy = bannedBy,
-                    Reason = reason,
-                    Expires = expires.HasValue ? expires.Value.UtcDateTime : (DateTime?)null,
-                    BanType = BanType.Server,
-                    SourceNavigation = BanSource
-                });
-            }
-
-            for (var i = 1; i < jobTable.Children.Length; i++)
-            {
-                var cursor = jobTable.Children[i];
-                var bannedDetails = cursor.Children[0];
-                var ckey = bannedDetails.Children[0].TextContent.Trim();
-                DateTimeOffset date = DateTime.SpecifyKind(
-                    cursor.Children[0].Children[0].GetAttribute("title") == "0000-00-00 00:00:00"
-                        ? DateTime.MinValue
-                        : DateTime.Parse(cursor.Children[0].Children[0].GetAttribute("title").Trim()),
-                    DateTimeKind.Utc);
-                var jobDetails = cursor.QuerySelector(".clmJobs");
-                var jobs = jobDetails.QuerySelectorAll("a").Select(x => x.TextContent.Trim()).Distinct();
-                var reason = cursor.Children[2].TextContent.Trim();
-                var bannedBy = cursor.Children[3].TextContent.Trim();
-                var expiresText = cursor.Children[4].TextContent.Trim();
-                DateTimeOffset? expires = null;
-                if (DateTime.TryParse(expiresText, out var d))
-                {
-                    expires = DateTime.SpecifyKind(d, DateTimeKind.Utc);
-                }
-
-                var toAdd = new Ban()
-                {
-                    CKey = ckey,
-                    BanType = BanType.Job,
-                    Reason = reason,
-                    BannedBy = bannedBy,
-                    BannedOn = date.UtcDateTime,
-                    Expires = expires?.UtcDateTime,
-                    SourceNavigation = BanSource
-                };
-
-                toAdd.AddJobRange(jobs);
-                toReturn.Add(toAdd);
-            }
-
-            return toReturn;
+                CKey = ckey,
+                BannedOn = date.UtcDateTime,
+                BannedBy = bannedBy,
+                Reason = reason,
+                Expires = expires.HasValue ? expires.Value.UtcDateTime : null,
+                BanType = BanType.Server,
+                SourceNavigation = BanSource
+            });
         }
+
+        for (var i = 1; i < jobTable.Children.Length; i++)
+        {
+            var cursor = jobTable.Children[i];
+            var bannedDetails = cursor.Children[0];
+            var ckey = bannedDetails.Children[0].TextContent.Trim();
+            DateTimeOffset date = DateTime.SpecifyKind(
+                cursor.Children[0].Children[0].GetAttribute("title") == "0000-00-00 00:00:00"
+                    ? DateTime.MinValue
+                    : DateTime.Parse(cursor.Children[0].Children[0].GetAttribute("title").Trim()),
+                DateTimeKind.Utc);
+            var jobDetails = cursor.QuerySelector(".clmJobs");
+            var jobs = jobDetails.QuerySelectorAll("a").Select(x => x.TextContent.Trim()).Distinct();
+            var reason = cursor.Children[2].TextContent.Trim();
+            var bannedBy = cursor.Children[3].TextContent.Trim();
+            var expiresText = cursor.Children[4].TextContent.Trim();
+            DateTimeOffset? expires = null;
+            if (DateTime.TryParse(expiresText, out var d))
+            {
+                expires = DateTime.SpecifyKind(d, DateTimeKind.Utc);
+            }
+
+            var toAdd = new Ban
+            {
+                CKey = ckey,
+                BanType = BanType.Job,
+                Reason = reason,
+                BannedBy = bannedBy,
+                BannedOn = date.UtcDateTime,
+                Expires = expires?.UtcDateTime,
+                SourceNavigation = BanSource
+            };
+
+            toAdd.AddJobRange(jobs);
+            toReturn.Add(toAdd);
+        }
+
+        return toReturn;
     }
 }

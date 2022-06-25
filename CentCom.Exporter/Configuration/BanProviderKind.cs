@@ -1,13 +1,12 @@
-namespace CentCom.Exporter.Configuration
+namespace CentCom.Exporter.Configuration;
+
+/// <summary>
+/// The set of kinds of ban providers, used for configuration
+/// </summary>
+public enum BanProviderKind
 {
     /// <summary>
-    /// The set of kinds of ban providers, used for configuration
+    /// Specifies using a <see cref="CentCom.Exporter.Data.Providers.TgBanProvider" />
     /// </summary>
-    public enum BanProviderKind
-    {
-        /// <summary>
-        /// Specifies using a <see cref="CentCom.Exporter.Data.Providers.TgBanProvider" />
-        /// </summary>
-        Tgstation
-    }
+    Tgstation
 }
