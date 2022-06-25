@@ -158,6 +158,24 @@ public abstract class BanParser : IJob
 
         // Assign proper sources
         bans = await AssignBanSources(bans);
+        
+        // Ensure timezone is set properly
+        foreach (var ban in bans)
+        {
+            if (ban.BannedOn.Kind != DateTimeKind.Utc)
+            {
+                ban.BannedOn = ban.BannedOn.Kind == DateTimeKind.Unspecified
+                    ? DateTime.SpecifyKind(ban.BannedOn, DateTimeKind.Utc)
+                    : ban.BannedOn.ToUniversalTime();
+            }
+
+            if (ban.Expires.HasValue && ban.Expires.Value.Kind != DateTimeKind.Utc)
+            {
+                ban.Expires = ban.Expires.Value.Kind == DateTimeKind.Unspecified
+                    ? DateTime.SpecifyKind(ban.Expires.Value, DateTimeKind.Utc)
+                    : ban.Expires.Value.ToUniversalTime();
+            } 
+        }
 
         // Remove and report any invalid data from the parsed data
         var dirtyBans = bans.Where(x => x.CKey == null || (SourceSupportsBanIDs && x.BanID == null));
@@ -214,10 +232,11 @@ public abstract class BanParser : IJob
                 var changed = false;
 
                 // Check for a difference in date time, unbans, or reason
-                if (matchedBan.Reason != b.Reason || matchedBan.Expires != b.Expires ||
+                if (matchedBan.Reason != b.Reason || matchedBan.BannedOn != b.BannedOn || matchedBan.Expires != b.Expires ||
                     matchedBan.UnbannedBy != b.UnbannedBy)
                 {
                     matchedBan.Reason = b.Reason;
+                    matchedBan.BannedOn = b.BannedOn;
                     matchedBan.Expires = b.Expires;
                     matchedBan.UnbannedBy = b.UnbannedBy;
                     changed = true;

@@ -77,7 +77,7 @@
 
         function submitSearch() {
             var text = $('#ckey-search').val();
-            if ($.trim(text) !== '') {
+            if ($.trim(text) != '') {
                 window.location.href = window.location.origin + "/viewer/search/" + text;
             }
         }
@@ -88,7 +88,7 @@
         });
 
         $('#ckey-search').keypress(function (e) {
-            if (e.which === '13') {
+            if (e.which == '13') {
                 submitSearch();
             }
         });

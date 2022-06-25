@@ -72,13 +72,6 @@ public class FulpBanService : RestBanService
                 toAdd.AddJobRange(ban.GetProperty("role").EnumerateArray().Select(x => x.GetString()));
             }
 
-            // Specify UTC
-            toAdd.BannedOn = DateTime.SpecifyKind(toAdd.BannedOn, DateTimeKind.Utc);
-            if (toAdd.Expires.HasValue)
-            {
-                toAdd.Expires = DateTime.SpecifyKind(toAdd.Expires.Value, DateTimeKind.Utc);
-            }
-
             toReturn.Add(toAdd);
         }
 

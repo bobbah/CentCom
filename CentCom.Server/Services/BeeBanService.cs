@@ -44,8 +44,7 @@ public class BeeBanService : RestBanService
                                b.GetProperty("expiration_time").GetString();
             var toAdd = new Ban
             {
-                BannedOn = DateTime.SpecifyKind(DateTime.Parse(b.GetProperty("bantime").GetString()),
-                    DateTimeKind.Utc),
+                BannedOn = DateTime.Parse(b.GetProperty("bantime").GetString()),
                 BannedBy = b.GetProperty("a_ckey").GetString(),
                 UnbannedBy = b.GetProperty("unbanned_ckey").GetString(),
                 BanType = b.GetProperty("roles").EnumerateArray().Select(x => x.GetString()).Contains("Server")
@@ -53,7 +52,7 @@ public class BeeBanService : RestBanService
                     : BanType.Job,
                 Expires = expiryString == null
                     ? null
-                    : DateTime.SpecifyKind(DateTime.Parse(expiryString), DateTimeKind.Utc),
+                    : DateTime.Parse(expiryString),
                 CKey = b.GetProperty("ckey").GetString(),
                 Reason = b.GetProperty("reason").GetString(),
                 BanID = b.GetProperty("id").GetInt32().ToString(),

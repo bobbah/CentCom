@@ -34,10 +34,8 @@ public abstract class DatabaseContext : DbContext
             entity.Property(e => e.Id).UseIdentityAlwaysColumn();
             entity.Property(e => e.CKey).IsRequired().HasMaxLength(32);
             entity.Property(e => e.Source).IsRequired();
-            entity.Property(e => e.BannedOn).IsRequired()
-                .HasConversion(v => v, v => DateTime.SpecifyKind(v, DateTimeKind.Utc));
-            entity.Property(e => e.Expires).HasConversion(v => v,
-                v => v.HasValue ? DateTime.SpecifyKind(v.Value, DateTimeKind.Utc) : null);
+            entity.Property(e => e.BannedOn).IsRequired();
+            entity.Property(e => e.Expires);
             entity.Property(e => e.BannedBy).IsRequired().HasMaxLength(32);
             entity.Property(e => e.UnbannedBy).HasMaxLength(32);
             entity.Property(e => e.BanType).IsRequired();
@@ -66,8 +64,7 @@ public abstract class DatabaseContext : DbContext
             entity.HasKey(e => e.Id);
             entity.Property(e => e.Id).UseIdentityAlwaysColumn();
             entity.Property(e => e.Name).IsRequired();
-            entity.Property(e => e.PerformedAt).IsRequired()
-                .HasConversion(v => v, v => DateTime.SpecifyKind(v, DateTimeKind.Utc));
+            entity.Property(e => e.PerformedAt).IsRequired();
             entity.Property(e => e.Version).IsRequired();
             entity.HasIndex(e => new { e.Name, e.Version }).IsUnique();
         });

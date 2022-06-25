@@ -14,133 +14,20 @@
   <component name="ChangeListManager">
     <list default="true" id="28c8f7e3-4e14-4e22-b8f6-ae65cdd7cd09" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CentCom/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CentCom/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.API/CentCom.API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.API/CentCom.API.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.API/Controllers/BanController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.API/Controllers/BanController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.API/Controllers/ScraperInfoController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.API/Controllers/ScraperInfoController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.API/Controllers/ViewerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.API/Controllers/ViewerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.API/Models/BanSearchViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.API/Models/BanSearchViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.API/Models/BanSourceData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.API/Models/BanSourceData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.API/Models/BanViewViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.API/Models/BanViewViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.API/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.API/Services/IBanService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.API/Services/IBanService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.API/Services/IBanSourceService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.API/Services/IBanSourceService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.API/Services/Implemented/BanService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.API/Services/Implemented/BanService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.API/Services/Implemented/BanSourceService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.API/Services/Implemented/BanSourceService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.API/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.API/Startup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.API/Views/Viewer/viewbans.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.API/Views/Viewer/viewbans.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Bot/CentCom.Bot.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Bot/CentCom.Bot.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Bot/Commands/AboutCommands.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Bot/Commands/AboutCommands.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Bot/Commands/SearchCommands.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Bot/Commands/SearchCommands.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Bot/Configuration/DiscordConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Bot/Configuration/DiscordConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Bot/Jobs/FailedParseJob.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Bot/Jobs/FailedParseJob.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Bot/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Bot/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Bot/Responders/ServerJoinResponder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Bot/Responders/ServerJoinResponder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Bot/VersionUtility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Bot/VersionUtility.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Abstract/ICKey.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Abstract/ICKey.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Abstract/IRestBan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Abstract/IRestBan.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Abstract/IRestJobBan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Abstract/IRestJobBan.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.API/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.API/Views/Shared/_Layout.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CentCom.Common/CentCom.Common.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/CentCom.Common.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Configuration/DbConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Configuration/DbConfig.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CentCom.Common/Data/DatabaseContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Data/DatabaseContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Data/DesignTime/MariaDbContextFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Data/DesignTime/MariaDbContextFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Data/DesignTime/MySqlDbContextFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Data/DesignTime/MySqlDbContextFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Data/DesignTime/NpgsqlDbContextFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Data/DesignTime/NpgsqlDbContextFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Data/MariaDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Data/MariaDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Data/MySqlDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Data/MySqlDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Data/NpgsqlDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Data/NpgsqlDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Extensions/BanExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Extensions/BanExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Extensions/CentComSerializationExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Extensions/CentComSerializationExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Json/CKeyStringConverter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Json/CKeyStringConverter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Json/JobBanCollectionConverter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Json/JobBanCollectionConverter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/KeyUtilities.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/KeyUtilities.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/MariaDb/20210819220930_AddCheckHistory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/MariaDb/20210819220930_AddCheckHistory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/MariaDb/20210820052648_AddBotNotifications.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/MariaDb/20210820052648_AddBotNotifications.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/MariaDb/20210820072851_AddExceptionDetails.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/MariaDb/20210820072851_AddExceptionDetails.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/MariaDb/20210821145930_UniqueSourceNames.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/MariaDb/20210821145930_UniqueSourceNames.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/MariaDb/20210823002811_FailedResponseContent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/MariaDb/20210823002811_FailedResponseContent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/MySql/20200729172826_InitialCreate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/MySql/20200729172826_InitialCreate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/MySql/20200730015336_UpdateBanSourceDeleteCascading.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/MySql/20200730015336_UpdateBanSourceDeleteCascading.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/MySql/20200801000735_AddFlatFileVersioning.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/MySql/20200801000735_AddFlatFileVersioning.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/MySql/20200816155107_RemoveCIDAndIP.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/MySql/20200816155107_RemoveCIDAndIP.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/MySql/20200914041057_AddBanAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/MySql/20200914041057_AddBanAttribute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/MySql/20210819220926_AddCheckHistory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/MySql/20210819220926_AddCheckHistory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/MySql/20210820052645_AddBotNotifications.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/MySql/20210820052645_AddBotNotifications.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/MySql/20210820072848_AddExceptionDetails.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/MySql/20210820072848_AddExceptionDetails.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/MySql/20210821145927_UniqueSourceNames.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/MySql/20210821145927_UniqueSourceNames.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/MySql/20210823002807_FailedResponseContent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/MySql/20210823002807_FailedResponseContent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/Postgres/20200729172841_InitialCreate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/Postgres/20200729172841_InitialCreate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/Postgres/20200730015353_UpdateBanSourceDeleteCascading.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/Postgres/20200730015353_UpdateBanSourceDeleteCascading.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/Postgres/20200730054811_AddSnakeCaseNamingConvention.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/Postgres/20200730054811_AddSnakeCaseNamingConvention.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/Postgres/20200801000709_AddFlatFileVersioning.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/Postgres/20200801000709_AddFlatFileVersioning.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/Postgres/20200816155037_RemoveCIDAndIP.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/Postgres/20200816155037_RemoveCIDAndIP.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/Postgres/20200914041044_AddBanAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/Postgres/20200914041044_AddBanAttribute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/Postgres/20210819220923_AddCheckHistory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/Postgres/20210819220923_AddCheckHistory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/Postgres/20210820052641_AddBotNotifications.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/Postgres/20210820052641_AddBotNotifications.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/Postgres/20210820072845_AddExceptionDetails.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/Postgres/20210820072845_AddExceptionDetails.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/Postgres/20210821145924_UniqueSourceNames.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/Postgres/20210821145924_UniqueSourceNames.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/Postgres/20210823002803_FailedResponseContent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/Postgres/20210823002803_FailedResponseContent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Models/Ban.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Models/Ban.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Models/BanAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Models/BanAttribute.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Models/BanSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Models/BanSource.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Models/BanType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Models/BanType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Models/Byond/CKey.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Models/Byond/CKey.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Models/CheckHistory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Models/CheckHistory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Models/DTO/BanData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Models/DTO/BanData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Models/Equality/BanEqualityComparer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Models/Equality/BanEqualityComparer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Models/Equality/JobBanEqualityComparer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Models/Equality/JobBanEqualityComparer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Models/FlatBansVersion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Models/FlatBansVersion.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Models/JobBan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Models/JobBan.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Models/KeySummary.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Models/KeySummary.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Models/NotifiedFailure.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Models/NotifiedFailure.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Models/Rest/RestBan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Models/Rest/RestBan.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Models/Rest/RestCKey.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Models/Rest/RestCKey.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Models/Rest/RestJobBan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Models/Rest/RestJobBan.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/Models/RoleplayLevel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Models/RoleplayLevel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Exporter/CentCom.Exporter.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Exporter/CentCom.Exporter.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Exporter/Configuration/BanInclusionOption.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Exporter/Configuration/BanInclusionOption.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Exporter/Configuration/BanProviderKind.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Exporter/Configuration/BanProviderKind.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Exporter/Configuration/BanProviderOptions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Exporter/Configuration/BanProviderOptions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Exporter/Controllers/BanController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Exporter/Controllers/BanController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Exporter/Data/BanClusterer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Exporter/Data/BanClusterer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Exporter/Data/ExportedBan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Exporter/Data/ExportedBan.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Exporter/Data/Providers/IBanProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Exporter/Data/Providers/IBanProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Exporter/Data/Providers/TgBanProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Exporter/Data/Providers/TgBanProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Exporter/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Exporter/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Exporter/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Exporter/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/MariaDb/MariaDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/MariaDb/MariaDbContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/MySql/MySqlDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/MySql/MySqlDbContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Common/Migrations/Postgres/NpgsqlDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/Migrations/Postgres/NpgsqlDbContextModelSnapshot.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CentCom.Server/BanSources/BanParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/BanSources/BanParser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Server/BanSources/BeeBanParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/BanSources/BeeBanParser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Server/BanSources/FulpBanParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/BanSources/FulpBanParser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Server/BanSources/StandardBanParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/BanSources/StandardBanParser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Server/BanSources/TGMCBanParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/BanSources/TGMCBanParser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Server/BanSources/TgBanParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/BanSources/TgBanParser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Server/BanSources/VgBanParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/BanSources/VgBanParser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Server/BanSources/YogBanParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/BanSources/YogBanParser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Server/CentCom.Server.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/CentCom.Server.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Server/Configuration/StandardProviderConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/Configuration/StandardProviderConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Server/Data/DatabaseUpdater.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/Data/DatabaseUpdater.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Server/Exceptions/BanSourceUnavailableException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/Exceptions/BanSourceUnavailableException.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Server/Extensions/AsyncParallelForEach.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/Extensions/AsyncParallelForEach.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Server/External/Raw/IRawBan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/External/Raw/IRawBan.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CentCom.Server/External/Raw/TgRawBan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/External/Raw/TgRawBan.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Server/External/TgApiResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/External/TgApiResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Server/FlatData/FlatDataFile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/FlatData/FlatDataFile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Server/FlatData/FlatDataImporter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/FlatData/FlatDataImporter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Server/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CentCom.Server/Services/BeeBanService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/Services/BeeBanService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CentCom.Server/Services/FulpBanService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/Services/FulpBanService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Server/Services/RestBanService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/Services/RestBanService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CentCom.Server/Services/StandardProviderService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/Services/StandardProviderService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CentCom.Server/Services/TGMCBanService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/Services/TGMCBanService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Server/Services/TgBanService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/Services/TgBanService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CentCom.Server/Services/VgBanService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/Services/VgBanService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CentCom.Server/Services/YogBanService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/Services/YogBanService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Test/BanServices/BeeBanServiceTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Test/BanServices/BeeBanServiceTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Test/Ban_EqualsShould.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Test/Ban_EqualsShould.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Test/Ban_GetCanonicalKeyShould.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Test/Ban_GetCanonicalKeyShould.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Test/CKeyTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Test/CKeyTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Test/CentCom.Test.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Test/CentCom.Test.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Test/JobBan_EqualsShould.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Test/JobBan_EqualsShould.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Test/RestBanTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Test/RestBanTests.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,6 +51,10 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/IL/ad6403114c5244e69ff82ccc5fd383048a200/8a/a76fa575/0200002Apdb.il" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/83e464da02e4442dbb3c2d22f628b0e816e00/b8/5ea09f12/IDiscordRestChannelAPI.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/99dcbb8b1f8643499bd68c278929fb53d6a00/da/60102cae/ObjectExtensions.cs" root0="SKIP_HIGHLIGHTING" />
@@ -176,6 +67,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2e9beeb180834f4b9abea5f3db1bc8bd8f5578/9B/Lazy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/483801266a064cf6a016c4137514860b2ea00/2C/IRestClient.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/56dda7c0541e451f84f8a5c8ebed2df17f78/3/UserSecretsConfigurationExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/575c31ecc35a636b6f962cb71d53992552941a18982aae1c8e6c16305cc3761b/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/703d0017f7a14d9b91c387e2e63051027d88/6/EventLogSettings.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/90689221616d496d80797d821b753cca2800/4/Optional.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/90689221616d496d80797d821b753cca2800/5/Snowflake.cs" root0="SKIP_HIGHLIGHTING" />
@@ -192,6 +84,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e62ae84440144114b63de444644ef1b82000/3/SystemTextJsonSerializer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/fc577a47a9ae4d289ea4e815bea8e7528800/3/IServiceCollectionQuartzConfigurator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/fc9e539d4213450583fc62c50c0ca6013c00/A/Result.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/bobbahbrown/repos/CentCom/CentCom.API/Views/Shared/_Layout.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/CentCom.Common/Models/Byond/CKey.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/CentCom.Server/BanSources/BanParser.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/CentCom.Server/Services/BeeBanService.cs" root0="FORCE_HIGHLIGHTING" />
@@ -411,7 +304,7 @@
       <workItem from="1655583818460" duration="88000" />
       <workItem from="1655910415953" duration="114000" />
       <workItem from="1656126668338" duration="35000" />
-      <workItem from="1656160866736" duration="3087000" />
+      <workItem from="1656160866736" duration="9684000" />
     </task>
     <task id="LOCAL-00001" summary="update bee ban url">
       <created>1628898475361</created>
@@ -480,13 +373,6 @@
     <MESSAGE value="update bee ban url" />
     <MESSAGE value="add support for linden" />
     <option name="LAST_COMMIT_MESSAGE" value="add support for linden" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <default-breakpoints>
-        <breakpoint enabled="true" type="DotNet Exception Breakpoints" />
-      </default-breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

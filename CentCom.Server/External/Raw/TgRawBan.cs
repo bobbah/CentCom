@@ -98,7 +98,7 @@ public class TgRawBan : IRawBan
                 DateTimeStyles.AllowWhiteSpaces,
                 out var expiration))
         {
-            return DateTime.SpecifyKind(expiration, DateTimeKind.Utc);
+            return expiration;
         }
 
         return null;

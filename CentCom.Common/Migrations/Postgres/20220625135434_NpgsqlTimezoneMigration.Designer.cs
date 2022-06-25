@@ -3,6 +3,7 @@ using System;
 using CentCom.Common.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CentCom.Common.Migrations.Postgres
 {
     [DbContext(typeof(NpgsqlDbContext))]
-    partial class NpgsqlDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220625135434_NpgsqlTimezoneMigration")]
+    partial class NpgsqlTimezoneMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

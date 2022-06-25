@@ -45,18 +45,17 @@ public class VgBanService
         {
             var cursor = banTable.Children[i];
             var ckey = cursor.Children[0].Children[0].TextContent.Trim();
-            DateTimeOffset date = DateTime.SpecifyKind(
+            DateTimeOffset date =
                 cursor.Children[0].Children[0].GetAttribute("title") == "0000-00-00 00:00:00"
                     ? DateTime.MinValue
-                    : DateTime.Parse(cursor.Children[0].Children[0].GetAttribute("title").Trim()),
-                DateTimeKind.Utc);
+                    : DateTime.Parse(cursor.Children[0].Children[0].GetAttribute("title").Trim());
             var reason = cursor.Children[1].TextContent.Trim();
             var bannedBy = cursor.Children[2].TextContent.Trim();
             var expiresText = cursor.Children[3].TextContent.Trim();
             DateTimeOffset? expires = null;
             if (DateTime.TryParse(expiresText, out var d))
             {
-                expires = DateTime.SpecifyKind(d, DateTimeKind.Utc);
+                expires = d;
             }
 
             toReturn.Add(new Ban
@@ -65,7 +64,7 @@ public class VgBanService
                 BannedOn = date.UtcDateTime,
                 BannedBy = bannedBy,
                 Reason = reason,
-                Expires = expires.HasValue ? expires.Value.UtcDateTime : null,
+                Expires = expires?.UtcDateTime,
                 BanType = BanType.Server,
                 SourceNavigation = BanSource
             });
@@ -76,11 +75,10 @@ public class VgBanService
             var cursor = jobTable.Children[i];
             var bannedDetails = cursor.Children[0];
             var ckey = bannedDetails.Children[0].TextContent.Trim();
-            DateTimeOffset date = DateTime.SpecifyKind(
+            DateTimeOffset date = 
                 cursor.Children[0].Children[0].GetAttribute("title") == "0000-00-00 00:00:00"
                     ? DateTime.MinValue
-                    : DateTime.Parse(cursor.Children[0].Children[0].GetAttribute("title").Trim()),
-                DateTimeKind.Utc);
+                    : DateTime.Parse(cursor.Children[0].Children[0].GetAttribute("title").Trim());
             var jobDetails = cursor.QuerySelector(".clmJobs");
             var jobs = jobDetails.QuerySelectorAll("a").Select(x => x.TextContent.Trim()).Distinct();
             var reason = cursor.Children[2].TextContent.Trim();
@@ -89,7 +87,7 @@ public class VgBanService
             DateTimeOffset? expires = null;
             if (DateTime.TryParse(expiresText, out var d))
             {
-                expires = DateTime.SpecifyKind(d, DateTimeKind.Utc);
+                expires = d;
             }
 
             var toAdd = new Ban

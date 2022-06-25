@@ -47,13 +47,13 @@ public class YogBanService : RestBanService
             var expiryString = b["unbanned_datetime"].GetString() ?? b["expiration_time"].GetString();
             var toAdd = new Ban
             {
-                BannedOn = DateTime.SpecifyKind(DateTime.Parse(b["bantime"].GetString()), DateTimeKind.Utc),
+                BannedOn = DateTime.Parse(b["bantime"].GetString()),
                 BannedBy = b["a_ckey"].GetString(),
                 UnbannedBy = b["unbanned_ckey"].GetString(),
                 BanType = b["roles"].EnumerateArray().Select(x => x.GetString()).Contains("Server")
                     ? BanType.Server
                     : BanType.Job,
-                Expires = expiryString == null ? null : DateTime.SpecifyKind(DateTime.Parse(expiryString), DateTimeKind.Utc),
+                Expires = expiryString == null ? null : DateTime.Parse(expiryString),
                 CKey = b["ckey"].GetString(),
                 Reason = b["reason"].GetString(),
                 BanID = b["id"].GetInt32().ToString(),

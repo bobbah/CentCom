@@ -43,10 +43,10 @@ public class StandardProviderService : RestBanService
         {
             BanID = x.Id.ToString(),
             BannedBy = x.BannedBy?.CanonicalKey,
-            BannedOn = x.BannedOn.DateTime,
+            BannedOn = x.BannedOn.UtcDateTime,
             BanType = x.BanType,
             CKey = x.CKey?.CanonicalKey,
-            Expires = x.Expires?.DateTime,
+            Expires = x.Expires?.UtcDateTime,
             UnbannedBy = x.UnbannedBy?.CanonicalKey,
             Reason = x.Reason,
             JobBans = x.JobBans?.Select(j => new JobBan

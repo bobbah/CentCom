@@ -73,13 +73,6 @@ public class TGMCBanService : RestBanService
                 SourceNavigation = BanSource
             };
 
-            // Specify UTC
-            toAdd.BannedOn = DateTime.SpecifyKind(toAdd.BannedOn, DateTimeKind.Utc);
-            if (toAdd.Expires.HasValue)
-            {
-                toAdd.Expires = DateTime.SpecifyKind(toAdd.Expires.Value, DateTimeKind.Utc);
-            }
-
             // Add jobban if relevant
             if (toAdd.BanType == BanType.Job)
             {
