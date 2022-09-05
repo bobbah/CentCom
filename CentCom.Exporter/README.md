@@ -18,6 +18,7 @@ This application currently supports the following codebases, and their downstrea
 ban database formats:
 
 - [/tg/station](Data/Providers/TgBanProvider.cs)
+- [ParadiseSS13](Data/Providers/ParadiseBanProvider.cs)
 
 Don't see a codebase that applies to you? Feel free to provide your own implementation
 of [IBanProvider](Data/Providers/IBanProvider.cs) in a PR, or request that bobbahbrown#0001 provide one.

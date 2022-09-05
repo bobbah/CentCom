@@ -42,6 +42,9 @@ public class Startup
             case BanProviderKind.Tgstation:
                 services.AddTransient<IBanProvider, TgBanProvider>();
                 break;
+            case BanProviderKind.ParadiseSS13:
+                services.AddTransient<IBanProvider, ParadiseBanProvider>();
+                break;
             default:
                 throw new ArgumentOutOfRangeException();
         }

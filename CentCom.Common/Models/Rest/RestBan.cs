@@ -14,5 +14,6 @@ public record RestBan
     string Reason,
     DateTimeOffset? Expires,
     ICKey UnbannedBy,
-    IReadOnlyList<IRestJobBan> JobBans
+    IReadOnlyList<IRestJobBan> JobBans,
+    int? RoundId
 ) : IRestBan;
