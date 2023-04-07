@@ -62,7 +62,7 @@ public class ParadiseBanProvider : IBanProvider {
 				SELECT
 					b.id,
 					b.bantime AS BannedAt,
-					b.job,
+					b.job AS Role,
 					b.expiration_time AS Expiration,
 					b.reason,
 					b.ckey,
