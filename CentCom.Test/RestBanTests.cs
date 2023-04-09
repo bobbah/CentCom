@@ -25,7 +25,8 @@ public class RestBanTests
             "Test ban please ignore",
             null,
             null,
-            new[] { new RestJobBan("Janitor") });
+            new[] { new RestJobBan("Janitor") },
+            null);
         Assert.NotNull(ban);
     }
 
@@ -41,7 +42,8 @@ public class RestBanTests
             "Test ban please ignore",
             null,
             null,
-            new[] { new RestJobBan("Janitor") });
+            new[] { new RestJobBan("Janitor") },
+            null);
 
         var options = GetOptions();
         var serialized = JsonSerializer.Serialize(ban, options);

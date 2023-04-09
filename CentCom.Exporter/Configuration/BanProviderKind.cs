@@ -8,5 +8,9 @@ public enum BanProviderKind
     /// <summary>
     /// Specifies using a <see cref="CentCom.Exporter.Data.Providers.TgBanProvider" />
     /// </summary>
-    Tgstation
+    Tgstation,
+    /// <summary>
+    /// Specifies using a <see cref="CentCom.Exporter.Data.Providers.ParadiseBanProvider" />
+    /// </summary>
+    ParadiseSS13,
 }

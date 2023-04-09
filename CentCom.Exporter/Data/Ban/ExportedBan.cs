@@ -3,7 +3,7 @@ using CentCom.Common.Models;
 using CentCom.Common.Models.Byond;
 using CentCom.Common.Models.Rest;
 
-namespace CentCom.Exporter.Data;
+namespace CentCom.Exporter.Data.Ban;
 
 /// <summary>
 /// Standard exported ban from a IBanProvider
@@ -11,8 +11,7 @@ namespace CentCom.Exporter.Data;
 /// <remarks>
 /// This class may require modification should another IBanProvider implementation necessitate it
 /// </remarks>
-public class ExportedBan
-{
+public class ExportedBan {
     /// <summary>
     /// The database ID of the ban
     /// </summary>
@@ -66,6 +65,11 @@ public class ExportedBan
     /// </summary>
     public CKey UnbannedBy { get; set; }
 
+    /// <summary>
+    /// The Round ID of the ban, if any
+    /// </summary>
+    public int? RoundId { get; set; }
+
     public static implicit operator RestBan(ExportedBan ban) => new RestBan
     (
         ban.Id,
@@ -76,6 +80,7 @@ public class ExportedBan
         ban.Reason,
         ban.Expiration,
         ban.UnbannedBy,
-        ban.BanType == BanType.Job ? new[] { new RestJobBan(ban.Role) } : null
+        ban.BanType == BanType.Job ? new[] { new RestJobBan(ban.Role) } : null,
+        ban.RoundId
     );
 }

@@ -53,4 +53,9 @@ public interface IRestBan
     /// The list of job bans, if present
     /// </summary>
     public IReadOnlyList<IRestJobBan> JobBans { get; }
+
+    /// <summary>
+    /// The optional Round ID of the ban, if present
+    /// </summary>
+    public int? RoundId { get; }
 }
