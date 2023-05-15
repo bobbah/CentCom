@@ -21,29 +21,17 @@ public class BeeBanParser : BanParser
 
     protected override Dictionary<string, BanSource> Sources => new Dictionary<string, BanSource>
     {
-        { "bee-acacia", new BanSource
+        { "bee-mrp", new BanSource
         {
-            Display = "Beestation Acacia",
-            Name = "bee-acacia",
-            RoleplayLevel = RoleplayLevel.Medium
-        } },
-        { "bee-sage", new BanSource
-        {
-            Display = "Beestation Sage",
-            Name = "bee-sage",
+            Display = "Beestation",
+            Name = "bee-mrp",
             RoleplayLevel = RoleplayLevel.Medium
         } },
         { "bee-lrp", new BanSource
         {
-            Display = "Beestation Golden",
+            Display = "Beestation LRP",
             Name = "bee-lrp",
             RoleplayLevel = RoleplayLevel.Low
-        } },
-        { "bee-linden", new BanSource
-        {
-            Display = "Beestation Linden",
-            Name = "bee-linden",
-            RoleplayLevel = RoleplayLevel.Medium
         } }
     };
 
