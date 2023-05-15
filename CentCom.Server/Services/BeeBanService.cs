@@ -16,8 +16,10 @@ namespace CentCom.Server.Services;
 public class BeeBanService : RestBanService
 {
     private const int ParallelRequests = 1;
+    private static readonly BanSource AcaciaSource = new BanSource { Name = "bee-acacia" };
+    private static readonly BanSource SageSource = new BanSource { Name = "bee-sage" };
     private static readonly BanSource LrpSource = new BanSource { Name = "bee-lrp" };
-    private static readonly BanSource MrpSource = new BanSource { Name = "bee-mrp" };
+    private static readonly BanSource LindenSource = new BanSource { Name = "bee-linden" };
 
     public BeeBanService(ILogger<BeeBanService> logger) : base(logger)
     {
@@ -107,9 +109,9 @@ public class BeeBanService : RestBanService
         return (raw.ToLower()) switch
         {
             "bs_golden" => LrpSource,
-            "bs_sage" => MrpSource,
-            "bs_acacia" => MrpSource,
-            "bs_linden" => MrpSource,
+            "bs_sage" => SageSource,
+            "bs_acacia" => AcaciaSource,
+            "bs_linden" => LindenSource,
             _ => throw new Exception(
                 $"Failed to convert raw value of Beestation ban source to BanSource: \"{raw}\""),
         };
