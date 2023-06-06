@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using CentCom.Common.Abstract;
+using Remora.Rest.Core;
 
 namespace CentCom.Common.Models.Rest;
 
@@ -15,5 +16,5 @@ public record RestBan
     DateTimeOffset? Expires,
     ICKey UnbannedBy,
     IReadOnlyList<IRestJobBan> JobBans,
-    int? RoundId
+    Optional<int?> RoundId
 ) : IRestBan;

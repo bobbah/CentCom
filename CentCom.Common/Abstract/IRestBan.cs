@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using CentCom.Common.Models;
+using Remora.Rest.Core;
 
 namespace CentCom.Common.Abstract;
 
@@ -57,5 +58,5 @@ public interface IRestBan
     /// <summary>
     /// The optional Round ID of the ban, if present
     /// </summary>
-    public int? RoundId { get; }
+    public Optional<int?> RoundId { get; }
 }
