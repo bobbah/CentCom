@@ -48,13 +48,15 @@ jobs:
             });
             const releaseRuntimes = ['linux-x64', 'win-x64'];
             const projects = ['CentCom.API', 'CentCom.Server', 'CentCom.Exporter', 'CentCom.Bot'];
-            releaseRuntimes.forEach(rt => projects.forEach(proj => {
-              // Upload the release asset
-              await github.repos.uploadReleaseAsset({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                release_id: release.data.id,
-                name: `publish/${proj}-${rt}.zip`,
-                data: await fs.readFileSync(`publish/${proj}-${rt}.zip`)
-              });
-            }));
+            for (rt of releaseRuntimes) {
+              for (proj of projects) {
+                // Upload the release asset
+                await github.repos.uploadReleaseAsset({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  release_id: release.data.id,
+                  name: `publish/${proj}-${rt}.zip`,
+                  data: fs.readFileSync(`publish/${proj}-${rt}.zip`)
+                });
+              }
+            } 
