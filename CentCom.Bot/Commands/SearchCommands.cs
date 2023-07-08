@@ -7,6 +7,7 @@ using CentCom.Common.Data;
 using CentCom.Common.Models;
 using CentCom.Common.Models.Byond;
 using CentCom.Common.Models.DTO;
+using CentCom.Common.Util;
 using Microsoft.EntityFrameworkCore;
 using Remora.Commands.Attributes;
 using Remora.Commands.Groups;
@@ -57,7 +58,7 @@ public class SearchCommands : CommandGroup
             $"their /tg/ activity on [Scrubby](https://scrubby.melonmesa.com/ckey/{key}).",
             Fields: fields,
             Timestamp: DateTimeOffset.UtcNow,
-            Footer: new EmbedFooter(VersionUtility.Version));
+            Footer: new EmbedFooter($"{AssemblyInformation.Current.Version} ({AssemblyInformation.Current.Commit[..7]})"));
 
         return await _feedback.SendContextualEmbedAsync(embed);
     }

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using CentCom.Common.Data;
+using CentCom.Common.Util;
 using Microsoft.EntityFrameworkCore;
 using Remora.Commands.Attributes;
 using Remora.Commands.Groups;
@@ -48,7 +49,7 @@ public class AboutCommands : CommandGroup
             Fields: stats,
             Colour: _feedback.Theme.Success,
             Timestamp: DateTimeOffset.UtcNow,
-            Footer: new EmbedFooter(VersionUtility.Version));
+            Footer: new EmbedFooter($"{AssemblyInformation.Current.Version} ({AssemblyInformation.Current.Commit[..7]})"));
         var result = await _feedback.SendContextualEmbedAsync(embed, ct: CancellationToken);
         return result.IsSuccess ? Result.FromSuccess() : Result.FromError(result);
     }
@@ -64,6 +65,6 @@ public class AboutCommands : CommandGroup
             Description: $"[Click here]({inviteLink}) to invite me to your server!",
             Colour: _feedback.Theme.Primary,
             Timestamp: DateTimeOffset.UtcNow,
-            Footer: new EmbedFooter(VersionUtility.Version)));
+            Footer: new EmbedFooter($"{AssemblyInformation.Current.Version} ({AssemblyInformation.Current.Commit[..7]})")));
     }
 }

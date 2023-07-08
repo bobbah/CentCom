@@ -15,7 +15,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="28c8f7e3-4e14-4e22-b8f6-ae65cdd7cd09" name="Default Changelist" comment="" />
+    <list default="true" id="28c8f7e3-4e14-4e22-b8f6-ae65cdd7cd09" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/CentCom.Common/Util/AssemblyInformation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CentCom/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CentCom/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.API/Models/AppVersionDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.API/Models/AppVersionDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.API/Services/Implemented/AppStatusService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.API/Services/Implemented/AppStatusService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.Server/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CentCom.sln" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.sln" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -136,7 +143,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.CentCom.API">
+  <component name="RunManager" selected=".NET Project.CentCom.Server">
     <configuration name="CentCom.Server: Portable" type="DotNetMsBuildPublish" factoryName="Publish to IIS">
       <riderPublish publish_profile="Portable.pubxml" pubxml_path="$PROJECT_DIR$/CentCom.Server/Properties/PublishProfiles/Portable.pubxml" uuid_high="-1696680645765414218" uuid_low="-7045077597192557862" />
       <method v="2" />
