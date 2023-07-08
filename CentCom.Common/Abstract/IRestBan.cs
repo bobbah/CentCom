@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using CentCom.Common.Models;
-using Remora.Rest.Core;
 
 namespace CentCom.Common.Abstract;
 
@@ -58,5 +58,6 @@ public interface IRestBan
     /// <summary>
     /// The optional Round ID of the ban, if present
     /// </summary>
-    public Optional<int?> RoundId { get; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public int? RoundId { get; }
 }

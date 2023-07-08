@@ -1,6 +1,4 @@
-﻿using System;
-using CentCom.Common.Models;
-using CentCom.Common.Models.Byond;
+﻿using CentCom.Common.Models;
 using CentCom.Common.Models.Rest;
 
 namespace CentCom.Exporter.Data.Ban;

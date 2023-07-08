@@ -30,25 +30,26 @@ public abstract class RestBanService
             messageBuilder.Append($"\n\tResponse URL: \"{response.ResponseUri}\"");
         messageBuilder.Append($"\n\tRequest URL: \"{url}\"");
         var message = messageBuilder.ToString();
-            
+
         // Log error as appropriate
         _logger.LogError(message);
         throw new BanSourceUnavailableException(message, response.Content);
     }
 
 
-    protected void InitializeClient()
+    protected void InitializeClient(ConfigureSerialization configureSerialization = null)
     {
         if (BaseUrl == null)
             return;
-            
-        var options = new RestClientOptions(BaseUrl)
+
+        Client = new RestClient(GenerateClientOptions(), configureSerialization: configureSerialization);
+    }
+
+    protected virtual RestClientOptions GenerateClientOptions() =>
+        new(BaseUrl)
         {
             // Setup user agent
             UserAgent =
                 $"Mozilla/5.0 (compatible; CentComBot/{Assembly.GetExecutingAssembly().GetName().Version}; +https://centcom.melonmesa.com/scraper)"
         };
-
-        Client = new RestClient(options);
-    }
 }
