@@ -16,18 +16,24 @@ namespace CentCom.Server.Services;
 
 public class FulpBanService : RestBanService
 {
+    private readonly bool _allowExpiredSsl;
     private const int RecordsPerPage = 50;
     private static readonly BanSource BanSource = new BanSource { Name = "fulp" };
 
     public FulpBanService(ILogger<FulpBanService> logger, IConfiguration config) : base(logger)
     {
-        if (config.GetSection("sourceConfig").GetValue<bool>("allowFulpExpiredSSL"))
-        {
-            Client.Options.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyError) => true;
-        }
+        _allowExpiredSsl = config.GetSection("sourceConfig").GetValue<bool>("allowFulpExpiredSSL");
     }
 
     protected override string BaseUrl => "https://api.fulp.gg/";
+
+    protected override RestClientOptions GenerateClientOptions()
+    {
+        var baseOptions = base.GenerateClientOptions();
+        if (_allowExpiredSsl)
+            baseOptions.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyError) => true;
+        return baseOptions;
+    }
 
     public async Task<IEnumerable<Ban>> GetBansAsync(int page = 1)
     {

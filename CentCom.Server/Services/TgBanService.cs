@@ -20,11 +20,12 @@ public class TgBanService : RestBanService
 
     public TgBanService(ILogger<TgBanService> logger) : base(logger)
     {
-        Client.UseSystemTextJson(new JsonSerializerOptions
+        // Re-initialize to control JSON serialization behaviour
+        InitializeClient(o =>o.UseSystemTextJson(new JsonSerializerOptions
         {
             PropertyNameCaseInsensitive = true,
             Converters = { new JsonStringEnumConverter() }
-        });
+        }));
     }
 
     protected override string BaseUrl => "https://tgstation13.org/";

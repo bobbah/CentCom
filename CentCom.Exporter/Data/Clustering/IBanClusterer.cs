@@ -1,8 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using CentCom.Common.Abstract;
-using CentCom.Common.Models;
-using CentCom.Common.Models.Rest;
 
 namespace CentCom.Exporter.Data.Clustering;
 

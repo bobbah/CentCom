@@ -51,9 +51,7 @@ public class RestBanTests
         Assert.NotNull(deserialized);
     }
 
-    private static JsonSerializerOptions GetOptions()
-    {
-        return (new ServiceCollection()).AddCentComSerialization().BuildServiceProvider()
-            .GetRequiredService<IOptions<JsonSerializerOptions>>().Value;
-    }
+    private static JsonSerializerOptions GetOptions() =>
+        new ServiceCollection().AddCentComSerialization().BuildServiceProvider()
+        .GetRequiredService<IOptions<JsonSerializerOptions>>().Value;
 }

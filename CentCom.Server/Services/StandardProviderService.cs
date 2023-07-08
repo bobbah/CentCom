@@ -88,16 +88,15 @@ public class StandardProviderService : RestBanService
         _configured = true;
         _baseUrl = config.Url;
         Source = new BanSource { Name = config.Id, Display = config.Display, RoleplayLevel = config.RoleplayLevel };
-
-        // Re-initialize client with new url
-        InitializeClient();
-
+        
         // Setup JSON for client
         var options = new JsonSerializerOptions();
         options.AddCentComOptions();
         options.AddDataObjectConverter<IRestBan, RestBan>();
         options.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
         options.Converters.Insert(0, new JsonStringEnumConverter());
-        Client.UseSystemTextJson(options);
+        
+        // Re-initialize client with new url
+        InitializeClient(o => o.UseSystemTextJson(options));
     }
 }
