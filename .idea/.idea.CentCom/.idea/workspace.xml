@@ -15,16 +15,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="28c8f7e3-4e14-4e22-b8f6-ae65cdd7cd09" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.CentCom/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CentCom/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.API/CentCom.API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.API/CentCom.API.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Bot/CentCom.Bot.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Bot/CentCom.Bot.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Common/CentCom.Common.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Common/CentCom.Common.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Exporter/CentCom.Exporter.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Exporter/CentCom.Exporter.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Server/CentCom.Server.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/CentCom.Server.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Server/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CentCom.Server/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/CentCom.Server/appsettings.json" afterDir="false" />
-    </list>
+    <list default="true" id="28c8f7e3-4e14-4e22-b8f6-ae65cdd7cd09" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -145,7 +136,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected=".NET Project.CentCom.Server">
+  <component name="RunManager" selected=".NET Launch Settings Profile.CentCom.API">
     <configuration name="CentCom.Server: Portable" type="DotNetMsBuildPublish" factoryName="Publish to IIS">
       <riderPublish publish_profile="Portable.pubxml" pubxml_path="$PROJECT_DIR$/CentCom.Server/Properties/PublishProfiles/Portable.pubxml" uuid_high="-1696680645765414218" uuid_low="-7045077597192557862" />
       <method v="2" />

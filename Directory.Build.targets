@@ -1,0 +1,21 @@
+<Project>
+    <Target Name="SetSourceRevisionId" BeforeTargets="MinVer">
+        <ItemGroup>
+            <AssemblyMetadata Include="SourceRevisionId" Value="$(SourceRevisionId)"/>
+        </ItemGroup>
+    </Target>
+
+    <Target Name="SetMinVerVersionAttr" AfterTargets="MinVer">
+        <ItemGroup>
+            <AssemblyMetadata Include="MinVerVersion" Value="$(MinVerVersion)"/>
+        </ItemGroup>
+    </Target>
+
+    <Target Name="SetPRVersion" AfterTargets="MinVer" Condition="'$(GITHUB_ACTIONS)'=='true' And '$(GITHUB_EVENT_NAME)'=='pull_request'">
+        <PropertyGroup>
+            <PackageVersion>$(MinVerMajor).$(MinVerMinor).$(MinVerPatch)-pr.$(PRNumber).$(MinVerPreRelease)</PackageVersion>
+            <PackageVersion Condition="'$(MinVerBuildMetadata)' != ''">$(PackageVersion)+$(MinVerBuildMetadata)</PackageVersion>
+            <Version>$(PackageVersion)</Version>
+        </PropertyGroup>
+    </Target>
+</Project>

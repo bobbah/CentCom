@@ -41,7 +41,7 @@ internal class Program
             .CreateLogger();
 
         Log.Logger.ForContext<Program>()
-            .Information($"Starting CentCom Server v{Assembly.GetExecutingAssembly().GetName().Version}");
+            .Information("Starting CentCom Server {Version}", Assembly.GetExecutingAssembly().GetName().Version);
 
         return CreateHostBuilder(args).RunConsoleAsync();
     }

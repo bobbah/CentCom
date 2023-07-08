@@ -31,6 +31,33 @@
             <response code="200">The desired ban</response>
             <response code="404">Ban ID was invalid</response>
         </member>
+        <member name="M:CentCom.API.Controllers.StatusController.GetVersion">
+            <summary>
+            Get the current version of the application.
+            </summary>
+            <returns>An object containing details about the current version</returns>
+            <response code="200">The application version</response>
+        </member>
+        <member name="T:CentCom.API.Models.AppVersionDTO">
+            <summary>
+            Contains the status summary of the application.
+            </summary>
+            <param name="Version">The version of the application in semver</param>
+            <param name="Commit">The commit hash of the build that the application is running</param>
+        </member>
+        <member name="M:CentCom.API.Models.AppVersionDTO.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Contains the status summary of the application.
+            </summary>
+            <param name="Version">The version of the application in semver</param>
+            <param name="Commit">The commit hash of the build that the application is running</param>
+        </member>
+        <member name="P:CentCom.API.Models.AppVersionDTO.Version">
+            <summary>The version of the application in semver</summary>
+        </member>
+        <member name="P:CentCom.API.Models.AppVersionDTO.Commit">
+            <summary>The commit hash of the build that the application is running</summary>
+        </member>
         <member name="T:CentCom.API.Models.BanSourceData">
             <summary>
             DTO for ban sources
@@ -57,6 +84,43 @@
             </summary>
             <param name="source">The object to copy data from</param>
             <returns>A BanSource DTO</returns>
+        </member>
+        <member name="M:CentCom.API.Services.IAppStatusService.GetVersion">
+            <summary>
+            Get the version for the application.
+            </summary>
+            <returns>The current version</returns>
+        </member>
+        <member name="M:CentCom.API.Services.IAppStatusService.GetBuildCommit(System.Int32)">
+            <summary>
+            Get the build commit for the application's current version.
+            </summary>
+            <param name="maxHashLength">The maximum length of the hash to return</param>
+            <returns>The commit from the build of this version of the application</returns>
+        </member>
+        <member name="M:CentCom.API.Services.IAppStatusService.GetCopyrightNotice">
+            <summary>
+            Get the copyright notice for the application's current version.
+            </summary>
+            <returns>The copyright notice, if present at build time</returns>
+        </member>
+        <member name="M:CentCom.API.Services.IAppStatusService.GetAppVersionDTO">
+            <summary>
+            Returns a DTO appropriate for transmission for the current version of the application.
+            </summary>
+            <returns>The completed DTO</returns>
+        </member>
+        <member name="M:CentCom.API.Services.Implemented.AppStatusService.GetVersion">
+            <inheritdoc />
+        </member>
+        <member name="M:CentCom.API.Services.Implemented.AppStatusService.GetBuildCommit(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:CentCom.API.Services.Implemented.AppStatusService.GetCopyrightNotice">
+            <inheritdoc />
+        </member>
+        <member name="M:CentCom.API.Services.Implemented.AppStatusService.GetAppVersionDTO">
+            <inheritdoc />
         </member>
     </members>
 </doc>

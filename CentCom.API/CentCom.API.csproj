@@ -1,34 +1,29 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
-        <Version>1.5.1</Version>
         <UserSecretsId>1f5f48fa-862f-4472-ba34-2c5a26035e88</UserSecretsId>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-        <DocumentationFile>CentCom.API.xml</DocumentationFile>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
         <DocumentationFile>CentCom.API.xml</DocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="BuildBundlerMinifier" Version="3.2.449"/>
-        <PackageReference Include="Enums.NET" Version="4.0.0"/>
-        <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.6"/>
-        <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.6"/>
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.6"/>
-        <PackageReference Include="Npgsql" Version="6.0.5"/>
-        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.5"/>
-        <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.3.1"/>
-        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.3.1"/>
-        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUi" Version="6.3.1"/>
+        <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
+        <PackageReference Include="Enums.NET" Version="4.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.6" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.6" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.6" />
+        <PackageReference Include="MinVer" Version="4.3.0">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Npgsql" Version="6.0.5" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.5" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.3.1" />
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.3.1" />
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUi" Version="6.3.1" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\CentCom.Common\CentCom.Common.csproj"/>
+        <ProjectReference Include="..\CentCom.Common\CentCom.Common.csproj" />
     </ItemGroup>
 
 
