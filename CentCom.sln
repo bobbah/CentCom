@@ -16,7 +16,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 		add-migration.bat = add-migration.bat
 		README.md = README.md
-		publish-script.bat = publish-script.bat
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentCom.Bot", "CentCom.Bot\CentCom.Bot.csproj", "{A99A54D9-F216-45EA-9758-1092C82CEC57}"

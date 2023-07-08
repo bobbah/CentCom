@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
 using CentCom.Common.Configuration;
 using CentCom.Common.Data;
+using CentCom.Common.Util;
 using CentCom.Server.BanSources;
 using CentCom.Server.Data;
 using CentCom.Server.FlatData;
@@ -41,7 +41,8 @@ internal class Program
             .CreateLogger();
 
         Log.Logger.ForContext<Program>()
-            .Information("Starting CentCom Server {Version}", Assembly.GetExecutingAssembly().GetName().Version);
+            .Information("Starting CentCom Server {Version} ({Commit})", AssemblyInformation.Current.Version,
+                AssemblyInformation.Current.Commit[..7]);
 
         return CreateHostBuilder(args).RunConsoleAsync();
     }
@@ -96,7 +97,7 @@ internal class Program
                 services.AddSingleton<FulpBanService>();
                 services.AddSingleton<TGMCBanService>();
                 services.AddSingleton<TgBanService>();
-                    
+
                 // Standard provider is transient as it differs per request
                 services.AddTransient<StandardProviderService>();
 
@@ -127,6 +128,9 @@ internal class Program
                                 .WithIdentity("updater"),
                         job => job.WithIdentity("updater"));
                 });
-                services.AddQuartzHostedService();
+                services.AddQuartzHostedService(o =>
+                {
+                    o.WaitForJobsToComplete = true;
+                });
             });
 }
