@@ -54,13 +54,17 @@ public class Startup
 
         services.AddTransient<IBanService, BanService>();
         services.AddTransient<IBanSourceService, BanSourceService>();
+        
+        // Add status service
+        var statusService = new AppStatusService();
+        services.AddSingleton<IAppStatusService>(statusService);
 
         services.AddSwaggerGen(c =>
         {
             c.SwaggerDoc("v1", new OpenApiInfo
             {
                 Title = "CentCom",
-                Version = "v1",
+                Version = statusService.GetVersion().ToString(),
                 Description = "An API for accesing CentCom, a central ban intelligence service for Space Station 13 servers"
             });
 
@@ -82,11 +86,12 @@ public class Startup
         app.UseHttpsRedirection();
         app.UseStaticFiles();
 
+        var statusService = app.ApplicationServices.GetRequiredService<IAppStatusService>();
         app.UseSwagger();
         app.UseSwaggerUI(c =>
         {
             c.RoutePrefix = "swagger";
-            c.SwaggerEndpoint("/swagger/v1/swagger.json", "CentCom V1");
+            c.SwaggerEndpoint("/swagger/v1/swagger.json", $"CentCom {statusService.GetVersion()}");
         });
 
         app.UseRouting();
