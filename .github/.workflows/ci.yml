@@ -1,0 +1,29 @@
+name: ci
+on:
+  push:
+    branches: [master]
+  pull_request:
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+jobs:
+  ci:
+    name: ubuntu
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Set PR number (Linux)
+        run: |
+          echo "PRNumber=${{ github.event.pull_request.number }}" >> "$GITHUB_ENV"
+        if: github.event_name == 'pull_request'
+      - uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 7.0.305
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Restore dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --no-restore
+      - name: Test
+        run: dotnet test --no-build --verbosity normal CentCom.Test/CentCom.Test.csproj --logger GitHubActions
