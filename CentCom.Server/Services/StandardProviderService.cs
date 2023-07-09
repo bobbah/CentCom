@@ -5,13 +5,11 @@ using System.Net;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using CentCom.Common.Abstract;
 using CentCom.Common.Extensions;
 using CentCom.Common.Models;
 using CentCom.Common.Models.Rest;
 using CentCom.Server.Configuration;
 using Microsoft.Extensions.Logging;
-using Remora.Rest.Extensions;
 using RestSharp;
 using RestSharp.Serializers.Json;
 
@@ -34,7 +32,7 @@ public class StandardProviderService : RestBanService
         var request = new RestRequest("api/ban");
         if (cursor.HasValue)
             request.AddQueryParameter("cursor", cursor.ToString());
-        var response = await Client.ExecuteAsync<IEnumerable<IRestBan>>(request);
+        var response = await Client.ExecuteAsync<IEnumerable<RestBan>>(request);
 
         if (response.StatusCode != HttpStatusCode.OK)
             FailedRequest(response);
@@ -92,7 +90,6 @@ public class StandardProviderService : RestBanService
         // Setup JSON for client
         var options = new JsonSerializerOptions();
         options.AddCentComOptions();
-        options.AddDataObjectConverter<IRestBan, RestBan>();
         options.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
         options.Converters.Insert(0, new JsonStringEnumConverter());
         
