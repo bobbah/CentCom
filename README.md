@@ -54,6 +54,12 @@ hour (``XX:05``, ``XX:10``...) for a latest refresh (getting all new bans), exce
 will be full refreshes. At this point the entire source set is taken from each ban source and compared with what is
 stored in the database, at which point any differences will be resolved.
 
+## Sponsors
+
+![Alt text](docs/sentry-wordmark.png)
+
+Thanks to [Sentry](https://sentry.io/welcome/) for sponsoring CentCom! Their platform helps to support error logging and improve performance on the primary hosted instance of CentCom.
+
 ## Contributing
 
 PRs can be opened on this repository to propose changes to the codebase. There are a few things to note...
