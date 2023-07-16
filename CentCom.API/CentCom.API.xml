@@ -4,92 +4,6 @@
         <name>CentCom.API</name>
     </assembly>
     <members>
-        <member name="M:CentCom.API.Controllers.BanController.GetBansForKey(System.String,System.Boolean,System.Nullable{System.Int32})">
-            <summary>
-            Retrieves stored bans for a provided ckey.
-            </summary>
-            <param name="key">A BYOND key, will be converted into CKey</param>
-            <param name="onlyActive">Operator for controlling if only active bans will be returned</param>
-            <param name="source">Operator for specifying a specific source to return bans for</param>
-            <returns>A collection of bans matching the provided conditions</returns>
-            <response code="200">The user's bans</response>
-            <response code="400">Key was null or whitespace</response>
-        </member>
-        <member name="M:CentCom.API.Controllers.BanController.GetSources">
-            <summary>
-            Lists all available ban sources
-            </summary>
-            <returns>A collection of ban sources</returns>
-            <response code="200">The list of ban sources</response>
-        </member>
-        <member name="M:CentCom.API.Controllers.BanController.GetBan(System.Int32)">
-            <summary>
-            Retrieves a specific ban from CentCom using the internal ID
-            </summary>
-            <param name="id">The CentCom Ban ID of the ban</param>
-            <returns>The ban specified</returns>
-            <response code="200">The desired ban</response>
-            <response code="404">Ban ID was invalid</response>
-        </member>
-        <member name="M:CentCom.API.Controllers.StatusController.GetVersion">
-            <summary>
-            Get the current version of the application.
-            </summary>
-            <returns>An object containing details about the current version</returns>
-            <response code="200">The application version</response>
-        </member>
-        <member name="T:CentCom.API.Models.AppVersionDTO">
-            <summary>
-            Contains the status summary of the application.
-            </summary>
-            <param name="Version">The version of the application in semver</param>
-            <param name="Commit">The commit hash of the build that the application is running</param>
-            <param name="CopyrightNotice">The copyright notice for this version of the application</param>
-        </member>
-        <member name="M:CentCom.API.Models.AppVersionDTO.#ctor(System.String,System.String,System.String)">
-            <summary>
-            Contains the status summary of the application.
-            </summary>
-            <param name="Version">The version of the application in semver</param>
-            <param name="Commit">The commit hash of the build that the application is running</param>
-            <param name="CopyrightNotice">The copyright notice for this version of the application</param>
-        </member>
-        <member name="P:CentCom.API.Models.AppVersionDTO.Version">
-            <summary>The version of the application in semver</summary>
-        </member>
-        <member name="P:CentCom.API.Models.AppVersionDTO.Commit">
-            <summary>The commit hash of the build that the application is running</summary>
-        </member>
-        <member name="P:CentCom.API.Models.AppVersionDTO.CopyrightNotice">
-            <summary>The copyright notice for this version of the application</summary>
-        </member>
-        <member name="T:CentCom.API.Models.BanSourceData">
-            <summary>
-            DTO for ban sources
-            </summary>
-        </member>
-        <member name="P:CentCom.API.Models.BanSourceData.ID">
-            <summary>
-            Internal CentCom DB ID
-            </summary>
-        </member>
-        <member name="P:CentCom.API.Models.BanSourceData.Name">
-            <summary>
-            Display name
-            </summary>
-        </member>
-        <member name="P:CentCom.API.Models.BanSourceData.RoleplayLevel">
-            <summary>
-            The roleplay level of this ban source
-            </summary>
-        </member>
-        <member name="M:CentCom.API.Models.BanSourceData.FromBanSource(CentCom.Common.Models.BanSource)">
-            <summary>
-            Generates a DTO from a database BanSource
-            </summary>
-            <param name="source">The object to copy data from</param>
-            <returns>A BanSource DTO</returns>
-        </member>
         <member name="M:CentCom.API.Services.IAppStatusService.GetVersion">
             <summary>
             Get the version for the application.
@@ -126,6 +40,112 @@
         </member>
         <member name="M:CentCom.API.Services.Implemented.AppStatusService.GetAppVersionDTO">
             <inheritdoc />
+        </member>
+        <member name="M:CentCom.API.V1.Controllers.BanController.GetBansForKey(System.String,System.Boolean,System.Nullable{System.Int32})">
+            <summary>
+            Retrieves stored bans for a provided ckey.
+            </summary>
+            <param name="key">A BYOND key, will be converted into CKey</param>
+            <param name="onlyActive">Operator for controlling if only active bans will be returned</param>
+            <param name="source">Operator for specifying a specific source to return bans for</param>
+            <returns>A collection of bans matching the provided conditions</returns>
+            <response code="200">The user's bans</response>
+            <response code="400">Key was null or whitespace</response>
+        </member>
+        <member name="M:CentCom.API.V1.Controllers.BanController.GetBan(System.Int32)">
+            <summary>
+            Retrieves a specific ban from CentCom using the internal ID
+            </summary>
+            <param name="id">The CentCom Ban ID of the ban</param>
+            <returns>The ban specified</returns>
+            <response code="200">The desired ban</response>
+            <response code="404">Ban ID was invalid</response>
+        </member>
+        <member name="M:CentCom.API.V1.Controllers.SourceController.GetSources">
+            <summary>
+            Lists all available ban sources
+            </summary>
+            <returns>A collection of ban sources</returns>
+            <response code="200">The list of ban sources</response>
+        </member>
+        <member name="M:CentCom.API.V1.Controllers.StatusController.GetVersion">
+            <summary>
+            Get the current version of the application.
+            </summary>
+            <returns>An object containing details about the current version</returns>
+            <response code="200">The application version</response>
+        </member>
+        <member name="T:CentCom.API.V1.Models.AppVersionDTO">
+            <summary>
+            Contains the status summary of the application.
+            </summary>
+            <param name="Version">The version of the application in semver</param>
+            <param name="Commit">The commit hash of the build that the application is running</param>
+            <param name="CopyrightNotice">The copyright notice for this version of the application</param>
+        </member>
+        <member name="M:CentCom.API.V1.Models.AppVersionDTO.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Contains the status summary of the application.
+            </summary>
+            <param name="Version">The version of the application in semver</param>
+            <param name="Commit">The commit hash of the build that the application is running</param>
+            <param name="CopyrightNotice">The copyright notice for this version of the application</param>
+        </member>
+        <member name="P:CentCom.API.V1.Models.AppVersionDTO.Version">
+            <summary>The version of the application in semver</summary>
+        </member>
+        <member name="P:CentCom.API.V1.Models.AppVersionDTO.Commit">
+            <summary>The commit hash of the build that the application is running</summary>
+        </member>
+        <member name="P:CentCom.API.V1.Models.AppVersionDTO.CopyrightNotice">
+            <summary>The copyright notice for this version of the application</summary>
+        </member>
+        <member name="T:CentCom.API.V1.Models.BanSourceData">
+            <summary>
+            DTO for ban sources
+            </summary>
+        </member>
+        <member name="P:CentCom.API.V1.Models.BanSourceData.ID">
+            <summary>
+            Internal CentCom DB ID
+            </summary>
+        </member>
+        <member name="P:CentCom.API.V1.Models.BanSourceData.Name">
+            <summary>
+            Display name
+            </summary>
+        </member>
+        <member name="P:CentCom.API.V1.Models.BanSourceData.RoleplayLevel">
+            <summary>
+            The roleplay level of this ban source
+            </summary>
+        </member>
+        <member name="M:CentCom.API.V1.Models.BanSourceData.FromBanSource(CentCom.Common.Models.BanSource)">
+            <summary>
+            Generates a DTO from a database BanSource
+            </summary>
+            <param name="source">The object to copy data from</param>
+            <returns>A BanSource DTO</returns>
+        </member>
+        <member name="M:CentCom.API.V2.Controllers.BanController.GetBansForKey(System.String,System.Boolean,System.Nullable{System.Int32})">
+            <summary>
+            Retrieves stored bans for a provided ckey.
+            </summary>
+            <param name="key">A BYOND key, will be converted into CKey</param>
+            <param name="onlyActive">Operator for controlling if only active bans will be returned</param>
+            <param name="source">Operator for specifying a specific source to return bans for</param>
+            <returns>A collection of bans matching the provided conditions</returns>
+            <response code="200">The user's bans</response>
+            <response code="400">Key was null or whitespace</response>
+        </member>
+        <member name="M:CentCom.API.V2.Controllers.BanController.GetBan(System.Int32)">
+            <summary>
+            Retrieves a specific ban from CentCom using the internal ID
+            </summary>
+            <param name="id">The CentCom Ban ID of the ban</param>
+            <returns>The ban specified</returns>
+            <response code="200">The desired ban</response>
+            <response code="404">Ban ID was invalid</response>
         </member>
     </members>
 </doc>

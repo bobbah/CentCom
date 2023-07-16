@@ -6,7 +6,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
+        <PackageReference Include="Asp.Versioning.Mvc" Version="7.0.0" />
+        <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="7.0.0" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="7.0.8" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.8" />
         <PackageReference Include="MinVer" Version="4.3.0">
@@ -22,6 +23,16 @@
 
     <ItemGroup>
         <ProjectReference Include="..\CentCom.Common\CentCom.Common.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="V1\" />
+      <Folder Include="V2\Models\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="wwwroot\css\site.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\css\site.min.css" />
     </ItemGroup>
 
 

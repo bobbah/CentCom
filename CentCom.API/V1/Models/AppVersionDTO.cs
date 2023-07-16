@@ -1,6 +1,6 @@
 using CentCom.Common.Util;
 
-namespace CentCom.API.Models;
+namespace CentCom.API.V1.Models;
 
 /// <summary>
 /// Contains the status summary of the application.

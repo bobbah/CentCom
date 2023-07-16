@@ -1,24 +1,22 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using CentCom.API.Models;
 using CentCom.API.Services;
 using CentCom.Common.Models.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CentCom.API.Controllers;
+namespace CentCom.API.V1.Controllers;
 
-[Produces("application/json")]
 [ApiController]
+[Route("api/v{apiVersion:apiVersion}/[controller]")]
+[Produces("application/json")]
 public class BanController : ControllerBase
 {
     private readonly IBanService _banService;
-    private readonly IBanSourceService _banSourceService;
 
-    public BanController(IBanService banService, IBanSourceService banSourceService)
+    public BanController(IBanService banService)
     {
         _banService = banService;
-        _banSourceService = banSourceService;
     }
 
     /// <summary>
@@ -30,7 +28,7 @@ public class BanController : ControllerBase
     /// <returns>A collection of bans matching the provided conditions</returns>
     /// <response code="200">The user's bans</response>
     /// <response code="400">Key was null or whitespace</response>
-    [HttpGet("ban/search/{key}")]
+    [HttpGet("search/{key}")]
     [ProducesResponseType(typeof(IEnumerable<BanData>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetBansForKey(string key, [FromQuery] bool onlyActive, [FromQuery] int? source)
     {
@@ -38,19 +36,8 @@ public class BanController : ControllerBase
         {
             return BadRequest("Key cannot be empty or null");
         }
-        return Ok(await _banService.GetBansForKeyAsync(key, source, onlyActive));
-    }
 
-    /// <summary>
-    /// Lists all available ban sources
-    /// </summary>
-    /// <returns>A collection of ban sources</returns>
-    /// <response code="200">The list of ban sources</response>
-    [HttpGet("source/list")]
-    [ProducesResponseType(typeof(IEnumerable<BanSourceData>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetSources()
-    {
-        return Ok(await _banSourceService.GetAllBanSourcesAsync());
+        return Ok(await _banService.GetBansForKeyAsync(key, source, onlyActive));
     }
 
     /// <summary>
@@ -60,7 +47,7 @@ public class BanController : ControllerBase
     /// <returns>The ban specified</returns>
     /// <response code="200">The desired ban</response>
     /// <response code="404">Ban ID was invalid</response>
-    [HttpGet("ban/{id}")]
+    [HttpGet("{id:int}")]
     [ProducesResponseType(typeof(BanData), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetBan(int id)
     {
@@ -69,6 +56,7 @@ public class BanController : ControllerBase
         {
             return NotFound("Invalid Ban ID");
         }
+
         return Ok(result);
     }
 }

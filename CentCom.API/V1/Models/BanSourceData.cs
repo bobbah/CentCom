@@ -1,6 +1,6 @@
 ﻿using CentCom.Common.Models;
 
-namespace CentCom.API.Models;
+namespace CentCom.API.V1.Models;
 
 /// <summary>
 /// DTO for ban sources

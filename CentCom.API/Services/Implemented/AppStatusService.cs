@@ -1,5 +1,5 @@
 using System;
-using CentCom.API.Models;
+using CentCom.API.V1.Models;
 using CentCom.Common.Util;
 
 namespace CentCom.API.Services.Implemented;
