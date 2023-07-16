@@ -79,7 +79,7 @@ public class TgRawBan : IRawBan
             CKey = CKey,
             UnbannedBy = UnbannedBy,
             Reason = Reason,
-            Expires = ExpirationTime,
+            Expires = UnbannedAt ?? ExpirationTime,
             SourceNavigation = source
         };
 
