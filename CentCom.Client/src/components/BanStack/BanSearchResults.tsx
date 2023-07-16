@@ -4,7 +4,7 @@ import { banSearchByKey } from '../../apis/centcom';
 import { Ban } from '../../types/ban';
 import { Loader, Paper, Progress, SimpleGrid, Stack, Text } from '@mantine/core';
 import { useEffect, useState } from 'react';
-import { BanPanel } from '../BanPanel/BanPanel';
+import { BanPanel, MemoizedBanPanel } from '../BanPanel/BanPanel';
 
 type BanStackProps = {
   byondKey: string;
@@ -118,7 +118,7 @@ export function BanStack({ byondKey }: BanStackProps) {
         </Paper>
       </SimpleGrid>
       {data?.map((ban) => {
-        return <BanPanel key={ban.id} ban={ban} />;
+        return <MemoizedBanPanel key={ban.id} ban={ban} />;
       })}
     </Stack>
   );
