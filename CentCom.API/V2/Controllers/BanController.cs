@@ -25,8 +25,7 @@ public class BanController : ControllerBase
     /// <param name="key">A BYOND key, will be converted into CKey</param>
     /// <param name="onlyActive">Operator for controlling if only active bans will be returned</param>
     /// <param name="source">Operator for specifying a specific source to return bans for</param>
-    /// <returns>A collection of bans matching the provided conditions</returns>
-    /// <response code="200">The user's bans</response>
+    /// <response code="200">A collection of bans matching the provided conditions</response>
     /// <response code="400">Key was null or whitespace</response>
     [HttpGet("search/{key}")]
     [ProducesResponseType(typeof(IEnumerable<BanData>), StatusCodes.Status200OK)]
@@ -44,8 +43,7 @@ public class BanController : ControllerBase
     /// Retrieves a specific ban from CentCom using the internal ID
     /// </summary>
     /// <param name="id">The CentCom Ban ID of the ban</param>
-    /// <returns>The ban specified</returns>
-    /// <response code="200">The desired ban</response>
+    /// <response code="200">The specified ban</response>
     /// <response code="404">Ban ID was invalid</response>
     [HttpGet("{id:int}")]
     [ProducesResponseType(typeof(BanData), StatusCodes.Status200OK)]

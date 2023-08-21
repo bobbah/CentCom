@@ -29,6 +29,7 @@ public class BanSourceData
     /// <returns>A BanSource DTO</returns>
     public static BanSourceData FromBanSource(BanSource source)
     {
+        if (source == null) return null;
         return new BanSourceData
         {
             ID = source.Id,

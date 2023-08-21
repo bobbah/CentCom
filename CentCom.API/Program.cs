@@ -101,11 +101,13 @@ public static class Program
         app.UseSwagger();
         app.UseSwaggerUI(c =>
         {
+            var latest = true;
             foreach (var desc in app.DescribeApiVersions().Reverse())
             {
                 var url = $"/swagger/{desc.GroupName}/swagger.json";
-                var name = desc.GroupName.ToUpperInvariant();
+                var name = $"{desc.GroupName.ToUpperInvariant()}{(latest ? " (Latest)" : null)}";
                 c.SwaggerEndpoint(url, name);
+                latest = false;
             }
         });
 

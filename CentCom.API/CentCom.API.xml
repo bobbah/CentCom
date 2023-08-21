@@ -134,8 +134,7 @@
             <param name="key">A BYOND key, will be converted into CKey</param>
             <param name="onlyActive">Operator for controlling if only active bans will be returned</param>
             <param name="source">Operator for specifying a specific source to return bans for</param>
-            <returns>A collection of bans matching the provided conditions</returns>
-            <response code="200">The user's bans</response>
+            <response code="200">A collection of bans matching the provided conditions</response>
             <response code="400">Key was null or whitespace</response>
         </member>
         <member name="M:CentCom.API.V2.Controllers.BanController.GetBan(System.Int32)">
@@ -143,9 +142,61 @@
             Retrieves a specific ban from CentCom using the internal ID
             </summary>
             <param name="id">The CentCom Ban ID of the ban</param>
-            <returns>The ban specified</returns>
-            <response code="200">The desired ban</response>
+            <response code="200">The specified ban</response>
             <response code="404">Ban ID was invalid</response>
+        </member>
+        <member name="M:CentCom.API.V2.Controllers.CKeyController.Search(System.String)">
+            <summary>
+            Search through the set of known canonical keys using a provided search query
+            </summary>
+            <param name="query">The search query</param>
+            <response code="200">A list of keys matching the search query, along with statistics about them</response>
+            <response code="400">The provided search query was missing or invalid</response>
+        </member>
+        <member name="M:CentCom.API.V2.Controllers.SourceController.GetSources">
+            <summary>
+            Lists all available ban sources
+            </summary>
+            <response code="200">The list of ban sources</response>
+        </member>
+        <member name="M:CentCom.API.V2.Controllers.SourceController.GetSourceDetails(System.Int32)">
+            <summary>
+            Gets details for a specified ban source
+            </summary>
+            <param name="id">The internal CentCom ID of the ban source</param>
+            <response code="200">The details of the ban source</response>
+            <response code="404">The ban source ID was invalid or missing</response>
+        </member>
+        <member name="M:CentCom.API.V2.Controllers.StatusController.GetVersion">
+            <summary>
+            Get the current version of the application.
+            </summary>
+            <response code="200">Details of the application version</response>
+        </member>
+        <member name="T:CentCom.API.V2.Models.AppVersionDTO">
+            <summary>
+            Contains the status summary of the application.
+            </summary>
+            <param name="Version">The version of the application in semver</param>
+            <param name="Commit">The commit hash of the build that the application is running</param>
+            <param name="CopyrightNotice">The copyright notice for this version of the application</param>
+        </member>
+        <member name="M:CentCom.API.V2.Models.AppVersionDTO.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Contains the status summary of the application.
+            </summary>
+            <param name="Version">The version of the application in semver</param>
+            <param name="Commit">The commit hash of the build that the application is running</param>
+            <param name="CopyrightNotice">The copyright notice for this version of the application</param>
+        </member>
+        <member name="P:CentCom.API.V2.Models.AppVersionDTO.Version">
+            <summary>The version of the application in semver</summary>
+        </member>
+        <member name="P:CentCom.API.V2.Models.AppVersionDTO.Commit">
+            <summary>The commit hash of the build that the application is running</summary>
+        </member>
+        <member name="P:CentCom.API.V2.Models.AppVersionDTO.CopyrightNotice">
+            <summary>The copyright notice for this version of the application</summary>
         </member>
     </members>
 </doc>

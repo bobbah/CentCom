@@ -1,14 +1,14 @@
 import { AxiosError } from 'axios';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import { listSources } from '../apis/centcom';
 import { Source } from '../types/source';
 import { Loader, ScrollArea, Table } from '@mantine/core';
 
 export function SourceList() {
-  const { isLoading, isError, data, error } = useQuery<Source[], AxiosError>(
-    'sources',
-    listSources
-  );
+  const { isLoading, isError, data, error } = useQuery<Source[], AxiosError>({
+    queryKey: ['sources'],
+    queryFn: listSources,
+  });
 
   if (isLoading) {
     return <Loader />;

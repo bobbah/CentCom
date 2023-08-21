@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { Ban } from '../types/ban';
 import { Source } from '../types/source';
+import { KeySummary } from '../types/keysummary';
 
-export const ApiURL = 'https://localhost:6658/api/v1';
+export const ApiURL = 'https://localhost:6658/api/v2';
 
 function dateHandler<T>(data: { [key: string]: any }, fields: string[]): T {
   if ((data as Array<{ [key: string]: any }>) !== undefined) {
@@ -25,9 +26,14 @@ function dateHandler<T>(data: { [key: string]: any }, fields: string[]): T {
 export const banSearchByKey = (key: string, onlyActive?: boolean, source?: number) => {
   const params: { onlyActive?: boolean; source?: number } = { onlyActive, source };
   return axios
-    .get<Ban[]>(`${ApiURL}/ban/bykey/${key}`, { params: params })
+    .get<Ban[]>(`${ApiURL}/ban/search/${key}`, { params: params })
     .then((resp) => dateHandler<Ban[]>(resp.data, ['bannedOn', 'expires']));
 };
 
 export const listSources = () =>
-  axios.get<Source[]>(`${ApiURL}/ban/source/list`).then((resp) => resp.data);
+  axios.get<Source[]>(`${ApiURL}/source/list`).then((resp) => resp.data);
+
+export const searchPlayers = (query: string) =>
+  axios
+    .get<KeySummary[]>(`${ApiURL}/ckey/search/`, { params: { query: query } })
+    .then((resp) => dateHandler<KeySummary[]>(resp.data, ['latestBan']));

@@ -27,7 +27,6 @@
 
     <ItemGroup>
       <Folder Include="V1\" />
-      <Folder Include="V2\Models\" />
     </ItemGroup>
 
     <ItemGroup>

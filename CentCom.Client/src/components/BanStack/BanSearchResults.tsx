@@ -1,5 +1,5 @@
 import { AxiosError } from 'axios';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import { banSearchByKey } from '../../apis/centcom';
 import { Ban } from '../../types/ban';
 import { Loader, Paper, Progress, SimpleGrid, Stack, Text } from '@mantine/core';
@@ -25,10 +25,10 @@ type StatsConstructor = {
 
 export function BanStack({ byondKey }: BanStackProps) {
   const [banSections, setBanSections] = useState<StatsSegment[]>([]);
-  const { isLoading, isError, data, error } = useQuery<Ban[], AxiosError>(
-    ['banSearch', byondKey],
-    () => banSearchByKey(byondKey)
-  );
+  const { isLoading, isError, data, error } = useQuery<Ban[], AxiosError>({
+    queryKey: ['banSearch', byondKey],
+    queryFn: () => banSearchByKey(byondKey),
+  });
 
   // Count active / inactive bans
   useEffect(() => {

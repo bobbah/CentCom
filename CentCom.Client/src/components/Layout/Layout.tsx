@@ -3,7 +3,7 @@ import { Footer } from '../Footer/Footer';
 import { Box, Container } from '@mantine/core';
 import { useStyles } from './Layout.styles';
 import { Outlet } from 'react-router-dom';
-import { ExternalLink } from 'tabler-icons-react';
+import { IconExternalLink } from '@tabler/icons-react';
 
 export function Layout() {
   const { classes } = useStyles();
@@ -23,7 +23,7 @@ export function Layout() {
     {
       link: 'https://centcom.melonmesa.com/swagger/index.html',
       label: 'documentation',
-      icon: <ExternalLink size="1rem" />,
+      icon: <IconExternalLink size="1rem" />,
     },
   ];
 

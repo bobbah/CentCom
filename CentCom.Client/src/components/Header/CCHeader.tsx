@@ -13,7 +13,7 @@ import { NavLink } from 'react-router-dom';
 import { useDisclosure } from '@mantine/hooks';
 import { HEADER_HEIGHT } from '../Layout/Layout.styles';
 import useStyles from './CCHeader.styles';
-import { Sun, MoonStars } from 'tabler-icons-react';
+import { IconSun, IconMoonStars } from '@tabler/icons-react';
 import { ReactNode } from 'react';
 
 type CCHeaderProps = {
@@ -44,7 +44,7 @@ export function CCHeader({ links }: CCHeaderProps) {
             color={dark ? 'yellow' : 'blue'}
             onClick={() => toggleColorScheme()}
             title="Toggle dark mode">
-            {dark ? <Sun size="1rem" /> : <MoonStars size="1rem" />}
+            {dark ? <IconSun size="1rem" /> : <IconMoonStars size="1rem" />}
           </ActionIcon>
         </Group>
         <Burger opened={opened} onClick={toggle} className={classes.burger} size="sm" />

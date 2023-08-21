@@ -7,7 +7,7 @@ import { Search } from './routes/search/Search.tsx';
 import { ErrorPage } from './components/ErrorPage.tsx';
 import { Layout } from './components/Layout/Layout.tsx';
 import { NotFoundPage } from './components/NotFoundPage/NotFoundPage.tsx';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { CKey } from './routes/ckey/CKey.tsx';
 
 const router = createBrowserRouter([

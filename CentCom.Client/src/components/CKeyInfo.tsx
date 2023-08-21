@@ -1,5 +1,5 @@
 import { AxiosError } from 'axios';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import { Loader, Paper, Stack } from '@mantine/core';
 import { getByondProfile } from '../apis/byond';
 import { ByondProfile } from '../types/byondprofile';
@@ -9,10 +9,10 @@ type CKeyInfoProps = {
 };
 
 export function CKeyInfo({ byondKey }: CKeyInfoProps) {
-  const { isLoading, isError, data, error } = useQuery<ByondProfile | undefined, AxiosError>(
-    ['byondProfile', byondKey],
-    () => getByondProfile(byondKey)
-  );
+  const { isLoading, isError, data, error } = useQuery<ByondProfile | undefined, AxiosError>({
+    queryKey: ['byondProfile', byondKey],
+    queryFn: () => getByondProfile(byondKey),
+  });
 
   if (isLoading) {
     return <Loader />;
