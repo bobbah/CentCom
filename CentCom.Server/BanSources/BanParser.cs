@@ -231,14 +231,20 @@ public abstract class BanParser : IJob
             {
                 var changed = false;
 
-                // Check for a difference in date time, unbans, or reason
-                if (matchedBan.Reason != b.Reason || matchedBan.BannedOn != b.BannedOn || matchedBan.Expires != b.Expires ||
-                    matchedBan.UnbannedBy != b.UnbannedBy)
+                // Check for changes in mutable data
+                if (matchedBan.Reason != b.Reason 
+                    || matchedBan.BannedOn != b.BannedOn 
+                    || matchedBan.Expires != b.Expires 
+                    || matchedBan.UnbannedBy != b.UnbannedBy
+                    || matchedBan.BannedBy != b.BannedBy
+                    || matchedBan.CKey != b.CKey)
                 {
                     matchedBan.Reason = b.Reason;
                     matchedBan.BannedOn = b.BannedOn;
                     matchedBan.Expires = b.Expires;
                     matchedBan.UnbannedBy = b.UnbannedBy;
+                    matchedBan.BannedBy = b.BannedBy;
+                    matchedBan.CKey = b.CKey;
                     changed = true;
                 }
 
