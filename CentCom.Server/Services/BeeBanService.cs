@@ -16,8 +16,8 @@ namespace CentCom.Server.Services;
 public class BeeBanService : RestBanService
 {
     private const int ParallelRequests = 1;
-    private static readonly BanSource LrpSource = new BanSource { Name = "bee-lrp" };
     private static readonly BanSource MrpSource = new BanSource { Name = "bee-mrp" };
+    private static readonly BanSource LrpSource = new BanSource { Name = "bee-lrp" };
 
     public BeeBanService(ILogger<BeeBanService> logger) : base(logger)
     {
