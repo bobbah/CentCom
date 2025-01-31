@@ -17,14 +17,17 @@ public class TgBanService : RestBanService
 {
     private static readonly BanSource BanSource = new BanSource { Name = "tgstation" };
 
+    public static readonly JsonSerializerOptions JsonOptions = new()
+    {
+        PropertyNameCaseInsensitive = true,
+        Converters = { new JsonStringEnumConverter() }, 
+        NumberHandling = JsonNumberHandling.AllowReadingFromString
+    };
+
     public TgBanService(ILogger<TgBanService> logger) : base(logger)
     {
         // Re-initialize to control JSON serialization behaviour
-        InitializeClient(o =>o.UseSystemTextJson(new JsonSerializerOptions
-        {
-            PropertyNameCaseInsensitive = true,
-            Converters = { new JsonStringEnumConverter() }
-        }));
+        InitializeClient(o => o.UseSystemTextJson(JsonOptions));
     }
 
     protected override string BaseUrl => "https://statbus.space/";
@@ -50,7 +53,7 @@ public class TgBanService : RestBanService
             var bans = await GetBansAsync(page);
             if (bans.Count == 0)
                 break;
-            
+
             allBans.AddRange(bans);
             page++;
         }
