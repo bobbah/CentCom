@@ -40,7 +40,7 @@ public class TgServer
     public string RawLogsUrl { get; set; }
     
     [JsonPropertyName("round")]
-    public int Round { get; set; }
+    public int? Round { get; set; }
 }
 
 public class TgRawBan : IRawBan
@@ -98,9 +98,7 @@ public class TgRawBan : IRawBan
             Reason = Reason,
             Expires = Expiration?.UtcDateTime,
             UnbannedBy = Unbanner?.CKey,
-            BanID = string.Join(";", BanIds),
-            JobBans = null,
-            BanAttributes = (BanAttribute)0
+            BanID = string.Join(";", BanIds)
         };
 
         // Add job bans if relevant
