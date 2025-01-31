@@ -9,15 +9,10 @@ using Microsoft.Extensions.Logging;
 
 namespace CentCom.Server.BanSources;
 
-public class YogBanParser : BanParser
+public class YogBanParser(DatabaseContext dbContext, YogBanService banService, ILogger<YogBanParser> logger)
+    : BanParser(dbContext, logger)
 {
     private const int PagesPerBatch = 12;
-    private readonly YogBanService _banService;
-
-    public YogBanParser(DatabaseContext dbContext, YogBanService banService, ILogger<YogBanParser> logger) : base(dbContext, logger)
-    {
-        _banService = banService;
-    }
 
     protected override Dictionary<string, BanSource> Sources => new Dictionary<string, BanSource>
     {
@@ -47,7 +42,7 @@ public class YogBanParser : BanParser
 
         while (true)
         {
-            var batch = (await _banService.GetBansBatchedAsync(page, PagesPerBatch)).ToArray();
+            var batch = (await banService.GetBansBatchedAsync(page, PagesPerBatch)).ToArray();
             foundBans.AddRange(batch);
             if (!batch.Any() || batch.Any(x => recent.Any(y => y.BanID == x.BanID)))
             {
@@ -62,6 +57,6 @@ public class YogBanParser : BanParser
     public override async Task<IEnumerable<Ban>> FetchAllBansAsync()
     {
         Logger.LogInformation("Getting all bans for YogStation...");
-        return await _banService.GetBansBatchedAsync();
+        return await banService.GetBansBatchedAsync();
     }
 }

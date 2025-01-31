@@ -2,7 +2,7 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
+using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 using CentCom.Common.Extensions;
@@ -10,43 +10,20 @@ using CentCom.Common.Models;
 using Extensions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using RestSharp;
 
 namespace CentCom.Server.Services;
 
-public class FulpBanService : RestBanService
+public class FulpBanService(HttpClient client, ILogger<FulpBanService> logger) : HttpBanService(client, logger)
 {
-    private readonly bool _allowExpiredSsl;
     private const int RecordsPerPage = 50;
     private static readonly BanSource BanSource = new BanSource { Name = "fulp" };
 
-    public FulpBanService(ILogger<FulpBanService> logger, IConfiguration config) : base(logger)
-    {
-        _allowExpiredSsl = config.GetSection("sourceConfig").GetValue<bool>("allowFulpExpiredSSL");
-    }
-
     protected override string BaseUrl => "https://api.fulp.gg/";
-
-    protected override RestClientOptions GenerateClientOptions()
-    {
-        var baseOptions = base.GenerateClientOptions();
-        if (_allowExpiredSsl)
-            baseOptions.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyError) => true;
-        return baseOptions;
-    }
 
     public async Task<IEnumerable<Ban>> GetBansAsync(int page = 1)
     {
-        var request = new RestRequest($"bans/{RecordsPerPage}/{page}");
-        var response = await Client.ExecuteAsync(request);
-
-        if (response.StatusCode != HttpStatusCode.OK)
-        {
-            FailedRequest(response);
-        }
-
+        var content = await GetAsync<Dictionary<string, JsonElement>>($"bans/{RecordsPerPage}/{page}");
         var toReturn = new List<Ban>();
-        var content = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(response.Content);
         foreach (var ban in content["value"].GetProperty("bans").EnumerateArray())
         {
             // Need to get both the expiration as well as the unbanned time as they can differ
@@ -101,15 +78,7 @@ public class FulpBanService : RestBanService
 
     public async Task<int> GetNumberOfPagesAsync()
     {
-        var request = new RestRequest($"bans/{RecordsPerPage}/1");
-        var result = await Client.ExecuteAsync(request);
-
-        if (result.StatusCode != HttpStatusCode.OK)
-        {
-            FailedRequest(result);
-        }
-
-        var content = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(result.Content);
+        var content = await GetAsync<Dictionary<string, JsonElement>>($"bans/{RecordsPerPage}/1");
         if (content["value"].TryGetProperty("lastPage", out var lastpage))
         {
             return lastpage.GetInt32();

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using CentCom.Common.Configuration;
 using CentCom.Common.Data;
@@ -90,16 +91,21 @@ internal class Program
                         throw new ArgumentOutOfRangeException();
                 }
 
-                // Add ban services as singletons
-                services.AddSingleton<BeeBanService>();
+                // Add ban services to contact relevant APIs
+                services.AddHttpClient<BeeBanService>();
                 services.AddSingleton<VgBanService>();
-                services.AddSingleton<YogBanService>();
-                services.AddSingleton<FulpBanService>();
-                services.AddSingleton<TGMCBanService>();
-                services.AddSingleton<TgBanService>();
+                services.AddHttpClient<YogBanService>();
+                services.AddHttpClient<TGMCBanService>();
+                services.AddHttpClient<TgBanService>();
+                services.AddHttpClient<StandardProviderService>();
 
-                // Standard provider is transient as it differs per request
-                services.AddTransient<StandardProviderService>();
+                // Special consideration for fulp and the SSL woes
+                var fulpClient = services.AddHttpClient<FulpBanService>();
+                if (config.GetSection("sourceConfig").GetValue<bool>("allowFulpExpiredSSL"))
+                    fulpClient.ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler()
+                    {
+                        ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true
+                    });
 
                 // Add ban parsers
                 var parsers = AppDomain.CurrentDomain.GetAssemblies().Aggregate(new List<Type>(), (curr, next) =>
@@ -120,17 +126,12 @@ internal class Program
                 // Add Quartz
                 services.AddQuartz(q =>
                 {
-                    q.UseMicrosoftDependencyInjectionJobFactory();
-
                     q.ScheduleJob<DatabaseUpdater>(trigger =>
                             trigger
                                 .StartNow()
                                 .WithIdentity("updater"),
                         job => job.WithIdentity("updater"));
                 });
-                services.AddQuartzHostedService(o =>
-                {
-                    o.WaitForJobsToComplete = true;
-                });
+                services.AddQuartzHostedService(o => { o.WaitForJobsToComplete = true; });
             });
 }

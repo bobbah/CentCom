@@ -2,14 +2,13 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
+using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 using CentCom.Common.Extensions;
 using CentCom.Common.Models;
 using Extensions;
 using Microsoft.Extensions.Logging;
-using RestSharp;
 
 namespace CentCom.Server.Services;
 
@@ -22,41 +21,32 @@ namespace CentCom.Server.Services;
 /// for using the paging must account for the possibility of a job ban
 /// spanning two seperate pages.
 /// </remarks>
-public class TGMCBanService : RestBanService
+public class TGMCBanService(HttpClient client, ILogger<TGMCBanService> logger) : HttpBanService(client, logger)
 {
     private const int RecordsPerPage = 100;
     private static readonly BanSource BanSource = new BanSource { Name = "tgmc" };
-
-    public TGMCBanService(ILogger<TGMCBanService> logger) : base(logger)
-    {
-    }
 
     protected override string BaseUrl => "https://statbus.psykzz.com/api/";
 
     public async Task<IEnumerable<Ban>> GetBansAsync(int page = 1)
     {
-        var request = new RestRequest($"bans/{page}").AddQueryParameter("limit", RecordsPerPage.ToString());
-        var response = await Client.ExecuteAsync(request);
-
-        if (response.StatusCode != HttpStatusCode.OK)
-        {
-            FailedRequest(response);
-        }
-
         var toReturn = new List<Ban>();
         var dirtyBans = new List<Ban>();
-        var content = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(response.Content);
+        var content = await GetAsync<Dictionary<string, JsonElement>>($"bans/{page}",
+            new Dictionary<string, string>() { { "limit", RecordsPerPage.ToString() } });
         foreach (var bh in content["bans"].EnumerateObject())
         {
             var ban = bh.Value;
 
             // Ban expiration could be based on the expiration time field or the existance of the unbanned datetime
             // field, so we have to check both.
-            var expiration = ban.GetProperty("unbanned_datetime").GetString() == null ? (DateTime?)null
+            var expiration = ban.GetProperty("unbanned_datetime").GetString() == null
+                ? (DateTime?)null
                 : DateTime.Parse(ban.GetProperty("unbanned_datetime").GetString());
             if (!expiration.HasValue)
             {
-                expiration = ban.GetProperty("expiration_time").GetString() == null ? null
+                expiration = ban.GetProperty("expiration_time").GetString() == null
+                    ? null
                     : DateTime.Parse(ban.GetProperty("expiration_time").GetString());
             }
 
@@ -131,6 +121,7 @@ public class TGMCBanService : RestBanService
             // is not an optimal solution
             cleanBans.RemoveAt(0);
         }
+
         if (pages != -1 && startPage + pages < maxPages && cleanBans.LastOrDefault()?.BanType == BanType.Job)
         {
             // Discard the last ban if it is a job ban as it may be incomplete.
@@ -143,15 +134,8 @@ public class TGMCBanService : RestBanService
 
     public async Task<int> GetNumberOfPagesAsync()
     {
-        var request = new RestRequest("bans/1").AddQueryParameter("limit", RecordsPerPage.ToString());
-        var result = await Client.ExecuteAsync(request);
-
-        if (result.StatusCode != HttpStatusCode.OK)
-        {
-            FailedRequest(result);
-        }
-
-        var content = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(result.Content);
+        var content = await GetAsync<Dictionary<string, JsonElement>>("bans/1",
+            new Dictionary<string, string>() { { "limit", RecordsPerPage.ToString() } });
         if (content["page"].TryGetProperty("total", out var lastpage))
         {
             return lastpage.GetInt32();

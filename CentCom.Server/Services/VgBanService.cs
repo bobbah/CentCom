@@ -11,15 +11,10 @@ using Microsoft.Extensions.Logging;
 
 namespace CentCom.Server.Services;
 
-public class VgBanService
+public class VgBanService(ILogger<VgBanService> logger)
 {
     private static readonly BanSource BanSource = new BanSource { Name = "vgstation" };
-    private readonly ILogger _logger;
-
-    public VgBanService(ILogger<VgBanService> logger)
-    {
-        _logger = logger;
-    }
+    private readonly ILogger _logger = logger;
 
     // TODO: cleanup
     public async Task<IEnumerable<Ban>> GetBansAsync()
