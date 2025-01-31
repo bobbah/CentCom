@@ -26,4 +26,10 @@
         <ProjectReference Include="..\CentCom.Server\CentCom.Server.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="BanServices\TgBanSample.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>
