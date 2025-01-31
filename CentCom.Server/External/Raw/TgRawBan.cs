@@ -40,7 +40,7 @@ public class TgServer
     public string RawLogsUrl { get; set; }
     
     [JsonPropertyName("round")]
-    public int Round { get; set; }
+    public int? Round { get; set; }
 }
 
 public class TgRawBan : IRawBan
