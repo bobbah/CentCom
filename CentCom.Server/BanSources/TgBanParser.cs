@@ -47,6 +47,24 @@ public class TgBanParser : BanParser
             .Include(x => x.JobBans)
             .Include(x => x.SourceNavigation)
             .ToListAsync();
-        return await _banService.GetBansBatchedAsync(searchFor: recent.Select(x => x.Id));
+        
+        var foundBans = new List<Ban>();
+        var page = 1;
+        while (true)
+        {
+            var bans = await _banService.GetBansAsync(page);
+            if (bans.Count == 0)
+                break;
+            
+            foundBans.AddRange(bans.Select(x => x.AsBan(Sources["tgstation"])));
+            
+            // Check for existing bans
+            if (foundBans.Any(x => recent.Any(y => y.BanID == x.BanID)))
+                break;
+            
+            page++;
+        }
+
+        return foundBans.DistinctBy(x => x.BanID);
     }
 }

@@ -1,106 +1,112 @@
-﻿using System;
-using System.Globalization;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json.Serialization;
 using CentCom.Common.Extensions;
 using CentCom.Common.Models;
 
 namespace CentCom.Server.External.Raw;
 
-public class TgRawBan : IRawBan
+public class TgUser
 {
-    private string _bannedAt;
-    private string _expirationTime;
-    private string _unbannedAt;
-
-    [JsonPropertyName("id")]
-    public int Id { get; set; }
-
-    [JsonPropertyName("expiration_time")]
-    public string ExpirationTimeRaw
-    {
-        get => _expirationTime; set
-        {
-            _expirationTime = value;
-            ExpirationTime = ParseTgDateTime(value);
-        }
-    }
-
-    public DateTime? ExpirationTime { get; private set; }
-
-    [JsonPropertyName("role")]
-    public string Role { get; set; }
-
     [JsonPropertyName("ckey")]
     public string CKey { get; set; }
+    
+    [JsonPropertyName("userIdentifier")]
+    public string UserIdentifier { get; set; }
+}
 
-    [JsonPropertyName("a_ckey")]
-    public string AdminCKey { get; set; }
+public class TgServer
+{
+    [JsonPropertyName("name")]
+    public string Name { get; set; }
+    
+    [JsonPropertyName("identifier")]
+    public string Identifier { get; set; }
+    
+    [JsonPropertyName("port")]
+    public int Port { get; set; }
+    
+    [JsonPropertyName("address")]
+    public string Address { get; set; }
+    
+    [JsonPropertyName("url")]
+    public string Url { get; set; }
+    
+    [JsonPropertyName("publicLogs")]
+    public string PublicLogsUrl { get; set; }
+    
+    [JsonPropertyName("rawLogs")]
+    public string RawLogsUrl { get; set; }
+    
+    [JsonPropertyName("round")]
+    public int Round { get; set; }
+}
 
+public class TgRawBan : IRawBan
+{
+    [JsonPropertyName("id")]
+    public int Id { get; set; }
+    
+    [JsonPropertyName("admin")]
+    public TgUser Admin { get; set; }
+    
+    [JsonPropertyName("target")]
+    public TgUser Target { get; set; }
+    
+    [JsonPropertyName("unbanner")]
+    public TgUser? Unbanner { get; set; }
+    
+    [JsonPropertyName("roles")]
+    public List<string> Roles { get; set; }
+    
+    [JsonPropertyName("bantime")]
+    public DateTimeOffset BanTime { get; set; }
+    
+    [JsonPropertyName("unbannedTime")]
+    public DateTimeOffset? UnbannedTime { get; set; }
+
+    [JsonPropertyName("round")]
+    public int Round { get; set; }
+    
+    [JsonPropertyName("status")]
+    public string Status { get; set; }
+    
     [JsonPropertyName("reason")]
     public string Reason { get; set; }
+    
+    [JsonPropertyName("server")]
+    public TgServer Server { get; set; }
+    
+    [JsonPropertyName("expiration")]
+    public DateTimeOffset? Expiration { get; set; }
+    
+    [JsonPropertyName("banIds")]
+    public List<int> BanIds { get; set; }
 
-    [JsonPropertyName("bantime")]
-    public string BannedAtRaw
-    {
-        get => _bannedAt; set
-        {
-            _bannedAt = value;
-            BannedAt = ParseTgDateTime(value).Value;
-        }
-    }
-
-    public DateTime BannedAt { get; private set; }
-
-    [JsonPropertyName("unbanned_datetime")]
-    public string UnbannedAtRaw
-    {
-        get => _unbannedAt; set
-        {
-            _unbannedAt = value;
-            UnbannedAt = ParseTgDateTime(value);
-        }
-    }
-
-    public DateTime? UnbannedAt { get; private set; }
-
-    [JsonPropertyName("unbanned_Ckey")]
-    public string UnbannedBy { get; set; }
-
-    public BanType GetBanType() => Role.ToLower() == "server" ? BanType.Server : BanType.Job;
+    public BanType GetBanType() => Roles.Count == 1 && Roles[0] == "Server" ? BanType.Server : BanType.Job;
 
     public Ban AsBan(BanSource source)
     {
         var toReturn = new Ban
         {
-            BanID = Id.ToString(),
-            BannedBy = AdminCKey,
-            BannedOn = BannedAt,
+            SourceNavigation = source,
             BanType = GetBanType(),
-            CKey = CKey,
-            UnbannedBy = UnbannedBy,
+            CKey = Target.CKey,
+            BannedOn = BanTime.UtcDateTime,
+            BannedBy = Admin.CKey,
             Reason = Reason,
-            Expires = UnbannedAt ?? ExpirationTime,
-            SourceNavigation = source
+            Expires = Expiration?.UtcDateTime,
+            UnbannedBy = Unbanner?.CKey,
+            BanID = string.Join(";", BanIds),
+            JobBans = null,
+            BanAttributes = (BanAttribute)0
         };
 
+        // Add job bans if relevant
         if (toReturn.BanType == BanType.Job)
-        {
-            toReturn.AddJob(Role);
-        }
+            toReturn.AddJobRange(Roles);
 
         return toReturn;
-    }
-
-    private static DateTime? ParseTgDateTime(string value)
-    {
-        if (DateTime.TryParse(value, 
-                CultureInfo.InvariantCulture.DateTimeFormat,
-                DateTimeStyles.AllowWhiteSpaces,
-                out var expiration))
-        {
-            return expiration;
-        }
-
-        return null;
     }
 }

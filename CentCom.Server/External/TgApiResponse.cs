@@ -1,14 +1,26 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using CentCom.Server.External.Raw;
 
 namespace CentCom.Server.External;
 
+public class TgApiPagination
+{
+    [JsonPropertyName("items")]
+    public int Items { get; set; }
+    
+    [JsonPropertyName("page")]
+    public int Page { get; set; }
+    
+    [JsonPropertyName("per_page")]
+    public int PerPage { get; set; }
+}
+
 public class TgApiResponse
 {
-    [JsonPropertyName("beforeid")]
-    public int BeforeId { get; set; }
-
-    [JsonPropertyName("bans")]
-    public IEnumerable<TgRawBan> Bans { get; set; }
+    [JsonPropertyName("data")]
+    public IEnumerable<TgRawBan> Data { get; set; }
+    
+    [JsonPropertyName("pagination")]
+    public TgApiPagination Pagination { get; set; }
 }
