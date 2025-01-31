@@ -7,7 +7,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using CentCom.Common.Extensions;
 using CentCom.Common.Models;
-using Extensions;
+using CentCom.Server.Extensions;
 using Microsoft.Extensions.Logging;
 
 namespace CentCom.Server.Services;
@@ -24,11 +24,11 @@ namespace CentCom.Server.Services;
 public class TGMCBanService(HttpClient client, ILogger<TGMCBanService> logger) : HttpBanService(client, logger)
 {
     private const int RecordsPerPage = 100;
-    private static readonly BanSource BanSource = new BanSource { Name = "tgmc" };
+    private static readonly BanSource BanSource = new() { Name = "tgmc" };
 
     protected override string BaseUrl => "https://statbus.psykzz.com/api/";
 
-    public async Task<IEnumerable<Ban>> GetBansAsync(int page = 1)
+    public async Task<List<Ban>> GetBansAsync(int page = 1)
     {
         var toReturn = new List<Ban>();
         var dirtyBans = new List<Ban>();
@@ -86,7 +86,7 @@ public class TGMCBanService(HttpClient client, ILogger<TGMCBanService> logger) :
         return toReturn;
     }
 
-    public async Task<IEnumerable<Ban>> GetBansBatchedAsync(int startPage = 1, int pages = -1)
+    public async Task<List<Ban>> GetBansBatchedAsync(int startPage = 1, int pages = -1)
     {
         var maxPages = await GetNumberOfPagesAsync();
         var range = Enumerable.Range(startPage, pages != -1 ? Math.Min(startPage + pages, maxPages) : maxPages);
@@ -101,7 +101,7 @@ public class TGMCBanService(HttpClient client, ILogger<TGMCBanService> logger) :
 
 
         if (dirtyBans.IsEmpty)
-            return Enumerable.Empty<Ban>();
+            return [];
 
         // We have to ensure that our jobs are correctly grouped due to possible errors with paging
         var cleanBans = new List<Ban>(dirtyBans.Where(x => x.BanType == BanType.Server));

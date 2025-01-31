@@ -19,7 +19,7 @@ public class BeeBanParser : BanParser
         _banService = banService;
     }
 
-    protected override Dictionary<string, BanSource> Sources => new Dictionary<string, BanSource>
+    protected override Dictionary<string, BanSource> Sources => new()
     {
         { "bee-lrp", new BanSource
         {
@@ -38,7 +38,7 @@ public class BeeBanParser : BanParser
     protected override bool SourceSupportsBanIDs => true;
     protected override string Name => "Beestation";
 
-    public override async Task<IEnumerable<Ban>> FetchNewBansAsync()
+    public override async Task<List<Ban>> FetchNewBansAsync()
     {
         Logger.LogInformation("Getting new bans for Beestation...");
         var recent = await DbContext.Bans
@@ -65,7 +65,7 @@ public class BeeBanParser : BanParser
         return foundBans;
     }
 
-    public override async Task<IEnumerable<Ban>> FetchAllBansAsync()
+    public override async Task<List<Ban>> FetchAllBansAsync()
     {
         Logger.LogInformation("Getting all bans for Beestation...");
         return await _banService.GetBansBatchedAsync();

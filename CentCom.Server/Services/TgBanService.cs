@@ -11,15 +11,13 @@ namespace CentCom.Server.Services;
 
 public class TgBanService(HttpClient client, ILogger<TgBanService> logger) : HttpBanService(client, logger)
 {
-    private static readonly BanSource BanSource = new BanSource { Name = "tgstation" };
-
     protected override string BaseUrl => "https://statbus.space/";
 
     public async Task<List<TgRawBan>> GetBansAsync(int? page = null) =>
         (await GetAsync<TgApiResponse>($"bans/public/v1/{page}",
             new Dictionary<string, string>() { { "json", "true" } })).Data.ToList();
 
-    public async Task<IEnumerable<Ban>> GetBansBatchedAsync()
+    public async Task<List<Ban>> GetBansBatchedAsync(BanSource source)
     {
         var allBans = new List<TgRawBan>();
         var page = 1;
@@ -33,6 +31,6 @@ public class TgBanService(HttpClient client, ILogger<TgBanService> logger) : Htt
             page++;
         }
 
-        return allBans.Select(x => x.AsBan(BanSource)).DistinctBy(x => x.BanID);
+        return allBans.Select(x => x.AsBan(source)).DistinctBy(x => x.BanID).ToList();
     }
 }

@@ -19,7 +19,7 @@ public class TgApiPagination
 public class TgApiResponse
 {
     [JsonPropertyName("data")]
-    public IEnumerable<TgRawBan> Data { get; set; }
+    public List<TgRawBan> Data { get; set; }
     
     [JsonPropertyName("pagination")]
     public TgApiPagination Pagination { get; set; }

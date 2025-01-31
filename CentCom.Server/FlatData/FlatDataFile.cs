@@ -7,7 +7,7 @@ public class FlatDataFile
 {
     public uint Version { get; set; }
     public string Name { get; set; }
-    public IEnumerable<BanSource> Sources { get; set; }
-    public IEnumerable<Ban> JobBans { get; set; }
-    public IEnumerable<Ban> ServerBans { get; set; }
+    public List<BanSource> Sources { get; set; }
+    public List<Ban> JobBans { get; set; }
+    public List<Ban> ServerBans { get; set; }
 }

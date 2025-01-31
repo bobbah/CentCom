@@ -12,7 +12,7 @@ namespace CentCom.Server.BanSources;
 public class TgBanParser(DatabaseContext dbContext, TgBanService banService, ILogger<TgBanParser> logger)
     : BanParser(dbContext, logger)
 {
-    protected override Dictionary<string, BanSource> Sources => new Dictionary<string, BanSource>
+    protected override Dictionary<string, BanSource> Sources => new()
     {
         { "tgstation", new BanSource
         {
@@ -25,13 +25,13 @@ public class TgBanParser(DatabaseContext dbContext, TgBanService banService, ILo
     protected override bool SourceSupportsBanIDs => true;
     protected override string Name => "/tg/station";
 
-    public override async Task<IEnumerable<Ban>> FetchAllBansAsync()
+    public override async Task<List<Ban>> FetchAllBansAsync()
     {
         Logger.LogInformation("Fetching all bans for /tg/station...");
-        return await banService.GetBansBatchedAsync();
+        return await banService.GetBansBatchedAsync(Sources["tgstation"]);
     }
 
-    public override async Task<IEnumerable<Ban>> FetchNewBansAsync()
+    public override async Task<List<Ban>> FetchNewBansAsync()
     {
         Logger.LogInformation("Fetching new bans for /tg/station...");
         var recent = await DbContext.Bans
@@ -59,6 +59,6 @@ public class TgBanParser(DatabaseContext dbContext, TgBanService banService, ILo
             page++;
         }
 
-        return foundBans.DistinctBy(x => x.BanID);
+        return foundBans.DistinctBy(x => x.BanID).ToList();
     }
 }

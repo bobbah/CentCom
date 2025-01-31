@@ -125,7 +125,7 @@ public abstract class BanParser : IJob
         };
 
         // Get stored bans from the database
-        List<Ban> storedBans = null;
+        List<Ban> storedBans;
         try
         {
             storedBans = await DbContext.Bans
@@ -143,7 +143,7 @@ public abstract class BanParser : IJob
         // Get bans from the source
         var isCompleteRefresh = context.MergedJobDataMap.GetBoolean("completeRefresh") || !storedBans.Any();
         history.CompleteRefresh = isCompleteRefresh;
-        IEnumerable<Ban> bans = null;
+        List<Ban> bans;
         try
         {
             bans = await (isCompleteRefresh ? FetchAllBansAsync() : FetchNewBansAsync());
@@ -178,24 +178,25 @@ public abstract class BanParser : IJob
         }
 
         // Remove and report any invalid data from the parsed data
-        var dirtyBans = bans.Where(x => x.CKey == null || (SourceSupportsBanIDs && x.BanID == null));
-        if (dirtyBans.Any())
+        var dirtyBans = bans.Where(x => x.CKey == null || (SourceSupportsBanIDs && x.BanID == null)).ToList();
+        if (dirtyBans.Count != 0)
         {
-            bans = bans.Except(dirtyBans);
-            history.Erroneous = dirtyBans.Count();
+            bans = bans.Except(dirtyBans).ToList();
+            history.Erroneous = dirtyBans.Count;
             Logger.LogWarning(
-                $"Removed {history.Erroneous} erroneous bans from parsed data. This shouldn't happen!");
+                "Removed {Erroneous} erroneous bans from parsed data. This shouldn't happen!", history.Erroneous);
         }
 
         // Remove erronenous duplicates from source
         var sourceDupes = bans.GroupBy(x => x, BanEqualityComparer.Instance)
             .Where(x => x.Count() > 1)
-            .SelectMany(x => x.OrderBy(y => y.Id).Skip(1));
-        if (sourceDupes.Any())
+            .SelectMany(x => x.OrderBy(y => y.Id).Skip(1))
+            .ToList();
+        if (sourceDupes.Count != 0)
         {
             Logger.LogWarning(
-                $"Removing {sourceDupes.Count()} duplicated bans from source, this indicates an issue with the source data!");
-            bans = bans.Except(sourceDupes);
+                "Removing {SourceDupes} duplicated bans from source, this indicates an issue with the source data!", sourceDupes.Count);
+            bans = bans.Except(sourceDupes).ToList();
         }
 
         // Check for ban updates
@@ -207,7 +208,7 @@ public abstract class BanParser : IJob
             b.MakeKeysCanonical();
 
             // Attempt to find matching bans in the database
-            Ban matchedBan = null;
+            Ban matchedBan;
             if (SourceSupportsBanIDs)
             {
                 matchedBan = storedBans.FirstOrDefault(x =>
@@ -274,7 +275,7 @@ public abstract class BanParser : IJob
             storedBans.AddRange(toInsert);
         }
 
-        Logger.LogInformation($"Inserting {toInsert.Count} new bans, updating {updated} modified bans...");
+        Logger.LogInformation("Inserting {NewBans} new bans, updating {Updated} modified bans...", toInsert.Count, updated);
         history.Added = toInsert.Count;
         history.Updated = updated;
         await DbContext.SaveChangesAsync();
@@ -282,7 +283,7 @@ public abstract class BanParser : IJob
         // No need to continue unless this is a complete refresh
         if (!isCompleteRefresh)
         {
-            Logger.LogInformation("Completed ban parsing. Partial refresh complete.");
+            Logger.LogInformation("Completed ban parsing. Partial refresh complete");
             history.CompletedUpload = DateTimeOffset.UtcNow;
             return history;
         }
@@ -298,9 +299,11 @@ public abstract class BanParser : IJob
         }
 
         // Apply deletions
-        Logger.LogInformation(missingBans.Count > 0
-            ? $"Removing {missingBans.Count} deleted bans..."
-            : "Found no deleted bans to remove");
+        if (missingBans.Count > 0)
+            Logger.LogInformation("Removing {MissingBans} deleted bans...", missingBans.Count);
+        else
+            Logger.LogInformation("Found no deleted bans to remove");
+        
         history.Deleted = missingBans.Count;
         if (missingBans.Count > 0)
         {
@@ -316,16 +319,17 @@ public abstract class BanParser : IJob
         // Delete any accidental duplications
         var duplicates = storedBans.GroupBy(x => x, BanEqualityComparer.Instance)
             .Where(x => x.Count() > 1)
-            .SelectMany(x => x.OrderBy(x => x.Id).Skip(1));
-        if (duplicates.Any())
+            .SelectMany(x => x.OrderBy(y => y.Id).Skip(1))
+            .ToList();
+        if (duplicates.Count != 0)
         {
-            Logger.LogWarning($"Removing {duplicates.Count()} duplicated bans from the database");
+            Logger.LogWarning("Removing {Duplicates} duplicated bans from the database", duplicates.Count);
             DbContext.RemoveRange(duplicates);
             await DbContext.SaveChangesAsync();
         }
 
         history.CompletedUpload = DateTimeOffset.UtcNow;
-        Logger.LogInformation("Completed ban parsing. Complete refresh complete.");
+        Logger.LogInformation("Completed ban parsing. Complete refresh complete");
         return history;
     }
 
@@ -367,7 +371,7 @@ public abstract class BanParser : IJob
     /// </remarks>
     /// <param name="bans">A collection of bans to have their source objects assigned</param>
     /// <returns>A collection of bans which have correct database-backed BanSource objects assigned</returns>
-    public async Task<IEnumerable<Ban>> AssignBanSources(IEnumerable<Ban> bans)
+    public async Task<List<Ban>> AssignBanSources(List<Ban> bans)
     {
         var sources = await GetSourcesAsync();
         foreach (var b in bans)
@@ -387,11 +391,11 @@ public abstract class BanParser : IJob
     /// just to limit the response size
     /// </remarks>
     /// <returns>A collection of bans found from the source</returns>
-    public abstract Task<IEnumerable<Ban>> FetchNewBansAsync();
+    public abstract Task<List<Ban>> FetchNewBansAsync();
 
     /// <summary>
     /// Attempts to fetch all bans from the ban source
     /// </summary>
     /// <returns>A collection of bans found from the source</returns>
-    public abstract Task<IEnumerable<Ban>> FetchAllBansAsync();
+    public abstract Task<List<Ban>> FetchAllBansAsync();
 }

@@ -11,7 +11,7 @@ namespace CentCom.Server.BanSources;
 
 public class FulpBanParser : BanParser
 {
-    private const int PAGES_PER_BATCH = 12;
+    private const int PagesPerBatch = 12;
     private readonly FulpBanService _banService;
 
     public FulpBanParser(DatabaseContext dbContext, FulpBanService banService, ILogger<FulpBanParser> logger) : base(dbContext, logger)
@@ -20,7 +20,7 @@ public class FulpBanParser : BanParser
         Logger = logger;
     }
 
-    protected override Dictionary<string, BanSource> Sources => new Dictionary<string, BanSource>
+    protected override Dictionary<string, BanSource> Sources => new()
     {
         { "fulp", new BanSource
         {
@@ -33,13 +33,13 @@ public class FulpBanParser : BanParser
     protected override bool SourceSupportsBanIDs => false;
     protected override string Name => "Fulpstation";
 
-    public override async Task<IEnumerable<Ban>> FetchAllBansAsync()
+    public override async Task<List<Ban>> FetchAllBansAsync()
     {
         Logger.LogInformation("Getting all bans for Fulpstation...");
         return await _banService.GetBansBatchedAsync();
     }
 
-    public override async Task<IEnumerable<Ban>> FetchNewBansAsync()
+    public override async Task<List<Ban>> FetchNewBansAsync()
     {
         Logger.LogInformation("Getting new bans for Fulpstation...");
         var recent = await DbContext.Bans
@@ -54,13 +54,13 @@ public class FulpBanParser : BanParser
 
         while (true)
         {
-            var batch = await _banService.GetBansBatchedAsync(page, PAGES_PER_BATCH);
+            var batch = await _banService.GetBansBatchedAsync(page, PagesPerBatch);
             foundBans.AddRange(batch);
-            if (!batch.Any() || batch.Any(x => recent.Any(y => y.BannedOn == x.BannedOn && y.CKey == y.CKey)))
+            if (batch.Count == 0 || batch.Any(x => recent.Any(y => y.BannedOn == x.BannedOn && y.CKey == x.CKey)))
             {
                 break;
             }
-            page += PAGES_PER_BATCH;
+            page += PagesPerBatch;
         }
 
         return foundBans;

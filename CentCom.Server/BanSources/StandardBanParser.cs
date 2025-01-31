@@ -51,7 +51,7 @@ public class StandardBanParser(
         return Task.CompletedTask;
     }
 
-    public override async Task<IEnumerable<Ban>> FetchNewBansAsync()
+    public override async Task<List<Ban>> FetchNewBansAsync()
     {
         Logger.LogInformation("Fetching new bans for {Name}...", Name);
         var recent = await DbContext.Bans
@@ -61,10 +61,10 @@ public class StandardBanParser(
             .Include(x => x.JobBans)
             .Include(x => x.SourceNavigation)
             .ToListAsync();
-        return await banService.GetBansBatchedAsync(searchFor: recent.Select(x => int.Parse(x.BanID)));
+        return await banService.GetBansBatchedAsync(searchFor: recent.Select(x => int.Parse(x.BanID)).ToList());
     }
 
-    public override async Task<IEnumerable<Ban>> FetchAllBansAsync()
+    public override async Task<List<Ban>> FetchAllBansAsync()
     {
         Logger.LogInformation("Fetching all bans for {Name}...", Name);
         return await banService.GetBansBatchedAsync();

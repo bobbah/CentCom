@@ -16,7 +16,7 @@ public abstract class HttpBanService
     private readonly ILogger<HttpBanService> _logger;
     private readonly HttpClient _httpClient;
 
-    public static readonly JsonSerializerOptions JsonOptions = new JsonSerializerOptions
+    public virtual JsonSerializerOptions JsonOptions => new()
     {
         PropertyNameCaseInsensitive = true,
         Converters = { new JsonStringEnumConverter() },
@@ -34,7 +34,8 @@ public abstract class HttpBanService
 
     protected void ConfigureClient()
     {
-        _httpClient.BaseAddress = new Uri(BaseUrl);
+        if (BaseUrl != null)
+            _httpClient.BaseAddress = new Uri(BaseUrl);
         _httpClient.DefaultRequestHeaders.UserAgent.ParseAdd(
             $"Mozilla/5.0 (compatible; CentComBot/{Assembly.GetExecutingAssembly().GetName().Version}; +https://centcom.melonmesa.com/scraper)");
     }

@@ -7,8 +7,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using CentCom.Common.Extensions;
 using CentCom.Common.Models;
-using Extensions;
-using Microsoft.Extensions.Configuration;
+using CentCom.Server.Extensions;
 using Microsoft.Extensions.Logging;
 
 namespace CentCom.Server.Services;
@@ -16,11 +15,11 @@ namespace CentCom.Server.Services;
 public class FulpBanService(HttpClient client, ILogger<FulpBanService> logger) : HttpBanService(client, logger)
 {
     private const int RecordsPerPage = 50;
-    private static readonly BanSource BanSource = new BanSource { Name = "fulp" };
+    private static readonly BanSource BanSource = new() { Name = "fulp" };
 
     protected override string BaseUrl => "https://api.fulp.gg/";
 
-    public async Task<IEnumerable<Ban>> GetBansAsync(int page = 1)
+    public async Task<List<Ban>> GetBansAsync(int page = 1)
     {
         var content = await GetAsync<Dictionary<string, JsonElement>>($"bans/{RecordsPerPage}/{page}");
         var toReturn = new List<Ban>();
@@ -61,7 +60,7 @@ public class FulpBanService(HttpClient client, ILogger<FulpBanService> logger) :
         return toReturn;
     }
 
-    public async Task<IEnumerable<Ban>> GetBansBatchedAsync(int startPage = 1, int pages = -1)
+    public async Task<List<Ban>> GetBansBatchedAsync(int startPage = 1, int pages = -1)
     {
         var maxPages = await GetNumberOfPagesAsync();
         var range = Enumerable.Range(startPage, pages != -1 ? Math.Min(startPage + pages, maxPages) : maxPages);
@@ -73,7 +72,7 @@ public class FulpBanService(HttpClient client, ILogger<FulpBanService> logger) :
                 toReturn.Add(b);
             }
         }, 6);
-        return toReturn;
+        return toReturn.ToList();
     }
 
     public async Task<int> GetNumberOfPagesAsync()

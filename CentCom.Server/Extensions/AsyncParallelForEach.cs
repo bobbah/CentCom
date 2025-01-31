@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Threading.Tasks.Dataflow;
 
-namespace Extensions;
+namespace CentCom.Server.Extensions;
 
 // Taken from https://scatteredcode.net/parallel-foreach-async-in-c/
 public static class Extensions

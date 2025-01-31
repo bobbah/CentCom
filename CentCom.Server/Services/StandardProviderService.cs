@@ -22,15 +22,15 @@ public class StandardProviderService(HttpClient client, ILogger<StandardProvider
     public BanSource Source { get; private set; }
     protected override string BaseUrl => _baseUrl;
 
-    private static readonly JsonSerializerOptions JsonOptions = new JsonSerializerOptions()
+    public override JsonSerializerOptions JsonOptions => new JsonSerializerOptions()
     {
         PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
         Converters = { new JsonStringEnumConverter() }
     }.AddCentComOptions();
 
-    private async Task<IEnumerable<Ban>> GetBansAsync(int? cursor = null)
+    private async Task<List<Ban>> GetBansAsync(int? cursor = null)
     {
-        var data = await GetAsync<IEnumerable<RestBan>>("api/ban",
+        var data = await GetAsync<List<RestBan>>("api/ban",
             cursor.HasValue ? new Dictionary<string, string>() { { "cursor", cursor.ToString() } } : null, JsonOptions);
         
         return data.Select(x => new Ban
@@ -49,10 +49,10 @@ public class StandardProviderService(HttpClient client, ILogger<StandardProvider
                 })
                 .ToHashSet(),
             SourceNavigation = Source
-        });
+        }).ToList();
     }
 
-    public async Task<IEnumerable<Ban>> GetBansBatchedAsync(int? cursor = null, IEnumerable<int> searchFor = null)
+    public async Task<List<Ban>> GetBansBatchedAsync(int? cursor = null, List<int> searchFor = null)
     {
         if (!_configured)
             throw new Exception("Cannot get bans from an unconfigured external source");

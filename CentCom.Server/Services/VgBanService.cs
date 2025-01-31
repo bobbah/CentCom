@@ -13,11 +13,11 @@ namespace CentCom.Server.Services;
 
 public class VgBanService(ILogger<VgBanService> logger)
 {
-    private static readonly BanSource BanSource = new BanSource { Name = "vgstation" };
+    private static readonly BanSource BanSource = new() { Name = "vgstation" };
     private readonly ILogger _logger = logger;
 
     // TODO: cleanup
-    public async Task<IEnumerable<Ban>> GetBansAsync()
+    public async Task<List<Ban>> GetBansAsync()
     {
         var toReturn = new List<Ban>();
         var config = AngleSharp.Configuration.Default.WithDefaultLoader();
@@ -27,7 +27,7 @@ public class VgBanService(ILogger<VgBanService> logger)
         if (document.StatusCode != HttpStatusCode.OK)
         {
             _logger.LogError(
-                $"Source website returned a non-200 HTTP response code. Url: \"{document.Url}\", code: {document.StatusCode}");
+                "Source website returned a non-200 HTTP response code. Url: \"{Url}\", code: {StatusCode}", document.Url, document.StatusCode);
             throw new BanSourceUnavailableException(
                 $"Source website returned a non-200 HTTP response code. Url: \"{document.Url}\", code: {document.StatusCode}", document.TextContent);
         }

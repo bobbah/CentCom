@@ -17,15 +17,15 @@ public class YogBanService(HttpClient client, ILogger<YogBanService> logger) : H
 {
     private const int ParallelRequests = 12;
     private const int RequestsPerMinute = 60;
-    private static readonly BanSource BanSource = new BanSource { Name = "yogstation" };
-    private readonly Regex _pagesPattern = new Regex(@"<a class=""pagination-link[^>]+>(?<pagenum>[0-9]+)<\/a>", RegexOptions.Compiled | RegexOptions.Multiline);
+    private static readonly BanSource BanSource = new() { Name = "yogstation" };
+    private readonly Regex _pagesPattern = new(@"<a class=""pagination-link[^>]+>(?<pagenum>[0-9]+)<\/a>", RegexOptions.Compiled | RegexOptions.Multiline);
 
     protected override string BaseUrl => "https://yogstation.net/";
 
-    private async Task<IEnumerable<Ban>> GetBansAsync(int page = 1)
+    private async Task<List<Ban>> GetBansAsync(int page = 1)
     {
         var toReturn = new List<Ban>();
-        var content = await GetAsync<IEnumerable<Dictionary<string, JsonElement>>>("bans",
+        var content = await GetAsync<List<Dictionary<string, JsonElement>>>("bans",
             new Dictionary<string, string>() { { "json", "1" }, { "page", page.ToString() }, { "amount", "1000" } });
         
         foreach (var b in content)
@@ -57,7 +57,7 @@ public class YogBanService(HttpClient client, ILogger<YogBanService> logger) : H
         return toReturn;
     }
 
-    public async Task<IEnumerable<Ban>> GetBansBatchedAsync(int startpage = 1, int pages = -1)
+    public async Task<List<Ban>> GetBansBatchedAsync(int startpage = 1, int pages = -1)
     {
         var maxPages = await GetNumberOfPagesAsync();
         var range = Enumerable.Range(startpage, pages != -1 ? pages : maxPages + 1); // pad with a page for safety
@@ -99,7 +99,7 @@ public class YogBanService(HttpClient client, ILogger<YogBanService> logger) : H
 
         await Task.WhenAll(allTasks);
 
-        return toReturn;
+        return toReturn.ToList();
     }
 
     private async Task<int> GetNumberOfPagesAsync()

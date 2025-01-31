@@ -14,7 +14,7 @@ public class YogBanParser(DatabaseContext dbContext, YogBanService banService, I
 {
     private const int PagesPerBatch = 12;
 
-    protected override Dictionary<string, BanSource> Sources => new Dictionary<string, BanSource>
+    protected override Dictionary<string, BanSource> Sources => new()
     {
         { "yogstation", new BanSource
         {
@@ -27,7 +27,7 @@ public class YogBanParser(DatabaseContext dbContext, YogBanService banService, I
     protected override bool SourceSupportsBanIDs => true;
     protected override string Name => "YogStation";
 
-    public override async Task<IEnumerable<Ban>> FetchNewBansAsync()
+    public override async Task<List<Ban>> FetchNewBansAsync()
     {
         Logger.LogInformation("Getting new bans for YogStation...");
         var recent = await DbContext.Bans
@@ -54,7 +54,7 @@ public class YogBanParser(DatabaseContext dbContext, YogBanService banService, I
         return foundBans;
     }
 
-    public override async Task<IEnumerable<Ban>> FetchAllBansAsync()
+    public override async Task<List<Ban>> FetchAllBansAsync()
     {
         Logger.LogInformation("Getting all bans for YogStation...");
         return await banService.GetBansBatchedAsync();

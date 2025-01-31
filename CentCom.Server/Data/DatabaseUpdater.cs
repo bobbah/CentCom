@@ -18,7 +18,7 @@ public class DatabaseUpdater : IJob
     /// <summary>
     /// Types of BanParsers which should not be automatically configured with a refresh schedule
     /// </summary>
-    private readonly List<Type> _autoConfigBypass = new List<Type>
+    private readonly List<Type> _autoConfigBypass = new()
     {
         typeof(StandardBanParser)
     };
