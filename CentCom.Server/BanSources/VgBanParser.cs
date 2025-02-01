@@ -16,7 +16,7 @@ public class VgBanParser : BanParser
         _banService = banService;
     }
 
-    protected override Dictionary<string, BanSource> Sources => new Dictionary<string, BanSource>
+    protected override Dictionary<string, BanSource> Sources => new()
     {
         { "vgstation", new BanSource
         {
@@ -29,13 +29,13 @@ public class VgBanParser : BanParser
     protected override bool SourceSupportsBanIDs => false;
     protected override string Name => "/vg/station";
 
-    public override async Task<IEnumerable<Ban>> FetchAllBansAsync()
+    public override async Task<List<Ban>> FetchAllBansAsync()
     {
         Logger.LogInformation("Fetching all bans for /vg/station...");
         return await _banService.GetBansAsync();
     }
 
-    public override async Task<IEnumerable<Ban>> FetchNewBansAsync()
+    public override async Task<List<Ban>> FetchNewBansAsync()
     {
         // Note that the /vg/station website only has a single page for bans, so we always do a full refresh
         Logger.LogInformation("Fetching new bans for /vg/station...");

@@ -13,22 +13,17 @@ using Quartz;
 
 namespace CentCom.Server.BanSources;
 
-public class StandardBanParser : BanParser
+public class StandardBanParser(
+    DatabaseContext dbContext,
+    ILogger<StandardBanParser> logger,
+    StandardProviderService banService,
+    IConfiguration config)
+    : BanParser(dbContext, logger)
 {
-    private readonly StandardProviderService _banService;
-    private readonly List<StandardProviderConfiguration> _providerConfigs;
+    private readonly List<StandardProviderConfiguration> _providerConfigs = config.GetSection("standardSources").Get<List<StandardProviderConfiguration>>();
     private string _name;
 
     private Dictionary<string, BanSource> _sources;
-
-    public StandardBanParser(DatabaseContext dbContext, ILogger<StandardBanParser> logger,
-        StandardProviderService banService,
-        IConfiguration config) :
-        base(dbContext, logger)
-    {
-        _banService = banService;
-        _providerConfigs = config.GetSection("standardSources").Get<List<StandardProviderConfiguration>>();
-    }
 
     protected override Dictionary<string, BanSource> Sources => _sources;
 
@@ -45,18 +40,18 @@ public class StandardBanParser : BanParser
 
         // Configure the ban service for this source
         _name = source.Display;
-        _banService.Configure(source);
+        banService.Configure(source);
 
         // Ensure source is set
         _sources = new Dictionary<string, BanSource>
         {
-            { _banService.Source.Name, _banService.Source }
+            { banService.Source.Name, banService.Source }
         };
 
         return Task.CompletedTask;
     }
 
-    public override async Task<IEnumerable<Ban>> FetchNewBansAsync()
+    public override async Task<List<Ban>> FetchNewBansAsync()
     {
         Logger.LogInformation("Fetching new bans for {Name}...", Name);
         var recent = await DbContext.Bans
@@ -66,12 +61,12 @@ public class StandardBanParser : BanParser
             .Include(x => x.JobBans)
             .Include(x => x.SourceNavigation)
             .ToListAsync();
-        return await _banService.GetBansBatchedAsync(searchFor: recent.Select(x => int.Parse(x.BanID)));
+        return await banService.GetBansBatchedAsync(searchFor: recent.Select(x => int.Parse(x.BanID)).ToList());
     }
 
-    public override async Task<IEnumerable<Ban>> FetchAllBansAsync()
+    public override async Task<List<Ban>> FetchAllBansAsync()
     {
         Logger.LogInformation("Fetching all bans for {Name}...", Name);
-        return await _banService.GetBansBatchedAsync();
+        return await banService.GetBansBatchedAsync();
     }
 }

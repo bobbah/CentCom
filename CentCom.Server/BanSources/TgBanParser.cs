@@ -9,16 +9,10 @@ using Microsoft.Extensions.Logging;
 
 namespace CentCom.Server.BanSources;
 
-public class TgBanParser : BanParser
+public class TgBanParser(DatabaseContext dbContext, TgBanService banService, ILogger<TgBanParser> logger)
+    : BanParser(dbContext, logger)
 {
-    private readonly TgBanService _banService;
-
-    public TgBanParser(DatabaseContext dbContext, TgBanService banService, ILogger<TgBanParser> logger) : base(dbContext, logger)
-    {
-        _banService = banService;
-    }
-
-    protected override Dictionary<string, BanSource> Sources => new Dictionary<string, BanSource>
+    protected override Dictionary<string, BanSource> Sources => new()
     {
         { "tgstation", new BanSource
         {
@@ -31,13 +25,13 @@ public class TgBanParser : BanParser
     protected override bool SourceSupportsBanIDs => true;
     protected override string Name => "/tg/station";
 
-    public override async Task<IEnumerable<Ban>> FetchAllBansAsync()
+    public override async Task<List<Ban>> FetchAllBansAsync()
     {
         Logger.LogInformation("Fetching all bans for /tg/station...");
-        return await _banService.GetBansBatchedAsync();
+        return await banService.GetBansBatchedAsync(Sources["tgstation"]);
     }
 
-    public override async Task<IEnumerable<Ban>> FetchNewBansAsync()
+    public override async Task<List<Ban>> FetchNewBansAsync()
     {
         Logger.LogInformation("Fetching new bans for /tg/station...");
         var recent = await DbContext.Bans
@@ -52,7 +46,7 @@ public class TgBanParser : BanParser
         var page = 1;
         while (true)
         {
-            var bans = await _banService.GetBansAsync(page);
+            var bans = await banService.GetBansAsync(page);
             if (bans.Count == 0)
                 break;
             
@@ -65,6 +59,6 @@ public class TgBanParser : BanParser
             page++;
         }
 
-        return foundBans.DistinctBy(x => x.BanID);
+        return foundBans.DistinctBy(x => x.BanID).ToList();
     }
 }

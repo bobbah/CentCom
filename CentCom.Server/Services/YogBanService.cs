@@ -2,7 +2,7 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
+using System.Net.Http;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -10,38 +10,24 @@ using System.Threading.Tasks;
 using CentCom.Common.Extensions;
 using CentCom.Common.Models;
 using Microsoft.Extensions.Logging;
-using RestSharp;
 
 namespace CentCom.Server.Services;
 
-public class YogBanService : RestBanService
+public class YogBanService(HttpClient client, ILogger<YogBanService> logger) : HttpBanService(client, logger)
 {
     private const int ParallelRequests = 12;
     private const int RequestsPerMinute = 60;
-    private static readonly BanSource BanSource = new BanSource { Name = "yogstation" };
-    private readonly Regex _pagesPattern = new Regex(@"<a class=""pagination-link[^>]+>(?<pagenum>[0-9]+)<\/a>", RegexOptions.Compiled | RegexOptions.Multiline);
-
-    public YogBanService(ILogger<YogBanService> logger) : base(logger)
-    {
-    }
+    private static readonly BanSource BanSource = new() { Name = "yogstation" };
+    private readonly Regex _pagesPattern = new(@"<a class=""pagination-link[^>]+>(?<pagenum>[0-9]+)<\/a>", RegexOptions.Compiled | RegexOptions.Multiline);
 
     protected override string BaseUrl => "https://yogstation.net/";
 
-    private async Task<IEnumerable<Ban>> GetBansAsync(int page = 1)
+    private async Task<List<Ban>> GetBansAsync(int page = 1)
     {
-        var request = new RestRequest("bans")
-            .AddQueryParameter("json", "1")
-            .AddQueryParameter("page", page.ToString())
-            .AddQueryParameter("amount", "1000");
-        var response = await Client.ExecuteAsync(request);
-
-        if (response.StatusCode != HttpStatusCode.OK)
-        {
-            FailedRequest(response);
-        }
-
         var toReturn = new List<Ban>();
-        var content = JsonSerializer.Deserialize<IEnumerable<Dictionary<string, JsonElement>>>(response.Content);
+        var content = await GetAsync<List<Dictionary<string, JsonElement>>>("bans",
+            new Dictionary<string, string>() { { "json", "1" }, { "page", page.ToString() }, { "amount", "1000" } });
+        
         foreach (var b in content)
         {
             var expiryString = b["unbanned_datetime"].GetString() ?? b["expiration_time"].GetString();
@@ -71,7 +57,7 @@ public class YogBanService : RestBanService
         return toReturn;
     }
 
-    public async Task<IEnumerable<Ban>> GetBansBatchedAsync(int startpage = 1, int pages = -1)
+    public async Task<List<Ban>> GetBansBatchedAsync(int startpage = 1, int pages = -1)
     {
         var maxPages = await GetNumberOfPagesAsync();
         var range = Enumerable.Range(startpage, pages != -1 ? pages : maxPages + 1); // pad with a page for safety
@@ -113,20 +99,13 @@ public class YogBanService : RestBanService
 
         await Task.WhenAll(allTasks);
 
-        return toReturn;
+        return toReturn.ToList();
     }
 
     private async Task<int> GetNumberOfPagesAsync()
     {
-        var request = new RestRequest("bans");
-        var result = await Client.ExecuteAsync(request);
-
-        if (result.StatusCode != HttpStatusCode.OK)
-        {
-            FailedRequest(result);
-        }
-
-        var match = _pagesPattern.Matches(result.Content);
+        var content = await GetAsStringAsync("bans");
+        var match = _pagesPattern.Matches(content);
         if (!match.Any())
         {
             throw new Exception("Failed to find page numbers on yogstation.net bans page");

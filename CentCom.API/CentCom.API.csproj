@@ -7,17 +7,17 @@
 
     <ItemGroup>
         <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
-        <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="7.0.8" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.8" />
-        <PackageReference Include="MinVer" Version="4.3.0">
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="9.0.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.1" />
+        <PackageReference Include="MinVer" Version="6.0.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Npgsql" Version="7.0.4" />
-        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.4" />
-        <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.5.0" />
-        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.5.0" />
-        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUi" Version="6.5.0" />
+        <PackageReference Include="Npgsql" Version="9.0.2" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.3" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="7.2.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="7.2.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUi" Version="7.2.0" />
     </ItemGroup>
 
     <ItemGroup>

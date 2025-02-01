@@ -28,8 +28,8 @@ public class FlatDataImporter
     {
         foreach (var file in Directory.GetFiles("FlatData/JSON/"))
         {
-            var fileData = File.ReadAllText(file);
-            FlatDataFile deserializedData = null;
+            var fileData = await File.ReadAllTextAsync(file);
+            FlatDataFile deserializedData;
             try
             {
                 deserializedData = JsonSerializer.Deserialize<FlatDataFile>(fileData, new JsonSerializerOptions
@@ -40,7 +40,7 @@ public class FlatDataImporter
             }
             catch (Exception)
             {
-                _logger.LogError($"Failed to deserialize flat data file: '{file}'");
+                _logger.LogError("Failed to deserialize flat data file: '{File}'", file);
                 continue;
             }
 
@@ -52,17 +52,19 @@ public class FlatDataImporter
             // We need to update the data
             if (lastVersion == null || lastVersion.Version < deserializedData.Version)
             {
-                _logger.LogInformation(lastVersion == null ? $"Data from '{deserializedData.Name}' missing from database, adding..."
-                    : $"Out-of-date data found from '{deserializedData.Name} (v{lastVersion.Version}, updating to v{deserializedData.Version}), updating...'");
+                if (lastVersion == null)
+                    _logger.LogInformation("Data from '{Name}' missing from database, adding...", deserializedData.Name);
+                else
+                    _logger.LogInformation("Out-of-date data found from '{Name} (v{LastVersion}, updating to v{NewVersion}), updating...'", deserializedData.Name, lastVersion.Version, deserializedData.Version);
 
                 try
                 {
                     // Make this an atomic operation to ensure failed imports don't leave holes in the data
-                    using var transaction = await _dbContext.Database.BeginTransactionAsync();
+                    await using var transaction = await _dbContext.Database.BeginTransactionAsync();
 
                     // Update any ban sources if necessary
                     var toUpdate = await _dbContext.BanSources
-                        .Where(x => deserializedData.Sources.Select(x => x.Name).Contains(x.Name))
+                        .Where(x => deserializedData.Sources.Select(y => y.Name).Contains(x.Name))
                         .Include(x => x.Bans)
                         .ToListAsync();
                     foreach (var source in toUpdate)
@@ -70,7 +72,7 @@ public class FlatDataImporter
                         var match = deserializedData.Sources.First(x => x.Name == source.Name);
                         if (match.RoleplayLevel != source.RoleplayLevel || match.Display != source.Display)
                         {
-                            _logger.LogInformation($"Updating ban source '{source.Name}', found mis-matching metadata with new version of flat dataset");
+                            _logger.LogInformation("Updating ban source '{Name}', found mis-matching metadata with new version of flat dataset", source.Name);
                             source.Display = match.Display;
                             source.RoleplayLevel = match.RoleplayLevel;
                         }

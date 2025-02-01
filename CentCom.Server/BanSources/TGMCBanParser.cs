@@ -9,17 +9,12 @@ using Microsoft.Extensions.Logging;
 
 namespace CentCom.Server.BanSources;
 
-public class TGMCBanParser : BanParser
+public class TGMCBanParser(DatabaseContext dbContext, TGMCBanService banService, ILogger<TGMCBanParser> logger)
+    : BanParser(dbContext, logger)
 {
-    private const int PAGES_PER_BATCH = 3;
-    private readonly TGMCBanService _banService;
+    private const int PagesPerBatch = 3;
 
-    public TGMCBanParser(DatabaseContext dbContext, TGMCBanService banService, ILogger<TGMCBanParser> logger) : base(dbContext, logger)
-    {
-        _banService = banService;
-    }
-
-    protected override Dictionary<string, BanSource> Sources => new Dictionary<string, BanSource>
+    protected override Dictionary<string, BanSource> Sources => new()
     {
         { "tgmc", new BanSource
         {
@@ -32,13 +27,13 @@ public class TGMCBanParser : BanParser
     protected override bool SourceSupportsBanIDs => true;
     protected override string Name => "TGMC";
 
-    public override async Task<IEnumerable<Ban>> FetchAllBansAsync()
+    public override async Task<List<Ban>> FetchAllBansAsync()
     {
         Logger.LogInformation("Getting all bans for TGMC...");
-        return await _banService.GetBansBatchedAsync();
+        return await banService.GetBansBatchedAsync();
     }
 
-    public override async Task<IEnumerable<Ban>> FetchNewBansAsync()
+    public override async Task<List<Ban>> FetchNewBansAsync()
     {
         Logger.LogInformation("Getting new bans for TGMC...");
         var recent = await DbContext.Bans
@@ -53,13 +48,13 @@ public class TGMCBanParser : BanParser
 
         while (true)
         {
-            var batch = await _banService.GetBansBatchedAsync(page, PAGES_PER_BATCH);
+            var batch = await banService.GetBansBatchedAsync(page, PagesPerBatch);
             foundBans.AddRange(batch);
-            if (!batch.Any() || batch.Any(x => recent.Any(y => y.BannedOn == x.BannedOn && y.CKey == y.CKey)))
+            if (batch.Count == 0 || batch.Any(x => recent.Any(y => y.BannedOn == x.BannedOn && y.CKey == x.CKey)))
             {
                 break;
             }
-            page += PAGES_PER_BATCH;
+            page += PagesPerBatch;
         }
 
         return foundBans;

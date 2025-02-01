@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
+using System.Net.Http;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -10,34 +10,30 @@ using CentCom.Common.Models;
 using CentCom.Common.Models.Rest;
 using CentCom.Server.Configuration;
 using Microsoft.Extensions.Logging;
-using RestSharp;
-using RestSharp.Serializers.Json;
 
 namespace CentCom.Server.Services;
 
-public class StandardProviderService : RestBanService
+public class StandardProviderService(HttpClient client, ILogger<StandardProviderService> logger)
+    : HttpBanService(client, logger)
 {
     private string _baseUrl;
     private bool _configured;
 
-    public StandardProviderService(ILogger<StandardProviderService> logger) : base(logger)
-    {
-    }
-
     public BanSource Source { get; private set; }
     protected override string BaseUrl => _baseUrl;
 
-    private async Task<IEnumerable<Ban>> GetBansAsync(int? cursor = null)
+    public override JsonSerializerOptions JsonOptions => new JsonSerializerOptions()
     {
-        var request = new RestRequest("api/ban");
-        if (cursor.HasValue)
-            request.AddQueryParameter("cursor", cursor.ToString());
-        var response = await Client.ExecuteAsync<IEnumerable<RestBan>>(request);
+        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+        Converters = { new JsonStringEnumConverter() }
+    }.AddCentComOptions();
 
-        if (response.StatusCode != HttpStatusCode.OK)
-            FailedRequest(response);
-
-        return response.Data.Select(x => new Ban
+    private async Task<List<Ban>> GetBansAsync(int? cursor = null)
+    {
+        var data = await GetAsync<List<RestBan>>("api/ban",
+            cursor.HasValue ? new Dictionary<string, string>() { { "cursor", cursor.ToString() } } : null, JsonOptions);
+        
+        return data.Select(x => new Ban
         {
             BanID = x.Id.ToString(),
             BannedBy = x.BannedBy?.CanonicalKey,
@@ -53,10 +49,10 @@ public class StandardProviderService : RestBanService
                 })
                 .ToHashSet(),
             SourceNavigation = Source
-        });
+        }).ToList();
     }
 
-    public async Task<IEnumerable<Ban>> GetBansBatchedAsync(int? cursor = null, IEnumerable<int> searchFor = null)
+    public async Task<List<Ban>> GetBansBatchedAsync(int? cursor = null, List<int> searchFor = null)
     {
         if (!_configured)
             throw new Exception("Cannot get bans from an unconfigured external source");
@@ -69,11 +65,11 @@ public class StandardProviderService : RestBanService
         do
         {
             lastResponse = (await GetBansAsync(lastRequested)).ToList();
-            if (!lastResponse.Any())
+            if (lastResponse.Count == 0)
                 break;
             lastRequested = int.Parse(lastResponse[^1].BanID);
             result.AddRange(lastResponse);
-        } while (lastResponse.Any() &&
+        } while (lastResponse.Count != 0 &&
                  (searchFor == null || lastResponse.Any(x => searchFor.Contains(int.Parse(x.BanID)))));
 
         return result;
@@ -85,15 +81,7 @@ public class StandardProviderService : RestBanService
             throw new Exception("Cannot re-configure standard exporter provider, already configured");
         _configured = true;
         _baseUrl = config.Url;
+        SetBaseAddress(_baseUrl);
         Source = new BanSource { Name = config.Id, Display = config.Display, RoleplayLevel = config.RoleplayLevel };
-        
-        // Setup JSON for client
-        var options = new JsonSerializerOptions();
-        options.AddCentComOptions();
-        options.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
-        options.Converters.Insert(0, new JsonStringEnumConverter());
-        
-        // Re-initialize client with new url
-        InitializeClient(o => o.UseSystemTextJson(options));
     }
 }
