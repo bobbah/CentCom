@@ -13,7 +13,13 @@ using Quartz;
 namespace CentCom.Server.Data;
 
 [DisallowConcurrentExecution]
-public class DatabaseUpdater : IJob
+public class DatabaseUpdater(
+    DatabaseContext dbContext,
+    ILogger<DatabaseUpdater> logger,
+    FlatDataImporter importer,
+    ISchedulerFactory schedulerFactory,
+    IConfiguration config)
+    : IJob
 {
     /// <summary>
     /// Types of BanParsers which should not be automatically configured with a refresh schedule
@@ -23,32 +29,19 @@ public class DatabaseUpdater : IJob
         typeof(StandardBanParser)
     };
 
-    private readonly DatabaseContext _dbContext;
-    private readonly FlatDataImporter _importer;
-    private readonly ILogger _logger;
-    private readonly List<StandardProviderConfiguration> _providerConfigs;
-    private readonly ISchedulerFactory _schedulerFactory;
-
-    public DatabaseUpdater(DatabaseContext dbContext, ILogger<DatabaseUpdater> logger, FlatDataImporter importer,
-        ISchedulerFactory schedulerFactory, IConfiguration config)
-    {
-        _dbContext = dbContext;
-        _logger = logger;
-        _importer = importer;
-        _schedulerFactory = schedulerFactory;
-        _providerConfigs = config.GetSection("standardSources").Get<List<StandardProviderConfiguration>>();
-    }
+    private readonly ILogger _logger = logger;
+    private readonly List<StandardProviderConfiguration> _providerConfigs = config.GetSection("standardSources").Get<List<StandardProviderConfiguration>>();
 
     public async Task Execute(IJobExecutionContext context)
     {
         _logger.LogInformation("Checking for any pending migrations");
-        var appliedMigration = await _dbContext.Migrate(context.CancellationToken);
+        var appliedMigration = await dbContext.Migrate(context.CancellationToken);
         if (appliedMigration)
             _logger.LogInformation("Applied new migration");
 
         // Import any new flat data prior to registering ban parsing jobs
         _logger.LogInformation("Checking for any updates to flat file data");
-        await _importer.RunImports();
+        await importer.RunImports();
 
         // Call register jobs after db migration to ensure that the DB is actually created on first run before doing any ops
         _logger.LogInformation("Registering ban parsing jobs");
@@ -62,15 +55,16 @@ public class DatabaseUpdater : IJob
     /// </summary>
     private async Task RegisterJobs()
     {
+        var allowedParsers = config.GetSection("enabledParsers").Get<HashSet<string>>();
         var parsers = AppDomain.CurrentDomain.GetAssemblies().Aggregate(new List<Type>(), (curr, next) =>
         {
             curr.AddRange(next.GetTypes()
-                .Where(x => x.IsSubclassOf(typeof(BanParser)) && !_autoConfigBypass.Contains(x)));
+                .Where(x => x.IsSubclassOf(typeof(BanParser)) && !_autoConfigBypass.Contains(x) && allowedParsers.Contains(x.Name)));
             return curr;
         });
 
         // Get a scheduler instance
-        var scheduler = await _schedulerFactory.GetScheduler();
+        var scheduler = await schedulerFactory.GetScheduler();
 
         foreach (var p in parsers)
         {
@@ -102,7 +96,7 @@ public class DatabaseUpdater : IJob
     private async Task RegisterStandardJobs()
     {
         // Get a scheduler instance
-        var scheduler = await _schedulerFactory.GetScheduler();
+        var scheduler = await schedulerFactory.GetScheduler();
 
         // Iterate through each standard provider to set it up
         foreach (var provider in _providerConfigs)

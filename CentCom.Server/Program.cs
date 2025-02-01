@@ -15,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Quartz;
 using Serilog;
+using Serilog.Filters;
 
 namespace CentCom.Server;
 
@@ -27,7 +28,7 @@ internal class Program
             .Enrich.FromLogContext()
             .WriteTo.Logger(lc =>
             {
-                //lc.Filter.ByExcluding(Matching.FromSource("Quartz"));
+                lc.Filter.ByExcluding(Matching.FromSource("Quartz"));
                 lc.WriteTo.Console(
                     outputTemplate:
                     "[{Timestamp:HH:mm:ss} {Level:u3}] ({SourceContext}) {Message:lj}{NewLine}{Exception}");
@@ -43,7 +44,7 @@ internal class Program
         Log.Logger.ForContext<Program>()
             .Information("Starting CentCom Server {Version} ({Commit})", AssemblyInformation.Current.Version,
                 AssemblyInformation.Current.Commit[..7]);
-        
+
         return CreateHostBuilder(args).RunConsoleAsync();
     }
 

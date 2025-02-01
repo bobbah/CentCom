@@ -7,15 +7,9 @@ using Microsoft.Extensions.Logging;
 
 namespace CentCom.Server.BanSources;
 
-public class VgBanParser : BanParser
+public class VgBanParser(DatabaseContext dbContext, VgBanService banService, ILogger<VgBanParser> logger)
+    : BanParser(dbContext, logger)
 {
-    private readonly VgBanService _banService;
-
-    public VgBanParser(DatabaseContext dbContext, VgBanService banService, ILogger<VgBanParser> logger) : base(dbContext, logger)
-    {
-        _banService = banService;
-    }
-
     protected override Dictionary<string, BanSource> Sources => new()
     {
         { "vgstation", new BanSource
@@ -32,13 +26,13 @@ public class VgBanParser : BanParser
     public override async Task<List<Ban>> FetchAllBansAsync()
     {
         Logger.LogInformation("Fetching all bans for /vg/station...");
-        return await _banService.GetBansAsync();
+        return await banService.GetBansAsync();
     }
 
     public override async Task<List<Ban>> FetchNewBansAsync()
     {
         // Note that the /vg/station website only has a single page for bans, so we always do a full refresh
         Logger.LogInformation("Fetching new bans for /vg/station...");
-        return await _banService.GetBansAsync();
+        return await banService.GetBansAsync();
     }
 }
