@@ -25,7 +25,7 @@ of [IBanProvider](Data/Providers/IBanProvider.cs) in a PR, or request that bobba
 
 ## Use
 
-[Requires ASP.NET Core Runtime 5+.](https://dotnet.microsoft.com/download/dotnet/5.0)
+[Requires ASP.NET Core Runtime 9+.](https://dotnet.microsoft.com/download/dotnet/9.0)
 
 [Find the latest compiled executables for CentCom.Exporter here](https://github.com/bobbahbrown/CentCom/releases/latest)
 
