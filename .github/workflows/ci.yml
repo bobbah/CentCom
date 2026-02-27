@@ -9,7 +9,10 @@ env:
 jobs:
   ci:
     name: ubuntu
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
+    permissions:
+      checks: write
+      pull-requests: write  # Required to comment on PRs
     steps:
       - name: Set PR number (Linux)
         run: |
@@ -25,5 +28,11 @@ jobs:
         run: dotnet restore
       - name: Build
         run: dotnet build --no-restore
-      - name: Test
-        run: dotnet test --no-build --verbosity normal CentCom.Test/CentCom.Test.csproj --logger GitHubActions
+      - name: Run tests
+        run: dotnet test --configuration Release -- --report-trx --results-directory ./TestResults
+      - name: Comment PR with results
+        if: always()
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        with:
+          files: ./TestResults/*.trx
+          comment_mode: always
