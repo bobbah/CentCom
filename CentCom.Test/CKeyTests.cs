@@ -4,39 +4,36 @@ using CentCom.Common.Extensions;
 using CentCom.Common.Models.Byond;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using Xunit;
 
 namespace CentCom.Test;
 
 public class CKeyTests
 {
-    [Fact]
-    public void CKeyShouldCreate()
+    [Test]
+    public async Task CKeyShouldCreate()
     {
         ICKey ckey = new CKey("Bobbahbrown");
-        Assert.Equal("bobbahbrown", ckey.CanonicalKey);
+        await Assert.That(ckey.CanonicalKey).IsEqualTo("bobbahbrown");
     }
 
-    [Fact]
-    public void CKeyShouldCreateFromStringImplicitly()
+    [Test]
+    public async Task CKeyShouldCreateFromStringImplicitly()
     {
         CKey ckey = "Bobbahbrown";
-        Assert.Equal("bobbahbrown", ckey.CanonicalKey);
+        await Assert.That(ckey.CanonicalKey).IsEqualTo("bobbahbrown");
     }
 
-    [Fact]
-    public void CKeyShouldSerialize()
+    [Test]
+    public async Task CKeyShouldSerialize()
     {
         var options = GetOptions();
         ICKey ckey = new CKey("Bobbahbrown");
         var serialized = JsonSerializer.Serialize(ckey, options);
         var deserialized = JsonSerializer.Deserialize<ICKey>(serialized, options);
-        Assert.Equal("bobbahbrown", deserialized?.CanonicalKey);
+        await Assert.That(deserialized?.CanonicalKey).IsEqualTo("bobbahbrown");
     }
 
-    private static JsonSerializerOptions GetOptions()
-    {
-        return (new ServiceCollection()).AddCentComSerialization().BuildServiceProvider()
-            .GetRequiredService<IOptions<JsonSerializerOptions>>().Value;
-    }
+    private static JsonSerializerOptions GetOptions() =>
+        (new ServiceCollection()).AddCentComSerialization().BuildServiceProvider()
+        .GetRequiredService<IOptions<JsonSerializerOptions>>().Value;
 }

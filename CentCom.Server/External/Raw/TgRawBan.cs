@@ -54,7 +54,7 @@ public class TgRawBan : IRawBan
     public TgUser Target { get; set; }
     
     [JsonPropertyName("unbanner")]
-    public TgUser? Unbanner { get; set; }
+    public TgUser Unbanner { get; set; }
     
     [JsonPropertyName("roles")]
     public List<string> Roles { get; set; }

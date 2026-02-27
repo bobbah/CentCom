@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Setup .NET
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: 9.0.102
+          dotnet-version: 10.0.x
       - name: Checkout source
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
       - name: Prepare publish artifacts
         run: |
           dotnet publish CentCom.API -o publish/linux-x64/CentCom.API/ -r "linux-x64" --self-contained false -c Release --nologo

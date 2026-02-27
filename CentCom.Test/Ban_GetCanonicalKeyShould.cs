@@ -1,19 +1,17 @@
-﻿using System;
-using CentCom.Common;
-using Xunit;
+﻿using CentCom.Common;
 
 namespace CentCom.Test;
 
 public class Ban_GetCanonicalKeyShould
 {
-    [Fact]
-    public void GetCanonicalKey_FromRaw_ReturnTrue()
+    [Test]
+    public async Task GetCanonicalKey_FromRaw_ReturnTrue()
     {
-        var rawKey = "B o bbahbrown";
-        Assert.True("bobbahbrown" == KeyUtilities.GetCanonicalKey(rawKey));
+        const string rawKey = "B o bbahbrown";
+        await Assert.That(KeyUtilities.GetCanonicalKey(rawKey)).IsEqualTo("bobbahbrown");
     }
 
-    [Fact]
+    [Test]
     public void GetCanonicalKey_NullArgument_ThrowsException()
     {
         Assert.Throws<ArgumentNullException>(() => KeyUtilities.GetCanonicalKey(null));

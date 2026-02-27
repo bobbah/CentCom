@@ -1,4 +1,3 @@
-using System;
 using System.Text.Json;
 using CentCom.Common.Abstract;
 using CentCom.Common.Extensions;
@@ -7,14 +6,13 @@ using CentCom.Common.Models.Byond;
 using CentCom.Common.Models.Rest;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using Xunit;
 
 namespace CentCom.Test;
 
 public class RestBanTests
 {
-    [Fact]
-    public void CanCreateBan()
+    [Test]
+    public async Task CanCreateBan()
     {
         IRestBan ban = new RestBan(
             1,
@@ -27,11 +25,11 @@ public class RestBanTests
             null,
             new[] { new RestJobBan("Janitor") },
             null);
-        Assert.NotNull(ban);
+        await Assert.That(ban).IsNotNull();
     }
 
-    [Fact]
-    public void CanSerializeBan()
+    [Test]
+    public async Task CanSerializeBan()
     {
         IRestBan ban = new RestBan(
             1,
@@ -42,13 +40,13 @@ public class RestBanTests
             "Test ban please ignore",
             null,
             null,
-            new[] { new RestJobBan("Janitor") },
+            [new RestJobBan("Janitor")],
             null);
 
         var options = GetOptions();
         var serialized = JsonSerializer.Serialize(ban, options);
         var deserialized = JsonSerializer.Deserialize<IRestBan>(serialized, options);
-        Assert.NotNull(deserialized);
+        await Assert.That(deserialized).IsNotNull();
     }
 
     private static JsonSerializerOptions GetOptions() =>

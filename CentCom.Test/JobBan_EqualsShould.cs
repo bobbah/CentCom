@@ -1,13 +1,12 @@
 ﻿using CentCom.Common.Models;
 using CentCom.Common.Models.Equality;
-using Xunit;
 
 namespace CentCom.Test;
 
 public class JobBan_EqualsShould
 {
-    [Fact]
-    public void Equals_SameJobBan_ReturnTrue()
+    [Test]
+    public async Task Equals_SameJobBan_ReturnTrue()
     {
         var jobA = new JobBan
         {
@@ -22,8 +21,12 @@ public class JobBan_EqualsShould
         };
 
         var comparer = JobBanEqualityComparer.Instance;
-        Assert.True(comparer.Equals(jobA, jobB), "Two jobs equal by internal values should be equal");
-        Assert.True(comparer.GetHashCode(jobA) == comparer.GetHashCode(jobB), "Two jobs equal by internal values should have the same hashcode");
+        await Assert.That(comparer.Equals(jobA, jobB))
+            .IsTrue()
+            .Because("Two jobs equal by internal values should be equal");
+        await Assert.That(comparer.GetHashCode(jobA))
+            .IsEqualTo(comparer.GetHashCode(jobB))
+            .Because("Two jobs equal by internal values should have the same hashcode");
     }
 
     /// <summary>
@@ -31,8 +34,8 @@ public class JobBan_EqualsShould
     /// bans that have been parsed, we shouldn't consider ban id for
     /// job ban equality as semantically it would never be practiced.
     /// </summary>
-    [Fact]
-    public void Equals_SameJobBan_DifferentID_ReturnTrue()
+    [Test]
+    public async Task Equals_SameJobBan_DifferentID_ReturnTrue()
     {
         var jobA = new JobBan
         {
@@ -47,7 +50,11 @@ public class JobBan_EqualsShould
         };
 
         var comparer = JobBanEqualityComparer.Instance;
-        Assert.True(comparer.Equals(jobA, jobB), "Two jobs equal by job, even with differing IDs, should be equal");
-        Assert.True(comparer.GetHashCode(jobA) == comparer.GetHashCode(jobB), "Two jobs equal by job, even with differing ids, should have the same hashcode");
+        await Assert.That(comparer.Equals(jobA, jobB))
+            .IsTrue()
+            .Because("Two jobs equal by job, even with differing IDs, should be equal");
+        await Assert.That(comparer.GetHashCode(jobA))
+            .IsEqualTo(comparer.GetHashCode(jobB))
+            .Because("Two jobs equal by job, even with differing ids, should have the same hashcode");
     }
 }

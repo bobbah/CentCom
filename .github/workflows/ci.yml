@@ -9,21 +9,30 @@ env:
 jobs:
   ci:
     name: ubuntu
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
+    permissions:
+      checks: write
+      pull-requests: write  # Required to comment on PRs
     steps:
       - name: Set PR number (Linux)
         run: |
           echo "PRNumber=${{ github.event.pull_request.number }}" >> "$GITHUB_ENV"
         if: github.event_name == 'pull_request'
-      - uses: actions/setup-dotnet@v3
+      - uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: 9.0.102
-      - uses: actions/checkout@v3
+          dotnet-version: 10.0.x
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Restore dependencies
         run: dotnet restore
       - name: Build
         run: dotnet build --no-restore
-      - name: Test
-        run: dotnet test --no-build --verbosity normal CentCom.Test/CentCom.Test.csproj --logger GitHubActions
+      - name: Run tests
+        run: dotnet test --configuration Release -- --report-trx --results-directory ./TestResults
+      - name: Comment PR with results
+        if: always()
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        with:
+          files: ./TestResults/*.trx
+          comment_mode: always
