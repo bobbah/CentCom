@@ -42,11 +42,11 @@ public abstract class HttpBanService
 
     protected void SetBaseAddress(string address) => _httpClient.BaseAddress = new Uri(address);
 
-    protected async Task<T> GetAsync<T>(string endpoint, Dictionary<string, string>? queryParams = null,
-        JsonSerializerOptions? options = null) =>
+    protected async Task<T> GetAsync<T>(string endpoint, Dictionary<string, string> queryParams = null,
+        JsonSerializerOptions options = null) =>
         JsonSerializer.Deserialize<T>(await GetAsStringAsync(endpoint, queryParams), options ?? JsonOptions);
 
-    protected async Task<string> GetAsStringAsync(string endpoint, Dictionary<string, string>? queryParams = null)
+    protected async Task<string> GetAsStringAsync(string endpoint, Dictionary<string, string> queryParams = null)
     {
         var url = queryParams is not null ? QueryHelpers.AddQueryString(endpoint, queryParams) : endpoint;
         var response = await _httpClient.GetAsync(url);

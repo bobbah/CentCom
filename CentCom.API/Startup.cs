@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi;
 
 namespace CentCom.API;
 
@@ -60,7 +60,7 @@ public class Startup(IConfiguration configuration)
             {
                 Title = "CentCom",
                 Version = statusService.GetVersion().ToString(),
-                Description = "An API for accesing CentCom, a central ban intelligence service for Space Station 13 servers"
+                Description = "An API for accessing CentCom, a central ban intelligence service for Space Station 13 servers"
             });
 
             // Set the comments path for the Swagger JSON and UI.

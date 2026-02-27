@@ -1,15 +1,13 @@
-﻿using System;
-using CentCom.Common.Extensions;
+﻿using CentCom.Common.Extensions;
 using CentCom.Common.Models;
 using CentCom.Common.Models.Equality;
-using Xunit;
 
 namespace CentCom.Test;
 
 public class Ban_EqualsShould
 {
-    [Fact]
-    public void Equals_SameBanDifferentID_ReturnTrue()
+    [Test]
+    public async Task Equals_SameBanDifferentID_ReturnTrue()
     {
         var source = new BanSource
         {
@@ -44,12 +42,12 @@ public class Ban_EqualsShould
         };
 
         var comparer = BanEqualityComparer.Instance;
-        Assert.True(comparer.Equals(banA, banB), "Two bans equal by internal values should be equal");
-        Assert.True(comparer.GetHashCode(banA) == comparer.GetHashCode(banB), "Two bans equal by internal values should have equal hashcodes");
+        await Assert.That(comparer.Equals(banA, banB)).IsTrue().Because("Two bans equal by internal values should be equal");
+        await Assert.That(comparer.GetHashCode(banA)).IsEqualTo(comparer.GetHashCode(banB)).Because("Two bans equal by internal values should have equal hashcodes");
     }
 
-    [Fact]
-    public void Equals_SameBanDifferentIDDifferentSource_ReturnFalse()
+    [Test]
+    public async Task Equals_SameBanDifferentIDDifferentSource_ReturnFalse()
     {
         var sourceA = new BanSource
         {
@@ -92,12 +90,12 @@ public class Ban_EqualsShould
         };
 
         var comparer = BanEqualityComparer.Instance;
-        Assert.False(comparer.Equals(banA, banB), "Two bans from different sources should not be equal by internal values");
-        Assert.False(comparer.GetHashCode(banA) == comparer.GetHashCode(banB), "Two bans from different sources should not have equal hashcodes");
+        await Assert.That(comparer.Equals(banA, banB)).IsFalse().Because("Two bans from different sources should not be equal by internal values");
+        await Assert.That(comparer.GetHashCode(banA)).IsNotEqualTo(comparer.GetHashCode(banB)).Because("Two bans from different sources should not have equal hashcodes");
     }
 
-    [Fact]
-    public void Equals_SameBanByBanID_ReturnTrue()
+    [Test]
+    public async Task Equals_SameBanByBanID_ReturnTrue()
     {
         var banA = new Ban
         {
@@ -112,12 +110,12 @@ public class Ban_EqualsShould
         };
 
         var comparer = BanEqualityComparer.Instance;
-        Assert.True(comparer.Equals(banA, banB), "Two bans with BanIDs should be checked for equality by ID");
-        Assert.True(comparer.GetHashCode(banA) == comparer.GetHashCode(banB), "Two bans with BanIDs that are equal should have equal hashcodes");
+        await Assert.That(comparer.Equals(banA, banB)).IsTrue().Because("Two bans with BanIDs should be checked for equality by ID");
+        await Assert.That(comparer.GetHashCode(banA)).IsEqualTo(comparer.GetHashCode(banB)).Because("Two bans with BanIDs that are equal should have equal hashcodes");
     }
 
-    [Fact]
-    public void Equals_SameBanIDDifferentSource_ReturnFalse()
+    [Test]
+    public async Task Equals_SameBanIDDifferentSource_ReturnFalse()
     {
         var sourceA = new BanSource
         {
@@ -152,12 +150,12 @@ public class Ban_EqualsShould
         };
 
         var comparer = BanEqualityComparer.Instance;
-        Assert.False(comparer.Equals(banA, banB), "Two bans from different sources should not be equal by BanID");
-        Assert.False(comparer.GetHashCode(banA) == comparer.GetHashCode(banB), "Two bans from different sources should not have equal hashcodes");
+        await Assert.That(comparer.Equals(banA, banB)).IsFalse().Because("Two bans from different sources should not be equal by BanID");
+        await Assert.That(comparer.GetHashCode(banA)).IsNotEqualTo(comparer.GetHashCode(banB)).Because("Two bans from different sources should not have equal hashcodes");
     }
 
-    [Fact]
-    public void Equals_SameBanDifferentJobOrder_ReturnTrue()
+    [Test]
+    public async Task Equals_SameBanDifferentJobOrder_ReturnTrue()
     {
         var banA = new Ban
         {
@@ -174,12 +172,12 @@ public class Ban_EqualsShould
         banB.AddJobRange(new[] { "head of security", "warden", "detective", "security officer" });
 
         var comparer = BanEqualityComparer.Instance;
-        Assert.True(comparer.Equals(banA, banB), "Two bans with the same jobbans in different orders should be equal");
-        Assert.True(comparer.GetHashCode(banA) == comparer.GetHashCode(banB), "Two bans with the same jobbans in different orders should be equal");
+        await Assert.That(comparer.Equals(banA, banB)).IsTrue().Because("Two bans with the same jobbans in different orders should be equal");
+        await Assert.That(comparer.GetHashCode(banA)).IsEqualTo(comparer.GetHashCode(banB)).Because("Two bans with the same jobbans in different orders should be equal");
     }
 
-    [Fact]
-    public void Equals_SameBanNullVsEmptyJobBans_ReturnTrue()
+    [Test]
+    public async Task Equals_SameBanNullVsEmptyJobBans_ReturnTrue()
     {
         var banA = new Ban
         {
@@ -197,12 +195,12 @@ public class Ban_EqualsShould
         };
 
         var comparer = BanEqualityComparer.Instance;
-        Assert.True(comparer.Equals(banA, banB), "Bans should be equal if the jobbans only differ by null and an empty set");
-        Assert.True(comparer.GetHashCode(banA) == comparer.GetHashCode(banB), "Bans should have the same hashcode if the jobbans only differ by null and an empty set");
+        await Assert.That(comparer.Equals(banA, banB)).IsTrue().Because("Bans should be equal if the jobbans only differ by null and an empty set");
+        await Assert.That(comparer.GetHashCode(banA)).IsEqualTo(comparer.GetHashCode(banB)).Because("Bans should have the same hashcode if the jobbans only differ by null and an empty set");
     }
 
-    [Fact]
-    public void Equals_SameBanDifferingAttributes_ReturnFalse()
+    [Test]
+    public async Task Equals_SameBanDifferingAttributes_ReturnFalse()
     {
         var banA = new Ban
         {
@@ -218,12 +216,12 @@ public class Ban_EqualsShould
         banB.AddAttribute(BanAttribute.BeeStationGlobal);
 
         var comparer = BanEqualityComparer.Instance;
-        Assert.False(comparer.Equals(banA, banB), "Bans should not be equal if they differ in attributes");
-        Assert.False(comparer.GetHashCode(banA) == comparer.GetHashCode(banB), "Bans should not have the same hashcode if they differ in attributes");
+        await Assert.That(comparer.Equals(banA, banB)).IsFalse().Because("Bans should not be equal if they differ in attributes");
+        await Assert.That(comparer.GetHashCode(banA)).IsNotEqualTo(comparer.GetHashCode(banB)).Because("Bans should not have the same hashcode if they differ in attributes");
     }
 
-    [Fact]
-    public void Equals_SameBanSameAttributes_ReturnTrue()
+    [Test]
+    public async Task Equals_SameBanSameAttributes_ReturnTrue()
     {
         var banA = new Ban
         {
@@ -240,7 +238,7 @@ public class Ban_EqualsShould
         banB.AddAttribute(BanAttribute.BeeStationGlobal);
 
         var comparer = BanEqualityComparer.Instance;
-        Assert.True(comparer.Equals(banA, banB), "Bans should be equal when they are equal including attributes");
-        Assert.True(comparer.GetHashCode(banA) == comparer.GetHashCode(banB), "Bans should have the same hashcode if they are equal including attributes");
+        await Assert.That(comparer.Equals(banA, banB)).IsTrue().Because("Bans should be equal when they are equal including attributes");
+        await Assert.That(comparer.GetHashCode(banA)).IsEqualTo(comparer.GetHashCode(banB)).Because("Bans should have the same hashcode if they are equal including attributes");
     }
 }
