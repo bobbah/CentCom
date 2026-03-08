@@ -1,0 +1,143 @@
+﻿@page "/"
+
+<!--suppress CssUnresolvedCustomProperty -->
+<PageTitle>CentCom - Ban Viewer</PageTitle>
+
+<style>
+    .hero-container {
+        min-height: 60vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background: linear-gradient(135deg, rgba(126, 111, 255, 0.1) 0%, rgba(74, 134, 255, 0.05) 100%);
+        border-radius: 16px;
+        padding: 60px 40px;
+        margin-bottom: 60px;
+    }
+
+    .hero-title {
+        font-weight: 600;
+        letter-spacing: -1px;
+        margin-bottom: 16px;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+        max-width: 600px;
+        line-height: 1.6;
+        margin-bottom: 40px;
+        opacity: 0.85;
+    }
+
+    .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+        margin-bottom: 60px;
+    }
+
+    .feature-card {
+        padding: 32px;
+        border-radius: 12px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-4px);
+    }
+
+    .feature-icon {
+        font-size: 3rem;
+        margin-bottom: 16px;
+    }
+
+    .feature-title {
+        font-weight: 600;
+        margin-bottom: 12px;
+    }
+
+    .feature-description {
+        opacity: 0.8;
+        line-height: 1.6;
+        font-size: 0.95rem;
+    }
+
+    .cta-container {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 40px;
+    }
+
+    .search-banner {
+        margin-top: 80px;
+        text-align: center;
+    }
+
+    .search-label {
+        font-size: 0.95rem;
+        opacity: 0.8;
+        margin-bottom: 8px;
+        display: block;
+    }
+</style>
+
+<div class="hero-container">
+    <MudText Typo="Typo.h2" Class="hero-title">CentCom Viewer</MudText>
+    <MudText Typo="Typo.body1" Class="hero-subtitle">
+        Search and manage bans across CentCom. Enter a ckey to get started and discover ban information instantly.
+    </MudText>
+
+    <div class="cta-container">
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" Size="Size.Large"
+                   Href="#search" StartIcon="@Icons.Material.Filled.Search">
+            Start Searching
+        </MudButton>
+        <MudButton Variant="Variant.Outlined" Color="Color.Primary" Size="Size.Large"
+                   Href="/swagger" Target="_blank" StartIcon="@Icons.Material.Filled.Code">
+            API Documentation
+        </MudButton>
+    </div>
+</div>
+
+<div class="feature-grid">
+    <div class="feature-card" style="border: 1px solid var(--mud-palette-lines-default);">
+        <div class="feature-icon">🔍</div>
+        <MudText Typo="Typo.h6" Class="feature-title">Quick Search</MudText>
+        <MudText Typo="Typo.body2" Class="feature-description">
+            Look up any ckey instantly to find ban records, reasons, and timestamps.
+        </MudText>
+    </div>
+
+    <div class="feature-card" style="border: 1px solid var(--mud-palette-lines-default);">
+        <div class="feature-icon">📊</div>
+        <MudText Typo="Typo.h6" Class="feature-title">Detailed Information</MudText>
+        <MudText Typo="Typo.body2" Class="feature-description">
+            Access comprehensive ban data including sources, administrators, and ban history.
+        </MudText>
+    </div>
+
+    <div class="feature-card" style="border: 1px solid var(--mud-palette-lines-default);">
+        <div class="feature-icon">⚙️</div>
+        <MudText Typo="Typo.h6" Class="feature-title">Developer API</MudText>
+        <MudText Typo="Typo.body2" Class="feature-description">
+            Integrate CentCom data into your applications using our powerful REST API.
+        </MudText>
+    </div>
+</div>
+
+<div class="search-banner" id="search">
+    <MudText Typo="Typo.h5" GutterBottom="true">Search for a Ban</MudText>
+    <MudText Typo="Typo.body2" Class="search-label">Enter a ckey to begin</MudText>
+    <MudContainer MaxWidth="MaxWidth.Small">
+        <MudTextField T="string" Placeholder="Enter ckey..."
+                      Variant="Variant.Outlined"
+                      StartAdornment="@Icons.Material.Filled.Search"
+                      Class="mt-4"
+                      FullWidth="true"/>
+    </MudContainer>
+</div>

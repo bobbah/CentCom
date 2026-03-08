@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>CentCom.API</name>
+        <name>CentCom.APIOld</name>
     </assembly>
     <members>
         <member name="M:CentCom.API.Controllers.BanController.GetBansForKey(System.String,System.Boolean,System.Nullable{System.Int32})">

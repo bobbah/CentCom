@@ -1,0 +1,145 @@
+﻿@using CentCom.API.Services
+@inherits LayoutComponentBase
+@inject IAppStatusService AppStatus
+
+<style>
+    .mud-mono {
+        font-family: monospace;
+    }
+</style>
+
+<MudThemeProvider Theme="@_theme" IsDarkMode="_isDarkMode"/>
+<MudPopoverProvider/>
+<MudDialogProvider/>
+<MudSnackbarProvider/>
+<MudLayout>
+    <MudAppBar Elevation="1">
+        <MudStack Row AlignItems="AlignItems.Center" Style="min-width: calc(var(--mud-drawer-width, var(--mud-drawer-width-left)) - 8px);">
+            <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start"
+                           OnClick="@((e) => DrawerToggle())"/>
+            <MudText Typo="Typo.h5" Class="ml-3">CentCom</MudText>
+        </MudStack>
+        <MudAutocomplete T="string" Placeholder="Search..." @bind-Value="_ckey" SearchFunc="@SearchCkey"
+                         Variant="Variant.Outlined" ShowProgressIndicator="true" DebounceInterval="250"
+                         MinCharacters="3" MaxItems="64" FullWidth/>
+        <MudIconButton Icon="@(DarkLightModeButtonIcon)" Color="Color.Inherit" OnClick="@DarkModeToggle"/>
+        <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End"/>
+    </MudAppBar>
+    <MudDrawer id="nav-drawer" @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2">
+        <NavMenu/>
+    </MudDrawer>
+    <MudMainContent Class="pt-20 pa-4">
+        @Body
+        <MudDivider Style="margin-top: 1rem; margin-bottom: 1rem;"/>
+        <MudStack Justify="Justify.Center" AlignItems="AlignItems.Center" Spacing="1">
+            <MudText Typo="Typo.caption" Class="mud-mono">All times listed are UTC unless otherwise stated. All content
+                is provided without any guarantee, explicit or implied, of accuracy or permanent access.
+            </MudText>
+            <MudText Typo="Typo.caption" Class="mud-mono">GitHub:
+                <MudLink Href="https://github.com/bobbahbrown/CentCom/">Repo</MudLink>
+                /
+                <MudLink
+                    Href="@($"https://github.com/bobbahbrown/CentCom/releases/tag/{AppStatus.GetVersion().ToString()}")">
+                    Release
+                </MudLink>
+                /
+                <MudLink
+                    Href="@($"https://github.com/bobbahbrown/CentCom/commit/{AppStatus.GetBuildCommit().ToString()}")">
+                    Commit
+                </MudLink>
+                <br/>
+            </MudText>
+            <MudText Typo="Typo.caption" Class="mud-mono">@AppStatus.GetCopyrightNotice().ToString()</MudText>
+        </MudStack>
+    </MudMainContent>
+</MudLayout>
+
+
+<div id="blazor-error-ui" data-nosnippet>
+    An unhandled error has occurred.
+    <a href="." class="reload">Reload</a>
+    <span class="dismiss">🗙</span>
+</div>
+
+@code {
+    private bool _drawerOpen = true;
+    private bool _isDarkMode = true;
+    private MudTheme? _theme = null;
+    private string? _ckey;
+    [Inject] private IBanService BanService { get; set; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        _theme = new()
+        {
+            PaletteLight = _lightPalette,
+            PaletteDark = _darkPalette,
+            LayoutProperties = new LayoutProperties()
+        };
+    }
+
+    private async Task<IEnumerable<string>> SearchCkey(string value, CancellationToken ct)
+    {
+        if (value.Trim().Length < 3)
+            return [];
+        return await BanService.SearchCkeys(value, ct);
+    }
+
+    private void DrawerToggle()
+    {
+        _drawerOpen = !_drawerOpen;
+    }
+
+    private void DarkModeToggle()
+    {
+        _isDarkMode = !_isDarkMode;
+    }
+
+    private readonly PaletteLight _lightPalette = new()
+    {
+        Black = "#110e2d",
+        AppbarText = "#424242",
+        AppbarBackground = "rgba(255,255,255,0.8)",
+        DrawerBackground = "#ffffff",
+        GrayLight = "#e8e8e8",
+        GrayLighter = "#f9f9f9",
+    };
+
+    private readonly PaletteDark _darkPalette = new()
+    {
+        Primary = "#7e6fff",
+        Surface = "#1e1e2d",
+        Background = "#1a1a27",
+        BackgroundGray = "#151521",
+        AppbarText = "#92929f",
+        AppbarBackground = "rgba(26,26,39,0.8)",
+        DrawerBackground = "#1a1a27",
+        ActionDefault = "#74718e",
+        ActionDisabled = "#9999994d",
+        ActionDisabledBackground = "#605f6d4d",
+        TextPrimary = "#b2b0bf",
+        TextSecondary = "#92929f",
+        TextDisabled = "#ffffff33",
+        DrawerIcon = "#92929f",
+        DrawerText = "#92929f",
+        GrayLight = "#2a2833",
+        GrayLighter = "#1e1e2d",
+        Info = "#4a86ff",
+        Success = "#3dcb6c",
+        Warning = "#ffb545",
+        Error = "#ff3f5f",
+        LinesDefault = "#33323e",
+        TableLines = "#33323e",
+        Divider = "#292838",
+        OverlayLight = "#1e1e2d80",
+    };
+
+    public string DarkLightModeButtonIcon => _isDarkMode switch
+    {
+        true => Icons.Material.Rounded.AutoMode,
+        false => Icons.Material.Outlined.DarkMode,
+    };
+
+}

@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CentCom.Server", "CentCom.Server\CentCom.Server.csproj", "{E8742DF1-2BDF-42B6-9E3A-DB4074466ADA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CentCom.API", "CentCom.API\CentCom.API.csproj", "{68FB58E4-9945-4B1E-9767-E3B1590F3CC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CentCom.APIOld", "CentCom.APIOld\CentCom.APIOld.csproj", "{68FB58E4-9945-4B1E-9767-E3B1590F3CC4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CentCom.Common", "CentCom.Common\CentCom.Common.csproj", "{1908B013-99C9-499C-ABA1-BC249CBDE3ED}"
 EndProject
@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentCom.Exporter", "CentCom.Exporter\CentCom.Exporter.csproj", "{F3B6E80D-A12F-4D26-8E7A-1A5A3D6E50AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentCom.API", "CentCom.API\CentCom.API.csproj", "{900E1AD5-E285-4963-A33E-7E74A5E6B200}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,6 +48,10 @@ Global
 		{F3B6E80D-A12F-4D26-8E7A-1A5A3D6E50AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3B6E80D-A12F-4D26-8E7A-1A5A3D6E50AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3B6E80D-A12F-4D26-8E7A-1A5A3D6E50AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{900E1AD5-E285-4963-A33E-7E74A5E6B200}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{900E1AD5-E285-4963-A33E-7E74A5E6B200}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{900E1AD5-E285-4963-A33E-7E74A5E6B200}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{900E1AD5-E285-4963-A33E-7E74A5E6B200}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

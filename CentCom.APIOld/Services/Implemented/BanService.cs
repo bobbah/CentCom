@@ -1,4 +1,8 @@
-﻿using CentCom.Common;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using CentCom.Common;
 using CentCom.Common.Data;
 using CentCom.Common.Models;
 using CentCom.Common.Models.DTO;
@@ -6,12 +10,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CentCom.API.Services.Implemented;
 
-public class BanService(IDbContextFactory<NpgsqlDbContext> dbContextFactory) : IBanService
+public class BanService : IBanService
 {
+    private readonly DatabaseContext _dbContext;
+
+    public BanService(DatabaseContext dbContext)
+    {
+        _dbContext = dbContext;
+    }
+
     public async Task<BanData> GetBanAsync(int ban)
     {
-        await using var dbContext = await dbContextFactory.CreateDbContextAsync();
-        return BanData.FromBan(await dbContext.Bans
+        return BanData.FromBan(await _dbContext.Bans
             .Include(x => x.JobBans)
             .Include(x => x.SourceNavigation).
             FirstOrDefaultAsync(x => x.Id == ban));
@@ -19,9 +29,8 @@ public class BanService(IDbContextFactory<NpgsqlDbContext> dbContextFactory) : I
 
     public async Task<IEnumerable<BanData>> GetBansForKeyAsync(string key, int? source, bool onlyActive = false)
     {
-        await using var dbContext = await dbContextFactory.CreateDbContextAsync();
         var ckey = KeyUtilities.GetCanonicalKey(key);
-        var query = dbContext.Bans
+        var query = _dbContext.Bans
             .Include(x => x.JobBans)
             .Include(x => x.SourceNavigation)
             .Where(x => x.CKey == ckey);
@@ -40,8 +49,7 @@ public class BanService(IDbContextFactory<NpgsqlDbContext> dbContextFactory) : I
 
     public async Task<IEnumerable<BanData>> GetBansForSourceAsync(int source, bool onlyActive = false)
     {
-        await using var dbContext = await dbContextFactory.CreateDbContextAsync();
-        var query = dbContext.Bans
+        var query = _dbContext.Bans
             .Include(x => x.JobBans)
             .Include(x => x.SourceNavigation)
             .Where(x => x.Source == source);
@@ -56,9 +64,8 @@ public class BanService(IDbContextFactory<NpgsqlDbContext> dbContextFactory) : I
 
     public async Task<IEnumerable<KeySummary>> SearchSummariesForKeyAsync(string key)
     {
-        await using var dbContext = await dbContextFactory.CreateDbContextAsync();
         key = KeyUtilities.GetCanonicalKey(key);
-        var query = dbContext.Bans.GroupBy(x => x.CKey,
+        var query = _dbContext.Bans.GroupBy(x => x.CKey,
             (k, g) => new KeySummary
             {
                 CKey = k,
@@ -69,13 +76,5 @@ public class BanService(IDbContextFactory<NpgsqlDbContext> dbContextFactory) : I
 
         return await query.OrderByDescending(x => x.LatestBan)
             .ToListAsync();
-    }
-
-    public async Task<IEnumerable<string>> SearchCkeys(string key, CancellationToken cancellationToken)
-    {
-        await using var dbContext = await dbContextFactory.CreateDbContextAsync(cancellationToken);
-        key = KeyUtilities.GetCanonicalKey(key);
-        var query = dbContext.Bans.GroupBy(x => x.CKey).Where(x => x.Key.ToLower().Contains(key));
-        return await query.Select(x => x.Key).Take(64).ToListAsync(cancellationToken);
     }
 }
