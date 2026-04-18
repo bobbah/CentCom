@@ -1,0 +1,178 @@
+@page "/bans"
+@page "/bans/{CKey}"
+
+@using CentCom.API.Services
+@using CentCom.Common
+@using CentCom.Common.Models
+@using CentCom.Common.Models.DTO
+@using Microsoft.AspNetCore.Components
+
+@inject IBanService BanService
+
+<PageTitle>CentCom - Bans</PageTitle>
+
+<div class="bans-page">
+    <MudGrid Spacing="3" Class="panel-grid">
+        <MudItem xs="12">
+            <MudPaper Class="bans-header pa-4" Outlined Elevation="0">
+                <MudText Typo="Typo.h4">Ban History</MudText>
+                <MudText Typo="Typo.body2" Class="header-sub mt-1">
+                    @(!string.IsNullOrWhiteSpace(_canonicalCkey)
+                        ? $"Showing newest to oldest bans for '{_canonicalCkey}'."
+                        : "Use the top search bar to enter a CKey.")
+                </MudText>
+            </MudPaper>
+        </MudItem>
+
+        <MudItem xs="12">
+            <MudPaper Class="filter-panel pa-4" Outlined Elevation="0">
+                <MudText Typo="Typo.subtitle1" Class="mb-2">Filters</MudText>
+                <MudSwitch T="bool" Color="Color.Success" Label="Only active"
+                           Value="@OnlyActive" ValueChanged="OnOnlyActiveChanged"
+                           Disabled="@string.IsNullOrWhiteSpace(_canonicalCkey)"/>
+
+                <MudDivider Class="my-2"/>
+
+                <MudStack Row="true" Spacing="1" Wrap="Wrap.Wrap">
+                    <MudChip T="string" Variant="Variant.Outlined" Color="Color.Info">Total @TotalCount</MudChip>
+                    <MudChip T="string" Variant="Variant.Outlined" Color="Color.Success">Active @ActiveCount</MudChip>
+                    <MudChip T="string" Variant="Variant.Outlined" Color="Color.Warning">
+                        Inactive @InactiveCount</MudChip>
+                </MudStack>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+
+    @if (_isLoading)
+    {
+        <MudStack Justify="Justify.Center" AlignItems="AlignItems.Center">
+            <MudProgressCircular Indeterminate="true" Class="mt-4 mb-4" />
+        </MudStack>
+    }
+    else if (string.IsNullOrWhiteSpace(_canonicalCkey))
+    {
+        <MudAlert Severity="Severity.Info" Variant="Variant.Outlined" Dense="true" Class="mt-4">
+            Enter a CKey in the navbar search to view ban history.
+        </MudAlert>
+    }
+    else if (_bans.Count == 0)
+    {
+        <MudAlert Severity="Severity.Info" Variant="Variant.Outlined" Dense="true" Class="mt-4">
+            No bans were found for '@_canonicalCkey' with the current filter.
+        </MudAlert>
+    }
+    else
+    {
+        <MudStack Spacing="4" Class="mt-4">
+            @foreach (var ban in _bans.OrderByDescending(x => x.BannedOn).Where(x => !OnlyActive || x.Active))
+            {
+                <MudPaper Class="@($"{GetBanClass(ban)} pa-4")" Outlined Elevation="0">
+                    <MudText Typo="Typo.h5" Class="ban-title">
+                        @(ban.Type == BanType.Job ? "Job Ban" : "Server Ban") | @ban.SourceName | @GetStatusLabel(ban)
+                    </MudText>
+
+                    <MudText Typo="Typo.body1" Class="reason">@ban.Reason</MudText>
+
+                    @if (ban.Type == BanType.Job && ban.Jobs?.Count > 0)
+                    {
+                        <MudText Typo="Typo.body1" Class="trait-line">
+                            <strong>Jobs:</strong> @string.Join(", ", ban.Jobs)</MudText>
+                    }
+
+                    <MudText Typo="Typo.body1" Class="trait-line">
+                        <strong>Banned:</strong> <LocalTime Time="@ban.BannedOn" />
+                        <span class="dot">|</span>
+                        <strong>Admin:</strong> @ValueOrDash(ban.BannedBy)
+                        @if (ban.Expires.HasValue)
+                        {
+                            <span class="dot">|</span>
+                            <strong>Expires:</strong> <LocalTime Time="@ban.Expires.Value" />
+                        }
+                        @if (!string.IsNullOrWhiteSpace(ban.BanID))
+                        {
+                            <span class="dot">|</span>
+                            <strong>Origin Ban ID:</strong>
+                            @ban.BanID
+                        }
+                    </MudText>
+
+                    @if (!string.IsNullOrWhiteSpace(ban.UnbannedBy))
+                    {
+                        <MudText Typo="Typo.body1" Class="trait-line"><strong>Unbanned By:</strong> @ban.UnbannedBy
+                        </MudText>
+                    }
+
+                    @if (ban.BanAttributes?.Count > 0)
+                    {
+                        <MudText Typo="Typo.body1" Class="trait-line"><strong>CentCom
+                                Attributes:</strong> @string.Join(", ", ban.BanAttributes)</MudText>
+                    }
+                </MudPaper>
+            }
+        </MudStack>
+    }
+</div>
+
+@code {
+    [Parameter] public string? CKey { get; set; }
+
+    [SupplyParameterFromQuery(Name = "onlyActive")]
+    public bool OnlyActive { get; set; }
+
+    private bool _isLoading;
+    private string _canonicalCkey = string.Empty;
+    private readonly List<BanData> _bans = [];
+
+    private int TotalCount => _bans.Count;
+    private int ActiveCount => _bans.Count(x => x.Active);
+    private int InactiveCount => _bans.Count - ActiveCount;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        _canonicalCkey = string.IsNullOrWhiteSpace(CKey) ? string.Empty : KeyUtilities.GetCanonicalKey(CKey);
+
+        if (string.IsNullOrWhiteSpace(_canonicalCkey))
+        {
+            _bans.Clear();
+            _isLoading = false;
+            return;
+        }
+
+        await LoadBans();
+    }
+
+    private async Task LoadBans()
+    {
+        _isLoading = true;
+
+        var data = await BanService.GetBansForKeyAsync(_canonicalCkey, null, false);
+        _bans.Clear();
+        _bans.AddRange(data);
+
+        _isLoading = false;
+    }
+
+    private Task OnOnlyActiveChanged(bool onlyActive)
+    {
+        OnlyActive = onlyActive;
+        return Task.CompletedTask;
+    }
+
+    private static string ValueOrDash(string? value) => string.IsNullOrWhiteSpace(value) ? "-" : value;
+
+    private static string GetStatusLabel(BanData ban)
+    {
+        if (ban.Active)
+            return "Active";
+
+        return string.IsNullOrWhiteSpace(ban.UnbannedBy) ? "Expired" : "Unbanned";
+    }
+
+    private static string GetBanClass(BanData ban)
+    {
+        if (ban.Active)
+            return "ban-card active-ban";
+
+        return string.IsNullOrWhiteSpace(ban.UnbannedBy) ? "ban-card expired-ban" : "ban-card unbanned-ban";
+    }
+}

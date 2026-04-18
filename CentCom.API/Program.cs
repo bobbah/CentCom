@@ -50,6 +50,7 @@ switch (dbConfig.DbType)
 
 builder.Services.AddTransient<IBanService, BanService>();
 builder.Services.AddTransient<IBanSourceService, BanSourceService>();
+builder.Services.AddBlazorLocalTimeService();
 
 // Add status service
 var statusService = new AppStatusService();

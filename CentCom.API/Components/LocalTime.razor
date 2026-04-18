@@ -1,0 +1,18 @@
+@using BlazorLocalTime
+
+<MudTooltip>
+    <TooltipContent>
+        @(Time.ToString(Format)) UTC
+    </TooltipContent>
+    <ChildContent>
+        <MudText><LocalTimeText Value="@Time" Format="@Format" /></MudText>
+    </ChildContent>
+</MudTooltip>
+
+@code {
+    [Parameter]
+    public DateTime Time { get; set; }
+    
+    [Parameter]
+    public string Format { get; set; } = "yyyy-MM-dd h:mm tt";
+}

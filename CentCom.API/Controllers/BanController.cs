@@ -1,4 +1,4 @@
-﻿using CentCom.API.Models;
+using CentCom.API.Models;
 using CentCom.API.Services;
 using CentCom.Common.Models.DTO;
 using Microsoft.AspNetCore.Mvc;
@@ -35,6 +35,7 @@ public class BanController : ControllerBase
         {
             return BadRequest("Key cannot be empty or null");
         }
+
         return Ok(await _banService.GetBansForKeyAsync(key, source, onlyActive));
     }
 
@@ -66,6 +67,32 @@ public class BanController : ControllerBase
         {
             return NotFound("Invalid Ban ID");
         }
+
         return Ok(result);
+    }
+
+    /// <summary>
+    /// Retrieves aggregate ban totals grouped by source.
+    /// </summary>
+    /// <returns>A collection of source totals</returns>
+    /// <response code="200">The source totals</response>
+    [HttpGet("ban/stats/source-totals")]
+    [ProducesResponseType(typeof(IEnumerable<BanSourceTotalData>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetSourceTotals()
+    {
+        return Ok(await _banService.GetBanTotalsBySourceAsync());
+    }
+
+    /// <summary>
+    /// Retrieves latest bans from newest to oldest.
+    /// </summary>
+    /// <param name="count">Maximum number of bans to return (1-100)</param>
+    /// <returns>A collection of latest bans</returns>
+    /// <response code="200">The latest bans</response>
+    [HttpGet("ban/latest")]
+    [ProducesResponseType(typeof(IEnumerable<BanData>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetLatest([FromQuery] int count = 20)
+    {
+        return Ok(await _banService.GetLatestBansAsync(count));
     }
 }

@@ -10,6 +10,7 @@
 
 
     <ItemGroup>
+        <PackageReference Include="BlazorLocalTime" Version="2.0.3" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.3" />
         <PackageReference Include="MudBlazor" Version="9.*"/>
         <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="10.1.4" />

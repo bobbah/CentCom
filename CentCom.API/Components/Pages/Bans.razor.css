@@ -1,0 +1,87 @@
+::deep .bans-page {
+    max-width: 1220px;
+    margin: 0 auto;
+}
+
+::deep .panel-grid {
+    align-items: stretch;
+}
+
+::deep .bans-header,
+::deep .filter-panel {
+    height: 100%;
+    border: 1px solid var(--mud-palette-lines-default);
+    border-radius: 0.75rem;
+    padding: 1.1rem 1.25rem;
+    background:
+        radial-gradient(500px 180px at 2% 0%, rgba(59, 130, 246, 0.16), transparent),
+        color-mix(in srgb, var(--mud-palette-surface) 93%, transparent);
+}
+
+::deep .header-kicker {
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    color: var(--mud-palette-info);
+}
+
+::deep .header-sub {
+    opacity: 0.82;
+}
+
+::deep .ban-card {
+    border: 1px solid var(--mud-palette-lines-default);
+    border-radius: 0.2rem;
+    padding: 0.95rem 1.15rem;
+    transition: box-shadow 0.2s ease;
+}
+
+::deep .ban-card:hover {
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--mud-palette-primary) 20%, transparent);
+}
+
+::deep .active-ban {
+    border-left: 6px solid #35a96a;
+}
+
+::deep .expired-ban {
+    border-left: 6px solid #b57a2b;
+}
+
+::deep .unbanned-ban {
+    border-left: 6px solid #2f7cbf;
+}
+
+::deep .ban-title {
+    font-weight: 700;
+    margin-bottom: 0.65rem;
+}
+
+::deep .reason {
+    line-height: 1.5;
+    margin-bottom: 0.65rem;
+}
+
+::deep .trait-line {
+    line-height: 1.5;
+    margin-bottom: 0.35rem;
+}
+
+::deep .dot {
+    display: inline-block;
+    margin-inline: 0.45rem;
+    opacity: 0.5;
+}
+
+@media (max-width: 900px) {
+    ::deep .ban-card {
+        padding: 0.9rem;
+    }
+
+    ::deep .dot {
+        display: none;
+    }
+
+    ::deep .trait-line {
+        display: block;
+    }
+}

@@ -1,143 +1,151 @@
-﻿@page "/"
+@page "/"
 
-<!--suppress CssUnresolvedCustomProperty -->
+@using CentCom.API.Models
+@using CentCom.API.Services
+@using CentCom.Common.Models.DTO
+@inject IBanService BanService
+@inject NavigationManager Navigation
+
 <PageTitle>CentCom - Ban Viewer</PageTitle>
 
-<style>
-    .hero-container {
-        min-height: 60vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        background: linear-gradient(135deg, rgba(126, 111, 255, 0.1) 0%, rgba(74, 134, 255, 0.05) 100%);
-        border-radius: 16px;
-        padding: 60px 40px;
-        margin-bottom: 60px;
-    }
+<div class="home-page">
+    <MudPaper Class="hero pa-4" Outlined Elevation="0">
+        <MudText Typo="Typo.overline" Class="hero-kicker">Centralized Moderation Viewer</MudText>
+        <MudText Typo="Typo.h3" Class="hero-title">See Ban Activity Across Every Source</MudText>
+        <MudText Typo="Typo.body1" Class="hero-subtitle">
+            Track totals by server, monitor the newest actions in real-time style, and jump straight to a player's ban history from the global search.
+        </MudText>
 
-    .hero-title {
-        font-weight: 600;
-        letter-spacing: -1px;
-        margin-bottom: 16px;
-    }
+        <MudStack Row="true" Spacing="2" Wrap="Wrap.Wrap" Class="mt-4">
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" Href="/swagger" Target="_blank"
+                       StartIcon="@Icons.Material.Filled.Code">API Documentation</MudButton>
+            <MudButton Variant="Variant.Outlined" Color="Color.Primary" Href="/bans" StartIcon="@Icons.Material.Filled.Search">
+                Search by CKey
+            </MudButton>
+        </MudStack>
+    </MudPaper>
 
-    .hero-subtitle {
-        font-size: 1.1rem;
-        max-width: 600px;
-        line-height: 1.6;
-        margin-bottom: 40px;
-        opacity: 0.85;
-    }
+    <MudGrid Spacing="4" Class="panel-grid mt-0">
+        <MudItem xs="12" md="6">
+            <MudPaper Class="panel pa-4" Outlined Elevation="0">
+                <MudStack Row="true" AlignItems="AlignItems.Center" Justify="Justify.SpaceBetween" Wrap="Wrap.Wrap">
+                    <MudText Typo="Typo.h5">Bans by Source</MudText>
+                    <MudChip T="string" Color="Color.Info" Variant="Variant.Outlined">Total @_sourceTotals.Sum(x => x.TotalBans)</MudChip>
+                </MudStack>
 
-    .feature-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 24px;
-        margin-bottom: 60px;
-    }
+                @if (_isLoading)
+                {
+                    <MudSkeleton Height="46px" Class="mt-3"/>
+                    <MudSkeleton Height="46px" Class="mt-2"/>
+                    <MudSkeleton Height="46px" Class="mt-2"/>
+                }
+                else if (_sourceTotals.Count == 0)
+                {
+                    <MudAlert Severity="Severity.Info" Variant="Variant.Outlined" Dense="true" Class="mt-3">
+                        No source data was found.
+                    </MudAlert>
+                }
+                else
+                {
+                    <MudTable Dense="true"
+                              Hover="true"
+                              Striped="true"
+                              Bordered="false"
+                              FixedHeader="true"
+                              Height="420px"
+                              Breakpoint="Breakpoint.None"
+                              Items="_sourceTotals"
+                              Class="mt-3 source-table">
+                        <HeaderContent>
+                            <MudTh>Server</MudTh>
+                            <MudTh Class="text-right">Total Bans</MudTh>
+                        </HeaderContent>
+                        <RowTemplate>
+                            <MudTd DataLabel="Server">@context.SourceName</MudTd>
+                            <MudTd DataLabel="Total" Class="text-right">@context.TotalBans</MudTd>
+                        </RowTemplate>
+                    </MudTable>
+                }
+            </MudPaper>
+        </MudItem>
 
-    .feature-card {
-        padding: 32px;
-        border-radius: 12px;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        cursor: pointer;
-    }
+        <MudItem xs="12" md="6">
+            <MudPaper Class="panel pa-4" Outlined Elevation="0">
+                <MudStack Row="true" AlignItems="AlignItems.Center" Justify="Justify.SpaceBetween" Wrap="Wrap.Wrap">
+                    <MudText Typo="Typo.h5">Latest Bans</MudText>
+                    <MudChip T="string" Color="Color.Primary" Variant="Variant.Text">Rolling feed</MudChip>
+                </MudStack>
 
-    .feature-card:hover {
-        transform: translateY(-4px);
-    }
+                @if (_isLoading)
+                {
+                    <MudSkeleton Height="52px" Class="mt-3"/>
+                    <MudSkeleton Height="52px" Class="mt-2"/>
+                    <MudSkeleton Height="52px" Class="mt-2"/>
+                    <MudSkeleton Height="52px" Class="mt-2"/>
+                }
+                else if (_latestBans.Count == 0)
+                {
+                    <MudAlert Severity="Severity.Info" Variant="Variant.Outlined" Dense="true" Class="mt-3">
+                        No recent bans were found.
+                    </MudAlert>
+                }
+                else
+                {
+                    <div class="rolling-wrap mt-3">
+                        <div class="rolling-track">
+                            @foreach (var ban in _latestBans)
+                            {
+                                <button type="button" class="latest-row" @onclick="() => GoToCkey(ban.CKey)">
+                                    <span class="latest-ckey">@ban.CKey</span>
+                                    <span class="latest-source">@ban.SourceName</span>
+                                    <span class="latest-time"><LocalTime Time="@ban.BannedOn" /></span>
+                                </button>
+                            }
 
-    .feature-icon {
-        font-size: 3rem;
-        margin-bottom: 16px;
-    }
-
-    .feature-title {
-        font-weight: 600;
-        margin-bottom: 12px;
-    }
-
-    .feature-description {
-        opacity: 0.8;
-        line-height: 1.6;
-        font-size: 0.95rem;
-    }
-
-    .cta-container {
-        display: flex;
-        gap: 16px;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin-top: 40px;
-    }
-
-    .search-banner {
-        margin-top: 80px;
-        text-align: center;
-    }
-
-    .search-label {
-        font-size: 0.95rem;
-        opacity: 0.8;
-        margin-bottom: 8px;
-        display: block;
-    }
-</style>
-
-<div class="hero-container">
-    <MudText Typo="Typo.h2" Class="hero-title">CentCom Viewer</MudText>
-    <MudText Typo="Typo.body1" Class="hero-subtitle">
-        Search and manage bans across CentCom. Enter a ckey to get started and discover ban information instantly.
-    </MudText>
-
-    <div class="cta-container">
-        <MudButton Variant="Variant.Filled" Color="Color.Primary" Size="Size.Large"
-                   Href="#search" StartIcon="@Icons.Material.Filled.Search">
-            Start Searching
-        </MudButton>
-        <MudButton Variant="Variant.Outlined" Color="Color.Primary" Size="Size.Large"
-                   Href="/swagger" Target="_blank" StartIcon="@Icons.Material.Filled.Code">
-            API Documentation
-        </MudButton>
-    </div>
+                            @foreach (var ban in _latestBans)
+                            {
+                                <button type="button" class="latest-row" @onclick="() => GoToCkey(ban.CKey)">
+                                    <span class="latest-ckey">@ban.CKey</span>
+                                    <span class="latest-source">@ban.SourceName</span>
+                                    <span class="latest-time"><LocalTime Time="@ban.BannedOn" /></span>
+                                </button>
+                            }
+                        </div>
+                    </div>
+                }
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
 </div>
 
-<div class="feature-grid">
-    <div class="feature-card" style="border: 1px solid var(--mud-palette-lines-default);">
-        <div class="feature-icon">🔍</div>
-        <MudText Typo="Typo.h6" Class="feature-title">Quick Search</MudText>
-        <MudText Typo="Typo.body2" Class="feature-description">
-            Look up any ckey instantly to find ban records, reasons, and timestamps.
-        </MudText>
-    </div>
+@code {
+    private readonly List<BanSourceTotalData> _sourceTotals = [];
+    private readonly List<BanData> _latestBans = [];
+    private bool _isLoading = true;
 
-    <div class="feature-card" style="border: 1px solid var(--mud-palette-lines-default);">
-        <div class="feature-icon">📊</div>
-        <MudText Typo="Typo.h6" Class="feature-title">Detailed Information</MudText>
-        <MudText Typo="Typo.body2" Class="feature-description">
-            Access comprehensive ban data including sources, administrators, and ban history.
-        </MudText>
-    </div>
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadData();
+    }
 
-    <div class="feature-card" style="border: 1px solid var(--mud-palette-lines-default);">
-        <div class="feature-icon">⚙️</div>
-        <MudText Typo="Typo.h6" Class="feature-title">Developer API</MudText>
-        <MudText Typo="Typo.body2" Class="feature-description">
-            Integrate CentCom data into your applications using our powerful REST API.
-        </MudText>
-    </div>
-</div>
+    private async Task LoadData()
+    {
+        _isLoading = true;
 
-<div class="search-banner" id="search">
-    <MudText Typo="Typo.h5" GutterBottom="true">Search for a Ban</MudText>
-    <MudText Typo="Typo.body2" Class="search-label">Enter a ckey to begin</MudText>
-    <MudContainer MaxWidth="MaxWidth.Small">
-        <MudTextField T="string" Placeholder="Enter ckey..."
-                      Variant="Variant.Outlined"
-                      StartAdornment="@Icons.Material.Filled.Search"
-                      Class="mt-4"
-                      FullWidth="true"/>
-    </MudContainer>
-</div>
+        var totals = await BanService.GetBanTotalsBySourceAsync();
+        var latest = await BanService.GetLatestBansAsync(16);
+
+        _sourceTotals.Clear();
+        _sourceTotals.AddRange(totals);
+
+        _latestBans.Clear();
+        _latestBans.AddRange(latest);
+
+        _isLoading = false;
+    }
+
+    private void GoToCkey(string ckey)
+    {
+        Navigation.NavigateTo($"/bans/{Uri.EscapeDataString(ckey)}");
+    }
+}

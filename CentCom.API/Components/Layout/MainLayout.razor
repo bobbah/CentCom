@@ -1,10 +1,69 @@
-﻿@using CentCom.API.Services
+@using BlazorLocalTime
+@using CentCom.API.Services
+@using MudTooltip = MudBlazor.MudTooltip
 @inherits LayoutComponentBase
 @inject IAppStatusService AppStatus
+@inject NavigationManager Navigation
+@inject IBanService BanService
+@inject ILogger<MainLayout> Logger
 
 <style>
     .mud-mono {
         font-family: monospace;
+    }
+
+    .app-shell {
+        background: radial-gradient(1200px 500px at 20% -10%, rgba(44, 116, 214, 0.22), transparent),
+        radial-gradient(1000px 420px at 80% -25%, rgba(52, 168, 83, 0.16), transparent),
+        var(--mud-palette-background);
+    }
+
+    .topbar {
+        border-bottom: 1px solid var(--mud-palette-lines-default);
+        backdrop-filter: blur(10px);
+    }
+
+    .brand-mark {
+        font-weight: 700;
+        letter-spacing: 0.08rem;
+        white-space: nowrap;
+    }
+
+    .top-search-wrap {
+        flex: 1 1 420px;
+        max-width: 460px;
+        min-width: 190px;
+        margin-inline: 0.75rem;
+    }
+
+    .top-search-wrap .mud-input-control {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .top-search-wrap .mud-input-slot {
+        border-radius: 999px;
+    }
+
+    .top-search-wrap .mud-input-outlined {
+        background: color-mix(in srgb, var(--mud-palette-surface) 84%, transparent);
+    }
+
+    .main-content {
+        min-height: calc(100vh - 64px);
+    }
+
+    @@media (max-width: 760px) {
+        .top-search-wrap {
+            max-width: none;
+            min-width: 0;
+            margin-inline: 0.25rem;
+        }
+
+        .brand-mark {
+            font-size: 1rem;
+            letter-spacing: 0.04rem;
+        }
     }
 </style>
 
@@ -12,23 +71,49 @@
 <MudPopoverProvider/>
 <MudDialogProvider/>
 <MudSnackbarProvider/>
-<MudLayout>
-    <MudAppBar Elevation="1">
-        <MudStack Row AlignItems="AlignItems.Center" Style="min-width: calc(var(--mud-drawer-width, var(--mud-drawer-width-left)) - 8px);">
-            <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start"
-                           OnClick="@((e) => DrawerToggle())"/>
-            <MudText Typo="Typo.h5" Class="ml-3">CentCom</MudText>
-        </MudStack>
-        <MudAutocomplete T="string" Placeholder="Search..." @bind-Value="_ckey" SearchFunc="@SearchCkey"
-                         Variant="Variant.Outlined" ShowProgressIndicator="true" DebounceInterval="250"
-                         MinCharacters="3" MaxItems="64" FullWidth/>
+<BlazorLocalTimeProvider />
+<MudLayout Class="app-shell">
+    <MudAppBar Elevation="0" Dense="true" Class="topbar">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start"
+                       OnClick="@((e) => DrawerToggle())"/>
+        <MudText Typo="Typo.h6" Class="brand-mark ml-2">CENTCOM</MudText>
+
+        <MudSpacer/>
+
+        <div class="top-search-wrap">
+            <MudAutocomplete T="string"
+                             Placeholder="Search CKey"
+                             @bind-Text="_searchText"
+                             Value="@_selectedSearchValue"
+                             ValueChanged="OnSearchValueChanged"
+                             SearchFunc="@SearchCkey"
+                             DebounceInterval="180"
+                             MinCharacters="2"
+                             MaxItems="8"
+                             CoerceText="true"
+                             CoerceValue="true"
+                             Strict="false"
+                             Clearable="true"
+                             Variant="Variant.Outlined"
+                             Dense="true"
+                             Margin="Margin.Dense"/>
+        </div>
+
+        <MudTooltip Text="Search">
+            <MudIconButton Icon="@Icons.Material.Filled.ArrowForward" Color="Color.Primary" OnClick="SubmitSearch"/>
+        </MudTooltip>
+        <MudTooltip Text="API docs">
+            <MudIconButton Icon="@Icons.Material.Filled.Code" Color="Color.Inherit" Href="/swagger" Target="_blank"/>
+        </MudTooltip>
         <MudIconButton Icon="@(DarkLightModeButtonIcon)" Color="Color.Inherit" OnClick="@DarkModeToggle"/>
-        <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End"/>
     </MudAppBar>
-    <MudDrawer id="nav-drawer" @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2">
+
+    <MudDrawer id="nav-drawer" @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="0"
+               Style="border-right: 1px solid var(--mud-palette-lines-default);">
         <NavMenu/>
     </MudDrawer>
-    <MudMainContent Class="pt-20 pa-4">
+
+    <MudMainContent Class="pt-20 pa-4 main-content">
         @Body
         <MudDivider Style="margin-top: 1rem; margin-bottom: 1rem;"/>
         <MudStack Justify="Justify.Center" AlignItems="AlignItems.Center" Spacing="1">
@@ -36,15 +121,15 @@
                 is provided without any guarantee, explicit or implied, of accuracy or permanent access.
             </MudText>
             <MudText Typo="Typo.caption" Class="mud-mono">GitHub:
-                <MudLink Href="https://github.com/bobbahbrown/CentCom/">Repo</MudLink>
+                <MudLink Href="https://github.com/bobbah/CentCom/">Repo</MudLink>
                 /
                 <MudLink
-                    Href="@($"https://github.com/bobbahbrown/CentCom/releases/tag/{AppStatus.GetVersion().ToString()}")">
+                    Href="@($"https://github.com/bobbah/CentCom/releases/tag/{AppStatus.GetVersion().ToString()}")">
                     Release
                 </MudLink>
                 /
                 <MudLink
-                    Href="@($"https://github.com/bobbahbrown/CentCom/commit/{AppStatus.GetBuildCommit().ToString()}")">
+                    Href="@($"https://github.com/bobbah/CentCom/commit/{AppStatus.GetBuildCommit().ToString()}")">
                     Commit
                 </MudLink>
                 <br/>
@@ -54,25 +139,22 @@
     </MudMainContent>
 </MudLayout>
 
-
 <div id="blazor-error-ui" data-nosnippet>
     An unhandled error has occurred.
     <a href="." class="reload">Reload</a>
-    <span class="dismiss">🗙</span>
+    <span class="dismiss">x</span>
 </div>
 
 @code {
     private bool _drawerOpen = true;
     private bool _isDarkMode = true;
-    private MudTheme? _theme = null;
-    private string? _ckey;
-    [Inject] private IBanService BanService { get; set; }
+    private MudTheme? _theme;
+    private string? _searchText;
+    private string? _selectedSearchValue;
 
     protected override void OnInitialized()
     {
-        base.OnInitialized();
-
-        _theme = new()
+        _theme = new MudTheme
         {
             PaletteLight = _lightPalette,
             PaletteDark = _darkPalette,
@@ -82,9 +164,36 @@
 
     private async Task<IEnumerable<string>> SearchCkey(string value, CancellationToken ct)
     {
-        if (value.Trim().Length < 3)
+        if (string.IsNullOrWhiteSpace(value) || value.Trim().Length < 2)
+        {
             return [];
+        }
+
         return await BanService.SearchCkeys(value, ct);
+    }
+
+    private Task OnSearchValueChanged(string? value)
+    {
+        _selectedSearchValue = value;
+        if (!string.IsNullOrWhiteSpace(value))
+        {
+            _searchText = value;
+        }
+        
+        Logger.LogInformation("Search value changed: {Value}", value);
+
+        return Task.CompletedTask;
+    }
+
+    private void SubmitSearch()
+    {
+        var text = string.IsNullOrWhiteSpace(_searchText) ? _selectedSearchValue : _searchText;
+        if (string.IsNullOrWhiteSpace(text))
+        {
+            return;
+        }
+
+        Navigation.NavigateTo($"/bans/{Uri.EscapeDataString(text)}");
     }
 
     private void DrawerToggle()
@@ -99,47 +208,49 @@
 
     private readonly PaletteLight _lightPalette = new()
     {
-        Black = "#110e2d",
-        AppbarText = "#424242",
-        AppbarBackground = "rgba(255,255,255,0.8)",
-        DrawerBackground = "#ffffff",
-        GrayLight = "#e8e8e8",
-        GrayLighter = "#f9f9f9",
+        Primary = "#1765c1",
+        Secondary = "#0d7a4f",
+        Background = "#f4f8fc",
+        Surface = "#ffffff",
+        AppbarText = "#17324d",
+        AppbarBackground = "rgba(244,248,252,0.72)",
+        DrawerBackground = "#f7fbff",
+        GrayLight = "#e2eaf2",
+        GrayLighter = "#eff4f9"
     };
 
     private readonly PaletteDark _darkPalette = new()
     {
-        Primary = "#7e6fff",
-        Surface = "#1e1e2d",
-        Background = "#1a1a27",
-        BackgroundGray = "#151521",
-        AppbarText = "#92929f",
-        AppbarBackground = "rgba(26,26,39,0.8)",
-        DrawerBackground = "#1a1a27",
-        ActionDefault = "#74718e",
+        Primary = "#5aa7ff",
+        Secondary = "#42c78a",
+        Surface = "#111925",
+        Background = "#0d1420",
+        BackgroundGray = "#0a111b",
+        AppbarText = "#c8d7ea",
+        AppbarBackground = "rgba(13,20,32,0.78)",
+        DrawerBackground = "#0d1420",
+        ActionDefault = "#8ea7c5",
         ActionDisabled = "#9999994d",
-        ActionDisabledBackground = "#605f6d4d",
-        TextPrimary = "#b2b0bf",
-        TextSecondary = "#92929f",
+        ActionDisabledBackground = "#49586d4d",
+        TextPrimary = "#d8e4f2",
+        TextSecondary = "#9cb2cb",
         TextDisabled = "#ffffff33",
-        DrawerIcon = "#92929f",
-        DrawerText = "#92929f",
-        GrayLight = "#2a2833",
-        GrayLighter = "#1e1e2d",
-        Info = "#4a86ff",
-        Success = "#3dcb6c",
-        Warning = "#ffb545",
-        Error = "#ff3f5f",
-        LinesDefault = "#33323e",
-        TableLines = "#33323e",
-        Divider = "#292838",
-        OverlayLight = "#1e1e2d80",
+        DrawerIcon = "#9cb2cb",
+        DrawerText = "#9cb2cb",
+        GrayLight = "#1b2737",
+        GrayLighter = "#111925",
+        Info = "#5aa7ff",
+        Success = "#42c78a",
+        Warning = "#f5b15a",
+        Error = "#ff5f66",
+        LinesDefault = "#223042",
+        TableLines = "#223042",
+        Divider = "#223042",
+        OverlayLight = "#101a2a7f"
     };
 
-    public string DarkLightModeButtonIcon => _isDarkMode switch
-    {
-        true => Icons.Material.Rounded.AutoMode,
-        false => Icons.Material.Outlined.DarkMode,
-    };
-
+    private string DarkLightModeButtonIcon => _isDarkMode
+        ? Icons.Material.Rounded.AutoMode
+        : Icons.Material.Outlined.DarkMode;
 }
+

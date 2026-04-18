@@ -1,0 +1,128 @@
+.home-page {
+    max-width: 1220px;
+    margin: 0 auto;
+}
+
+::deep .hero {
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid var(--mud-palette-lines-default);
+    background:
+        radial-gradient(600px 220px at 0% 0%, rgba(59, 130, 246, 0.22), transparent),
+        radial-gradient(600px 300px at 95% 10%, rgba(22, 163, 74, 0.18), transparent),
+        color-mix(in srgb, var(--mud-palette-surface) 88%, transparent);
+}
+
+::deep .hero-kicker {
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--mud-palette-info);
+}
+
+::deep .hero-title {
+    margin-top: 0.4rem;
+    font-weight: 700;
+    max-width: 24ch;
+    line-height: 1.15;
+}
+
+::deep .hero-subtitle {
+    margin-top: 0.7rem;
+    max-width: 72ch;
+    opacity: 0.88;
+}
+
+::deep .panel-grid {
+    align-items: stretch;
+}
+
+::deep .panel {
+    height: 100%;
+    border: 1px solid var(--mud-palette-lines-default);
+    border-radius: 1rem;
+    padding: 1.1rem;
+    background: color-mix(in srgb, var(--mud-palette-surface) 92%, transparent);
+}
+
+::deep .source-table .mud-table-container {
+    border: 1px solid var(--mud-palette-lines-default);
+    border-radius: 0.75rem;
+}
+
+::deep .rolling-wrap {
+    height: 420px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 0.75rem;
+    border: 1px solid var(--mud-palette-lines-default);
+}
+
+::deep .rolling-track {
+    display: flex;
+    flex-direction: column;
+    animation: roll-up 24s linear infinite;
+}
+
+::deep .rolling-wrap:hover .rolling-track {
+    animation-play-state: paused;
+}
+
+::deep .latest-row {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr auto;
+    gap: 0.75rem;
+    text-align: left;
+    width: 100%;
+    padding: 0.85rem 1rem;
+    background: transparent;
+    border: 0;
+    color: inherit;
+    border-bottom: 1px solid var(--mud-palette-lines-default);
+    cursor: pointer;
+}
+
+::deep .latest-row:hover {
+    background: color-mix(in srgb, var(--mud-palette-primary) 12%, transparent);
+}
+
+::deep .latest-ckey {
+    font-weight: 700;
+}
+
+::deep .latest-source {
+    opacity: 0.85;
+}
+
+::deep .latest-time {
+    opacity: 0.75;
+    white-space: nowrap;
+}
+
+@keyframes roll-up {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-50%);
+    }
+}
+
+@media (max-width: 900px) {
+    ::deep .hero {
+        padding: 1.4rem;
+    }
+
+    ::deep .rolling-wrap {
+        height: 360px;
+    }
+
+    ::deep .latest-row {
+        grid-template-columns: 1fr;
+        gap: 0.35rem;
+    }
+
+    ::deep .latest-time {
+        white-space: normal;
+    }
+}
