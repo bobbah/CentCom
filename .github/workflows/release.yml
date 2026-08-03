@@ -45,7 +45,7 @@ jobs:
               -p:EnableSdkContainerSupport=true \
               -p:ContainerRegistry=docker.io \
               "-p:ContainerRepository=bobbah/$2" \
-              "-p:ContainerImageTags=$CONTAINER_IMAGE_TAGS"
+              "-p:ContainerImageTags=${CONTAINER_IMAGE_TAGS//;/%3B}"
           }
 
           publish_container CentCom.API centcom-api
