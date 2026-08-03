@@ -44,8 +44,7 @@ jobs:
             dotnet publish "$1" --configuration Release --os linux --arch x64 /t:PublishContainer --nologo \
               -p:EnableSdkContainerSupport=true \
               -p:ContainerRegistry=docker.io \
-              "-p:ContainerRepository=bobbah/$2" \
-              "-p:ContainerImageTags=${CONTAINER_IMAGE_TAGS//;/%3B}"
+              "-p:ContainerRepository=bobbah/$2"
           }
 
           publish_container CentCom.API centcom-api
