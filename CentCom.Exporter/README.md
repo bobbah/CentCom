@@ -29,6 +29,8 @@ of [IBanProvider](Data/Providers/IBanProvider.cs) in a PR, or request that bobba
 
 [Find the latest compiled executables for CentCom.Exporter here](https://github.com/bobbahbrown/CentCom/releases/latest)
 
+[Find the latest Docker image for CentCom.Exporter here](https://hub.docker.com/r/bobbah/centcom-exporter)
+
 To use the exporter, simply configure ``appsettings.json`` as described in the [configuration section](#configuration)
 of this README, specifically the provider and connection string. Optionally configure ``hostsettings.json`` to control
 the port on which the application will bind to.
