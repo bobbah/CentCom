@@ -38,7 +38,7 @@ jobs:
           7z a publish/CentCom.Exporter-win-x64.7z -r ./publish/win-x64/CentCom.Exporter/*
       - name: Publish container images to Docker Hub
         env:
-          CONTAINER_IMAGE_TAGS: ${{ github.event.release.prerelease && github.event.release.tag_name || format('{0};latest', github.event.release.tag_name) }}
+          ContainerImageTags: ${{ github.event.release.prerelease && github.event.release.tag_name || format('{0};latest', github.event.release.tag_name) }}
         run: |
           publish_container() {
             dotnet publish "$1" --configuration Release --os linux --arch x64 /t:PublishContainer --nologo \
