@@ -351,3 +351,6 @@ MigrationBackup/
 
 # Rider files
 .idea/**/*
+
+# Local dotnet CLI artifacts
+.dotnet/

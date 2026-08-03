@@ -1,20 +1,27 @@
 name: release
 on:
   release:
-    types: [created]
+    types: [published]
 env:
   DOTNET_NOLOGO: true
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
 jobs:
   release:
     runs-on: ubuntu-22.04
+    permissions:
+      contents: write
     steps:
       - name: Setup .NET
-        uses: actions/setup-dotnet@v5
+        uses: actions/setup-dotnet@v6
         with:
           dotnet-version: 10.0.x
       - name: Checkout source
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v4
+        with:
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Prepare publish artifacts
         run: |
           dotnet publish CentCom.API -o publish/linux-x64/CentCom.API/ -r "linux-x64" --self-contained false -c Release --nologo
@@ -29,25 +36,40 @@ jobs:
           7z a publish/CentCom.Server-win-x64.7z -r ./publish/win-x64/CentCom.Server/*
           dotnet publish CentCom.Exporter -o publish/win-x64/CentCom.Exporter -r "win-x64" --self-contained false -c Release --nologo
           7z a publish/CentCom.Exporter-win-x64.7z -r ./publish/win-x64/CentCom.Exporter/*
+      - name: Publish container images to Docker Hub
+        env:
+          CONTAINER_IMAGE_TAGS: ${{ github.event.release.prerelease && github.event.release.tag_name || format('{0};latest', github.event.release.tag_name) }}
+        run: |
+          publish_container() {
+            dotnet publish "$1" --configuration Release --no-restore --os linux --arch x64 /t:PublishContainer --nologo \
+              -p:EnableSdkContainerSupport=true \
+              -p:ContainerRegistry=docker.io \
+              "-p:ContainerRepository=bobbah/$2" \
+              "-p:ContainerImageTags=$CONTAINER_IMAGE_TAGS"
+          }
+
+          publish_container CentCom.API centcom-api
+          publish_container CentCom.Server centcom-server
+          publish_container CentCom.Exporter centcom-exporter
       - name: Upload release artifacts
-        uses: actions/github-script@v4
+        uses: actions/github-script@v9
         with:
           script: |
             const fs = require('fs');
-            const tag = context.ref.replace("refs/tags/", "");
+            const tag = context.payload.release.tag_name;
             console.log("tag = ", tag);
             // Get release for this tag
-            const release = await github.repos.getReleaseByTag({
+            const release = await github.rest.repos.getReleaseByTag({
               owner: context.repo.owner,
               repo: context.repo.repo,
               tag
             });
             const releaseRuntimes = ['linux-x64', 'win-x64'];
             const projects = ['CentCom.API', 'CentCom.Server', 'CentCom.Exporter'];
-            for (rt of releaseRuntimes) {
-              for (proj of projects) {
+            for (const rt of releaseRuntimes) {
+              for (const proj of projects) {
                 // Upload the release asset
-                await github.repos.uploadReleaseAsset({
+                await github.rest.repos.uploadReleaseAsset({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
                   release_id: release.data.id,
