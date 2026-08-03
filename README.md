@@ -15,6 +15,16 @@ Swagger documentation to read about and experiment with the API.**
 
 Looking to run the standardized ban exporter? [See the documentation here](CentCom.Exporter).
 
+## Docker
+
+Docker images are available for the CentCom API, Parsing Server, and Exporter:
+
+- [CentCom API](https://hub.docker.com/r/bobbah/centcom-api)
+- [CentCom Parsing Server](https://hub.docker.com/r/bobbah/centcom-server)
+- [CentCom Exporter](https://hub.docker.com/r/bobbah/centcom-exporter)
+
+The ``latest`` tag is updated for each release, and release-specific tags are also available.
+
 ## Setup
 
 To run your own local instance of CentCom, you must have the following...
