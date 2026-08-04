@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using CentCom.API.Models;
+using CentCom.Common.Models.DTO;
 
 namespace CentCom.API.Services;
 
