@@ -45,16 +45,16 @@ jobs:
           ContainerImageTags: ${{ github.event.release.prerelease && github.event.release.tag_name || format('{0};latest', github.event.release.tag_name) }}
         run: |
           publish_container() {
-            dotnet publish "$1" --configuration Release --os linux --arch x64 /t:PublishContainer --nologo \
+            dotnet publish "$1" --configuration Release --runtime "$3" /t:PublishContainer --nologo \
               -p:EnableSdkContainerSupport=true \
               -p:ContainerRegistry=docker.io \
               "-p:ContainerRepository=bobbah/$2"
           }
 
-          publish_container CentCom.API centcom-api
-          publish_container CentCom.Server centcom-server
-          publish_container CentCom.Exporter centcom-exporter
-          publish_container CentCom.MCP centcom-mcp
+          publish_container CentCom.API centcom-api linux-x64
+          publish_container CentCom.Server centcom-server linux-x64
+          publish_container CentCom.Exporter centcom-exporter linux-x64
+          publish_container CentCom.MCP centcom-mcp linux-musl-x64
       - name: Upload release artifacts
         uses: actions/github-script@v9
         with:
