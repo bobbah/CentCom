@@ -354,3 +354,4 @@ MigrationBackup/
 
 # Local dotnet CLI artifacts
 .dotnet/
+.env

@@ -30,12 +30,16 @@ jobs:
           7z a publish/CentCom.Server-linux-x64.7z -r ./publish/linux-x64/CentCom.Server/*
           dotnet publish CentCom.Exporter -o publish/linux-x64/CentCom.Exporter -r "linux-x64" --self-contained false -c Release --nologo
           7z a publish/CentCom.Exporter-linux-x64.7z -r ./publish/linux-x64/CentCom.Exporter/*
+          dotnet publish CentCom.MCP -o publish/linux-x64/CentCom.MCP -r "linux-x64" --self-contained false -c Release --nologo
+          7z a publish/CentCom.MCP-linux-x64.7z -r ./publish/linux-x64/CentCom.MCP/*
           dotnet publish CentCom.API -o publish/win-x64/CentCom.API/ -r "win-x64" --self-contained false -c Release --nologo
           7z a publish/CentCom.API-win-x64.7z -r ./publish/win-x64/CentCom.API/*
           dotnet publish CentCom.Server -o publish/win-x64/CentCom.Server -r "win-x64" --self-contained false -c Release --nologo
           7z a publish/CentCom.Server-win-x64.7z -r ./publish/win-x64/CentCom.Server/*
           dotnet publish CentCom.Exporter -o publish/win-x64/CentCom.Exporter -r "win-x64" --self-contained false -c Release --nologo
           7z a publish/CentCom.Exporter-win-x64.7z -r ./publish/win-x64/CentCom.Exporter/*
+          dotnet publish CentCom.MCP -o publish/win-x64/CentCom.MCP -r "win-x64" --self-contained false -c Release --nologo
+          7z a publish/CentCom.MCP-win-x64.7z -r ./publish/win-x64/CentCom.MCP/*
       - name: Publish container images to Docker Hub
         env:
           ContainerImageTags: ${{ github.event.release.prerelease && github.event.release.tag_name || format('{0};latest', github.event.release.tag_name) }}
@@ -50,6 +54,7 @@ jobs:
           publish_container CentCom.API centcom-api
           publish_container CentCom.Server centcom-server
           publish_container CentCom.Exporter centcom-exporter
+          publish_container CentCom.MCP centcom-mcp
       - name: Upload release artifacts
         uses: actions/github-script@v9
         with:
@@ -64,7 +69,7 @@ jobs:
               tag
             });
             const releaseRuntimes = ['linux-x64', 'win-x64'];
-            const projects = ['CentCom.API', 'CentCom.Server', 'CentCom.Exporter'];
+            const projects = ['CentCom.API', 'CentCom.Server', 'CentCom.Exporter', 'CentCom.MCP'];
             for (const rt of releaseRuntimes) {
               for (const proj of projects) {
                 // Upload the release asset

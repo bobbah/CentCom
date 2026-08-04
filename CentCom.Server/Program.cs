@@ -56,6 +56,7 @@ internal class Program
                 // Add configuration
                 var config = new ConfigurationBuilder()
                     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false)
+                    .AddEnvironmentVariables()
                     .AddCommandLine(args)
                     .AddUserSecrets<Program>()
                     .Build();

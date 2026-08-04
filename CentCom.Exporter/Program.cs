@@ -17,6 +17,7 @@ public class Program
         var config = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
             .AddJsonFile("hostsettings.json", optional: true)
+            .AddEnvironmentVariables()
             .AddCommandLine(args)
             .AddUserSecrets<Program>()
             .Build();

@@ -1,6 +1,6 @@
-﻿using CentCom.Common.Models;
+using CentCom.Common.Models;
 
-namespace CentCom.API.Models;
+namespace CentCom.Common.Models.DTO;
 
 /// <summary>
 /// DTO for ban sources
@@ -26,7 +26,7 @@ public class BanSourceData
     /// Generates a DTO from a database BanSource
     /// </summary>
     /// <param name="source">The object to copy data from</param>
-    /// <returns>A BanSource DTO</returns>
+    /// <returns>A BanSourceData DTO</returns>
     public static BanSourceData FromBanSource(BanSource source)
     {
         return new BanSourceData
