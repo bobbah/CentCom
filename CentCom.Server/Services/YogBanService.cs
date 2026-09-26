@@ -22,7 +22,7 @@ public class YogBanService(HttpClient client, ILogger<YogBanService> logger) : H
 
     protected override string BaseUrl => "https://yogstation.net/";
 
-    private async Task<List<Ban>> GetBansAsync(int page = 1)
+    public async Task<List<Ban>> GetBansAsync(int page = 1)
     {
         var toReturn = new List<Ban>();
         var content = await GetAsync<List<Dictionary<string, JsonElement>>>("bans",

@@ -63,33 +63,6 @@
         <member name="P:CentCom.API.Models.AppVersionDTO.CopyrightNotice">
             <summary>The copyright notice for this version of the application</summary>
         </member>
-        <member name="T:CentCom.API.Models.BanSourceData">
-            <summary>
-            DTO for ban sources
-            </summary>
-        </member>
-        <member name="P:CentCom.API.Models.BanSourceData.ID">
-            <summary>
-            Internal CentCom DB ID
-            </summary>
-        </member>
-        <member name="P:CentCom.API.Models.BanSourceData.Name">
-            <summary>
-            Display name
-            </summary>
-        </member>
-        <member name="P:CentCom.API.Models.BanSourceData.RoleplayLevel">
-            <summary>
-            The roleplay level of this ban source
-            </summary>
-        </member>
-        <member name="M:CentCom.API.Models.BanSourceData.FromBanSource(CentCom.Common.Models.BanSource)">
-            <summary>
-            Generates a DTO from a database BanSource
-            </summary>
-            <param name="source">The object to copy data from</param>
-            <returns>A BanSource DTO</returns>
-        </member>
         <member name="M:CentCom.API.Services.IAppStatusService.GetVersion">
             <summary>
             Get the version for the application.

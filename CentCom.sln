@@ -22,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentCom.Exporter", "CentCom
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentCom.MCP", "CentCom.MCP\CentCom.MCP.csproj", "{810BC11A-0ECA-4A4C-B813-A9A3A39EA86C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentCom.Detective", "CentCom.Detective\CentCom.Detective.csproj", "{95972A7B-ADBB-4B88-880B-ED9BAC682E7B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +54,10 @@ Global
 		{810BC11A-0ECA-4A4C-B813-A9A3A39EA86C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{810BC11A-0ECA-4A4C-B813-A9A3A39EA86C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{810BC11A-0ECA-4A4C-B813-A9A3A39EA86C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95972A7B-ADBB-4B88-880B-ED9BAC682E7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95972A7B-ADBB-4B88-880B-ED9BAC682E7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95972A7B-ADBB-4B88-880B-ED9BAC682E7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95972A7B-ADBB-4B88-880B-ED9BAC682E7B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -34,13 +34,18 @@ public abstract class HttpBanService
 
     protected void ConfigureClient()
     {
-        if (BaseUrl != null)
+        if (_httpClient.BaseAddress == null && BaseUrl != null)
             _httpClient.BaseAddress = new Uri(BaseUrl);
         _httpClient.DefaultRequestHeaders.UserAgent.ParseAdd(
             $"Mozilla/5.0 (compatible; CentComBot/{Assembly.GetExecutingAssembly().GetName().Version}; +https://centcom.melonmesa.com/scraper)");
     }
 
-    protected void SetBaseAddress(string address) => _httpClient.BaseAddress = new Uri(address);
+    protected void SetBaseAddress(string address)
+    {
+        var uri = new Uri(address);
+        if (_httpClient.BaseAddress != uri)
+            _httpClient.BaseAddress = uri;
+    }
 
     protected async Task<T> GetAsync<T>(string endpoint, Dictionary<string, string> queryParams = null,
         JsonSerializerOptions options = null) =>

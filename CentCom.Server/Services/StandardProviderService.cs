@@ -28,8 +28,11 @@ public class StandardProviderService(HttpClient client, ILogger<StandardProvider
         Converters = { new JsonStringEnumConverter() }
     }.AddCentComOptions();
 
-    private async Task<List<Ban>> GetBansAsync(int? cursor = null)
+    public async Task<List<Ban>> GetBansAsync(int? cursor = null)
     {
+        if (!_configured)
+            throw new InvalidOperationException("Cannot get bans from an unconfigured external source");
+
         var data = await GetAsync<List<RestBan>>("api/ban",
             cursor.HasValue ? new Dictionary<string, string>() { { "cursor", cursor.ToString() } } : null, JsonOptions);
         
