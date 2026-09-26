@@ -18,6 +18,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\CentCom.Common\CentCom.Common.csproj" />
+        <ProjectReference Include="..\CentCom.Detective\CentCom.Detective.csproj" />
         <ProjectReference Include="..\CentCom.Server\CentCom.Server.csproj" />
     </ItemGroup>
 

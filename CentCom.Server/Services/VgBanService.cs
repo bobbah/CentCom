@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Threading;
 using System.Threading.Tasks;
 using AngleSharp;
 using CentCom.Common.Extensions;
@@ -17,19 +18,22 @@ public class VgBanService(ILogger<VgBanService> logger)
     private readonly ILogger _logger = logger;
 
     // TODO: cleanup
-    public async Task<List<Ban>> GetBansAsync()
+    public async Task<List<Ban>> GetBansAsync(string url = "https://ss13.moe/index.php/bans",
+        CancellationToken cancellationToken = default)
     {
         var toReturn = new List<Ban>();
         var config = AngleSharp.Configuration.Default.WithDefaultLoader();
         var context = BrowsingContext.New(config);
-        var document = await context.OpenAsync("https://ss13.moe/index.php/bans");
+        var document = await context.OpenAsync(url, cancellationToken);
 
         if (document.StatusCode != HttpStatusCode.OK)
         {
             _logger.LogError(
-                "Source website returned a non-200 HTTP response code. Url: \"{Url}\", code: {StatusCode}", document.Url, document.StatusCode);
+                "Source website returned a non-200 HTTP response code. Url: \"{Url}\", code: {StatusCode}",
+                document.Url, document.StatusCode);
             throw new BanSourceUnavailableException(
-                $"Source website returned a non-200 HTTP response code. Url: \"{document.Url}\", code: {document.StatusCode}", document.TextContent);
+                $"Source website returned a non-200 HTTP response code. Url: \"{document.Url}\", code: {document.StatusCode}",
+                document.TextContent);
         }
 
         var tables = document.QuerySelectorAll("form > table > tbody");
@@ -70,7 +74,7 @@ public class VgBanService(ILogger<VgBanService> logger)
             var cursor = jobTable.Children[i];
             var bannedDetails = cursor.Children[0];
             var ckey = bannedDetails.Children[0].TextContent.Trim();
-            DateTimeOffset date = 
+            DateTimeOffset date =
                 cursor.Children[0].Children[0].GetAttribute("title") == "0000-00-00 00:00:00"
                     ? DateTime.MinValue
                     : DateTime.Parse(cursor.Children[0].Children[0].GetAttribute("title").Trim());

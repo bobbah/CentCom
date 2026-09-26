@@ -2,7 +2,7 @@
 
 namespace CentCom.Server.Exceptions;
 
-class BanSourceUnavailableException : Exception
+public class BanSourceUnavailableException : Exception
 {
     public BanSourceUnavailableException(string message, string responseContent) : base(message)
     {

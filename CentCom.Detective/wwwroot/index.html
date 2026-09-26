@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CentCom Detective</title>
+  <style>
+    body { font: 16px system-ui, sans-serif; max-width: 850px; margin: 3rem auto; padding: 0 1rem; color: #e9edf4; background: #141b27; }
+    h1 { margin-bottom: .3rem; }
+    p { color: #bdc9da; }
+    form { display: flex; gap: .8rem; flex-wrap: wrap; align-items: end; margin: 2rem 0; }
+    label { display: grid; gap: .4rem; }
+    input, select, button { font: inherit; padding: .65rem; border-radius: 6px; border: 1px solid #71819a; }
+    input { min-width: 300px; }
+    button { cursor: pointer; background: #88baff; color: #111c2c; font-weight: bold; }
+    button:disabled { opacity: .5; cursor: wait; }
+    table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    td, th { padding: .8rem; border-bottom: 1px solid #526175; text-align: left; vertical-align: top; }
+    td:last-child { overflow-wrap: anywhere; }
+    .pass { color: #88e6ac; } .fail { color: #ff9d9d; } .skip { color: #d5d08d; }
+    #error { color: #ff9d9d; }
+  </style>
+</head>
+<body>
+  <h1>CentCom Detective</h1>
+  <p>Run read-only checks against a ban source. Enter the base URL as CentCom would use it (for example, <code>https://example.com/</code>), not the ban route. No database is needed.</p>
+  <form id="form">
+    <label>Source type
+      <select name="type">
+        <option value="Standard">Standard exporter</option>
+        <option value="Bee">Beestation</option>
+        <option value="Fulp">Fulpstation</option>
+        <option value="Tg">/tg/station</option>
+        <option value="Tgmc">TGMC</option>
+        <option value="Yog">YogStation</option>
+        <option value="Vg">/vg/station</option>
+      </select>
+    </label>
+    <label>Base address <input name="address" type="url" required placeholder="https://example.com/"></label>
+    <button id="run" type="submit">Run tests</button>
+  </form>
+  <p id="error" role="alert"></p>
+  <section id="output" hidden>
+    <h2>Results</h2>
+    <p id="summary"></p>
+    <button id="download" type="button">Download JSON report</button>
+    <table>
+      <thead><tr><th>Check</th><th>Status</th><th>Latency</th><th>Details</th></tr></thead>
+      <tbody id="results"></tbody>
+    </table>
+  </section>
+  <script>
+    const form = document.getElementById('form');
+    let report;
+    form.addEventListener('submit', async event => {
+      event.preventDefault();
+      document.getElementById('run').disabled = true;
+      document.getElementById('error').textContent = '';
+      document.getElementById('output').hidden = true;
+      try {
+        const data = new FormData(form);
+        const response = await fetch('/test', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ type: data.get('type'), address: data.get('address') })
+        });
+        const value = await response.json();
+        if (!response.ok) throw new Error(value.error || `HTTP ${response.status}`);
+        report = value;
+        document.getElementById('summary').textContent = `${report.source} at ${report.address} — ${report.results.filter(x => x.status === 'pass').length} passed, ${report.results.filter(x => x.status === 'fail').length} failed, ${report.results.filter(x => x.status === 'skip').length} skipped.`;
+        const rows = document.getElementById('results');
+        rows.replaceChildren();
+        for (const result of report.results) {
+          const row = rows.insertRow();
+          for (const text of [result.name, result.status, `${result.milliseconds.toFixed(1)} ms`, result.detail]) {
+            const cell = row.insertCell();
+            cell.textContent = text;
+          }
+          row.cells[1].className = result.status;
+        }
+        document.getElementById('output').hidden = false;
+      } catch (error) {
+        document.getElementById('error').textContent = error.message;
+      } finally {
+        document.getElementById('run').disabled = false;
+      }
+    });
+    document.getElementById('download').addEventListener('click', () => {
+      const url = URL.createObjectURL(new Blob([JSON.stringify(report, null, 2)], { type: 'application/json' }));
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `centcom-detective-${new Date(report.startedAt).toISOString().replace(/[:.]/g, '-')}.json`;
+      link.click();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    });
+  </script>
+</body>
+</html>

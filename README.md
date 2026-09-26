@@ -15,6 +15,18 @@ Swagger documentation to read about and experiment with the API.**
 
 Looking to run the standardized ban exporter? [See the documentation here](CentCom.Exporter).
 
+## Detective
+
+To check a live ban endpoint without running the CentCom server or a database, run
+`dotnet run --project CentCom.Detective` and open `http://localhost:5178/`. Select
+the source type, enter its base URL (not the ban route), and run the checks.
+For the standard exporter, use the same URL as `standardSources[].url`; for other
+sources, use the site's API base URL (or website base URL for /vg/station).
+Checks make a few read-only requests, never crawl the full ban history. Results
+include per-check latency, failures and exception details and can be downloaded
+as JSON to share for troubleshooting. The app listens on loopback only; review
+the downloaded report before sharing, as errors may include server URLs and messages.
+
 ## Docker
 
 Docker images are available for the CentCom API, MCP Server, Parsing Server, and Exporter:

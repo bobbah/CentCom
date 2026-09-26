@@ -20,7 +20,7 @@ public class BeeBanService(HttpClient client, ILogger<BeeBanService> logger) : H
 
     protected override string BaseUrl => "https://api.beestation13.com/";
 
-    internal async Task<List<Ban>> GetBansAsync(int page = 1)
+    public async Task<List<Ban>> GetBansAsync(int page = 1)
     {
         var toReturn = new List<Ban>();
         var content =
@@ -78,7 +78,7 @@ public class BeeBanService(HttpClient client, ILogger<BeeBanService> logger) : H
         return toReturn.ToList();
     }
 
-    internal async Task<int> GetNumberOfPagesAsync() =>
+    public async Task<int> GetNumberOfPagesAsync() =>
         (await GetAsync<JsonElement>("bans")).GetProperty("pages").GetInt32();
 
     private static BanSource ParseBanSource(string raw)
