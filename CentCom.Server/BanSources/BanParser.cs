@@ -52,6 +52,14 @@ public abstract class BanParser : IJob
     /// <returns>A task for the asynchronous work</returns>
     public virtual async Task Execute(IJobExecutionContext context)
     {
+        var logProperties = new Dictionary<string, object>
+        {
+            ["ParserJob"] = context.JobDetail.Key.ToString()
+        };
+        if (context.MergedJobDataMap.ContainsKey("sourceId"))
+            logProperties["SourceId"] = context.MergedJobDataMap.GetString("sourceId");
+
+        using var scope = Logger.BeginScope(logProperties);
         try
         {
             await Configure(context);
