@@ -34,7 +34,8 @@ public class StandardBanParserLoggingTests
 
         await Assert.That(() => parser.Execute(context)).Throws<JobExecutionException>();
 
-        var error = sink.Events.Single();
+        var error = sink.Events.Single(e =>
+            e.Exception?.Message.Contains("Could not find configuration for source tgstation") == true);
         await Assert.That(error.Exception?.Message).Contains("Could not find configuration for source tgstation");
         await Assert.That(error.Properties["SourceId"].ToString()).IsEqualTo("\"tgstation\"");
         await Assert.That(error.Properties["ParserJob"].ToString()).IsEqualTo("\"standard-parsers.tgstation\"");

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
 using CentCom.Common.Extensions;
 using CentCom.Common.Models;
@@ -20,11 +21,12 @@ public class BeeBanService(HttpClient client, ILogger<BeeBanService> logger) : H
 
     protected override string BaseUrl => "https://api.beestation13.com/";
 
-    public async Task<List<Ban>> GetBansAsync(int page = 1)
+    public async Task<List<Ban>> GetBansAsync(int page = 1, CancellationToken cancellationToken = default)
     {
         var toReturn = new List<Ban>();
         var content =
-            await GetAsync<JsonElement>("bans", new Dictionary<string, string>() { { "page", page.ToString() } });
+            await GetAsync<JsonElement>("bans", new Dictionary<string, string>() { { "page", page.ToString() } },
+                cancellationToken: cancellationToken);
         foreach (var b in content.GetProperty("data").EnumerateArray())
         {
             var expiryString = b.GetProperty("unbanned_datetime").GetString() ??
@@ -78,8 +80,8 @@ public class BeeBanService(HttpClient client, ILogger<BeeBanService> logger) : H
         return toReturn.ToList();
     }
 
-    public async Task<int> GetNumberOfPagesAsync() =>
-        (await GetAsync<JsonElement>("bans")).GetProperty("pages").GetInt32();
+    public async Task<int> GetNumberOfPagesAsync(CancellationToken cancellationToken = default) =>
+        (await GetAsync<JsonElement>("bans", cancellationToken: cancellationToken)).GetProperty("pages").GetInt32();
 
     private static BanSource ParseBanSource(string raw)
     {

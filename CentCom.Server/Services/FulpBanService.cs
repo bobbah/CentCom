@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
 using CentCom.Common.Extensions;
 using CentCom.Common.Models;
@@ -19,9 +20,10 @@ public class FulpBanService(HttpClient client, ILogger<FulpBanService> logger) :
 
     protected override string BaseUrl => "https://api.fulp.gg/";
 
-    public async Task<List<Ban>> GetBansAsync(int page = 1)
+    public async Task<List<Ban>> GetBansAsync(int page = 1, CancellationToken cancellationToken = default)
     {
-        var content = await GetAsync<Dictionary<string, JsonElement>>($"bans/{RecordsPerPage}/{page}");
+        var content = await GetAsync<Dictionary<string, JsonElement>>($"bans/{RecordsPerPage}/{page}",
+            cancellationToken: cancellationToken);
         var toReturn = new List<Ban>();
         foreach (var ban in content["value"].GetProperty("bans").EnumerateArray())
         {
@@ -75,9 +77,10 @@ public class FulpBanService(HttpClient client, ILogger<FulpBanService> logger) :
         return toReturn.ToList();
     }
 
-    public async Task<int> GetNumberOfPagesAsync()
+    public async Task<int> GetNumberOfPagesAsync(CancellationToken cancellationToken = default)
     {
-        var content = await GetAsync<Dictionary<string, JsonElement>>($"bans/{RecordsPerPage}/1");
+        var content = await GetAsync<Dictionary<string, JsonElement>>($"bans/{RecordsPerPage}/1",
+            cancellationToken: cancellationToken);
         if (content["value"].TryGetProperty("lastPage", out var lastpage))
         {
             return lastpage.GetInt32();

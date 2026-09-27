@@ -24,23 +24,32 @@ public class ViewerController : Controller
     }
 
     [HttpGet("viewer/search/{key}")]
-    public async Task<IActionResult> SearchBans(string key)
+    public async Task<IActionResult> SearchBans(string key, [FromQuery] int page = 1)
     {
+        if (page is < 1 or > 1000)
+            return BadRequest("Page must be between 1 and 1000.");
+
         var ckey = KeyUtilities.GetCanonicalKey(key);
         if (string.IsNullOrWhiteSpace(ckey) || ckey.Length < 3)
         {
             return View("badsearch", new BanSearchViewModel { CKey = ckey });
         }
 
-        var searchResults = await _banService.SearchSummariesForKeyAsync(key);
+        var searchResults = await _banService.SearchSummariesForKeyAsync(key, page);
 
         // If there is only one result, just view it
-        if (searchResults.Count() == 1)
+        if (page == 1 && searchResults.Data.Count == 1 && !searchResults.HasNextPage)
         {
-            return RedirectToAction("ViewBans", new { key = searchResults.First().CKey });
+            return RedirectToAction("ViewBans", new { key = searchResults.Data[0].CKey });
         }
 
-        return View(new BanSearchViewModel { CKey = ckey, Data = searchResults });
+        return View(new BanSearchViewModel
+        {
+            CKey = ckey,
+            Data = searchResults.Data,
+            Page = searchResults.Page,
+            HasNextPage = searchResults.HasNextPage
+        });
     }
 
     [HttpGet("viewer/view/{key}")]

@@ -68,7 +68,31 @@ namespace CentCom.Common.Migrations.MariaDb
 
                     b.HasIndex("Source");
 
+                    b.HasIndex("Source", "BanID")
+                        .HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 128 });
+
+                    b.HasIndex("Source", "BannedOn");
+
                     b.ToTable("Bans");
+                });
+
+            modelBuilder.Entity("CentCom.Common.Models.BanCKeyGram", b =>
+                {
+                    b.Property<string>("Gram")
+                        .HasMaxLength(3)
+                        .HasColumnType("varchar(3)")
+                        .UseCollation("ascii_bin");
+
+                    MySqlPropertyBuilderExtensions.HasCharSet(b.Property<string>("Gram"), "ascii");
+
+                    b.Property<int>("BanId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Gram", "BanId");
+
+                    b.HasIndex("BanId");
+
+                    b.ToTable("BanCKeyGrams");
                 });
 
             modelBuilder.Entity("CentCom.Common.Models.BanSource", b =>
@@ -220,6 +244,15 @@ namespace CentCom.Common.Migrations.MariaDb
                         .IsRequired();
 
                     b.Navigation("SourceNavigation");
+                });
+
+            modelBuilder.Entity("CentCom.Common.Models.BanCKeyGram", b =>
+                {
+                    b.HasOne("CentCom.Common.Models.Ban", null)
+                        .WithMany()
+                        .HasForeignKey("BanId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("CentCom.Common.Models.JobBan", b =>

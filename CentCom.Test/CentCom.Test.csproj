@@ -9,6 +9,7 @@
 
     <ItemGroup>
         <PackageReference Include="GitHubActionsTestLogger" Version="3.0.5" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.20" />
         <PackageReference Include="MinVer" Version="7.0.0">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -17,6 +18,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\CentCom.API\CentCom.API.csproj" />
         <ProjectReference Include="..\CentCom.Common\CentCom.Common.csproj" />
         <ProjectReference Include="..\CentCom.Detective\CentCom.Detective.csproj" />
         <ProjectReference Include="..\CentCom.Server\CentCom.Server.csproj" />

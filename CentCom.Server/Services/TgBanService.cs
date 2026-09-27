@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using CentCom.Common.Models;
 using CentCom.Server.External;
@@ -13,9 +14,9 @@ public class TgBanService(HttpClient client, ILogger<TgBanService> logger) : Htt
 {
     protected override string BaseUrl => "https://statbus.space/";
 
-    public async Task<List<TgRawBan>> GetBansAsync(int? page = null) =>
+    public async Task<List<TgRawBan>> GetBansAsync(int? page = null, CancellationToken cancellationToken = default) =>
         (await GetAsync<TgApiResponse>($"bans/public/v1/{page}",
-            new Dictionary<string, string>() { { "json", "true" } })).Data.ToList();
+            new Dictionary<string, string>() { { "json", "true" } }, cancellationToken: cancellationToken)).Data.ToList();
 
     public async Task<List<Ban>> GetBansBatchedAsync(BanSource source)
     {

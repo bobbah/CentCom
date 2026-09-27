@@ -22,11 +22,12 @@ public class YogBanService(HttpClient client, ILogger<YogBanService> logger) : H
 
     protected override string BaseUrl => "https://yogstation.net/";
 
-    public async Task<List<Ban>> GetBansAsync(int page = 1)
+    public async Task<List<Ban>> GetBansAsync(int page = 1, CancellationToken cancellationToken = default)
     {
         var toReturn = new List<Ban>();
         var content = await GetAsync<List<Dictionary<string, JsonElement>>>("bans",
-            new Dictionary<string, string>() { { "json", "1" }, { "page", page.ToString() }, { "amount", "1000" } });
+            new Dictionary<string, string>() { { "json", "1" }, { "page", page.ToString() }, { "amount", "1000" } },
+            cancellationToken: cancellationToken);
         
         foreach (var b in content)
         {

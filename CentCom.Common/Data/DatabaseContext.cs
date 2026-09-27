@@ -17,6 +17,7 @@ public abstract class DatabaseContext : DbContext
     }
 
     public DbSet<Ban> Bans { get; set; }
+    public DbSet<BanCKeyGram> BanCKeyGrams { get; set; }
     public DbSet<BanSource> BanSources { get; set; }
     public DbSet<JobBan> JobBans { get; set; }
     public DbSet<FlatBansVersion> FlatBansVersion { get; set; }
@@ -39,11 +40,37 @@ public abstract class DatabaseContext : DbContext
             entity.Property(e => e.UnbannedBy).HasMaxLength(32);
             entity.Property(e => e.BanType).IsRequired();
             entity.HasIndex(e => e.CKey);
+            entity.HasIndex(e => e.Source);
+            var banIdIndex = entity.HasIndex(e => new { e.Source, e.BanID });
+            if (this is MySqlDbContext or MariaDbContext)
+            {
+                // Keep the existing unbounded column: Pomelo otherwise narrows indexed strings.
+                entity.Property(e => e.BanID).HasColumnType("longtext");
+                banIdIndex.HasPrefixLength(0, 128);
+            }
+            entity.HasIndex(e => new { e.Source, e.BannedOn });
             entity.HasMany(e => e.JobBans)
                 .WithOne(b => b.BanNavigation)
                 .HasForeignKey(b => b.BanId)
                 .OnDelete(DeleteBehavior.Cascade);
         });
+
+        if (this is MySqlDbContext or MariaDbContext)
+        {
+            modelBuilder.Entity<BanCKeyGram>(entity =>
+            {
+                entity.HasKey(e => new { e.Gram, e.BanId });
+                entity.Property(e => e.Gram).IsRequired().HasMaxLength(3)
+                    .HasCharSet("ascii").UseCollation("ascii_bin");
+                entity.HasIndex(e => e.BanId);
+                entity.HasOne<Ban>().WithMany().HasForeignKey(e => e.BanId)
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
+        }
+        else
+        {
+            modelBuilder.Ignore<BanCKeyGram>();
+        }
 
         modelBuilder.Entity<BanSource>(entity =>
         {
