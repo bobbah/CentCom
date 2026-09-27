@@ -1,17 +1,18 @@
 using System;
-using System.IO;
-using System.Reflection;
+using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 using CentCom.API.Services;
 using CentCom.API.Services.Implemented;
 using CentCom.Common.Configuration;
 using CentCom.Common.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi;
+using Scalar.AspNetCore;
 
 namespace CentCom.API;
 
@@ -22,11 +23,10 @@ public class Startup(IConfiguration configuration)
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddControllersWithViews().AddJsonOptions(x =>
-        {
-            x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-            x.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
-        }).AddRazorRuntimeCompilation();
+        services.AddControllersWithViews()
+            .AddJsonOptions(x => ConfigureJsonOptions(x.JsonSerializerOptions))
+            .AddRazorRuntimeCompilation();
+        services.ConfigureHttpJsonOptions(x => ConfigureJsonOptions(x.SerializerOptions));
 
         // Add DB context
         var dbConfig = new DbConfig();
@@ -54,19 +54,15 @@ public class Startup(IConfiguration configuration)
         var statusService = new AppStatusService();
         services.AddSingleton<IAppStatusService>(statusService);
 
-        services.AddSwaggerGen(c =>
+        services.AddOpenApi(options =>
         {
-            c.SwaggerDoc("v1", new OpenApiInfo
+            options.AddDocumentTransformer((document, _, _) =>
             {
-                Title = "CentCom",
-                Version = statusService.GetVersion().ToString(),
-                Description = "An API for accessing CentCom, a central ban intelligence service for Space Station 13 servers"
+                document.Info.Title = "CentCom";
+                document.Info.Version = statusService.GetVersion().ToString();
+                document.Info.Description = "An API for accessing CentCom, a central ban intelligence service for Space Station 13 servers";
+                return Task.CompletedTask;
             });
-
-            // Set the comments path for the Swagger JSON and UI.
-            var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-            var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-            c.IncludeXmlComments(xmlPath);
         });
     }
 
@@ -81,21 +77,32 @@ public class Startup(IConfiguration configuration)
         app.UseHttpsRedirection();
         app.UseStaticFiles();
 
-        var statusService = app.ApplicationServices.GetRequiredService<IAppStatusService>();
-        app.UseSwagger();
-        app.UseSwaggerUI(c =>
-        {
-            c.RoutePrefix = "swagger";
-            c.SwaggerEndpoint("/swagger/v1/swagger.json", $"CentCom {statusService.GetVersion()}");
-        });
-
         app.UseRouting();
 
         app.UseAuthorization();
 
         app.UseEndpoints(endpoints =>
         {
+            endpoints.MapOpenApi();
+            endpoints.MapOpenApi("/swagger/{documentName}/swagger.json");
+            endpoints.MapScalarApiReference("/scalar", options => options
+                .WithTitle("CentCom API Documentation")
+                .HideClientButton()
+                .HideDeveloperTools()
+                .DisableAgent()
+                .DisableMcp()
+                .WithCustomCss("a[href=\"https://www.scalar.com\"] { display: none; }"));
+            endpoints.MapGet("/swagger", () => Results.Redirect("/scalar", permanent: true))
+                .ExcludeFromDescription();
+            endpoints.MapGet("/swagger/index.html", () => Results.Redirect("/scalar", permanent: true))
+                .ExcludeFromDescription();
             endpoints.MapControllerRoute("default", "{controller=Viewer}/{action=Index}/{id?}");
         });
+    }
+
+    private static void ConfigureJsonOptions(JsonSerializerOptions options)
+    {
+        options.Converters.Add(new JsonStringEnumConverter());
+        options.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
     }
 }

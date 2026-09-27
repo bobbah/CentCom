@@ -8,8 +8,8 @@ Considering contributing your server's bans to CentCom? Check
 out [our onboarding documentation](https://hackmd.io/@centcom/SJWnjsEUO) to help inform you and answer questions you may
 have.
 
-**There is a central instance of CentCom running at https://centcom.melonmesa.com, where you can also find the compiled
-Swagger documentation to read about and experiment with the API.**
+**There is a central instance of CentCom running at https://centcom.melonmesa.com, where you can also find the interactive
+Scalar API documentation to read about and experiment with the API.**
 
 ## Exporter
 
@@ -70,7 +70,7 @@ Finally:
   pass will occur.
 - AFTER the migration/database setup has occurred successfully, you can now start the API server (``CentCom.API``)
   without any concerns. This server will now take API requests, the documentation of which you can view at the
-  ``/swagger`` pages.
+  ``/scalar`` page (the OpenAPI document is at ``/openapi/v1.json``).
 
 ## FAQ
 
