@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -35,6 +36,7 @@ builder.Services.AddOpenApi(options =>
         document.Info.Title = "CentCom";
         document.Info.Version = context.ApplicationServices.GetRequiredService<IAppStatusService>().GetVersion().ToString();
         document.Info.Description = "An API for accessing CentCom, a central ban intelligence service for Space Station 13 servers";
+        document.Servers = [new OpenApiServer { Url = "/" }];
         return Task.CompletedTask;
     });
 });
