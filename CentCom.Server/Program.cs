@@ -31,13 +31,17 @@ internal class Program
                 lc.Filter.ByExcluding(Matching.FromSource("Quartz"));
                 lc.WriteTo.Console(
                     outputTemplate:
-                    "[{Timestamp:HH:mm:ss} {Level:u3}] ({SourceContext}) {Message:lj}{NewLine}{Exception}");
+                    "[{Timestamp:HH:mm:ss} {Level:u3}] ({SourceContext}) {Message:lj} {Properties:j}{NewLine}{Exception}");
             })
             .WriteTo.Logger(lc =>
             {
                 lc.WriteTo.File(path: "centcom-parser-server.txt",
+                    rollingInterval: RollingInterval.Day,
+                    fileSizeLimitBytes: 10 * 1024 * 1024,
+                    rollOnFileSizeLimit: true,
+                    retainedFileCountLimit: 10,
                     outputTemplate:
-                    "[{Timestamp:HH:mm:ss} {Level:u3}] ({SourceContext}) {Message:lj}{NewLine}{Exception}");
+                    "[{Timestamp:HH:mm:ss} {Level:u3}] ({SourceContext}) {Message:lj} {Properties:j}{NewLine}{Exception}");
             })
             .CreateLogger();
 
@@ -61,10 +65,6 @@ internal class Program
                     .AddUserSecrets<Program>()
                     .Build();
                 services.AddSingleton<IConfiguration>(config);
-
-                // Add logging
-                services.AddLogging(loggingBuilder =>
-                    loggingBuilder.AddSerilog(dispose: true));
 
                 // Get DB configuration
                 var dbConfig = new DbConfig();
