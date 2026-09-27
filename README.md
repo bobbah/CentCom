@@ -55,7 +55,7 @@ Once you have collected these things, you must then:
   HTTPS url. **By default, it will bind to any IP on port 6658.**
 - Edit the ``hostsettings.json`` of the MCP server to configure the URLs that the server will bind to. This should be an
   HTTP url. **By default, it will bind to any IP on port 6003.**
-- Edit the appconfig.json of the parsing server, API server, and MCP server to be configured for your database. You must
+- Edit the appsettings.json of the parsing server, API server, and MCP server to be configured for your database. You must
   provide a connection string, as well as the type of the database. This can be one of ``postgres``, ``mysql``, or
   ``mariadb``
   . **I would strongly recommend having two or three different accounts/roles on your database for CentCom, one for the
@@ -92,6 +92,14 @@ improve performance on the primary hosted instance of CentCom.
 
 PRs can be opened on this repository to propose changes to the codebase. There are a few things to note...
 
+### .NET and database providers
+
+The projects target .NET 10. Entity Framework Core remains on the 9.x line because the
+Pomelo provider used for MySQL and MariaDB does not yet support EF Core 10. Keep EF Core,
+its tools, and the database providers on compatible major versions; targeting .NET 10
+does not require EF Core 10. Test all three database contexts and their migration
+snapshots when an EF Core 10-compatible Pomelo version becomes available.
+
 ### Adding a New Ban Source
 
 If you are going to add an additional ban source, you typically have to add two new objects: a subclass of
@@ -104,6 +112,10 @@ that are for that server. As well as this, you optionally may override the ``Sou
 exposes unique Ban IDs from their own database. These are ideal, as it removes any ambiguity as to if two bans that are
 found from a ban source are the same ban, so use them when provided. **If you use a ban source with IDs and flag it as
 such, you MUST set the ``BanID`` property on the ``Ban`` itself.**
+
+Register the new parser in ``CentCom.Server/BanSources/BanParserTypes.cs`` and its
+service in ``CentCom.Server/Program.cs``; then add the parser's type name to
+``enabledParsers`` in the server configuration.
 
 As well as this, you must provide implementations for two different methods, ``FetchNewBansAsync()``, and
 ``FetchAllBansAsync()``. ``FetchNewBansAsync()`` should only return bans that are new as-of the last time that bans were

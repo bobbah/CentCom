@@ -56,12 +56,8 @@ public class DatabaseUpdater(
     private async Task RegisterJobs()
     {
         var allowedParsers = config.GetSection("enabledParsers").Get<HashSet<string>>();
-        var parsers = AppDomain.CurrentDomain.GetAssemblies().Aggregate(new List<Type>(), (curr, next) =>
-        {
-            curr.AddRange(next.GetTypes()
-                .Where(x => x.IsSubclassOf(typeof(BanParser)) && !_autoConfigBypass.Contains(x) && allowedParsers.Contains(x.Name)));
-            return curr;
-        });
+        var parsers = BanParserTypes.All
+            .Where(x => !_autoConfigBypass.Contains(x) && allowedParsers.Contains(x.Name));
 
         // Get a scheduler instance
         var scheduler = await schedulerFactory.GetScheduler();

@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using CentCom.Common.Configuration;
-using CentCom.Common.Data;
 using CentCom.Common.Util;
 using CentCom.Server.BanSources;
 using CentCom.Server.Data;
@@ -21,9 +18,8 @@ namespace CentCom.Server;
 
 internal class Program
 {
-    static Task Main(string[] args)
+    static async Task Main(string[] args)
     {
-        // Setup Serilog
         Log.Logger = new LoggerConfiguration()
             .Enrich.FromLogContext()
             .WriteTo.Logger(lc =>
@@ -45,94 +41,57 @@ internal class Program
             })
             .CreateLogger();
 
-        Log.Logger.ForContext<Program>()
-            .Information("Starting CentCom Server {Version} ({Commit})", AssemblyInformation.Current.Version,
-                AssemblyInformation.Current.Commit[..7]);
+        try
+        {
+            var commit = AssemblyInformation.Current.Commit;
+            Log.Logger.ForContext<Program>()
+                .Information("Starting CentCom Server {Version} ({Commit})", AssemblyInformation.Current.Version,
+                    commit?[..Math.Min(7, commit.Length)]);
 
-        return CreateHostBuilder(args).RunConsoleAsync();
-    }
+            var builder = Host.CreateApplicationBuilder(args);
+            builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: false)
+                .AddUserSecrets<Program>(optional: true)
+                .AddEnvironmentVariables()
+                .AddCommandLine(args);
+            builder.Services.AddSerilog();
+            builder.Services.AddCentComDatabase(builder.Configuration);
 
-    private static IHostBuilder CreateHostBuilder(string[] args) =>
-        Host.CreateDefaultBuilder(args)
-            .UseSerilog()
-            .ConfigureServices((_, services) =>
+            builder.Services.AddHttpClient<BeeBanService>();
+            builder.Services.AddSingleton<VgBanService>();
+            builder.Services.AddHttpClient<YogBanService>();
+            builder.Services.AddHttpClient<TGMCBanService>();
+            builder.Services.AddHttpClient<TgBanService>();
+            builder.Services.AddHttpClient<StandardProviderService>();
+
+            var fulpClient = builder.Services.AddHttpClient<FulpBanService>();
+            if (builder.Configuration.GetSection("sourceConfig").GetValue<bool>("allowFulpExpiredSSL"))
+                fulpClient.ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = (_, _, _, _) => true
+                });
+
+            foreach (var parser in BanParserTypes.All)
+                builder.Services.AddTransient(parser);
+
+            builder.Services.AddTransient<FlatDataImporter>();
+            builder.Services.AddTransient<DatabaseUpdater>();
+
+            builder.Services.AddQuartz(q =>
             {
-                // Add configuration
-                var config = new ConfigurationBuilder()
-                    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false)
-                    .AddEnvironmentVariables()
-                    .AddCommandLine(args)
-                    .AddUserSecrets<Program>()
-                    .Build();
-                services.AddSingleton<IConfiguration>(config);
-
-                // Get DB configuration
-                var dbConfig = new DbConfig();
-                config.Bind("dbConfig", dbConfig);
-
-                // Add appropriate DB context
-                if (dbConfig == null)
-                {
-                    throw new Exception(
-                        "Failed to read DB configuration, please ensure you provide one in appsettings.json");
-                }
-
-                switch (dbConfig.DbType)
-                {
-                    case DbType.Postgres:
-                        services.AddDbContext<DatabaseContext, NpgsqlDbContext>();
-                        break;
-                    case DbType.MariaDB:
-                        services.AddDbContext<DatabaseContext, MariaDbContext>();
-                        break;
-                    case DbType.MySql:
-                        services.AddDbContext<DatabaseContext, MySqlDbContext>();
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
-
-                // Add ban services to contact relevant APIs
-                services.AddHttpClient<BeeBanService>();
-                services.AddSingleton<VgBanService>();
-                services.AddHttpClient<YogBanService>();
-                services.AddHttpClient<TGMCBanService>();
-                services.AddHttpClient<TgBanService>();
-                services.AddHttpClient<StandardProviderService>();
-
-                // Special consideration for fulp and the SSL woes
-                var fulpClient = services.AddHttpClient<FulpBanService>();
-                if (config.GetSection("sourceConfig").GetValue<bool>("allowFulpExpiredSSL"))
-                    fulpClient.ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler()
-                    {
-                        ServerCertificateCustomValidationCallback = (_, _, _, _) => true
-                    });
-
-                // Add ban parsers
-                var parsers = AppDomain.CurrentDomain.GetAssemblies().Aggregate(new List<Type>(), (curr, next) =>
-                {
-                    curr.AddRange(next.GetTypes().Where(x => x.IsSubclassOf(typeof(BanParser))));
-                    return curr;
-                });
-
-                foreach (var p in parsers)
-                {
-                    services.AddTransient(p);
-                }
-
-                // Add jobs
-                services.AddTransient<FlatDataImporter>();
-                services.AddTransient<DatabaseUpdater>();
-
-                // Add Quartz
-                services.AddQuartz(q =>
-                {
-                    q.ScheduleJob<DatabaseUpdater>(trigger =>
-                            trigger
-                                .StartNow()
-                                .WithIdentity("updater"),
-                        job => job.WithIdentity("updater"));
-                });
-                services.AddQuartzHostedService(o => { o.WaitForJobsToComplete = true; });
+                q.ScheduleJob<DatabaseUpdater>(trigger =>
+                        trigger
+                            .StartNow()
+                            .WithIdentity("updater"),
+                    job => job.WithIdentity("updater"));
             });
+            builder.Services.AddQuartzHostedService(o => { o.WaitForJobsToComplete = true; });
+
+            using var host = builder.Build();
+            await host.RunAsync();
+        }
+        finally
+        {
+            await Log.CloseAndFlushAsync();
+        }
+    }
 }
