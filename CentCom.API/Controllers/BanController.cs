@@ -32,6 +32,7 @@ public class BanController : ControllerBase
     /// <response code="400">Key was null or whitespace</response>
     [HttpGet("ban/search/{key}")]
     [ProducesResponseType(typeof(IEnumerable<BanData>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> GetBansForKey(string key, [FromQuery] bool onlyActive, [FromQuery] int? source)
     {
         if (key == null || string.IsNullOrWhiteSpace(key))
@@ -62,6 +63,7 @@ public class BanController : ControllerBase
     /// <response code="404">Ban ID was invalid</response>
     [HttpGet("ban/{id}")]
     [ProducesResponseType(typeof(BanData), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetBan(int id)
     {
         var result = await _banService.GetBanAsync(id);
