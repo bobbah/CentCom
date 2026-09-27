@@ -68,6 +68,9 @@ Finally:
   the database. This will also begin to populate the database based on the parsing schedule, which by default will parse
   all ban sources for new bans every 5 minutes except for at 00 and 30 minutes of every hour, at which time a full ban
   pass will occur.
+- When upgrading an existing database, allow time for the substring-search index migration and pause other ban writers
+  until it completes. PostgreSQL requires permission to create the `pg_trgm` extension; MySQL and MariaDB require
+  permission to create triggers, which maintain the search posting table after its initial backfill.
 - AFTER the migration/database setup has occurred successfully, you can now start the API server (``CentCom.API``)
   without any concerns. This server will now take API requests, the documentation of which you can view at the
   ``/scalar`` page (the OpenAPI document is at ``/openapi/v1.json``).
@@ -121,7 +124,9 @@ As well as this, you must provide implementations for two different methods, ``F
 ``FetchAllBansAsync()``. ``FetchNewBansAsync()`` should only return bans that are new as-of the last time that bans were
 fetched from this source, typically by getting the last bans for that source from the database and getting new bans from
 the source until you find one of the pre-existing bans. ``FetchAllBansAsync()`` should not have this behaviour, and
-instead should provide all bans from the ban source. This method is used on a much less common schedule to ensure that
+instead should provide all bans from the ban source. An empty full-refresh result is treated as a failed fetch and
+does not remove stored bans; any nonempty result is treated as authoritative and bans missing from it are deleted.
+This method is used on a much less common schedule to ensure that
 the ban database stores any bans that have updated reasons, or have been changed in general. It will also help to
 identify bans that have been deleted from the source so that we may do the same in our database.
 

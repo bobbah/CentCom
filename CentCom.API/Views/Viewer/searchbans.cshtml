@@ -41,4 +41,18 @@
             </tbody>
         </table>
     }
+    @if (Model.Page > 1 || Model.HasNextPage)
+    {
+        <nav aria-label="Search result pages">
+            @if (Model.Page > 1)
+            {
+                <a asp-action="SearchBans" asp-route-key="@Model.CKey" asp-route-page="@(Model.Page - 1)" class="btn btn-outline-primary">Previous</a>
+            }
+            <span class="mx-2">Page @Model.Page</span>
+            @if (Model.HasNextPage)
+            {
+                <a asp-action="SearchBans" asp-route-key="@Model.CKey" asp-route-page="@(Model.Page + 1)" class="btn btn-outline-primary">Next</a>
+            }
+        </nav>
+    }
 </div>

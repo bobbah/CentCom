@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CentCom.API.Models;
 using CentCom.Common;
 using CentCom.Common.Data;
 using CentCom.Common.Models;
@@ -21,10 +22,12 @@ public class BanService : IBanService
 
     public async Task<BanData> GetBanAsync(int ban)
     {
-        return BanData.FromBan(await _dbContext.Bans
+        var result = await _dbContext.Bans
+            .AsNoTracking()
             .Include(x => x.JobBans)
-            .Include(x => x.SourceNavigation).
-            FirstOrDefaultAsync(x => x.Id == ban));
+            .Include(x => x.SourceNavigation)
+            .FirstOrDefaultAsync(x => x.Id == ban);
+        return result == null ? null : BanData.FromBan(result);
     }
 
     public async Task<IEnumerable<BanData>> GetBansForKeyAsync(string key, int? source, bool onlyActive = false)
@@ -62,19 +65,31 @@ public class BanService : IBanService
             .ToListAsync();
     }
 
-    public async Task<IEnumerable<KeySummary>> SearchSummariesForKeyAsync(string key)
+    public async Task<BanSearchPage> SearchSummariesForKeyAsync(string key, int page)
     {
+        const int pageSize = 25;
+        if (page < 1 || page > 1000)
+            throw new ArgumentOutOfRangeException(nameof(page), "Search page must be between 1 and 1000.");
+
         key = KeyUtilities.GetCanonicalKey(key);
-        var query = _dbContext.Bans.GroupBy(x => x.CKey,
+        var query = BanSearchQuery.ForCKeySubstring(_dbContext, key)
+            .GroupBy(x => x.CKey,
             (k, g) => new KeySummary
             {
                 CKey = k,
                 ServerBans = g.Sum(y => y.BanType == BanType.Server ? 1 : 0),
                 JobBans = g.Sum(y => y.BanType == BanType.Job ? 1 : 0),
                 LatestBan = g.Max(x => x.BannedOn)
-            }).Where(x => x.CKey.ToLower().Contains(key));
+            });
 
-        return await query.OrderByDescending(x => x.LatestBan)
+        var results = await query.OrderByDescending(x => x.LatestBan)
+            .ThenBy(x => x.CKey)
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize + 1)
             .ToListAsync();
+        var hasNextPage = results.Count > pageSize;
+        if (hasNextPage)
+            results.RemoveAt(pageSize);
+        return new BanSearchPage(results, page, hasNextPage);
     }
 }

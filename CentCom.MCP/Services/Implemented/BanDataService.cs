@@ -62,7 +62,7 @@ public class BanDataService(DatabaseContext dbContext) : IBanDataService
         var ckey = KeyUtilities.GetCanonicalKey(query);
         var effectiveLimit = Math.Clamp(limit, 1, MaxSearchLimit);
 
-        return await dbContext.Bans
+        return await BanSearchQuery.ForCKeySubstring(dbContext, ckey)
             .GroupBy(x => x.CKey, (k, g) => new KeySummary
             {
                 CKey = k,
@@ -70,8 +70,8 @@ public class BanDataService(DatabaseContext dbContext) : IBanDataService
                 JobBans = g.Sum(y => y.BanType == BanType.Job ? 1 : 0),
                 LatestBan = g.Max(x => x.BannedOn)
             })
-            .Where(x => x.CKey.ToLower().Contains(ckey))
             .OrderByDescending(x => x.LatestBan)
+            .ThenBy(x => x.CKey)
             .Take(effectiveLimit)
             .ToListAsync();
     }

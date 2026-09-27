@@ -97,10 +97,11 @@ public sealed class EndpointTests
                 pages = type switch
                 {
                     SourceType.Bee => await new BeeBanService(client, NullLogger<BeeBanService>.Instance)
-                        .GetNumberOfPagesAsync(),
+                        .GetNumberOfPagesAsync(cancellationToken),
                     SourceType.Fulp => await new FulpBanService(client, NullLogger<FulpBanService>.Instance)
-                        .GetNumberOfPagesAsync(),
-                    _ => await new TGMCBanService(client, NullLogger<TGMCBanService>.Instance).GetNumberOfPagesAsync()
+                        .GetNumberOfPagesAsync(cancellationToken),
+                    _ => await new TGMCBanService(client, NullLogger<TGMCBanService>.Instance)
+                        .GetNumberOfPagesAsync(cancellationToken)
                 };
                 if (pages < 0) throw new InvalidDataException($"Negative page count: {pages}.");
                 if (pages == 0 && first?.Count > 0)
@@ -180,13 +181,18 @@ public sealed class EndpointTests
     {
         return type switch
         {
-            SourceType.Standard => await StandardPage(client, baseAddress, cursor),
-            SourceType.Bee => await new BeeBanService(client, NullLogger<BeeBanService>.Instance).GetBansAsync(page),
-            SourceType.Fulp => await new FulpBanService(client, NullLogger<FulpBanService>.Instance).GetBansAsync(page),
-            SourceType.Tg => (await new TgBanService(client, NullLogger<TgBanService>.Instance).GetBansAsync(page))
+            SourceType.Standard => await StandardPage(client, baseAddress, cursor, cancellationToken),
+            SourceType.Bee => await new BeeBanService(client, NullLogger<BeeBanService>.Instance)
+                .GetBansAsync(page, cancellationToken),
+            SourceType.Fulp => await new FulpBanService(client, NullLogger<FulpBanService>.Instance)
+                .GetBansAsync(page, cancellationToken),
+            SourceType.Tg => (await new TgBanService(client, NullLogger<TgBanService>.Instance)
+                    .GetBansAsync(page, cancellationToken))
                 .Select(b => b.AsBan(new BanSource { Name = "tgstation" })).ToList(),
-            SourceType.Tgmc => await new TGMCBanService(client, NullLogger<TGMCBanService>.Instance).GetBansAsync(page),
-            SourceType.Yog => await new YogBanService(client, NullLogger<YogBanService>.Instance).GetBansAsync(page),
+            SourceType.Tgmc => await new TGMCBanService(client, NullLogger<TGMCBanService>.Instance)
+                .GetBansAsync(page, cancellationToken),
+            SourceType.Yog => await new YogBanService(client, NullLogger<YogBanService>.Instance)
+                .GetBansAsync(page, cancellationToken),
             SourceType.Vg => await GetVgPageAsync(baseAddress, cancellationToken),
             _ => throw new ArgumentOutOfRangeException(nameof(type))
         };
@@ -200,14 +206,15 @@ public sealed class EndpointTests
             .GetBansAsync(new Uri(baseAddress, "index.php/bans").AbsoluteUri, timeout.Token);
     }
 
-    private static async Task<List<Ban>> StandardPage(HttpClient client, Uri address, int? cursor)
+    private static async Task<List<Ban>> StandardPage(HttpClient client, Uri address, int? cursor,
+        CancellationToken cancellationToken)
     {
         var service = new StandardProviderService(client, NullLogger<StandardProviderService>.Instance);
         service.Configure(new StandardProviderConfiguration
         {
             Url = address.AbsoluteUri, Id = "detective", Display = "Detective"
         });
-        return await service.GetBansAsync(cursor);
+        return await service.GetBansAsync(cursor, cancellationToken);
     }
 
     private static async Task<TestResult> CheckAsync(string name, Func<Task<string>> check,

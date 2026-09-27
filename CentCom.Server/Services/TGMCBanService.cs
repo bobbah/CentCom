@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
 using CentCom.Common.Extensions;
 using CentCom.Common.Models;
@@ -28,12 +29,13 @@ public class TGMCBanService(HttpClient client, ILogger<TGMCBanService> logger) :
 
     protected override string BaseUrl => "https://statbus.psykzz.com/api/";
 
-    public async Task<List<Ban>> GetBansAsync(int page = 1)
+    public async Task<List<Ban>> GetBansAsync(int page = 1, CancellationToken cancellationToken = default)
     {
         var toReturn = new List<Ban>();
         var dirtyBans = new List<Ban>();
         var content = await GetAsync<Dictionary<string, JsonElement>>($"bans/{page}",
-            new Dictionary<string, string>() { { "limit", RecordsPerPage.ToString() } });
+            new Dictionary<string, string>() { { "limit", RecordsPerPage.ToString() } },
+            cancellationToken: cancellationToken);
         foreach (var bh in content["bans"].EnumerateObject())
         {
             var ban = bh.Value;
@@ -132,10 +134,11 @@ public class TGMCBanService(HttpClient client, ILogger<TGMCBanService> logger) :
         return cleanBans;
     }
 
-    public async Task<int> GetNumberOfPagesAsync()
+    public async Task<int> GetNumberOfPagesAsync(CancellationToken cancellationToken = default)
     {
         var content = await GetAsync<Dictionary<string, JsonElement>>("bans/1",
-            new Dictionary<string, string>() { { "limit", RecordsPerPage.ToString() } });
+            new Dictionary<string, string>() { { "limit", RecordsPerPage.ToString() } },
+            cancellationToken: cancellationToken);
         if (content["page"].TryGetProperty("total", out var lastpage))
         {
             return lastpage.GetInt32();

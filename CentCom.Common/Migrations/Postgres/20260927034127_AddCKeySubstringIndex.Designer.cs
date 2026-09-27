@@ -3,6 +3,7 @@ using System;
 using CentCom.Common.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,13 +12,15 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CentCom.Common.Migrations.Postgres
 {
     [DbContext(typeof(NpgsqlDbContext))]
-    partial class NpgsqlDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260927034127_AddCKeySubstringIndex")]
+    partial class AddCKeySubstringIndex
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.6")
+                .HasAnnotation("ProductVersion", "9.0.20")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -84,12 +87,6 @@ namespace CentCom.Common.Migrations.Postgres
 
                     b.HasIndex("Source")
                         .HasDatabaseName("ix_bans_source");
-
-                    b.HasIndex("Source", "BanID")
-                        .HasDatabaseName("ix_bans_source_ban_id");
-
-                    b.HasIndex("Source", "BannedOn")
-                        .HasDatabaseName("ix_bans_source_banned_on");
 
                     b.ToTable("bans", (string)null);
                 });
@@ -282,7 +279,7 @@ namespace CentCom.Common.Migrations.Postgres
                         .HasForeignKey("Source")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_bans_ban_sources_source_navigation_id");
+                        .HasConstraintName("fk_bans_ban_sources_source");
 
                     b.Navigation("SourceNavigation");
                 });

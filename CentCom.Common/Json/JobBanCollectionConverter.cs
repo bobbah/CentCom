@@ -15,19 +15,27 @@ public class JobBanCollectionConverter : JsonConverter<IReadOnlyList<IRestJobBan
     public override IReadOnlyList<IRestJobBan> Read(ref Utf8JsonReader reader, Type typeToConvert,
         JsonSerializerOptions options)
     {
-        var toReturn = new List<IRestJobBan>();
-        do
-        {
-            if (reader.TokenType == JsonTokenType.StartArray)
-                continue;
-            if (reader.TokenType == JsonTokenType.EndArray || reader.TokenType == JsonTokenType.Null)
-                break;
-            RestJobBan job = reader.GetString();
-            if (job != null)
-                toReturn.Add(job);
-        } while (reader.Read());
+        if (reader.TokenType == JsonTokenType.Null)
+            return null;
+        if (reader.TokenType != JsonTokenType.StartArray)
+            throw new JsonException("Expected an array of job bans.");
 
-        return toReturn;
+        var toReturn = new List<IRestJobBan>();
+        while (reader.Read())
+        {
+            switch (reader.TokenType)
+            {
+                case JsonTokenType.EndArray:
+                    return toReturn;
+                case JsonTokenType.String:
+                    toReturn.Add(new RestJobBan(reader.GetString()));
+                    break;
+                default:
+                    throw new JsonException("Expected a non-null string job ban.");
+            }
+        }
+
+        throw new JsonException("Unexpected end of job ban array.");
     }
 
     public override void Write(Utf8JsonWriter writer, IReadOnlyList<IRestJobBan> value,
@@ -42,7 +50,10 @@ public class JobBanCollectionConverter : JsonConverter<IReadOnlyList<IRestJobBan
         writer.WriteStartArray();
         foreach (var job in value)
         {
-            writer.WriteStringValue(job.Job);
+            var name = job?.Job;
+            if (name == null)
+                throw new JsonException("Job ban entries must be non-null strings.");
+            writer.WriteStringValue(name);
         }
 
         writer.WriteEndArray();

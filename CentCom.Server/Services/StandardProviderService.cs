@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Threading;
 using System.Threading.Tasks;
 using CentCom.Common.Extensions;
 using CentCom.Common.Models;
@@ -28,13 +29,14 @@ public class StandardProviderService(HttpClient client, ILogger<StandardProvider
         Converters = { new JsonStringEnumConverter() }
     }.AddCentComOptions();
 
-    public async Task<List<Ban>> GetBansAsync(int? cursor = null)
+    public async Task<List<Ban>> GetBansAsync(int? cursor = null, CancellationToken cancellationToken = default)
     {
         if (!_configured)
             throw new InvalidOperationException("Cannot get bans from an unconfigured external source");
 
         var data = await GetAsync<List<RestBan>>("api/ban",
-            cursor.HasValue ? new Dictionary<string, string>() { { "cursor", cursor.ToString() } } : null, JsonOptions);
+            cursor.HasValue ? new Dictionary<string, string>() { { "cursor", cursor.ToString() } } : null,
+            JsonOptions, cancellationToken);
         
         return data.Select(x => new Ban
         {
@@ -64,16 +66,22 @@ public class StandardProviderService(HttpClient client, ILogger<StandardProvider
         // ID only being available once we finish a page
         var result = new List<Ban>();
         var lastRequested = cursor;
-        List<Ban> lastResponse;
-        do
+        while (true)
         {
-            lastResponse = (await GetBansAsync(lastRequested)).ToList();
-            if (lastResponse.Count == 0)
+            var response = await GetBansAsync(lastRequested);
+            if (response.Count == 0)
                 break;
-            lastRequested = int.Parse(lastResponse[^1].BanID);
-            result.AddRange(lastResponse);
-        } while (lastResponse.Count != 0 &&
-                 (searchFor == null || lastResponse.Any(x => searchFor.Contains(int.Parse(x.BanID)))));
+
+            var nextCursor = int.Parse(response[^1].BanID);
+            if (lastRequested.HasValue && nextCursor >= lastRequested.Value)
+                throw new InvalidOperationException("Standard exporter did not advance the ban cursor");
+
+            result.AddRange(response);
+            if (searchFor is { Count: > 0 } && response.Any(x => searchFor.Contains(int.Parse(x.BanID))))
+                break;
+
+            lastRequested = nextCursor;
+        }
 
         return result;
     }

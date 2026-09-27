@@ -75,6 +75,7 @@ public abstract class BanParser : IJob
         catch (Exception ex)
         {
             Logger.LogError(ex, "Encountered unhandled exception during ban parsing");
+            await LogFailure(context, ex);
             throw new JobExecutionException(ex, false);
         }
     }
@@ -132,15 +133,17 @@ public abstract class BanParser : IJob
             Success = true
         };
 
-        // Get stored bans from the database
-        List<Ban> storedBans;
+        var sourceNames = Sources.Keys.ToArray();
+        IQueryable<Ban> sourceBans;
+        bool hasStoredBans;
         try
         {
-            storedBans = await DbContext.Bans
-                .Where(x => Sources.Keys.Contains(x.SourceNavigation.Name))
-                .Include(x => x.JobBans)
-                .Include(x => x.SourceNavigation)
-                .ToListAsync();
+            var sourceIds = await DbContext.BanSources
+                .Where(x => sourceNames.Contains(x.Name))
+                .Select(x => x.Id)
+                .ToArrayAsync();
+            sourceBans = DbContext.Bans.Where(x => sourceIds.Contains(x.Source));
+            hasStoredBans = await sourceBans.AnyAsync();
         }
         catch (Exception ex)
         {
@@ -149,7 +152,7 @@ public abstract class BanParser : IJob
         }
 
         // Get bans from the source
-        var isCompleteRefresh = context.MergedJobDataMap.GetBoolean("completeRefresh") || !storedBans.Any();
+        var isCompleteRefresh = context.MergedJobDataMap.GetBoolean("completeRefresh") || !hasStoredBans;
         history.CompleteRefresh = isCompleteRefresh;
         List<Ban> bans;
         try
@@ -207,6 +210,48 @@ public abstract class BanParser : IJob
             bans = bans.Except(sourceDupes).ToList();
         }
 
+        if (isCompleteRefresh && bans.Count == 0)
+        {
+            Logger.LogWarning("Full refresh returned no valid bans; preserving stored bans");
+            throw new JobExecutionException(
+                new InvalidOperationException(
+                    "Full refresh returned no valid bans; refusing to delete stored bans based on an empty snapshot."),
+                false);
+        }
+
+        List<Ban> storedBans;
+        var storedBanQuery = sourceBans.Include(x => x.JobBans).Include(x => x.SourceNavigation);
+        if (isCompleteRefresh)
+        {
+            storedBans = await storedBanQuery.ToListAsync();
+        }
+        else if (bans.Count == 0)
+        {
+            storedBans = [];
+        }
+        else if (SourceSupportsBanIDs)
+        {
+            storedBans = [];
+            var banIds = bans.Select(x => x.BanID).Distinct().ToArray();
+            foreach (var batch in banIds.Chunk(500))
+                storedBans.AddRange(await storedBanQuery.Where(x => batch.Contains(x.BanID)).ToListAsync());
+        }
+        else
+        {
+            var earliest = bans.Min(x => x.BannedOn);
+            var latest = bans.Max(x => x.BannedOn);
+            storedBans = await storedBanQuery
+                .Where(x => x.BannedOn >= earliest && x.BannedOn <= latest)
+                .ToListAsync();
+        }
+
+        var storedById = SourceSupportsBanIDs
+            ? storedBans.ToLookup(x => (x.Source, x.BanID))
+            : null;
+        var storedByDetails = SourceSupportsBanIDs
+            ? null
+            : storedBans.ToLookup(x => (x.Source, x.BannedOn, x.BanType, x.CKey, x.BannedBy));
+
         // Check for ban updates
         var updated = 0;
         var toInsert = new List<Ban>();
@@ -219,20 +264,12 @@ public abstract class BanParser : IJob
             Ban matchedBan;
             if (SourceSupportsBanIDs)
             {
-                matchedBan = storedBans.FirstOrDefault(x =>
-                    b.Source == x.Source
-                    && b.BanID == x.BanID);
+                matchedBan = storedById[(b.Source, b.BanID)].FirstOrDefault();
             }
             else
             {
-                matchedBan = storedBans.FirstOrDefault(x =>
-                    b.Source == x.Source
-                    && b.BannedOn == x.BannedOn
-                    && b.BanType == x.BanType
-                    && b.CKey == x.CKey
-                    && b.BannedBy == x.BannedBy
-                    && (b.BanType == BanType.Server
-                        || b.JobBans.SetEquals(x.JobBans)));
+                matchedBan = storedByDetails[(b.Source, b.BannedOn, b.BanType, b.CKey, b.BannedBy)]
+                    .FirstOrDefault(x => b.BanType == BanType.Server || b.JobBans.SetEquals(x.JobBans));
             }
 
             // Update ban if an existing one is found
@@ -246,7 +283,8 @@ public abstract class BanParser : IJob
                     || matchedBan.Expires != b.Expires 
                     || matchedBan.UnbannedBy != b.UnbannedBy
                     || matchedBan.BannedBy != b.BannedBy
-                    || matchedBan.CKey != b.CKey)
+                    || matchedBan.CKey != b.CKey
+                    || matchedBan.BanType != b.BanType)
                 {
                     matchedBan.Reason = b.Reason;
                     matchedBan.BannedOn = b.BannedOn;
@@ -254,7 +292,29 @@ public abstract class BanParser : IJob
                     matchedBan.UnbannedBy = b.UnbannedBy;
                     matchedBan.BannedBy = b.BannedBy;
                     matchedBan.CKey = b.CKey;
+                    matchedBan.BanType = b.BanType;
                     changed = true;
+                }
+
+                if (SourceSupportsBanIDs)
+                {
+                    var incomingJobs = b.BanType == BanType.Job
+                        ? b.JobBans?.Select(job => BanExtensions.CleanJob(job.Job))
+                            .ToHashSet(StringComparer.Ordinal) ?? new HashSet<string>(StringComparer.Ordinal)
+                        : new HashSet<string>(StringComparer.Ordinal);
+                    var storedJobs = matchedBan.JobBans;
+                    foreach (var job in storedJobs.Where(job => !incomingJobs.Contains(job.Job)).ToList())
+                    {
+                        DbContext.JobBans.Remove(job);
+                        storedJobs.Remove(job);
+                        changed = true;
+                    }
+
+                    foreach (var job in incomingJobs.Where(job => !storedJobs.Any(existing => existing.Job == job)))
+                    {
+                        matchedBan.AddJob(job);
+                        changed = true;
+                    }
                 }
 
                 // Check for a difference in ban attributes
@@ -299,12 +359,6 @@ public abstract class BanParser : IJob
         // Delete any missing bans if we're doing a complete refresh
         var bansHashed = new HashSet<Ban>(bans, BanEqualityComparer.Instance);
         var missingBans = storedBans.Except(bansHashed, BanEqualityComparer.Instance).ToList();
-
-        if (bansHashed.Count == 0 && missingBans.Count > 1)
-        {
-            throw new Exception(
-                "Failed to find any bans for source, aborting removal phase of ban parsing to avoid dumping entire set of bans");
-        }
 
         // Apply deletions
         if (missingBans.Count > 0)
